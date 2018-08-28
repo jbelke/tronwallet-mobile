@@ -2,12 +2,17 @@ import React from 'react'
 
 const DEFAULT_VALUE = {}
 
-export const withContext = Component => {
+export const withContext = (Component, getRef = false) => {
   class EnhancedComponent extends React.Component {
     render () {
       return (
         <Context.Consumer>
-          {context => <Component ref={input => { this.innerComponent = input }} context={context} {...this.props} />}
+          {
+            context =>
+              getRef
+                ? <Component ref={input => { this.innerComponent = input }} context={context} {...this.props} />
+                : <Component context={context} {...this.props} />
+          }
         </Context.Consumer>
       )
     }

@@ -123,4 +123,4 @@ class AccountsCarousel extends React.Component {
   }
 }
 
-export default withContext(AccountsCarousel)
+export default withContext(AccountsCarousel, true)
