@@ -501,5 +501,9 @@
       "title": "계정 생성 알림",
       "message": "새로운 계정을 추가하려면 보유 계정에서 최소 1회 이상 트랜잭션을 수행해야 합니다."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
