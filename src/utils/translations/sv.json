@@ -501,5 +501,9 @@
       "title": "Ny kontovarning",
       "message": "För att lägga till ett nytt konto borde du ha minst en transaktion på ditt senaste konto."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
