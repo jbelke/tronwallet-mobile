@@ -501,5 +501,9 @@
       "title": "Nieuwe account waarschuwing",
       "message": "Als u een nieuw account wilt toevoegen, moet u ten minste één transactie in uw laatste account hebben."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
