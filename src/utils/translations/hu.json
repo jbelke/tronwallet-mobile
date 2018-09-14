@@ -501,5 +501,9 @@
       "title": "Új fiók figyelmeztetés",
       "message": "Új fiók hozzáadásához az utolsó fiókjában legalább egy tranzakciót kell végrehajtania."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
