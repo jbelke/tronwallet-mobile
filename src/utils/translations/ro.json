@@ -501,5 +501,9 @@
       "title": "Notificare de cont nou",
       "message": "Pentru a adăuga un cont nou, trebuie să aveți cel puțin o tranzacție în ultimul cont."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
