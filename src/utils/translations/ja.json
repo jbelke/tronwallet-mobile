@@ -501,5 +501,9 @@
       "title": "新しいアカウントの警告",
       "message": "新しいアカウントを追加するには、最後のアカウントに少なくとも1つの取引が必要です。"
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
