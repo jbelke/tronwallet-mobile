@@ -501,5 +501,9 @@
       "title": "Upozornění na nový účet",
       "message": "Chcete-li přidat nový účet, měli byste mít alespoň jednu transakci na posledním účtu."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
