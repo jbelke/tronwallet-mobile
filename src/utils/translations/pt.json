@@ -501,5 +501,9 @@
       "title": "Aviso de nova conta",
       "message": "Para adicionar uma nova conta, que você deve ter pelo menos uma transação na sua última conta."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
