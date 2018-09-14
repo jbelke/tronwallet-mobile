@@ -501,5 +501,9 @@
       "title": "Нове попередження облікового запису",
       "message": "Щоб додати новий обліковий запис, потрібно мати принаймні одну транзакцію в своєму останньому обліковому записі."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
