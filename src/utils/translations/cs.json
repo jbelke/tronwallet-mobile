@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Aktualizace informací o tokenu. Prosím, počkejte pár vteřin.",
+    "notAvailable": "Informace o tokenu nejsou k dispozici"
   }
 }
