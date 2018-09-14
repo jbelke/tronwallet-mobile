@@ -501,5 +501,9 @@
       "title": "אזהרה על חשבון חדש",
       "message": "כדי להוסיף חשבון חדש, צריכה להיות לך לפחות עסקה אחת בחשבון האחרון שלך."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
