@@ -501,5 +501,9 @@
       "title": "คำเตือนเกี่ยวกับบัญชีใหม่",
       "message": "หากต้องการเพิ่มบัญชีใหม่คุณควรมีธุรกรรมอย่างน้อยหนึ่งรายการในบัญชีล่าสุดของคุณ"
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
