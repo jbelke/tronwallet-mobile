@@ -501,5 +501,9 @@
       "title": "新帐户警告",
       "message": "要添加新帐户，您的上一个帐户应至少有一笔交易。"
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
