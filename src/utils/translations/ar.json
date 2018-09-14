@@ -501,5 +501,9 @@
       "title": "تحذير يتعلق بالحساب الجديد",
       "message": "لاضافة حساب جديد يجب أن تقوم بمعاملة واحدة على الاقل في حسابك الاخير."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
