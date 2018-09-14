@@ -501,5 +501,9 @@
       "title": "Uusi tilin varoitus",
       "message": "Jos haluat lisätä uuden tilin, sinulla on oltava vähintään yksi tapahtuma viimeisessä tilissäsi."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
