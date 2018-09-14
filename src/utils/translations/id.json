@@ -501,5 +501,9 @@
       "title": "Peringatan akun baru",
       "message": "Untuk menambahkan akun baru, Anda harus memiliki setidaknya satu transaksi di akun terakhir Anda."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
