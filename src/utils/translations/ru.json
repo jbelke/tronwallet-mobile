@@ -501,5 +501,9 @@
       "title": "Новое оповещение учетной записи",
       "message": "Чтобы добавить новую учетную запись, вы должны иметь по крайней мере одну транзакция в старой учетной записи."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
