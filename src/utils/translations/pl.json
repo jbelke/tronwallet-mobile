@@ -501,5 +501,9 @@
       "title": "Nowe ostrzeżenie o koncie",
       "message": "Aby dodać nowe konto, powinieneś mieć co najmniej jedną transakcję na swoim ostatnim koncie."
     }
+  },
+  "balanceToken": {
+    "updating": "Updating token information. Please wait a few seconds.",
+    "notAvailable": "Token information not available"
   }
 }
