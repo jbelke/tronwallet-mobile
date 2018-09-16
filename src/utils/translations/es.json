@@ -388,7 +388,7 @@
       "submit": "ENVIAR TRANSACCIÓN"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "No se pudieron cargar los datos de la transacción"
     },
     "disconnectedMessage": "Parece que estas desconectado. Vuelva a conectarte a internet antes de proceder con la transacción.",
     "dic": {
@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Actualizando la información del token. Por favor espere unos segundos.",
+    "notAvailable": "La información del token no está disponible"
   }
 }
