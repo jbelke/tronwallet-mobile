@@ -388,7 +388,7 @@
       "submit": "VERSTUUR TRANSACTIE"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "Kan transactiegegevens niet laden"
     },
     "disconnectedMessage": "Het lijkt erop dat u bent losgekoppeld. Maak opnieuw verbinding met internet voordat u doorgaat met de transactie.",
     "dic": {
@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Token informatie bijwerken. Wacht een paar seconden alstublieft.",
+    "notAvailable": "Token informatie niet beschikbaar"
   }
 }
