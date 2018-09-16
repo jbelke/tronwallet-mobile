@@ -388,7 +388,7 @@
       "submit": "ОТПРАВИТЬ ТРАНЗАКЦИЮ"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "Не удалось загрузить данные транзакции"
     },
     "disconnectedMessage": "Кажется, что вы отключены. Переподключитесь к Интернету перед выполнением транзакции.",
     "dic": {
@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Обновление информации о токенe. Подождите несколько секунд.",
+    "notAvailable": "Информация о токенe недоступна"
   }
 }
