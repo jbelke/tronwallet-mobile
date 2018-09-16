@@ -388,7 +388,7 @@
       "submit": "SUBMIT TRANSACCIÓ"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "No s'han pogut carregar les dades de la transacció"
     },
     "disconnectedMessage": "Sembla que estàs desconnectat. Torneu a connectar a Internet abans de continuar amb la transacció.",
     "dic": {
@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Actualització de la informació de testimonis. Espereu uns segons.",
+    "notAvailable": "La informació de token no està disponible"
   }
 }
