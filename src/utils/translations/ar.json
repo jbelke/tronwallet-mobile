@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "جاري تحديث معلومات العملة. الرجاء الانتظار لثوان.",
+    "notAvailable": "لا تتوفر معلومات عن العملة"
   }
 }
