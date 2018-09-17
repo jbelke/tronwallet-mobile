@@ -28,7 +28,7 @@
     "buildingTransaction": "Chyba při vytváření transakce, zkuste to znovu.",
     "gettingTransaction": "Chyba při získávání transakce.",
     "clipboardCopied": "Něco se pokazilo během kopírování",
-    "hideAccount": "Něco se nezdařilo smazání účtu, zkuste znovu '"
+    "hideAccount": "Při mazání účtu došlo k chybě, zkuste znovu'"
   },
   "tronPower": "TRON POWER",
   "trxPrice": "CENA TRX",
@@ -59,7 +59,7 @@
     },
     "chooseCurrency": "Prosím, vyberte vaši preferovanou měnu.",
     "confirmSeed": "Klepnutím potvrdíte vašich 12 seed slov",
-    "bandwidth": "BANDWIDTH",
+    "bandwidth": "ŠÍŘKA PÁSMA",
     "tokens": "TOKENY",
     "holdings": "MNOŽSTVÍ"
   },
@@ -129,7 +129,7 @@
     }
   },
   "importWallet": {
-    "title": "DOPRAVNÍ PALIVO",
+    "title": "IMPORTOVAT PENĚŽENKU",
     "message": "Máte-li soukromý klíč a adresu peněženky, můžete ji zde obnovit, ale pamatujte na to, že TronWallet pracuje především s mnemonikou. Tato metoda obnovení zakáže některé funkce v aplikaci App.",
     "button": "IMPORT",
     "error": {
