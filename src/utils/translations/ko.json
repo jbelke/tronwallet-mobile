@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "토큰 정보 업데이트 중입니다. 잠시만 기다려 주세요.",
+    "notAvailable": "토큰 정보를 이용할 수 없습니다"
   }
 }
