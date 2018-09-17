@@ -63,7 +63,7 @@
     "tokens": "TOKENY",
     "holdings": "MNOŽSTVÍ"
   },
-  "hideAccount": "Chystáte se tento účet odstranit. Později jej můžete obnovit v nastaveních",
+  "hideAccount": "Chystáte se odstranit tento účet. Později jej můžete obnovit v nastavení",
   "components": {
     "share": {
       "title": "Sdílet TronWallet adresu",
@@ -130,7 +130,7 @@
   },
   "importWallet": {
     "title": "IMPORTOVAT PENĚŽENKU",
-    "message": "Máte-li soukromý klíč a adresu peněženky, můžete ji zde obnovit, ale pamatujte na to, že TronWallet pracuje především s mnemonikou. Tato metoda obnovení zakáže některé funkce v aplikaci App.",
+    "message": "Máte-li soukromý klíč a adresu peněženky, můžete ji zde obnovit, ale pamatujte na to, že TronWallet pracuje především s mnemonikou. Tato metoda obnovení zakáže některé funkce aplikace.",
     "button": "IMPORT",
     "error": {
       "privateKey": "Neplatný nebo neúplný soukromý klíč"
@@ -370,12 +370,12 @@
     },
     "accounts": {
       "title": "Účty",
-      "search": "Vyhledávací účty",
+      "search": "Vyhledat účty",
       "restoreAccounts": "Obnovit účty",
-      "noAccounts": "Žádné obnovené účty"
+      "noAccounts": "Žádné účty k obnovení"
     },
     "partners": "PARTNEŘI",
-    "askPin": "Vždy se zeptat na kód PIN"
+    "askPin": "Vždy se zeptat na PIN kód"
   },
   "submitTransaction": {
     "title": "DETAILY TRANSAKCE",
