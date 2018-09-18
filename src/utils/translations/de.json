@@ -89,7 +89,7 @@
       "totalVotes": "Anzahl verfügbarer Stimmen:",
       "delete": "Löschen",
       "set": "Platzieren",
-      "freezeOrLower": "Sie haben nicht genug eingefrorene TRX. Frieren Sie mehr TRX ein, oder senken Sie den Stimmenbetrag",
+      "freezeOrLower": "Sie haben nicht genug TRX eingefroren. Frieren Sie mehr TRX ein, oder senken Sie den Stimmenbetrag",
       "freezeToContinue": "Sie haben nicht genug eingefrorene TRX. Um fortzufahren, frieren Sie mehr TRX ein"
     }
   },
