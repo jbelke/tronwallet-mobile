@@ -15,7 +15,7 @@
     "y": "une année",
     "yy": "%d ans"
   },
-  "success": "Réussite",
+  "success": "Succès",
   "warning": "Attention",
   "cancel": "Annuler",
   "address": "Adresse",
@@ -388,7 +388,7 @@
       "submit": "Soumettre la transaction"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "Impossible de charger les données de la transaction"
     },
     "disconnectedMessage": "Il semblerai que vous soyez déconnecté. reconnectez vous a Internet pour procéder a la transaction.",
     "dic": {
@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Mise à jour des informations du jeton. Veuillez patienter quelques secondes s'il vous plait.",
+    "notAvailable": "Informations sur le Jeton sont indisponibles"
   }
 }
