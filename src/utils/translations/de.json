@@ -4,7 +4,7 @@
     "past": "vor %s",
     "s": "ein paar Sekunden",
     "ss": "%d Sekunden",
-    "m": "eine minute",
+    "m": "eine Minute",
     "mm": "%d Minuten",
     "h": "eine Stunde",
     "hh": "%d Stunden",
@@ -27,7 +27,7 @@
     "default": "Woops etwas ist schief gelaufen. Bitte versuchen Sie es erneut. Wenn der Fehler weiterhin besteht, versuchen Sie die Netzwerk-Einstellungen zu aktualisieren.",
     "buildingTransaction": "Fehler beim Erstellen der Transaktion, bitte versuchen Sie es erneut.",
     "gettingTransaction": "Fehler beim Abrufen der Transaktion.",
-    "clipboardCopied": "Ein Fehler unterlief beim kopieren",
+    "clipboardCopied": "Beim Kopieren ist ein Fehler aufgetreten",
     "hideAccount": "Beim Löschen des Kontos ist ein Fehler aufgetreten. Versuchen Sie es erneut."
   },
   "tronPower": "TRON-POWER",
@@ -45,12 +45,12 @@
     "create": "Erstellen",
     "undefined": "Undefinierter Typ"
   },
-  "close": "Schliessen",
+  "close": "Schließen",
   "ends": "Endet",
   "clear": "Löschen",
   "allIn": "Alles",
   "skip": "Überspringen",
-  "privateKey": "Privat Schlüssel",
+  "privateKey": "Privater Schlüssel",
   "balance": {
     "title": "KONTEN",
     "error": {
@@ -86,7 +86,7 @@
       "myVotes": "Meine Abstimmung",
       "confirm": "BESTÄTIGEN",
       "freeze": "Einfrieren",
-      "totalVotes": "Gesamte Abstimmungen verfügbar:",
+      "totalVotes": "Anzahl verfügbarer Stimmen:",
       "delete": "Löschen",
       "set": "Platzieren",
       "freezeOrLower": "Sie haben nicht genug eingefrorene TRX. Frieren Sie mehr TRX ein, oder senken Sie den Stimmenbetrag",
