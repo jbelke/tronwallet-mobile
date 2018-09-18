@@ -16,7 +16,7 @@
     "yy": "%d ans"
   },
   "success": "Succès",
-  "warning": "Attention",
+  "warning": "Alerte",
   "cancel": "Annuler",
   "address": "Adresse",
   "ok": "OK",
@@ -24,11 +24,11 @@
   "account": "Compte",
   "restore": "Restaurer",
   "error": {
-    "default": "Oups, quelque chose c'est mal passé. Réessayez plus tard, si l’erreur persiste, essayez de mettre à jour vos paramètres réseau.",
-    "buildingTransaction": "Erreur pendant la création de la transaction, essayez à nouveau.",
+    "default": "Oups, quelque chose n'a pas fonctionné comme prévu. Réessayez plus tard, si l’erreur persiste, essayez de mettre à jour vos paramètres réseau.",
+    "buildingTransaction": "Erreur pendant la création de la transaction, Réessayez s'il vous plait.",
     "gettingTransaction": "Erreur lors de la récupération de la transaction.",
-    "clipboardCopied": "Quelque chose a du mal tourné lors de la copie",
-    "hideAccount": "Quelque chose s'est mal passé en supprimant le compte, réessayez '"
+    "clipboardCopied": "Quelque chose n'a pas fonctionné lors de la copie",
+    "hideAccount": "Quelque chose n'a pas fonctionné en supprimant le compte, réessayez s'il vous plait '"
   },
   "tronPower": "PUISSANCE DE TRON",
   "trxPrice": "PRIX D'UN TRX",
