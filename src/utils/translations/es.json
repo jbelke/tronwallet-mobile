@@ -27,8 +27,8 @@
     "default": "Woops algo salió mal. Inténtalo de nuevo más tarde, si el error persiste, intente actualizar la configuración de red.",
     "buildingTransaction": "Error durante la transacción, inténtalo de nuevo.",
     "gettingTransaction": "Error al obtener la transacción.",
-    "clipboardCopied": "Algo mal al copiar",
-    "hideAccount": "Se produjo un error al eliminar la cuenta, vuelve a intentarlo '"
+    "clipboardCopied": "Algo salió mal al copiar",
+    "hideAccount": "Se produjo un error al eliminar la cuenta, vuelve a intentarlo."
   },
   "tronPower": "TRON POWER",
   "trxPrice": "PRECIO DE TRX",
@@ -47,10 +47,10 @@
   },
   "close": "Cerrar",
   "ends": "Termina",
-  "clear": "Claro",
-  "allIn": "Todo dentro",
+  "clear": "Limpiar",
+  "allIn": "Todo",
   "skip": "Saltar",
-  "privateKey": "Llave privada",
+  "privateKey": "Clave privada",
   "balance": {
     "title": "CUENTAS",
     "error": {
