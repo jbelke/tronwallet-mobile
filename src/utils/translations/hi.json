@@ -1,8 +1,8 @@
 {
   "relativeTime": {
-    "future": "%s",
+    "future": "%s में",
     "past": "%s पहले",
-    "s": "कुछ ही सेकंड",
+    "s": "कुछ सेकंड",
     "ss": "%d सेकंड",
     "m": "एक मिनट",
     "mm": "%d मिनट",
@@ -503,7 +503,7 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "टोकन जानकारी अद्यतन कर रहे है। कृपया कुछ सेकंड प्रतीक्षा करें।",
+    "notAvailable": "टोकनकी जानकारी उपलब्ध नहीं है"
   }
 }
