@@ -211,7 +211,8 @@
     "title": "ด่านตรวจสอบความปลอดภัย",
     "enter": "ป้อน PIN",
     "new": "ป้อน PIN ใหม่",
-    "reenter": "ป้อน PIN อีกครั้ง"
+    "reenter": "ป้อน PIN อีกครั้ง",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "รับ",
@@ -377,7 +378,8 @@
       "noAccounts": "ไม่มีบัญชีที่จะเรียกคืน"
     },
     "partners": "พาร์ทเนอร์",
-    "askPin": "ถาม PIN ทุกครั้ง"
+    "askPin": "ถาม PIN ทุกครั้ง",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "รายละเอียดการทำธุรกรรม",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
