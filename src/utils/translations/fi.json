@@ -211,7 +211,8 @@
     "title": "SECURITY CHECK",
     "enter": "Enter PIN",
     "new": "Enter New PIN",
-    "reenter": "Re-Enter PIN"
+    "reenter": "Re-Enter PIN",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "RECEIVE",
@@ -377,7 +378,8 @@
       "noAccounts": "Palautettavia tilejä"
     },
     "partners": "PARTNERS",
-    "askPin": "Kysy aina PIN-koodia"
+    "askPin": "Kysy aina PIN-koodia",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "MAKSUTAPAHTUMAN TIEDOT",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
