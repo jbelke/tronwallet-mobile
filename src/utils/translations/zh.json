@@ -252,7 +252,9 @@
         "written": "我写下来了",
         "newSeed": "得到新的种子",
         "later": "稍后确认"
-      }
+      },
+      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
+      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
     },
     "restore": {
       "title": "RESTORE WALLET",
