@@ -211,7 +211,8 @@
     "title": "KONTROLA BEZPIECZEŃSTWA",
     "enter": "Wpisz PIN",
     "new": "Wprowadź nowy kod PIN",
-    "reenter": "Wprowadź ponownie PIN"
+    "reenter": "Wprowadź ponownie PIN",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "OTRZYMAĆ",
@@ -377,7 +378,8 @@
       "noAccounts": "Brak kont do przywrócenia"
     },
     "partners": "WZMACNIACZ",
-    "askPin": "Zawsze pytaj PIN"
+    "askPin": "Zawsze pytaj PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "SZCZEGÓŁY TRANSAKCJI",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
