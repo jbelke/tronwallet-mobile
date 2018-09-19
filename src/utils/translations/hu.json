@@ -252,7 +252,9 @@
         "written": "ÍRÓT KELL ÍGY",
         "newSeed": "ÚJ SEED",
         "later": "Erősítse meg később"
-      }
+      },
+      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
+      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
     },
     "restore": {
       "title": "RESTORE WALLET",
