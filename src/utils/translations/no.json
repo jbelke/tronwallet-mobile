@@ -52,51 +52,51 @@
   "skip": "Skip",
   "privateKey": "Privat nøkkel",
   "balance": {
-    "title": "ACCOUNTS",
+    "title": "KONTOER",
     "error": {
-      "loadingData": "An error occured while loading the data.",
-      "savingCurrency": "Error saving preferred currency"
+      "loadingData": "Det oppstod en feil under lasting av data.",
+      "savingCurrency": "Feil under lagring av foretrukket valuta"
     },
-    "chooseCurrency": "Please, choose your preferred currency.",
-    "confirmSeed": "Please tap to confirm your 12 seed words",
-    "bandwidth": "båndbredde",
+    "chooseCurrency": "Vennligst velg din foretrukne valuta.",
+    "confirmSeed": "Vennligst Trykk for å bekrefte dine 12 frø ord",
+    "bandwidth": "BÅNDBREDDE",
     "tokens": "TOKENS",
-    "holdings": "HOLDINGS"
+    "holdings": "BEHOLDNING"
   },
-  "hideAccount": "Du er i ferd med å fjerne denne kontoen. Du kan gjenopprette det senere i innstillingene",
+  "hideAccount": "Du er ferd med å fjerne denne kontoen. Du kan gjenopprette den senere i innstillingene",
   "components": {
     "share": {
-      "title": "Share TronWallet address",
-      "message": "Dette er min TronWallet-adresse:\n\n {{address}}\n\nTips: Når du har kopiert det, kan du lime det inn i TronWallet-appen din med den spesielle knappen på Send-skjermbildet.",
+      "title": "Del TronWallet adresse",
+      "message": "Dette er min TronWallet-adresse:\n\n {{address}}\n\nTips: Når du har kopiert den, kan du lime den inn i TronWallet-appen din med den spesielle knappen på Sende skjermbildet.",
       "dialogTitle": "Del med:"
     },
     "QRScanner": {
       "title": "Adresseskanner",
-      "scan": "Scan",
-      "explanation": "Skann QRCode for å identifisere målbrukeren",
+      "scan": "Skanning",
+      "explanation": "Skann QR koden for å identifisere målbrukeren",
       "permissionMessage": "For å skanne offentlig nøkkel trenger appen din tillatelse for å få tilgang til kameraet."
     },
     "vote": {
-      "enterVote": "Skriv inn VOTE VALUE",
-      "votesRemaining": "STEMMER RESTERENDE",
-      "setVote": "SET VOTE",
+      "enterVote": "ANGI VERDIEN FOR DIN STEMME",
+      "votesRemaining": "STEMMER IGJEN",
+      "setVote": "ANGI STEMME",
       "moreVotes": "Hvis du trenger flere stemmer, kan du fryse mer TRX.",
-      "confirmVotes": "Bekreft stemmer",
+      "confirmVotes": "BEKREFT STEMMER",
       "yourVotes": "Dine stemmer",
-      "myVotes": "Mine stemmer",
+      "myVotes": "MIN STEMMER",
       "confirm": "BEKREFTE",
-      "freeze": "Fryse",
+      "freeze": "Frys",
       "totalVotes": "Totalt antall stemmer tilgjengelig:",
       "delete": "SLETT",
       "set": "SETT",
       "freezeOrLower": "Du har ikke nok frossen TRX. Frys mer TRX eller senk stemmebeløpet",
-      "freezeToContinue": "Du har ikke nok frossen TRX. Frys mer TRX for å fortsette"
+      "freezeToContinue": "Du har ikke nok fryst TRX. Frys mer TRX for å fortsette"
     }
   },
   "firstTime": {
     "button": {
-      "create": "SKAP WALLET",
-      "restore": "RESTORE WALLET"
+      "create": "LAG LOMMEBOK",
+      "restore": "GJENOPPRETT LOMMEBOK"
     }
   },
   "addressBook": {
