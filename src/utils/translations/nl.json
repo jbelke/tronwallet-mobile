@@ -211,7 +211,8 @@
     "title": "SECURITY CHECK",
     "enter": "PIN invoeren",
     "new": "Voer nieuwe PIN in",
-    "reenter": "Voer de pincode opnieuw in"
+    "reenter": "Voer de pincode opnieuw in",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "ONTVANG",
@@ -377,7 +378,8 @@
       "noAccounts": "Geen accounts om te herstellen"
     },
     "partners": "PARTNERS",
-    "askPin": "Vraag altijd PIN"
+    "askPin": "Vraag altijd PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "TRANSACTIE DETAILS",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Token informatie bijwerken. Wacht een paar seconden alstublieft.",
     "notAvailable": "Token informatie niet beschikbaar"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
