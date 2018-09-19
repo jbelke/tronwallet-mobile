@@ -114,7 +114,7 @@
         "okButton": "OK"
       },
       "empty": "Din adressebok er tom, legg til en ny kontakt ved hjelp av knappen nedenfor.",
-      "loadError": "Det oppsto et problem med å laste inn kontaktene. Vær så snill, prøv på nytt.",
+      "loadError": "Det oppstod et problem under innlasting kontaktene. Prøv på nytt.",
       "addContact": "LEGG TIL KONTAKT",
       "addToContacts": "LEGG TIL I KONTAKTER"
     },
@@ -217,7 +217,7 @@
     "title": "MOTTA",
     "clipboardCopied": "Kopiert til utklippstavlen",
     "button": {
-      "copy": "Kopiere",
+      "copy": "Kopier",
       "share": "Dele"
     },
     "tabs": {
