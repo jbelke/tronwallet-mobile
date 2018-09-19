@@ -252,7 +252,9 @@
         "written": "ฉันได้เขียนมันลง",
         "newSeed": "ได้รับเมล็ดพันธุ์ใหม่",
         "later": "ยืนยันภายหลัง"
-      }
+      },
+      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
+      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
     },
     "restore": {
       "title": "เก็บสตางค์",
