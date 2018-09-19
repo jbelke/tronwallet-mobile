@@ -211,7 +211,8 @@
     "title": "VÉRIFICATION DE LA SÉCURITÉ",
     "enter": "Entrez le code PIN",
     "new": "Entrez le nouveau PIN",
-    "reenter": "Ré-entrer le code PIN"
+    "reenter": "Ré-entrer le code PIN",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "RECEVOIR",
@@ -377,7 +378,8 @@
       "noAccounts": "Aucun compte à restaurer"
     },
     "partners": "PARTENAIRES",
-    "askPin": "Toujours demander un code PIN"
+    "askPin": "Toujours demander un code PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "DÉTAILS DE LA TRANSACTION",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Mise à jour des informations du jeton. Veuillez patienter quelques secondes s'il vous plait.",
     "notAvailable": "Informations sur le Jeton sont indisponibles"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
