@@ -211,7 +211,8 @@
     "title": "安全检查",
     "enter": "输入PIN码",
     "new": "输入新PIN码",
-    "reenter": "重新输入PIN码"
+    "reenter": "重新输入PIN码",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "接收",
@@ -377,7 +378,8 @@
       "noAccounts": "没有帐户可以恢复"
     },
     "partners": "伙伴",
-    "askPin": "总是问PIN"
+    "askPin": "总是问PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "交易明细",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
