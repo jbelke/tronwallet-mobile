@@ -211,7 +211,8 @@
     "title": "सुरक्षा जांच",
     "enter": "पिन दर्ज करें",
     "new": "नया पिन दर्ज करें",
-    "reenter": "पिन पुनः दर्ज करें"
+    "reenter": "पिन पुनः दर्ज करें",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "प्राप्त करना",
@@ -377,7 +378,8 @@
       "noAccounts": "बहाल करने के लिए कोई खाता नहीं है"
     },
     "partners": "भागीदार",
-    "askPin": "हमेशा पिन पूछें"
+    "askPin": "हमेशा पिन पूछें",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "लेनदेन का विवरण",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "टोकन जानकारी अद्यतन कर रहे है। कृपया कुछ सेकंड प्रतीक्षा करें।",
     "notAvailable": "टोकनकी जानकारी उपलब्ध नहीं है"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
