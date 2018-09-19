@@ -211,7 +211,8 @@
     "title": "SIKKERHETSKONTROLL",
     "enter": "Skriv inn PIN-kode",
     "new": "Skriv inn ny PIN-kode",
-    "reenter": "Skriv inn PIN-kode på nytt"
+    "reenter": "Skriv inn PIN-kode på nytt",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "MOTTA",
@@ -377,7 +378,8 @@
       "noAccounts": "Ingen kontoer for å gjenopprette"
     },
     "partners": "PARTNERS",
-    "askPin": "Spør alltid PIN-kode"
+    "askPin": "Spør alltid PIN-kode",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "TRANSAKSJON DETALJER",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
