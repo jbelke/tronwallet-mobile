@@ -211,7 +211,8 @@
     "title": "PEMERIKSAAN KEAMANAN",
     "enter": "Masukkan PIN",
     "new": "Masukkan PIN Baru",
-    "reenter": "Masukkan kembali PIN"
+    "reenter": "Masukkan kembali PIN",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "MENERIMA",
@@ -377,7 +378,8 @@
       "noAccounts": "Tidak ada akun untuk dipulihkan"
     },
     "partners": "MITRA",
-    "askPin": "Selalu minta PIN"
+    "askPin": "Selalu minta PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "DETIL TRANSAKSI",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
