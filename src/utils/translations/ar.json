@@ -211,7 +211,8 @@
     "title": "التحقق الأمني",
     "enter": "أدخل كلمة السر",
     "new": "إدخال كملة السر الجديدة",
-    "reenter": "إعادة إدخال كملة السر"
+    "reenter": "إعادة إدخال كملة السر",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "تسلم",
@@ -377,7 +378,8 @@
       "noAccounts": "لا حسابات لاستعادة"
     },
     "partners": "الشركاء",
-    "askPin": "اسأل دائمًا رقم التعريف الشخصي"
+    "askPin": "اسأل دائمًا رقم التعريف الشخصي",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "تفاصيل المعاملة",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "جاري تحديث معلومات العملة. الرجاء الانتظار لثوان.",
     "notAvailable": "لا تتوفر معلومات عن العملة"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
