@@ -211,7 +211,8 @@
     "title": "보안 검사",
     "enter": "PIN을 입력하세요",
     "new": "새로운 PIN을 입력하세요",
-    "reenter": "다시 한번 PIN을 입력하세요"
+    "reenter": "다시 한번 PIN을 입력하세요",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "받기",
@@ -377,7 +378,8 @@
       "noAccounts": "복원할 계정이 없습니다."
     },
     "partners": "제휴업체",
-    "askPin": "항상 PIN 물어보기"
+    "askPin": "항상 PIN 물어보기",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "트랜잭션 상세보기",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "토큰 정보 업데이트 중입니다. 잠시만 기다려 주세요.",
     "notAvailable": "토큰 정보를 이용할 수 없습니다"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
