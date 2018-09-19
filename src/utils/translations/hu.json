@@ -211,7 +211,8 @@
     "title": "BIZTONSÁGI ELLENŐRZÉS",
     "enter": "Adja meg a PIN kódot",
     "new": "Írja be az új PIN kódot",
-    "reenter": "Újból adja meg a PIN-kódot"
+    "reenter": "Újból adja meg a PIN-kódot",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "KAP",
@@ -377,7 +378,8 @@
       "noAccounts": "Nincs visszaállítandó fiók"
     },
     "partners": "PARTNERS",
-    "askPin": "Mindig kérdezze meg a PIN kódot"
+    "askPin": "Mindig kérdezze meg a PIN kódot",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "TRANZAKCIÓ RÉSZLETEK",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
