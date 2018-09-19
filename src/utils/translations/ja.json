@@ -211,7 +211,8 @@
     "title": "セキュリティーチェック",
     "enter": "PINを入力",
     "new": "新しいPINを入力してください",
-    "reenter": "PINの再入力"
+    "reenter": "PINの再入力",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "受信",
@@ -377,7 +378,8 @@
       "noAccounts": "復元するアカウントがありません"
     },
     "partners": "パートナー",
-    "askPin": "常にPINを尋ねる"
+    "askPin": "常にPINを尋ねる",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "取引の詳細",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
