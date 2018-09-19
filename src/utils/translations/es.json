@@ -211,7 +211,8 @@
     "title": "COMPROBACIÓN DE SEGURIDAD",
     "enter": "Introducir PIN",
     "new": "Introducir nuevo PIN",
-    "reenter": "Vuelva a introducir el PIN"
+    "reenter": "Vuelva a introducir el PIN",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "RECIBIR",
@@ -377,7 +378,8 @@
       "noAccounts": "Sin cuentas para restaurar"
     },
     "partners": "SOCIOS",
-    "askPin": "Siempre pregunte PIN"
+    "askPin": "Siempre pregunte PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "DETALLES DE LA TRANSACCIÓN",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Actualizando la información del token. Por favor espere unos segundos.",
     "notAvailable": "La información del token no está disponible"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
