@@ -211,7 +211,8 @@
     "title": "REVISIÓ DE SEGURETAT",
     "enter": "Introduïu el PIN",
     "new": "Introduïu un PIN nou",
-    "reenter": "Torneu a introduir el PIN"
+    "reenter": "Torneu a introduir el PIN",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "RECIBIR",
@@ -377,7 +378,8 @@
       "noAccounts": "No hi ha comptes per restaurar"
     },
     "partners": "SOCIS",
-    "askPin": "Sempre pregunteu al PIN"
+    "askPin": "Sempre pregunteu al PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "DADES DE LA TRANSACCION",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Actualització de la informació de testimonis. Espereu uns segons.",
     "notAvailable": "La informació de token no està disponible"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
