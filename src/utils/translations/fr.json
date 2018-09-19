@@ -212,7 +212,7 @@
     "enter": "Entrez le code PIN",
     "new": "Entrez le nouveau PIN",
     "reenter": "Ré-entrer le code PIN",
-    "biometrics": "Biometric Check"
+    "biometrics": "Vérification biométrique"
   },
   "receive": {
     "title": "RECEVOIR",
@@ -254,8 +254,8 @@
         "newSeed": "Avoir une nouvelle semence",
         "later": "Confirmer plus tard"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "Vous pouvez toujours accéder à vos mots en accédant à la sauvegarde dans les paramètres de l'application      ",
+      "seedExplanation": "Les mots sont une représentation lisible par l'homme de votre portefeuille. Ces mots, dans cet ordre exact, peuvent être utilisés pour recréer votre portefeuille."
     },
     "restore": {
       "title": "Restaurer votre porte feuille",
@@ -379,7 +379,7 @@
     },
     "partners": "PARTENAIRES",
     "askPin": "Toujours demander un code PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activer la vérification biométrique"
   },
   "submitTransaction": {
     "title": "DÉTAILS DE LA TRANSACTION",
@@ -512,10 +512,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Vérifier votre biométrie"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Accès refusé"
     }
   }
 }
