@@ -211,7 +211,8 @@
     "title": "VERIFICARE DE SECURITATE",
     "enter": "Introduceți codul PIN",
     "new": "Introduceți codul PIN nou",
-    "reenter": "Reintroduceți codul PIN"
+    "reenter": "Reintroduceți codul PIN",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "A PRIMI",
@@ -377,7 +378,8 @@
       "noAccounts": "Nu există conturi pentru restabilire"
     },
     "partners": "PARTENERI",
-    "askPin": "Întrebați întotdeauna codul PIN"
+    "askPin": "Întrebați întotdeauna codul PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "DETALII TRANZACȚIONALE",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
