@@ -211,7 +211,8 @@
     "title": "SICHERHEITS-CHECK",
     "enter": "PIN eingeben",
     "new": "Neue PIN eingeben",
-    "reenter": "PIN erneut eingeben"
+    "reenter": "PIN erneut eingeben",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "ERHALTEN",
@@ -377,7 +378,8 @@
       "noAccounts": "Keine wiederherzustellenden Konten"
     },
     "partners": "PARTNER",
-    "askPin": "Fragen Sie immer PIN"
+    "askPin": "Fragen Sie immer PIN",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "DETAILS DER TRANSAKTION",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Aktualisiere Tokeninformation. Bitte warten Sie ein paar Sekunden.",
     "notAvailable": "Tokeninformation ist nicht verfügbar"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
