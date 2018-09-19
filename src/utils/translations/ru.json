@@ -211,7 +211,8 @@
     "title": "ПРОВЕРКА БЕЗОПАСНОСТИ",
     "enter": "Введите PIN-код",
     "new": "Введите новый PIN-код",
-    "reenter": "Введите PIN-код еще раз"
+    "reenter": "Введите PIN-код еще раз",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "ПОЛУЧИТЬ",
@@ -377,7 +378,8 @@
       "noAccounts": "Нет учетных записей для восстановления"
     },
     "partners": "ПАРТНЕРЫ",
-    "askPin": "Всегда спрашивайте PIN-код"
+    "askPin": "Всегда спрашивайте PIN-код",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "ДЕТАЛИ ТРАНЗАКЦИИ",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Обновление информации о токенe. Подождите несколько секунд.",
     "notAvailable": "Информация о токенe недоступна"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
