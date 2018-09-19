@@ -211,7 +211,8 @@
     "title": "BEZPEČNOSTNÍ KONTROLA",
     "enter": "Zadejte PIN kód",
     "new": "Zadejte nový PIN kód",
-    "reenter": "Zadejte znovu PIN kód"
+    "reenter": "Zadejte znovu PIN kód",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "PŘIJMOUT",
@@ -377,7 +378,8 @@
       "noAccounts": "Žádné účty k obnovení"
     },
     "partners": "PARTNEŘI",
-    "askPin": "Vždy se zeptat na PIN kód"
+    "askPin": "Vždy se zeptat na PIN kód",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "DETAILY TRANSAKCE",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Aktualizace informací o tokenu. Prosím, počkejte pár vteřin.",
     "notAvailable": "Informace o tokenu nejsou k dispozici"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
