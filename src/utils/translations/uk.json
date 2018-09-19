@@ -211,7 +211,8 @@
     "title": "ПЕРЕВІРКА БЕЗПЕКИ",
     "enter": "Введіть PIN-код",
     "new": "Введіть новий PIN-код",
-    "reenter": "Повторно введіть PIN-код"
+    "reenter": "Повторно введіть PIN-код",
+    "biometrics": "Biometric Check"
   },
   "receive": {
     "title": "ОТРИМАЙТЕ",
@@ -377,7 +378,8 @@
       "noAccounts": "Немає облікових записів для відновлення"
     },
     "partners": "ПАРТНЕРИ",
-    "askPin": "Завжди запитуйте PIN-код"
+    "askPin": "Завжди запитуйте PIN-код",
+    "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {
     "title": "ДОКУМЕНТИ РЕАЛІЗАЦІЇ",
@@ -507,5 +509,13 @@
   "balanceToken": {
     "updating": "Updating token information. Please wait a few seconds.",
     "notAvailable": "Token information not available"
+  },
+  "biometry": {
+    "register": {
+      "title": "Check your biometry"
+    },
+    "auth": {
+      "error": "Access denied"
+    }
   }
 }
