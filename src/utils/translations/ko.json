@@ -252,7 +252,9 @@
         "written": "다른 곳에 기록해두었습니다",
         "newSeed": "새로운 시드 생성하기",
         "later": "나중에 확인"
-      }
+      },
+      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
+      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
     },
     "restore": {
       "title": "지갑 복원",
