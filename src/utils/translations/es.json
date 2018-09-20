@@ -515,7 +515,7 @@
       "title": "Check your biometry"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Acceso denegado"
     }
   }
 }
