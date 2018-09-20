@@ -255,7 +255,7 @@
         "later": "Potvrdit později"
       },
       "backupMessage": "K vašim slovům můžete přistupovat prostřednictvím zálohy v nastavení aplikace      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "seedExplanation": "Vaši peněženku reprezentuje člověkem čitelný seed. Tato slova v přesném pořadí mohou být použita pro opětovné vytvoření peněženky."
     },
     "restore": {
       "title": "OBNOVIT PENĚŽENKU",
