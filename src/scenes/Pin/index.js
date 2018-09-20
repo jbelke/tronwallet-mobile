@@ -1,21 +1,35 @@
 import React from 'react'
-import { BackHandler } from 'react-native'
+import { BackHandler, TouchableOpacity, AsyncStorage, Alert } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import Biometrics from 'react-native-biometrics'
 import * as Animatable from 'react-native-animatable'
 
 import tl from '../../utils/i18n'
+import { decrypt } from '../../utils/encrypt'
 import * as Utils from '../../components/Utils'
 import * as Elements from './elements'
 import { Colors } from '../../components/DesignSystem'
+import { USE_BIOMETRY, ENCRYPTED_PIN } from '../../utils/constants'
 
 class PinScene extends React.Component {
   state = {
     isDoubleChecking: false,
     pin: '',
-    checkPin: ''
+    checkPin: '',
+    biometricsEnabled: false
   }
 
   componentDidMount () {
+    Biometrics.isSensorAvailable()
+      .then(async (biometryType) => {
+        const useBiometrySetting = await AsyncStorage.getItem(USE_BIOMETRY)
+
+        const useBiometry = useBiometrySetting === null ? false : useBiometrySetting === 'true'
+        if ((biometryType === Biometrics.TouchID || biometryType === Biometrics.FaceID) && useBiometry) {
+          this.setState({ biometricsEnabled: true })
+        }
+      })
+
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
       const shouldGoBack = this.props.navigation.getParam('shouldGoBack', false)
       if (shouldGoBack) {
@@ -95,6 +109,34 @@ class PinScene extends React.Component {
     }
   }
 
+  _handleBiometrics = async () => {
+    try {
+      const signature = await Biometrics.createSignature(tl.t('biometry.register.title'), '')
+      const pin = decrypt(await AsyncStorage.getItem(ENCRYPTED_PIN), signature)
+
+      this.setState({ pin, checkPin: pin })
+      this._checkInput()
+    } catch (error) {
+      Alert.alert(tl.t('biometry.auth.error'))
+    }
+  }
+
+  _renderBiometrics = () => {
+    const { biometricsEnabled } = this.state
+
+    if (biometricsEnabled) {
+      return (
+        <Utils.View flex={0.4} justify='center' align='center'>
+          <TouchableOpacity onPress={this._handleBiometrics}>
+            <Elements.Text>{tl.t('pin.biometrics')}</Elements.Text>
+          </TouchableOpacity>
+        </Utils.View>
+      )
+    }
+
+    return null
+  }
+
   _renderTitle = () => {
     const { isDoubleChecking } = this.state
     const shouldDoubleCheck = this.props.navigation.getParam('shouldDoubleCheck', false)
@@ -151,6 +193,7 @@ class PinScene extends React.Component {
             </Utils.Row>
           </Animatable.View>
         </Utils.View>
+
         <Elements.KeyPad>
           <Elements.Key onPress={() => this._handleKeyInput(1)}>1</Elements.Key>
           <Elements.Key onPress={() => this._handleKeyInput(2)}>2</Elements.Key>
@@ -170,6 +213,8 @@ class PinScene extends React.Component {
             <Ionicons name='ios-backspace' size={24} color={Colors.secondaryText} />
           </Elements.Key>
         </Elements.KeyPad>
+
+        {this._renderBiometrics()}
       </Utils.Container>
     )
   }

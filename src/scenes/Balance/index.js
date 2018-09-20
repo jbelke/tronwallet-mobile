@@ -104,14 +104,18 @@ class BalanceScene extends Component {
   _addNewAccount = async () => {
     const { newAccountName } = this.state
     const { pin, oneSignalId, loadUserData } = this.props.context
-
     this.setState({ creatingNewAccount: true, accountModalVisible: false })
-    const createdNewAccount = await createNewAccount(pin, oneSignalId, newAccountName)
-    if (createdNewAccount) {
-      await loadUserData()
-      this.carousel.innerComponent._snapToNewAccount()
+    try {
+      const createdNewAccount = await createNewAccount(pin, oneSignalId, newAccountName)
+      if (createdNewAccount) {
+        await loadUserData()
+        this.carousel.innerComponent._snapToNewAccount()
+      }
+    } catch (error) {
+      logSentry(error, 'Error creating new Account')
+    } finally {
+      this.setState({ creatingNewAccount: false })
     }
-    this.setState({ creatingNewAccount: false })
   }
 
   _onInterval = async () => {

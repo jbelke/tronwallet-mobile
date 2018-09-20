@@ -35,6 +35,7 @@ import { USER_FILTERED_TOKENS } from '../../utils/constants'
 import { logSentry } from '../../utils/sentryUtils'
 import { ButtonWrapper } from './elements'
 import { replaceRoute } from '../../utils/navigationUtils'
+import { orderBalances } from '../../utils/balanceUtils'
 
 class SendScene extends Component {
   static navigationOptions = () => {
@@ -82,18 +83,6 @@ class SendScene extends Component {
     this._navListener.remove()
   }
 
-  _orderBalances = balances => {
-    let orderedBalances = []
-    balances.forEach((balance) => {
-      if (balance.name === 'TRX') {
-        orderedBalances[0] = balance
-      } else if (balance.name === 'TWX') {
-        orderedBalances[1] = balance
-      }
-    })
-    return [...orderedBalances, ...balances.filter((balance) => balance.name !== 'TRX' && balance.name !== 'TWX')]
-  }
-
   _getBalancesFromStore = async () => {
     const store = await getBalanceStore()
     // console.log('filter', `account = "${this.props.context.publicKey}"`)
@@ -112,7 +101,7 @@ class SendScene extends Component {
       balance = balances.find(asset => asset.name === 'TRX').balance
       const userTokens = await AsyncStorage.getItem(USER_FILTERED_TOKENS)
       const filteredBalances = balances.filter(asset => JSON.parse(userTokens).findIndex(name => name === asset.name) === -1)
-      orderedBalances = this._orderBalances(filteredBalances)
+      orderedBalances = orderBalances(filteredBalances)
     }
 
     this.setState({

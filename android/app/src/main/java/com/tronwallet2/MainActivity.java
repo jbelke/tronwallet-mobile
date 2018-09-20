@@ -17,6 +17,8 @@ public class MainActivity extends ReactActivity {
         Fabric.with(this, new Crashlytics());
         SplashScreen.show(this);  // here
         super.onCreate(savedInstanceState);
+        I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
+        sharedI18nUtilInstance.allowRTL(getApplicationContext(), true);
     }
 
     @Override
@@ -32,8 +34,6 @@ public class MainActivity extends ReactActivity {
         getReactInstanceManager().getCurrentReactContext()
           .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
           .emit("ActivityStateChange", params);
-          I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance();
-          sharedI18nUtilInstance.allowRTL(reactContext, true);
       }
     }
 

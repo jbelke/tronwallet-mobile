@@ -1,18 +1,23 @@
 import React from 'react'
-import { ActivityIndicator, Alert, TouchableOpacity } from 'react-native'
+import { ActivityIndicator, Alert, TouchableOpacity, Clipboard, Image } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
+import { createIconSetFromFontello } from 'react-native-vector-icons'
 import RNTron from 'react-native-tron'
+import Toast from 'react-native-easy-toast'
 
-import tl from '../../utils/i18n'
-import * as Utils from '../../components/Utils'
-import { Colors } from '../../components/DesignSystem'
+import { Colors, ScreenSize } from '../../components/DesignSystem'
 import ButtonGradient from '../../components/ButtonGradient'
 import NavigationHeader from '../../components/Navigation/Header'
+import { MainCard, SeedInfo, SeedMessage, ButtonRow } from './elements'
+import { Container, View, Text, Content, HorizontalSpacer } from '../../components/Utils'
 
 import { createUserKeyPair } from '../../utils/secretsUtils'
 import { withContext } from '../../store/context'
 import { logSentry } from '../../utils/sentryUtils'
+import tl from '../../utils/i18n'
+import fontelloConfig from '../../assets/icons/config.json'
 
+const Icon = createIconSetFromFontello(fontelloConfig, 'tronwallet')
 const resetAction = StackActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: 'App' })],
@@ -61,11 +66,19 @@ class Create extends React.Component {
     }
   }
 
+  _onCopySeed = async () => {
+    try {
+      await Clipboard.setString(this.state.seed)
+      this.refs.toast.show(tl.t('receive.clipboardCopied'))
+    } catch (error) {
+      logSentry(error, 'Copy Seed - onCopy')
+    }
+  }
   _renderSkip = () => {
     if (this.state.loading) return null
     else {
       return <TouchableOpacity onPress={() => this._confirmSeed('app')}>
-        <Utils.Text size='button'>{tl.t('skip').toUpperCase()}</Utils.Text>
+        <Text size='button'>{tl.t('skip').toUpperCase()}</Text>
       </TouchableOpacity>
     }
   }
@@ -73,45 +86,76 @@ class Create extends React.Component {
   render () {
     const { seed, loading } = this.state
     return (
-      <Utils.Container>
+      <Container>
         <NavigationHeader
           title={tl.t('seed.create.title')}
           onBack={() => this.props.navigation.goBack()}
           rightButton={this._renderSkip()}
         />
-        <Utils.View flex={0.5} />
-        <Utils.View height={1} backgroundColor={Colors.secondaryText} />
-        <Utils.Content backgroundColor={Colors.darkerBackground}>
-          {seed
-            ? <Utils.Text lineHeight={24} align='center'>
-              {seed}
-            </Utils.Text>
-            : <ActivityIndicator size='small' />}
-        </Utils.Content>
-        <Utils.View height={1} backgroundColor={Colors.secondaryText} />
-        <Utils.Content paddingBottom={2}>
-          <Utils.Row justify='center' align='flex-start' height={60}>
-            <Utils.View style={{flex: 1}}>
+        <Content flex={1} paddingSize='medium'>
+          <MainCard>
+            <TouchableOpacity
+              onPress={this._onCopySeed}
+              style={{alignItems: 'flex-end'}}>
+              <Icon
+                name={'file-copy-to-clipboard,-clip-board,-document,-file,-copy,-sign'}
+                size={18}
+                color={Colors.greyBlue}
+              />
+            </TouchableOpacity>
+            <View height={32} />
+            {
+              seed
+                ? <Text size='small' lineHeight={24} align='center'>{seed}</Text>
+                : <ActivityIndicator size='small' />
+            }
+            <View height={ScreenSize.height * 0.1} />
+            <View marginVertical={20} height={0.7} backgroundColor={Colors.dusk} />
+            <ButtonRow>
               <ButtonGradient
+                size='large'
                 onPress={this._getMnemonic}
                 disabled={loading}
                 text={tl.t('seed.create.button.newSeed')}
                 secondary
                 full
               />
-            </Utils.View>
-            <Utils.HorizontalSpacer size='large' />
-            <ButtonGradient
-              disabled={!seed || loading}
-              onPress={() => this._confirmSeed('confirm')}
-              text={tl.t('seed.create.button.written')}
-              full
+              <HorizontalSpacer size='large' />
+              <ButtonGradient
+                size='large'
+                disabled={!seed || loading}
+                onPress={() => this._confirmSeed('confirm')}
+                text={tl.t('seed.create.button.written')}
+                full
+              />
+            </ButtonRow>
+            <View height={20} />
+            <SeedMessage>
+              <Text lineHeight={16} align='center' size='xsmall' font='regular'>
+                {tl.t('seed.create.backupMessage')}
+              </Text>
+            </SeedMessage>
+            <View height={20} />
+          </MainCard>
+          <View height={26} />
+          <SeedInfo>
+            <Image
+              source={require('../../assets/icon-information.png')}
+              style={{ height: 25 }} resizeMode='contain'
             />
-          </Utils.Row>
-        </Utils.Content>
-        <Utils.VerticalSpacer size='medium' />
-        <Utils.View align='center' paddingX='medium' />
-      </Utils.Container>
+            <Text size='tiny' font='regular' color={Colors.greyBlue} secondary>
+              {tl.t('seed.create.seedExplanation')}
+            </Text>
+          </SeedInfo>
+        </Content>
+        <Toast
+          ref='toast'
+          position='bottom'
+          fadeInDuration={750}
+          fadeOutDuration={1000}
+          opacity={0.8}
+        />
+      </Container>
     )
   }
 }

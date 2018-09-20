@@ -78,8 +78,8 @@ android {
         applicationId "com.tronwallet2"
         minSdkVersion 16
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 132
-        versionName "1.1.9"
+        versionCode 147
+        versionName "1.2.3"
         multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -124,6 +124,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-biometrics')
     compile project(':lottie-react-native')
     compile project(':react-native-restart')
     compile project(':react-native-i18n')

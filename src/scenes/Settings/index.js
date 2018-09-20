@@ -22,9 +22,11 @@ import { createIconSetFromFontello } from 'react-native-vector-icons'
 import { StackActions, NavigationActions } from 'react-navigation'
 import OneSignal from 'react-native-onesignal'
 import Switch from 'react-native-switch-pro'
+import Biometrics from 'react-native-biometrics'
 
 // Design
 import * as Utils from '../../components/Utils'
+import { encrypt } from '../../utils/encrypt'
 import { Colors, Spacing } from '../../components/DesignSystem'
 import NavigationHeader from '../../components/Navigation/Header'
 import { SectionTitle, MultiSelectColors, MultiSelectStyles } from './elements'
@@ -32,7 +34,7 @@ import AccountRecover from './RecoverAccount'
 // Utils
 import getBalanceStore from '../../store/balance'
 import { orderAssets } from '../../utils/assetsUtils'
-import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, FIXED_TOKENS, ALWAYS_ASK_PIN } from '../../utils/constants'
+import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, FIXED_TOKENS, ALWAYS_ASK_PIN, USE_BIOMETRY, ENCRYPTED_PIN } from '../../utils/constants'
 import tl, { LANGUAGES } from '../../utils/i18n'
 import fontelloConfig from '../../assets/icons/config.json'
 import { withContext } from '../../store/context'
@@ -67,10 +69,18 @@ class Settings extends Component {
     userTokens: [],
     userSelectedTokens: [],
     currentSelectedTokens: [],
-    hiddenAccounts: []
+    hiddenAccounts: [],
+    biometricsEnabled: false
   }
 
   componentDidMount () {
+    Biometrics.isSensorAvailable()
+      .then(async (biometryType) => {
+        if (biometryType === Biometrics.TouchID || biometryType === Biometrics.FaceID) {
+          this.setState({ biometricsEnabled: true })
+        }
+      })
+
     Answers.logContentView('Tab', 'Settings')
     this._onLoadData()
     this._getSelectedTokens()
@@ -219,6 +229,22 @@ class Settings extends Component {
     }
   }
 
+  _saveBiometry = async (pin) => {
+    try {
+      const { useBiometry } = this.props.context
+
+      if (!useBiometry) {
+        const signature = await Biometrics.createSignature(tl.t('biometry.register.title'), '')
+        await AsyncStorage.setItem(ENCRYPTED_PIN, encrypt(pin, signature))
+      }
+
+      await AsyncStorage.setItem(USE_BIOMETRY, `${!useBiometry}`)
+      this.props.context.setUseBiometry(!useBiometry)
+    } catch (error) {
+      Alert.alert(tl.t('biometry.auth.error'))
+    }
+  }
+
   _renderNoResults = () => (
     <Utils.Text lineHeight={20} size='small' color={Colors.background}>
       {tl.t('settings.token.noResult')}
@@ -303,6 +329,37 @@ class Settings extends Component {
                     callback(false)
                     /* eslint-disable */
                   }}
+                />
+              )
+            }
+          },
+          {
+            title: tl.t('settings.askBiometry'),
+            icon: 'lock,-secure,-safety,-safe,-protect',
+            right: () => {
+              return this.state.biometricsEnabled ? 
+              (
+                <Switch
+                  circleStyle={{ backgroundColor: Colors.orange }}
+                  backgroundActive={Colors.yellow}
+                  backgroundInactive={Colors.secondaryText}
+                  value={this.props.context.useBiometry}
+                  onAsyncPress={(callback) => {
+                    this.props.navigation.navigate('Pin', {
+                      shouldGoBack: true,
+                      testInput: pin => pin === this.props.context.pin,
+                      onSuccess: this._saveBiometry
+                    })
+                    /* eslint-disable */
+                    callback(false)
+                    /* eslint-disable */
+                  }}
+                />
+              ) : (
+                <Icon
+                  name={'lock,-secure,-safety,-safe,-protect'}
+                  size={22}
+                  color={Colors.secondaryText}
                 />
               )
             }

@@ -55,7 +55,7 @@ import { Context } from './src/store/context'
 import NodesIp from './src/utils/nodeIp'
 import { getUserSecrets } from './src/utils/secretsUtils'
 import getBalanceStore from './src/store/balance'
-import { USER_PREFERRED_CURRENCY, ALWAYS_ASK_PIN } from './src/utils/constants'
+import { USER_PREFERRED_CURRENCY, ALWAYS_ASK_PIN, USE_BIOMETRY } from './src/utils/constants'
 import { ONE_SIGNAL_KEY } from './config'
 import ConfigJson from './package.json'
 
@@ -142,7 +142,8 @@ const BalanceStack = createStackNavigator({
   SendScene,
   PaymentsScene,
   MakePayScene,
-  ScanPayScene
+  ScanPayScene,
+  TokenDetailScene: TokenInfoScene
 })
 
 const TransactionList = createStackNavigator({
@@ -249,6 +250,7 @@ class App extends Component {
     shareModal: false,
     queue: null,
     alwaysAskPin: true,
+    useBiometry: false,
     currency: null,
     secretMode: 'mnemonic'
   }
@@ -265,6 +267,7 @@ class App extends Component {
 
     this._setNodes()
     this._loadAskPin()
+    this._loadUseBiometry()
     const preferedCurrency = await AsyncStorage.getItem(USER_PREFERRED_CURRENCY) || 'TRX'
     this._getPrice(preferedCurrency)
     this.setState({ currency: preferedCurrency })
@@ -410,6 +413,15 @@ class App extends Component {
     }
   }
 
+  _loadUseBiometry = async () => {
+    try {
+      const useBiometry = await AsyncStorage.getItem(USE_BIOMETRY)
+      this.setState({ useBiometry: useBiometry === null ? false : useBiometry === 'true' })
+    } catch (error) {
+      this.setState({ useBiometry: false })
+    }
+  }
+
   _setNodes = async () => {
     try {
       await NodesIp.initNodes()
@@ -423,6 +435,8 @@ class App extends Component {
   _setPublicKey = publicKey => this.setState({ publicKey })
 
   _setAskPin = (alwaysAskPin) => this.setState({ alwaysAskPin })
+
+  _setUseBiometry = (useBiometry) => this.setState({ useBiometry })
 
   _setPin = (pin, callback) => {
     this.setState({ pin }, () => {
@@ -472,6 +486,7 @@ class App extends Component {
       resetAccount: this._resetAccounts,
       hideAccount: this._hideAccount,
       setAskPin: this._setAskPin,
+      setUseBiometry: this._setUseBiometry,
       setSecretMode: this._setSecretMode
     }
 

@@ -18,34 +18,31 @@ platform :ios do
 
 
   lane :upgrade do
-    sh "yarn run postversion"
-
-    git_add(path: ".")
-    git_commit(path: ".", message: "Version Bump [ci skip]")
-    push_to_git_remote(tags: false, remote_branch: "development")
+    # We are using the android lane to upgrade both
   end
 
   lane :realm do
-    sh "rm -rf ../node_modules/realm"
+    sh "rm -rf ../node_modules/realm/react-native/ios/RealmReact.xcodeproj/project.pbxproj"
     sh "pwd"
-    sh "tar -xzvf ../ios/customLibs/realm.tar.gz -C ../node_modules/"
+    sh "cp ../ios/customLibs/RealmProject.pbxproj ../node_modules/realm/react-native/ios/RealmReact.xcodeproj/project.pbxproj"
+    # sh "cp ../ios/customLibs/RealmProject.pbxproj ./project.pbxproj"
   end
 
   lane :build do
     Environment::Public.new.build
 
-    # update_app_identifier
-    # match
-    # get_provisioning_profile
-    # update_project_provisioning
-    # gym
-    # pilot
+    update_app_identifier
+    match
+    get_provisioning_profile
+    update_project_provisioning
+    gym
+    pilot
 
     # sh "rm -rf #{ENV["FL_PROJECT_PROVISIONING_PROFILE_FILE"]}"
 
-    # slack(
-    #   message: "Successfully deployed new App Update on #{ENV["ENVIRONMENT"]} environment."
-    # )
+    slack(
+      message: "Successfully deployed new App Update on #{ENV["ENVIRONMENT"]} environment."
+    )
   end
 
   after_all do |lane|
@@ -78,7 +75,7 @@ platform :android do
 
     git_add(path: ".")
     git_commit(path: ".", message: "Version Bump [ci skip]")
-    push_to_git_remote(tags: false, remote_branch: "development")
+    push_to_git_remote(tags: false, remote: "origin", local_branch: "development", remote_branch: "development")
   end
 
   lane :build do
@@ -93,6 +90,11 @@ platform :android do
     )
 
     supply(track: 'beta', track_promote_to: 'beta')
+
+    slack(
+      message: "Your app was successfully deployed to beta testers, get your apk at: https://play.google.com/apps/testing/com.tronwallet2. Ask for your access at the closed testers list",
+      success: true
+    )
   end
 
 end

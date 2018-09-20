@@ -29,7 +29,6 @@ export const Colors = {
   primaryText: '#FFFFFF',
   secondaryText: '#66688F',
   summaryText: '#999bb5',
-  buttonText: '#9c9eb9',
   titleLabel: '#7476A2',
   primaryGradient: ['#FF4465', '#F6CA1D'],
   buttonGradient: ['#FF4465', '#f8a92f', '#fc734b', '#f7b329', '#F4BC3A'],

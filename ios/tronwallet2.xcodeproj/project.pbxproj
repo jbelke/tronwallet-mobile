@@ -29,6 +29,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1916F835149547BA9A1510EF /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38A309B93D174E949C2FCCF8 /* SimpleLineIcons.ttf */; };
 		1F3AFAF223F54401926FDAEB /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 948E460590714D2C8CA144E0 /* Feather.ttf */; };
+		25984B533E2A4A8183F4BFB4 /* libReactNativeBiometrics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5089832BCB04A92B5A1CF2E /* libReactNativeBiometrics.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -57,11 +58,6 @@
 		90874B59B24241C3AFDBCBFD /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC5515BF5C89491EA906D7B9 /* FontAwesome.ttf */; };
 		97111BF887E64838BB0AAFE7 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE0D295D38DB4E3A91A2A8DA /* Rubik-Medium.ttf */; };
 		99A521F79E394A8A8F41D39A /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4F7D3A4701414A8A359C39 /* Rubik-BoldItalic.ttf */; };
-		A06CD79720F91C6100679CBC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06CD79620F91C6100679CBC /* NotificationService.swift */; };
-		A06CD79B20F91C6100679CBC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A06CD79420F91C6000679CBC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A06CD7A120F91CCB00679CBC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A06CD7A020F91CCB00679CBC /* UIKit.framework */; };
-		A06CD7A320F91CD300679CBC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A06CD7A220F91CD300679CBC /* SystemConfiguration.framework */; };
-		A06CD7F720F92CC500679CBC /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A06CD7F620F92CB200679CBC /* libRCTOneSignal.a */; };
 		A69906EFF44241FABBA9454F /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F9E396A99F441F8760E980 /* RNBackgroundFetch+AppDelegate.m */; };
 		A7E919B3066E43EB8ED83D33 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B041CF6E2B0142638D1D8862 /* libz.tbd */; };
 		ABAED9FB677148DE918548AA /* Rubik-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AA0C5AC4B4A4A6AAF381C43 /* Rubik-BlackItalic.ttf */; };
@@ -123,6 +119,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = tronwallet2;
+		};
+		02B45254214FCA85002CC3DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F01138F4A9D440192CDDFF5 /* ReactNativeBiometrics.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = ReactNativeBiometrics;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -411,13 +414,6 @@
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
 		};
-		A06CD79920F91C6100679CBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A06CD79320F91C6000679CBC;
-			remoteInfo = OneSignalNotificationServiceExtension;
-		};
 		A06CD7F520F92CB200679CBC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A06CD7F120F92CB200679CBC /* RCTOneSignal.xcodeproj */;
@@ -455,7 +451,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A06CD79B20F91C6100679CBC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +486,7 @@
 		37F5E92D400949F8AF9F23B0 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Regular.ttf"; path = "../src/assets/fonts/Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		38A309B93D174E949C2FCCF8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		3A8730F5FCB94901A9ACB41A /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		3F01138F4A9D440192CDDFF5 /* ReactNativeBiometrics.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeBiometrics.xcodeproj; path = "../node_modules/react-native-biometrics/ios/ReactNativeBiometrics.xcodeproj"; sourceTree = "<group>"; };
 		4F2C5AE707024DD89C9B3C97 /* libRNCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCamera.a; sourceTree = "<group>"; };
 		5326ED316BB04808BE4BFBDA /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		56ABAF6653B8418DBB44739A /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
@@ -515,7 +511,6 @@
 		8F8425BBD8EAA3FF492110B7 /* libPods-tronwallet2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tronwallet2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		948E460590714D2C8CA144E0 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		A06CD78F20F91BD400679CBC /* tronwallet2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = tronwallet2.entitlements; path = tronwallet2/tronwallet2.entitlements; sourceTree = "<group>"; };
-		A06CD79420F91C6000679CBC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A06CD79620F91C6100679CBC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		A06CD79820F91C6100679CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A06CD7A020F91CCB00679CBC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -538,6 +533,7 @@
 		CC03B67D21AC48D081EE53E6 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		CE0D295D38DB4E3A91A2A8DA /* Rubik-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Medium.ttf"; path = "../src/assets/fonts/Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		D0461F0D7C254AC59D63B4F4 /* Rubik-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Black.ttf"; path = "../src/assets/fonts/Rubik-Black.ttf"; sourceTree = "<group>"; };
+		D5089832BCB04A92B5A1CF2E /* libReactNativeBiometrics.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeBiometrics.a; sourceTree = "<group>"; };
 		DC5515BF5C89491EA906D7B9 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		DE020D056F0F412A817394FD /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		E958D94BA97348BCA01B5377 /* Rubik-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Italic.ttf"; path = "../src/assets/fonts/Rubik-Italic.ttf"; sourceTree = "<group>"; };
@@ -586,6 +582,7 @@
 				E126B4B79F1A7C8DB8E9FD1D /* libPods-tronwallet2.a in Frameworks */,
 				D80CFE191AF5484DBCA5CFC0 /* TSBackgroundFetch.framework in Frameworks */,
 				E97DD4449E2F442485D5F5F2 /* libRCTRestart.a in Frameworks */,
+				25984B533E2A4A8183F4BFB4 /* libReactNativeBiometrics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,16 +607,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A06CD79120F91C6000679CBC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A06CD7A320F91CD300679CBC /* SystemConfiguration.framework in Frameworks */,
-				A06CD7A120F91CCB00679CBC /* UIKit.framework in Frameworks */,
-				A06CD7F720F92CC500679CBC /* libRCTOneSignal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +670,14 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02B45251214FCA85002CC3DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02B45255214FCA85002CC3DA /* libReactNativeBiometrics.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		0FB65A15D8E54311AE327DD1 /* Resources */ = {
@@ -839,6 +834,7 @@
 				0A08B1F827984A1581A26A87 /* ReactNativeConfig.xcodeproj */,
 				A99B573242284962873C68CD /* RNTron.xcodeproj */,
 				56D2C81C6C2E4358BEA23FB1 /* RCTRestart.xcodeproj */,
+				3F01138F4A9D440192CDDFF5 /* ReactNativeBiometrics.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -877,7 +873,6 @@
 				00E356EE1AD99517003FC87E /* tronwallet2Tests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* tronwallet2-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* tronwallet2-tvOSTests.xctest */,
-				A06CD79420F91C6000679CBC /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -903,6 +898,7 @@
 				80F2561D649848F798D2E6F9 /* libReactNativePermissions.a */,
 				CC03B67D21AC48D081EE53E6 /* libReactNativeConfig.a */,
 				A985F56682524718B3FDA051 /* libRCTRestart.a */,
+				D5089832BCB04A92B5A1CF2E /* libReactNativeBiometrics.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1039,7 +1035,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A06CD79A20F91C6100679CBC /* PBXTargetDependency */,
 			);
 			name = tronwallet2;
 			productName = "Hello World";
@@ -1082,23 +1077,6 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* tronwallet2-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A06CD79320F91C6000679CBC /* OneSignalNotificationServiceExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A06CD79C20F91C6100679CBC /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
-			buildPhases = (
-				A06CD79020F91C6000679CBC /* Sources */,
-				A06CD79120F91C6000679CBC /* Frameworks */,
-				A06CD79220F91C6000679CBC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OneSignalNotificationServiceExtension;
-			productName = OneSignalNotificationServiceExtension;
-			productReference = A06CD79420F91C6000679CBC /* OneSignalNotificationServiceExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1112,10 +1090,12 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = SGP85Y6RSS;
+						ProvisioningStyle = Manual;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = SGP85Y6RSS;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = true;
@@ -1127,7 +1107,6 @@
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = SGP85Y6RSS;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
@@ -1135,12 +1114,6 @@
 						DevelopmentTeam = SGP85Y6RSS;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
-					};
-					A06CD79320F91C6000679CBC = {
-						CreatedOnToolsVersion = 9.4.1;
-						DevelopmentTeam = SGP85Y6RSS;
-						LastSwiftMigration = 940;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1217,6 +1190,10 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = 02B45251214FCA85002CC3DA /* Products */;
+					ProjectRef = 3F01138F4A9D440192CDDFF5 /* ReactNativeBiometrics.xcodeproj */;
+				},
+				{
 					ProductGroup = A07792CB20E17BE000EC4C2D /* Products */;
 					ProjectRef = 0A08B1F827984A1581A26A87 /* ReactNativeConfig.xcodeproj */;
 				},
@@ -1251,7 +1228,6 @@
 				00E356ED1AD99517003FC87E /* tronwallet2Tests */,
 				2D02E47A1E0B4A5D006451C7 /* tronwallet2-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* tronwallet2-tvOSTests */,
-				A06CD79320F91C6000679CBC /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1290,6 +1266,13 @@
 			fileType = archive.ar;
 			path = libRCTVibration.a;
 			remoteRef = 00C302E31ABCB9EE00DB3ED1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		02B45255214FCA85002CC3DA /* libReactNativeBiometrics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeBiometrics.a;
+			remoteRef = 02B45254214FCA85002CC3DA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
@@ -1656,13 +1639,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A06CD79220F91C6000679CBC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1796,14 +1772,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A06CD79020F91C6000679CBC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A06CD79720F91C6100679CBC /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1816,11 +1784,6 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* tronwallet2-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
-		};
-		A06CD79A20F91C6100679CBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A06CD79320F91C6000679CBC /* OneSignalNotificationServiceExtension */;
-			targetProxy = A06CD79920F91C6100679CBC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1841,6 +1804,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SGP85Y6RSS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1859,6 +1824,7 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = tronwallet2Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1866,12 +1832,15 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tronwallet2.app/tronwallet2";
 			};
 			name = Debug;
@@ -1880,6 +1849,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = SGP85Y6RSS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**";
@@ -1895,6 +1866,7 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = tronwallet2Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1902,12 +1874,15 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tronwallet2.app/tronwallet2";
 			};
 			name = Release;
@@ -1919,8 +1894,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tronwallet2/tronwallet2.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 17;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 32;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = SGP85Y6RSS;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1939,6 +1915,7 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = tronwallet2/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1953,6 +1930,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.tronwallet;
 				PRODUCT_NAME = tronwallet2;
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1964,8 +1943,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tronwallet2/tronwallet2.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 17;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = SGP85Y6RSS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
@@ -1983,6 +1963,7 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = tronwallet2/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1997,6 +1978,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.tronwallet;
 				PRODUCT_NAME = tronwallet2;
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -2010,8 +1993,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = SGP85Y6RSS;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**";
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2027,11 +2012,13 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = "tronwallet2-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2040,6 +2027,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tronwallet2-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -2055,9 +2044,11 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SGP85Y6RSS;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**";
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -2072,11 +2063,13 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = "tronwallet2-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2085,6 +2078,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tronwallet2-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
@@ -2116,11 +2111,13 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = "tronwallet2-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2129,6 +2126,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tronwallet2-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tronwallet2-tvOS.app/tronwallet2-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
@@ -2160,11 +2159,13 @@
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-tron/ios/RNTron/**",
 					"$(SRCROOT)..\node_modules\neact-native-restartiosRCTRestart/**",
+					"$(SRCROOT)/../node_modules/react-native-biometrics/ios",
 				);
 				INFOPLIST_FILE = "tronwallet2-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -2173,6 +2174,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tronwallet2-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "60ae0bd3-5580-40cd-99be-38e09fe5b486";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.tronwallet";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tronwallet2-tvOS.app/tronwallet2-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
@@ -2255,97 +2258,6 @@
 			};
 			name = Release;
 		};
-		A06CD79D20F91C6100679CBC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = SGP85Y6RSS;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-onesignal/ios/**";
-				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.tronwallet.OneSignalNotificationServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OBJC_BRIDGING_HEADER = "OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		A06CD79E20F91C6100679CBC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = SGP85Y6RSS;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-onesignal/ios/**";
-				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.tronwallet.OneSignalNotificationServiceExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "OneSignalNotificationServiceExtension/OneSignalNotificationServiceExtension-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2390,15 +2302,6 @@
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
 				83CBBA211A601CBA00E9B192 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		A06CD79C20F91C6100679CBC /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A06CD79D20F91C6100679CBC /* Debug */,
-				A06CD79E20F91C6100679CBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

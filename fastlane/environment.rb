@@ -22,7 +22,7 @@ module Environment
       ENV["FL_PROJECT_PROVISIONING_PROFILE_FILE"] = "./AppStore_#{ENV["APP_IDENTIFIER"]}.mobileprovision"
   
       ENV["GYM_SCHEME"] = ENV["SCHEME"]
-      ENV["GYM_PROJECT"] = ENV["PROJECT_DIR"]
+      ENV["GYM_WORKSPACE"] = ENV["PROJECT_WORKSPACE"]
       ENV["GYM_INCLUDE_BITCODE"] = "true"
   
       ENV["PILOT_TEAM_ID"] = ENV["TEAM_ID"]

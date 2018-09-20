@@ -79,3 +79,6 @@ android/app/fabric.properties
 api-8054606568639612055-951116-e8a064391f73.json
 
 vendor/bundle/ruby
+
+*.mobileprovision
+*.dSYM.zip

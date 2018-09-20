@@ -35,7 +35,7 @@ jobs:
           name: fastlane test
           command: bundle exec fastlane test
 
-  ios_upgrade_and_deploy:
+  ios_deploy:
     working_directory: ~/project
     macos:
       xcode: "9.2.0"
@@ -49,10 +49,10 @@ jobs:
 
       - run: yarn install
 
+      - run: fastlane ios realm
       - run:
           name: Run Deploy
           command: fastlane ios build --env beta
-            
 
       - store_test_results:
           path: test_output/report.xml
@@ -133,7 +133,7 @@ jobs:
         
       # run tests and lint
       - run:
-          name: fastlane build
+          name: fastlane android build
           command: bundle exec fastlane android build --env beta
           
 workflows:
@@ -154,9 +154,10 @@ workflows:
           filters:
             branches:
               only: development
-      - ios_upgrade_and_deploy:
+      - ios_deploy:
           requires:
             - test
+            - android_upgrade
           filters:
             branches:
               only: development

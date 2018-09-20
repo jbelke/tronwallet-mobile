@@ -5,27 +5,12 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.002741">
+      <testcase classname="fastlane.lanes" name="0: Verifying fastlane version" time="0.00326">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.002422">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="2: rm -rf ../node_modules/realm" time="0.07973">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="3: pwd" time="0.008968">
-        
-      </testcase>
-    
-      
-      <testcase classname="fastlane.lanes" name="4: tar -xzvf ../ios/customLibs/realm.tar.gz -C ../node_modules/" time="3.058397">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.003065">
         
       </testcase>
     

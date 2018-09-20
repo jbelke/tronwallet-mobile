@@ -212,7 +212,7 @@
     "enter": "Digite o PIN",
     "new": "Digite o novo PIN",
     "reenter": "Confirme o PIN",
-    "biometrics": "Biometric Check"
+    "biometrics": "Verificação Biométrica"
   },
   "receive": {
     "title": "RECEBER",
@@ -379,7 +379,7 @@
     },
     "partners": "PARCEIROS",
     "askPin": "Sempre pedir o PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Ativar biometria"
   },
   "submitTransaction": {
     "title": "TRANSAÇÃO DETALHADA",
