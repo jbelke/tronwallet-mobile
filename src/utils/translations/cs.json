@@ -212,7 +212,7 @@
     "enter": "Zadejte PIN kód",
     "new": "Zadejte nový PIN kód",
     "reenter": "Zadejte znovu PIN kód",
-    "biometrics": "Biometric Check"
+    "biometrics": "Biometrická kontrola"
   },
   "receive": {
     "title": "PŘIJMOUT",
@@ -254,7 +254,7 @@
         "newSeed": "ZÍSKAT NOVÝ SEED",
         "later": "Potvrdit později"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
+      "backupMessage": "K vašim slovům můžete přistupovat prostřednictvím zálohy v nastavení aplikace      ",
       "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
     },
     "restore": {
@@ -379,7 +379,7 @@
     },
     "partners": "PARTNEŘI",
     "askPin": "Vždy se zeptat na PIN kód",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Aktivovat biometrii"
   },
   "submitTransaction": {
     "title": "DETAILY TRANSAKCE",
@@ -512,10 +512,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Zkontrolovat biometrii"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Přístup odepřen"
     }
   }
 }
