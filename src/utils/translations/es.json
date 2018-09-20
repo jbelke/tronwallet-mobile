@@ -212,7 +212,7 @@
     "enter": "Introducir PIN",
     "new": "Introducir nuevo PIN",
     "reenter": "Vuelva a introducir el PIN",
-    "biometrics": "Biometric Check"
+    "biometrics": "Verificación biométrica"
   },
   "receive": {
     "title": "RECIBIR",
@@ -254,8 +254,8 @@
         "newSeed": "CONSEGUIR NUEVA SEMILLA",
         "later": "Confirmar más tarde"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "Siempre podrás tener acceso a tus palabras accediendo a la copia de seguridad en los ajustes de la aplicación      ",
+      "seedExplanation": "La clave de la semilla es una representación legible de su cartera. Esas palabras, en ese mismo orden, pueden utilizarse para crear su cartera de nuevo."
     },
     "restore": {
       "title": "RESTAURAR BILLETERA",
@@ -379,7 +379,7 @@
     },
     "partners": "SOCIOS",
     "askPin": "Siempre pregunte PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activar la verificación biométrica"
   },
   "submitTransaction": {
     "title": "DETALLES DE LA TRANSACCIÓN",
@@ -512,7 +512,7 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Compruebe su biometría"
     },
     "auth": {
       "error": "Acceso denegado"
