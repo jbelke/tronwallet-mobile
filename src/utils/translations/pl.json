@@ -97,28 +97,28 @@
     "button": {
       "create": "UTWÓRZ PORTFEL",
       "restore": "PRZYWRÓĆ PORTFEL",
-      "import": "IMPORT WALLET"
+      "import": "IMPORTUJ PORTFEL"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "Witamy w \nTRONWALLET",
+        "body": "Najbezpieczniejszy portfel OBSŁUGUJĄCY SIEĆ TRON"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "BEZPIECZEŃSTWO",
+        "body": "Prywatność i bezpieczeństwo twoich transakcji"
       },
       "votes": {
-        "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "title": "Głosy",
+        "body": "Zamrażanie oraz głosowanie na Super Reprezentantów"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "title": "Książka Adresowa",
+        "body": "Zapisz kontakty oraz adresy twoich znajomych "
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "WIELE KONT",
+        "body": "Możesz zarządzać w swoim portfelu wieloma kontaktami"
       }
     }
   },
