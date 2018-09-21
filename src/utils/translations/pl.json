@@ -86,11 +86,11 @@
       "myVotes": "MOJE GŁOSY",
       "confirm": "POTWIERDŹ",
       "freeze": "Zamrażanie ",
-      "totalVotes": "Liczba głosów ogółem:",
-      "delete": "KASOWAĆ",
-      "set": "ZESTAW",
-      "freezeOrLower": "Nie masz wystarczająco zamrożonego TRX. Zablokuj więcej TRX lub zmniejsz liczbę głosów",
-      "freezeToContinue": "Nie masz wystarczająco zamrożonego TRX. Zablokuj więcej TRX, aby kontynuować"
+      "totalVotes": "Liczba dostępnych głosów :",
+      "delete": "USUŃ",
+      "set": "Wybierz",
+      "freezeOrLower": "Nie masz wystarczającej ilości zamrożonych TRX. Zablokuj więcej TRX lub zmniejsz liczbę głosów",
+      "freezeToContinue": "Nie masz wystarczającej ilości zamrożonych TRX. Zablokuj więcej TRX, aby kontynuować"
     }
   },
   "firstTime": {
@@ -125,9 +125,9 @@
   "addressBook": {
     "shared": {
       "add": "DODAJ",
-      "edit": "EDYTOWAĆ",
-      "delete": "KASOWAĆ",
-      "send": "WYSŁAĆ"
+      "edit": "EDYTUJ",
+      "delete": "KASUJ ",
+      "send": "WYŚLIJ "
     },
     "contacts": {
       "delete": {
@@ -143,26 +143,26 @@
     },
     "form": {
       "generalError": "Wystąpił problem z przesłaniem tego formularza. Skontaktuj się z administratorem.",
-      "nameError": "Pole nazwy musi rozpoczynać się od litery, zawierać maksymalnie 32 znaki, a akceptuje tylko litery, cyfry i białe spacje.",
+      "nameError": "Pole nazwy musi rozpoczynać się od litery, zawierać maksymalnie 32 znaki, oraz może zawierać tylko litery, cyfry oraz spacje",
       "addressError": "Coś jest nie tak z adresem. Proszę dwukrotnie sprawdzić literówki.",
       "uniqueAddressError": "Klucz musi być unikalny. Wybierz inny adres.",
-      "uniqueAliasError": "Nazwy w książce adresowej muszą być unikalne. Wybierz inny.",
+      "uniqueAliasError": "Nazwy w książce adresowej muszą być unikalne. Wybierz inną.",
       "name": "NAZWA",
       "address": "ADRES"
     }
   },
   "importWallet": {
-    "title": "IMPORT PORTFEL",
-    "message": "Jeśli masz prywatny klucz i adres swojego portfela, możesz odzyskać go tutaj, ale pamiętaj, że TronWallet działa przede wszystkim z mnemonikami. Ta metoda odzyskiwania wyłączy niektóre funkcje w aplikacji.",
+    "title": "IMPORTUJ PORTFEL",
+    "message": "Jeśli masz prywatny klucz i adres swojego portfela, możesz tutaj go odzyskać, ale pamiętaj, że TronWallet działa przede wszystkim z mnemonikami. Ta metoda odzyskiwania wyłączy niektóre funkcje w aplikacji.",
     "button": "IMPORT",
     "error": {
       "privateKey": "Klucz prywatny jest nieważny lub niekompletny"
     }
   },
   "freeze": {
-    "title": "ZAMRAŻAĆ",
+    "title": "ZAMRAŻANIE",
     "unfreeze": {
-      "title": "ODMROZIĆ",
+      "title": "ODMRAŻANIE",
       "inThreeDays": "Po upływie trzech dni możesz odblokować TRX",
       "inXMinutes": "Możesz odblokować TRX w ciągu {{minutes}} minut.",
       "inXHours": "Możesz odblokować TRX w ciągu {{hours}} godzin.",
