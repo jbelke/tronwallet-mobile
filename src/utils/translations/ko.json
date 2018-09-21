@@ -212,7 +212,7 @@
     "enter": "PIN을 입력하세요",
     "new": "새로운 PIN을 입력하세요",
     "reenter": "다시 한번 PIN을 입력하세요",
-    "biometrics": "Biometric Check"
+    "biometrics": "생체인식 정보 검사"
   },
   "receive": {
     "title": "받기",
@@ -379,7 +379,7 @@
     },
     "partners": "제휴업체",
     "askPin": "항상 PIN 물어보기",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "생체인식 활성화"
   },
   "submitTransaction": {
     "title": "트랜잭션 상세보기",
