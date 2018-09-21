@@ -163,16 +163,16 @@
     "title": "ZAMRAŻANIE",
     "unfreeze": {
       "title": "ODMRAŻANIE",
-      "inThreeDays": "Po upływie trzech dni możesz odblokować TRX",
+      "inThreeDays": "Po upływie trzech dni możesz odmrozić TRX",
       "inXMinutes": "Możesz odblokować TRX w ciągu {{minutes}} minut.",
       "inXHours": "Możesz odblokować TRX w ciągu {{hours}} godzin.",
       "inXDays": "Możesz odblokować TRX w ciągu {{days}} dni.",
-      "now": "Możesz teraz odblokować TRX."
+      "now": "Możesz teraz odmrozić TRX."
     },
     "error": {
       "minimumAmount": "Minimalna kwota transakcji zamrożenia wynosi 1.",
       "insufficientBalance": "Niewystarczające saldo TRX",
-      "roundNumbers": "Można zamrozić tylko okrągłe liczby"
+      "roundNumbers": "Można zamrażać tylko okrągłe liczby"
     },
     "amount": "ZAMROŻONA KWOTA",
     "balance": "Środki"
