@@ -235,7 +235,7 @@
     "enter": "Wpisz PIN",
     "new": "Wprowadź nowy kod PIN",
     "reenter": "Wprowadź ponownie PIN",
-    "biometrics": "Biometric Check"
+    "biometrics": "Kontrola biometryczna"
   },
   "receive": {
     "title": "OTRZYMAĆ",
@@ -277,8 +277,8 @@
         "newSeed": "Pobierz nowe nasiona",
         "later": "Potwierdź później"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "Zawsze możesz uzyskać dostęp do swoich słów, za pomocą dostępu do kopii zapasowej znajdującej się w ustawieniach aplikacji      ",
+      "seedExplanation": "Klucz seed to możliwa do odczytania przez człowieka reprezentacja twojego portfela. Zawarte słowa w tej samej kolejności można wykorzystać do odtworzenia portfela."
     },
     "restore": {
       "title": "PRZYWRÓĆ PORTFEL",
@@ -402,7 +402,7 @@
     },
     "partners": "WZMACNIACZ",
     "askPin": "Zawsze pytaj PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Aktywuj biometrię"
   },
   "submitTransaction": {
     "title": "SZCZEGÓŁY TRANSAKCJI",
@@ -415,7 +415,7 @@
       "submit": "PRZESYŁANIE TRANSAKCJI"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "Nie można załadować danych transakcji"
     },
     "disconnectedMessage": "Wygląda na to, że jesteś odłączony. Połącz się z Internetem przed przystąpieniem do transakcji.",
     "dic": {
@@ -530,8 +530,8 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Aktualizowanie informacji o tokenach. Poczekaj kilka sekund.",
+    "notAvailable": "Informacje o tokenach są niedostępne"
   },
   "biometry": {
     "register": {
