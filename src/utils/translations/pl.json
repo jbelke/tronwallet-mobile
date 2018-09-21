@@ -67,7 +67,7 @@
   "components": {
     "share": {
       "title": "Udostępnij adres TronWallet",
-      "message": "To jest mój adres TronWallet:\n\n {{address}}\n\nWskazówka: po skopiowaniu go można wkleić go w TronWallet aplikacji za pomocą specjalnego przycisku na ekranie wysyłki.",
+      "message": "To jest mój adres TronWallet:\n\n {{address}}\n\nWskazówka: po skopiowaniu możesz go wkleić w aplikacje TronWallet za pomocą specjalnego przycisku na ekranie wysyłki.",
       "dialogTitle": "Podziel się za pomocą:"
     },
     "QRScanner": {
