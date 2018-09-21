@@ -22,15 +22,15 @@
   "ok": "Ok",
   "actionModalTitle": "Czy chciałbyś",
   "account": "Konto",
-  "restore": "Przywracać",
+  "restore": "Przywracanie",
   "error": {
-    "default": "Woops coś poszło nie tak. Spróbuj ponownie później, jeśli utrzymują się błąd spróbuj zaktualizować ustawienia sieciowe.",
-    "buildingTransaction": "Wystąpił błąd podczas tworzenia transakcji, spróbuj ponownie.",
+    "default": "Ups coś poszło nie tak. Spróbuj ponownie później, jeśli błędy się utrzymają spróbuj zaktualizować swoje ustawienia sieciowe.",
+    "buildingTransaction": "Wystąpił błąd podczas zawierania transakcji, spróbuj ponownie.",
     "gettingTransaction": "Wystąpił błąd podczas przetwarzania transakcji.",
     "clipboardCopied": "Coś poszło nie tak podczas kopiowania",
     "hideAccount": "Coś poszło nie tak jak usunięcie konta, spróbuj ponownie \""
   },
-  "tronPower": "MOC TRON ",
+  "tronPower": "SIŁA TRON",
   "trxPrice": "CENA TRX",
   "confirmed": "Potwierdzone",
   "unconfirmed": "Niepotwierdzone",
@@ -58,8 +58,8 @@
       "savingCurrency": "Wystąpił błąd podczas zapisywania preferowaną walutę"
     },
     "chooseCurrency": "Wybierz preferowaną walutę.",
-    "confirmSeed": "Proszę naciśnij, aby potwierdzić swoje słowa 12 nasion",
-    "bandwidth": "PASMO",
+    "confirmSeed": "Proszę naciśnij, aby potwierdzić swoje 12 słow seed",
+    "bandwidth": "PRZEPUSTOWOŚĆ",
     "tokens": "TOKENY",
     "holdings": "Zasoby"
   },
@@ -535,10 +535,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Sprawdź swoją biometrię"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Odmowa dostępu"
     }
   }
 }
