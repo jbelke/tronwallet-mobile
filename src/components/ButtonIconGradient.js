@@ -27,7 +27,7 @@ const ButtonIcon = ({
       style={[styles.buttonView, {...flexProps}]}
     >
       <LinearGradient
-        start={{ x: 0, y: 1 }}
+        start={{ x: 0.2, y: 0.2 }}
         end={{ x: 1, y: 1 }}
         colors={[Colors.primaryGradient[0], Colors.primaryGradient[1]]}
         style={[styles.gradientView, {width: size, height: size}]}

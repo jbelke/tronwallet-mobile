@@ -1,8 +1,9 @@
 import React from 'react'
 import Carousel from 'react-native-snap-carousel'
 import LinearGradient from 'react-native-linear-gradient'
-import { TouchableOpacity, Dimensions, Alert } from 'react-native'
+import { TouchableOpacity, Dimensions, Alert, Clipboard } from 'react-native'
 import ActionSheet from 'react-native-actionsheet'
+import Toast from 'react-native-easy-toast'
 
 import { withContext } from '../../../store/context'
 
@@ -71,6 +72,14 @@ class AccountsCarousel extends React.Component {
     }
   }
 
+  _onCopyAddress = async (address) => {
+    try {
+      await Clipboard.setString(address)
+      this.refs.toast.show(tl.t('receive.clipboardCopied'))
+    } catch (error) {
+      logSentry(error, 'Copy Address - Clipboard')
+    }
+  }
   _formatAddress = (address) => address
     .substring(0, 9)
     .concat('...')
@@ -108,7 +117,9 @@ class AccountsCarousel extends React.Component {
             </TronLogo>
             <Utils.Text color='#9b9cb9'>{item.name}</Utils.Text>
             <Utils.VerticalSpacer />
-            <Utils.Text color='white' size='smaller' font='regular'>{this._formatAddress(item.address)}</Utils.Text>
+            <TouchableOpacity onPress={() => this._onCopyAddress(item.address)}>
+              <Utils.Text color='white' size='smaller' font='regular'>{this._formatAddress(item.address)}</Utils.Text>
+            </TouchableOpacity>
             <Utils.VerticalSpacer size='medium' />
             {(
               <TouchableOpacity onPress={() => this.ActionSheet.show()}>
@@ -156,6 +167,13 @@ class AccountsCarousel extends React.Component {
           sliderWidth={Dimensions.get('window').width}
           itemWidth={300}
           slideStyle={{paddingHorizontal: 6}}
+        />
+        <Toast
+          ref='toast'
+          position='center'
+          fadeInDuration={750}
+          fadeOutDuration={1000}
+          opacity={0.8}
         />
       </React.Fragment>
     )

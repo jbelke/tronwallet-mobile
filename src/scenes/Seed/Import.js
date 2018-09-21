@@ -89,7 +89,7 @@ class Restore extends Component {
       // Else not a valid combintation
       if (response && response.data) {
         // Working on broadcastTransaction v2 to prevent this kind of code
-        if (response.data.error === 'contract validate error') return
+        if (response.data.type === 'INSUFICIENT_AMOUNT' || response.data.type === 'ACCOUNT_NOT_EXISTS') return
         if (response.data.error !== 'validate signature error') logSentry(error, 'Check Account response')
       }
       throw error

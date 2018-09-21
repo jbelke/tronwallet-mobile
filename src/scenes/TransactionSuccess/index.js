@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { BackHandler } from 'react-native'
 import { NavigationActions, StackActions } from 'react-navigation'
 import LottieView from 'lottie-react-native'
 import tl from '../../utils/i18n'
@@ -7,6 +8,18 @@ import { SuccessText, Wrapper } from './elements'
 import { View } from '../../../node_modules/react-native-animatable'
 
 class TransactionsSuccess extends PureComponent {
+  componentDidMount () {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton)
+  }
+
+  componentWillUnmount () {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton)
+  }
+
+  handleBackButton = () => {
+    return true
+  }
+
   _navigateNext = () => {
     // Reset navigation as transaction submition is the last step of a user interaction
     const { navigation } = this.props

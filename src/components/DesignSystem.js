@@ -22,6 +22,8 @@ export const Colors = {
   darkerBackground: '#10101A',
   greyBlue: '#9c9eb9',
   dusk: '#3f415d',
+  lemonYellow: '#f5ff30',
+  darkThree: '#2e2f47',
   lightBackground: '#212132',
   lighterBackground: '#2d2e46',
   lightestBackground: '#3f415d',

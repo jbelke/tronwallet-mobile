@@ -90,6 +90,8 @@ class Restore extends React.Component {
             height={90}
             padding={16}
             multiline
+            underlineColorAndroid='transparent'
+            blurOnSubmit
             numberOfLines={4}
             autoCapitalize='none'
             autoCorrect={false}

@@ -30,8 +30,6 @@ import { updateAssets } from '../../utils/assetsUtils'
 import withContext from '../../utils/hocs/withContext'
 import { logSentry } from '../../utils/sentryUtils'
 
-const REFRESH_TIME = 45 * 1000
-
 class BalanceScene extends Component {
   static navigationOptions = {
     header: null
@@ -58,8 +56,6 @@ class BalanceScene extends Component {
 
     this._navListener = this.props.navigation.addListener('didFocus', this._loadData)
 
-    this.refreshInterval = setInterval(this._onInterval, REFRESH_TIME)
-
     this.appStateListener = Platform.OS === 'android'
       ? DeviceEventEmitter.addListener('ActivityStateChange', (e) => this._handleAppStateChange(e.event))
       : AppState.addEventListener('change', this._handleAppStateChange)
@@ -70,7 +66,6 @@ class BalanceScene extends Component {
 
   componentWillUnmount () {
     this._navListener.remove()
-    clearInterval(this.refreshInterval)
     this.appStateListener.remove()
   }
 
@@ -115,13 +110,6 @@ class BalanceScene extends Component {
       logSentry(error, 'Error creating new Account')
     } finally {
       this.setState({ creatingNewAccount: false })
-    }
-  }
-
-  _onInterval = async () => {
-    if (!this.state.refreshing) {
-      await this.props.context.loadUserData()
-      this._loadData()
     }
   }
 

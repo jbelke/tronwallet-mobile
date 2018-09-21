@@ -36,7 +36,7 @@
   "unconfirmed": "Não confirmado",
   "copyAddress": "COPY ADDRESS",
   "transactionType": {
-    "transfer": "Transferir",
+    "transfer": "Transferência",
     "transferAsset": "Transferir Ativo",
     "freeze": "Congelar",
     "unfreeze": "Descongelar",
@@ -77,9 +77,9 @@
       "permissionMessage": "Para verificar a chave pública, o aplicativo precisa da sua permissão para acessar a câmera."
     },
     "vote": {
-      "enterVote": "ENTRE NO VALOR DE VOTO",
-      "votesRemaining": "VOTOS REMANESCENTES",
-      "setVote": "SET VOTE",
+      "enterVote": "DIGITE O VALOR DO VOTO",
+      "votesRemaining": "VOTOS RESTANTES",
+      "setVote": "VOTE",
       "moreVotes": "Se você precisar de mais votos, você pode congelar mais TRX.",
       "confirmVotes": "CONFIRMAR VOTOS",
       "yourVotes": "Seus votos",

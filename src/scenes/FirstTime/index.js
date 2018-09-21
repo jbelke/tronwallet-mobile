@@ -1,12 +1,13 @@
 import React from 'react'
-import { BackHandler, TouchableOpacity } from 'react-native'
+import { BackHandler } from 'react-native'
 
 import * as Utils from '../../components/Utils'
+import { Colors } from '../../components/DesignSystem'
+import { BlackButton } from './elements'
 import tl from '../../utils/i18n'
-import Logo from '../../components/Logo'
 import ButtonGradient from '../../components/ButtonGradient'
-
 import { withContext } from '../../store/context'
+import FeaturesSwiper from './FeaturesSwiper'
 import ConfigJson from '../../../package.json'
 
 class FirstTime extends React.Component {
@@ -26,13 +27,10 @@ class FirstTime extends React.Component {
     const shouldDoubleCheck = this.props.navigation.getParam('shouldDoubleCheck')
     const testInput = this.props.navigation.getParam('testInput')
     return (
-      <Utils.Container>
-        <Utils.View flex={1} />
-        <Utils.Content>
-          <Utils.Row justify='center'>
-            <Logo />
-          </Utils.Row>
-          <Utils.VerticalSpacer size='big' />
+      <React.Fragment>
+        <FeaturesSwiper />
+        <Utils.View background={Colors.background} paddingHorizontal={30}>
+          <Utils.View height={20} />
           <ButtonGradient
             text={tl.t('firstTime.button.create')}
             onPress={() => {
@@ -50,6 +48,17 @@ class FirstTime extends React.Component {
           />
           <Utils.VerticalSpacer />
           <ButtonGradient
+            text={tl.t('firstTime.button.import')}
+            onPress={() => {
+              this.props.navigation.navigate('Pin', {
+                shouldDoubleCheck,
+                testInput,
+                onSuccess: pin => this.props.context.setPin(pin, () => this.props.navigation.navigate('ImportWallet'))
+              })
+            }}
+          />
+          <Utils.VerticalSpacer />
+          <BlackButton
             text={tl.t('firstTime.button.restore')}
             onPress={() => {
               this.props.navigation.navigate('Pin', {
@@ -59,22 +68,9 @@ class FirstTime extends React.Component {
               })
             }}
           />
-          <Utils.VerticalSpacer size='large' />
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate('Pin', {
-                shouldDoubleCheck,
-                testInput,
-                onSuccess: pin => this.props.context.setPin(pin, () => this.props.navigation.navigate('ImportWallet'))
-              })
-            }}>
-            <Utils.Text align='center' size='tiny'>
-            RESTORE FROM PRIVATE KEY
-            </Utils.Text>
-          </TouchableOpacity>
           <Utils.VersionText>{`v${ConfigJson.version}`}</Utils.VersionText>
-        </Utils.Content>
-      </Utils.Container>
+        </Utils.View>
+      </React.Fragment>
     )
   }
 }
