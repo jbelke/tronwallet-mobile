@@ -512,10 +512,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "생체정보 확인"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "접근이 거부되었습니다"
     }
   }
 }
