@@ -96,7 +96,30 @@
   "firstTime": {
     "button": {
       "create": "CREAR BILLETERA",
-      "restore": "RESTAURAR BILLETERA"
+      "restore": "RESTAURAR BILLETERA",
+      "import": "IMPORT WALLET"
+    },
+    "swiper": {
+      "welcome": {
+        "title": "Welcome to \nTRONWALLET",
+        "body": "The most secure wallet for TRON"
+      },
+      "security": {
+        "title": "SECURITY",
+        "body": "Privacy and security for \n your transactions"
+      },
+      "votes": {
+        "title": "VOTES",
+        "body": "Freezing and vote for Super \n Representatives"
+      },
+      "addressbook": {
+        "title": "ADDRESS BOOK",
+        "body": "Save the addresses of your friends \n and contacts."
+      },
+      "multipleaccounts": {
+        "title": "MULTIPLE ACCOUNTS",
+        "body": "You can manage multiple accounts \n in your wallet"
+      }
     }
   },
   "addressBook": {
