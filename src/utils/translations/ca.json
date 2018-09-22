@@ -97,28 +97,28 @@
     "button": {
       "create": "CREATE WALLET",
       "restore": "RESTORE WALLET",
-      "import": "IMPORT WALLET"
+      "import": "CARREIRA D'IMPORTACIÓ"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "Benvingut a TRONWALLET",
+        "body": "La billetera més segura per TRON"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "SEGURETAT",
+        "body": "Privadesa i seguretat per les seves transaccions"
       },
       "votes": {
         "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "body": "Congelació i vot per super representants"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "title": "LLIBRETA D'ADRECES",
+        "body": "Deseu les adreces dels teus amics i contactes."
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "COMPTES MÚLTIPLES",
+        "body": "Podeu gestionar diversos comptes a la vostra billetera"
       }
     }
   },
@@ -235,7 +235,7 @@
     "enter": "Introduïu el PIN",
     "new": "Introduïu un PIN nou",
     "reenter": "Torneu a introduir el PIN",
-    "biometrics": "Biometric Check"
+    "biometrics": "Comprovació biomètrica"
   },
   "receive": {
     "title": "RECIBIR",
@@ -277,8 +277,8 @@
         "newSeed": "GET NEW SEED",
         "later": "Confirmar més tard"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "Podeu accedir sempre a les vostres paraules accedint a la còpia de seguretat a la configuració de l'aplicació      ",
+      "seedExplanation": "La clau de llavors és una representació llegible per humans de la vostra billetera. Aquestes paraules, en aquest ordre exacte, es poden utilitzar per tornar a crear la seva billetera."
     },
     "restore": {
       "title": "RESTORE WALLET",
@@ -402,7 +402,7 @@
     },
     "partners": "SOCIS",
     "askPin": "Sempre pregunteu al PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activa la biometria"
   },
   "submitTransaction": {
     "title": "DADES DE LA TRANSACCION",
@@ -535,10 +535,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Comprova la teva biometria"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Accés denegat"
     }
   }
 }
