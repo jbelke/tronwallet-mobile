@@ -114,11 +114,11 @@
       },
       "addressbook": {
         "title": "LIBRETA DE DIRECCIONES",
-        "body": "Save the addresses of your friends \n and contacts."
+        "body": "Guardar las direcciones de tus contactos y amigos."
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "MÚLTIPLES CUENTAS",
+        "body": "Puede administrar múltiples cuentas en tu cartera"
       }
     }
   },
