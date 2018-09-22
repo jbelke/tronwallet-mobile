@@ -97,23 +97,23 @@
     "button": {
       "create": "CREAR BILLETERA",
       "restore": "RESTAURAR BILLETERA",
-      "import": "IMPORT WALLET"
+      "import": "CARTERA DE IMPORTACIÓN"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "Bienvenido a \nTRONWALLET",
+        "body": "La cartera más segura para TRON"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "SEGURIDAD",
+        "body": "Privacidad y seguridad para \n sus transacciones"
       },
       "votes": {
-        "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "title": "VOTOS",
+        "body": "Congelación y voto para Super \nrepresentantes"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
+        "title": "LIBRETA DE DIRECCIONES",
         "body": "Save the addresses of your friends \n and contacts."
       },
       "multipleaccounts": {
