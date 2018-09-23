@@ -153,10 +153,10 @@
   },
   "importWallet": {
     "title": "IMPORTIERE WALLET",
-    "message": "Wenn Sie den privaten Schlüssel und die Adresse Ihrer Brieftasche haben, können Sie sie hier wiederherstellen, bedenken Sie jedoch, dass TronWallet hauptsächlich mit Mnemotechniken arbeitet. Diese Wiederherstellungsmethode wird einige Funktionen in der App deaktivieren.",
-    "button": "EINFÜHREN",
+    "message": "Wenn Sie den privaten Schlüssel und die Adresse Ihrer Wallet haben, können Sie sie hier wiederherstellen, bedenken Sie jedoch, dass TronWallet hauptsächlich mit Mnemotechniken arbeitet. Diese Wiederherstellungsmethode wird einige Funktionen in der App deaktivieren.",
+    "button": "IMPORTIERE",
     "error": {
-      "privateKey": "Privater Schlüssel ungültig oder unvollständig"
+      "privateKey": "Privater Schlüssel ist ungültig oder unvollständig"
     }
   },
   "freeze": {
@@ -167,7 +167,7 @@
       "inXMinutes": "Sie können Ihre TRX in {{minutes}} Minuten freigeben.",
       "inXHours": "Sie können Ihre TRX in {{hours}} Stunden freigeben.",
       "inXDays": "Sie können Ihre TRX in {{days}} Tagen freigeben.",
-      "now": "Sie können jetzt Ihre TRX freigeben."
+      "now": "Sie können Ihre TRX jetzt freigeben."
     },
     "error": {
       "minimumAmount": "Der Mindestbetrag für die Transaktion Einfrieren beträgt 1.",
@@ -187,7 +187,7 @@
       "day": "1T",
       "week": "1W",
       "month": "1M",
-      "all": "ALLE(S)"
+      "all": "ALLES"
     },
     "highest": "HÖCHSTEN",
     "lowest": "NIEDRIGSTEN",
@@ -216,7 +216,7 @@
     "tokenDescription": "TOKEN BESCHREIBUNG",
     "tokenInfo": "TOKEN INFO",
     "token": "TOKEN",
-    "tokens": "Die TOKEN",
+    "tokens": "DIE TOKEN",
     "frozen": "EINGEFROREN",
     "percentage": "PROZENT",
     "issued": "AUSGESTELLT",
@@ -241,7 +241,7 @@
     "title": "ERHALTEN",
     "clipboardCopied": "In Zwischenablage kopiert",
     "button": {
-      "copy": "Kopie",
+      "copy": "Kopieren",
       "share": "Teilen"
     },
     "tabs": {
@@ -278,7 +278,7 @@
         "later": "Später bestätigen"
       },
       "backupMessage": "Sie können jederzeit auf Ihre Wörter zugreifen, indem Sie in den App-Einstellungen auf das Backup zugreifen      ",
-      "seedExplanation": "Der Wörter-Schlüssel ist eine lesbare Darstellung Ihrer Brieftasche. Diese Worte können in genau dieser Reihenfolge verwendet werden, um Ihre Brieftasche neu zu erstellen."
+      "seedExplanation": "Der Wörter-Schlüssel ist eine lesbare Darstellung Ihrer Wallet. Diese Worte können in genau dieser Reihenfolge verwendet werden, um Ihre Wallet neu zu erstellen."
     },
     "restore": {
       "title": "WALLET WIEDERHERSTELLEN",
