@@ -519,7 +519,7 @@
   },
   "newAccount": {
     "title": "Konto-Erstellung",
-    "placeholder": "Mein kostbares Konto",
+    "placeholder": "Mein wertvolles Konto",
     "success": {
       "title": "Neues Konto erfolgreich erstellt",
       "message": "Sie können den Namen in Ihrem Adressbuch bearbeiten"
