@@ -97,23 +97,23 @@
     "button": {
       "create": "지갑 생성",
       "restore": "지갑 복원",
-      "import": "IMPORT WALLET"
+      "import": "지갑 가져오기"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "TRONWALLET에 오신 것을 환영합니다",
+        "body": "TRON에서 가장 안전한 지갑"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "보안",
+        "body": "트랙잭션 개인정보 보호 및 보안"
       },
       "votes": {
-        "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "title": "투표",
+        "body": "동결 및 슈퍼 후보 투표"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
+        "title": "주소록",
         "body": "Save the addresses of your friends \n and contacts."
       },
       "multipleaccounts": {
