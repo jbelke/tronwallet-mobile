@@ -28,7 +28,7 @@
     "buildingTransaction": "Fehler beim Erstellen der Transaktion, bitte versuchen Sie es erneut.",
     "gettingTransaction": "Fehler beim Abrufen der Transaktion.",
     "clipboardCopied": "Beim Kopieren ist ein Fehler aufgetreten",
-    "hideAccount": "Beim Löschen des Kontos ist ein Fehler aufgetreten. Versuchen Sie es erneut."
+    "hideAccount": "Beim Löschen des Kontos ist ein Fehler aufgetreten. Versuche es erneut"
   },
   "tronPower": "TRON-POWER",
   "trxPrice": "TRX-PREIS",
