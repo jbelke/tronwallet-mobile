@@ -286,7 +286,7 @@
       "placeholder": "Bitte schreiben Sie hier Ihre 12 geheimen Wörter",
       "success": "Wallet erfolgreich wiederhergestellt!",
       "warning": "Die geheimen Wörter werden alle Daten auf diesem Gerät löschen und synchronisiert mit die Daten aus dem Internet für das wiederhergestellte Konto.",
-      "error": "Oops. Scheint, als die Worte, die Sie eingegeben haben kein gültiges mnemonisches geheimes Wort . Überprüfen Sie, ob Sie einen Tippfehler haben und versuchen Sie es bitte erneut.",
+      "error": "Oops. Es scheint, die Worte die Sie eingegeben haben, ergeben kein gültiges mnemonisches geheimes Wort. Überprüfen Sie, ob Sie einen Tippfehler haben und versuchen Sie es bitte erneut.",
       "button": "WIEDERHERSTELLEN"
     }
   },
@@ -307,8 +307,8 @@
       "description": "BESCHREIBUNG (OPTIONAL)"
     },
     "available": "zur Verfügung",
-    "chooseToken": "Bitte wählen Sie unten einen Token.",
-    "minimumAmount": "Der Mindestbetrag für jede Transaktion zu senden ist 0,000001."
+    "chooseToken": "Bitte wählen Sie einen Token von unten.",
+    "minimumAmount": "Der Mindestbetrag für jede Sendetransaktion ist 0,000001."
   },
   "settings": {
     "title": "Einstellungen",
@@ -316,7 +316,7 @@
       "wallet": "Wallet",
       "security": "SICHERHEIT",
       "notification": "BENACHRICHTIGUNGEN UND IDIOM",
-      "accounts": "KONTENMANAGEMENT"
+      "accounts": "KONTENVERWALTUNG"
     },
     "notifications": {
       "title": "Benachrichtigungen"
@@ -325,7 +325,7 @@
       "title": "Netzwerk",
       "modal": {
         "title": "NETZWERK",
-        "explanation": "Mit dieser Option können Sie einen speziellen Knoten auswählen, der Ihren Bedürfnissen und Vorlieben besser gerecht wird. Bitte seien Sie vorsichtig beim Aktualisieren der Knoten IP-Adresse. Falsche IP-Adressen können zu Fehlfunktionen innerhalb Ihrer Brieftasche führen. Beispiel: 35.231.121.122:50051",
+        "explanation": "Mit dieser Option können Sie einen speziellen Knoten auswählen, der Ihren Bedürfnissen und Vorlieben besser gerecht wird. Bitte seien Sie vorsichtig beim Aktualisieren der Knoten IP-Adresse. Falsche IP-Adressen können zu Fehlfunktionen innerhalb Ihrer Wallet führen. Beispiel: 35.231.121.122:50051",
         "error": {
           "storage": "Fehler beim Abrufen der Knoten IP-Adresse aus dem lokalen Speicher",
           "invalidIp": "Bitte geben Sie eine gültige IP-Adresse an",
@@ -360,7 +360,7 @@
     },
     "reset": {
       "title": "Wallet Zurücksetzen",
-      "warning": "Achtung: Diese Aktion löscht alle gespeicherte Daten, einschließlich Ihrer 12 geheimen Worte. Wenn Sie Ihre geheimen Worte nicht gespeichert haben, tun Sie dies bitte, bevor Sie fortfahren.",
+      "warning": "Achtung: Diese Aktion löscht alle gespeicherte Daten, einschließlich Ihrer 12 geheimen Wörter. Wenn Sie Ihre geheimen Wörter nicht gespeichert haben, tun Sie dies bitte, bevor Sie fortfahren.",
       "button": "Ok, Ich habe verstanden"
     },
     "pin": {
@@ -389,7 +389,7 @@
     "about": {
       "title": "Über",
       "description": "TronWallet ist eine open-Source, vollständig dezentrale P2P Crypto Wallet für das TRON Netzwerk geschaffen mit React Native. Mit dieser können Sie Token senden und empfangen, einen Super Vertreter wählen, an einem Token Verkauf teilnehmen, behalten den Überblick über Ihr Guthaben und Transaktionen und vieles mehr. Um zu erfahren wien man diese benutzt, tippen Sie auf den unten stehenden Link für eine detaillierte Anleitung.",
-      "tutorial": "TUTORIAL"
+      "tutorial": "ANLEITUNG"
     },
     "accepts": {
       "title": "Wer akzeptiert TRX?"
