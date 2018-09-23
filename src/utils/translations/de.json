@@ -89,7 +89,7 @@
       "totalVotes": "Anzahl verfügbarer Stimmen:",
       "delete": "Löschen",
       "set": "Platzieren",
-      "freezeOrLower": "Sie haben nicht genug TRX eingefroren. Frieren Sie mehr TRX ein, oder senken Sie den Stimmenbetrag",
+      "freezeOrLower": "Sie haben nicht genug eingefrorene TRX. Frieren Sie mehr TRX ein, oder senken Sie den Stimmenbetrag",
       "freezeToContinue": "Sie haben nicht genug eingefrorene TRX. Um fortzufahren, frieren Sie mehr TRX ein"
     }
   },
@@ -97,12 +97,12 @@
     "button": {
       "create": "Wallet erstellen",
       "restore": "WALLET WIEDERHERSTELLEN",
-      "import": "IMPORTIERE-GELDBÖRSE"
+      "import": "IMPORTIERE-WALLET"
     },
     "swiper": {
       "welcome": {
         "title": "Willkommen bei \nTRONWALLET",
-        "body": "Die sicherste Geldbörse für TRON"
+        "body": "Die sicherste Wallet für TRON"
       },
       "security": {
         "title": "SICHERHEIT",
@@ -118,7 +118,7 @@
       },
       "multipleaccounts": {
         "title": "MEHRERE KONTEN",
-        "body": "Sie können mehrere Konten in Ihrer Brieftasche verwalten"
+        "body": "Sie können mehrere Konten in Ihrer Wallet verwalten"
       }
     }
   },
@@ -152,7 +152,7 @@
     }
   },
   "importWallet": {
-    "title": "IMPORT WALLET",
+    "title": "IMPORTIERE WALLET",
     "message": "Wenn Sie den privaten Schlüssel und die Adresse Ihrer Brieftasche haben, können Sie sie hier wiederherstellen, bedenken Sie jedoch, dass TronWallet hauptsächlich mit Mnemotechniken arbeitet. Diese Wiederherstellungsmethode wird einige Funktionen in der App deaktivieren.",
     "button": "EINFÜHREN",
     "error": {
