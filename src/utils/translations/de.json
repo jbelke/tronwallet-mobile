@@ -401,7 +401,7 @@
       "noAccounts": "Keine wiederherzustellenden Konten"
     },
     "partners": "PARTNER",
-    "askPin": "Fragen Sie immer PIN",
+    "askPin": "Immer nach der PIN fragen",
     "askBiometry": "Aktivieren Sie Ihren Fingerabdruck"
   },
   "submitTransaction": {
@@ -412,7 +412,7 @@
     "time": "ZEIT",
     "button": {
       "tryAgain": "Versuchen Sie es erneut",
-      "submit": "TRANSAKTION EINREICHEN"
+      "submit": "TRANSAKTION ABSENDEN"
     },
     "error": {
       "noData": "Transaktionsdaten konnten nicht geladen werden"
@@ -423,14 +423,14 @@
       "ownerAddress": "Von",
       "toAddress": "An",
       "participateAssetIssueContract": "Teilnehmen",
-      "transferAssetContract": "Transfer",
-      "transferContract": "Transfer",
+      "transferAssetContract": "Übertragen",
+      "transferContract": "Übertragen",
       "unfreezeBalanceContract": "Freigeben",
       "freezeBalanceContract": "Einfrieren",
       "assetIssueContract": "Erstellen",
       "voteWitnessContract": "Abstimmen",
       "frozenDuration": "Dauer",
-      "frozenBalance": "Insgesamt einzufrieren"
+      "frozenBalance": "Insgesamt einfrieren"
     },
     "errorDic": {
       "contractValidate": "Transaktionsdaten nicht gültig. Bitte versuchen Sie es später erneut.",
@@ -439,7 +439,7 @@
       "contractValidateCee": "Transaktionsdaten nicht gültig (CEE). Bitte versuchen Sie es später erneut.",
       "bandwith": "Nicht genügend Bandbreite. Bitte versuchen Sie es später erneut.",
       "contractValidateTapos": "Transaktionsdaten nicht gültig (TAPOS). Bitte versuchen Sie es später erneut.",
-      "tooBig": "Transaktion zu groß, um einzureichen.",
+      "tooBig": "Transaktion zu groß, um abzusenden.",
       "expiration": "Transaktion ist abgelaufen. Bitte versuchen Sie es erneut.",
       "serverBusy": "Der Server ist ausgelastet.",
       "resource": "Unzureichende Bandbreite oder Guthaben. Möglicherweise benötigen Sie einige gefrorene TRX."
@@ -469,7 +469,7 @@
     "to": "An",
     "from": "Von",
     "tokenName": "TOKENNAME",
-    "unityValue": "EINHEIT WERT",
+    "unityValue": "EINHEITS WERT",
     "totalSupply": "GESAMTMENGE",
     "startTime": "STARTZEIT",
     "endTime": "ENDZEIT",
@@ -485,7 +485,7 @@
     "totalVotes": "STIMMEN INSGESAMT",
     "votesAvailable": "STIMMEN ZUR VERFÜGUNG",
     "search": "Suche",
-    "error": "Hoppla, etwas nicht korrekt geladen. Versuchen Sie, erneut zu laden"
+    "error": "Hoppla, etwas wurde nicht korrekt geladen. Versuchen Sie, erneut zu laden"
   },
   "scanPayment": {
     "scan": "SCAN",
