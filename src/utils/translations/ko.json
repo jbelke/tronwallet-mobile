@@ -74,7 +74,7 @@
       "title": "주소 스캐너",
       "scan": "스캔",
       "explanation": "해당 사용자를 식별하려면 QR코드를 스캔하세요",
-      "permissionMessage": "공개 키를 스캔하려면, 앱에서 카메라에 접근할 수 있게 허락해야 합니다."
+      "permissionMessage": "공개 주소를 스캔하려면, 앱이 카메라에 접근할 수 있게 허락해야 합니다."
     },
     "vote": {
       "enterVote": "투표수 입력",
