@@ -1,6 +1,6 @@
 {
   "relativeTime": {
-    "future": "%s 안에",
+    "future": "%s 남음",
     "past": "%s 전",
     "s": "몇 초",
     "ss": "%d 초",
@@ -33,7 +33,7 @@
   "tronPower": "트론 파워",
   "trxPrice": "TRX 가격",
   "confirmed": "확인됨",
-  "unconfirmed": "미확인됨",
+  "unconfirmed": "확인안됨",
   "copyAddress": "주소 복사",
   "transactionType": {
     "transfer": "전송",
@@ -46,7 +46,7 @@
     "undefined": "알 수 없는 유형"
   },
   "close": "닫기",
-  "ends": "종료",
+  "ends": "종료까지",
   "clear": "초기화",
   "allIn": "전액",
   "skip": "건너뛰기",
