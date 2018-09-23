@@ -456,7 +456,7 @@
     "title": "트랜잭션",
     "clipboard": {
       "tronscanUrl": "이 트랜잭션의 Tronscan url이 클립보드에 복사되었습니다",
-      "publicKey": "공개키가 클립보드에 복사되었습니다"
+      "publicKey": "공개 주소가 클립보드에 복사되었습니다"
     },
     "hash": "해시",
     "status": "상태",
