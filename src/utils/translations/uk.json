@@ -51,6 +51,7 @@
   "allIn": "Все в",
   "skip": "Пропустити",
   "privateKey": "Приватний ключ",
+  "results": "Results",
   "balance": {
     "title": "СКИДКИ",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Вам потрібно купити принаймні один TRX вартості {{token}}.",
         "message": "Наразі ви купуєте лише {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Вам не вистачає TRX, щоб придбати багато {{token}}",
     "amountToBuy": "КУПИТИ КУПИТИ",
@@ -228,7 +230,8 @@
     "ownerAddress": "ВЛАСНИЙ АДРЕС",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "БЛОК"
+    "block": "БЛОК",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "ПЕРЕВІРКА БЕЗПЕКИ",
@@ -485,6 +488,7 @@
     "totalVotes": "ВСІ ГОЛОСИ",
     "votesAvailable": "Голосованість доступна",
     "search": "Пошук",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "На жаль, щось завантажено неправильно. Спробуйте перезавантажити"
   },
   "scanPayment": {
