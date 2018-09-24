@@ -51,6 +51,7 @@
   "allIn": "All In",
   "skip": "Skip",
   "privateKey": "Privát kulcs",
+  "results": "Results",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "You need to buy at least one TRX worth of {{token}}.",
         "message": "Currently you are buying only {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "You don't have enough TRX to buy that many {{token}}",
     "amountToBuy": "AMOUNT TO BUY",
@@ -228,7 +230,8 @@
     "ownerAddress": "TULAJDONOS CÍM",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOKK"
+    "block": "BLOKK",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "BIZTONSÁGI ELLENŐRZÉS",
@@ -485,6 +488,7 @@
     "totalVotes": "TELJES SZAVAZÁS",
     "votesAvailable": "ELFOGADOTT SZAVAZÁS",
     "search": "Keresés",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Hoppá, valami nem volt megfelelően betöltve. Próbálja meg újratölteni"
   },
   "scanPayment": {
