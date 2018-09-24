@@ -51,6 +51,7 @@
   "allIn": "All In",
   "skip": "Skip",
   "privateKey": "Privat nøkkel",
+  "results": "Results",
   "balance": {
     "title": "KONTOER",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Du må kjøpe minst en TRX verdi på {{token}}.",
         "message": "For tiden kjøper du bare {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Du har ikke nok TRX til å kjøpe så mange {{token}}",
     "amountToBuy": "BELØP Å KJØPE",
@@ -228,7 +230,8 @@
     "ownerAddress": "EIERENS ADRESSE",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOKKERE"
+    "block": "BLOKKERE",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "SIKKERHETSKONTROLL",
@@ -485,6 +488,7 @@
     "totalVotes": "TOTAL STILLINGER",
     "votesAvailable": "Stemmer tilgjengelig",
     "search": "Søke",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Ups, noe lastet ikke riktig. Prøv å laste på nytt"
   },
   "scanPayment": {
