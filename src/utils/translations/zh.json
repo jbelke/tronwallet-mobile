@@ -51,6 +51,7 @@
   "allIn": "All In",
   "skip": "Skip",
   "privateKey": "私钥",
+  "results": "Results",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "您需要购买至少一个价值 {{token}}TRX。",
         "message": "目前您只购买 {{amount}}。"
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "你没有足够的TRX买那么多 {{token}}",
     "amountToBuy": "购买金额",
@@ -228,7 +230,8 @@
     "ownerAddress": "所有者地址",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "块"
+    "block": "块",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "安全检查",
@@ -485,6 +488,7 @@
     "totalVotes": "总票数",
     "votesAvailable": "投票可用",
     "search": "搜索",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "哎呀，有些东西没有正确加载。尝试重新加载"
   },
   "scanPayment": {
