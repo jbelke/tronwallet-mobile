@@ -51,7 +51,7 @@
   "allIn": "Tot en",
   "skip": "Omet",
   "privateKey": "Clau privada",
-  "results": "Results",
+  "results": "Resultats",
   "balance": {
     "title": "COMPTES",
     "error": {
@@ -210,7 +210,7 @@
         "title": "Heu de comprar com a mínim un TRX de {{token}}.",
         "message": "Actualment està comprant només {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Asset(s) no trobat"
     },
     "warning": "No teniu prou TRX per comprar molts {{token}}",
     "amountToBuy": "IMPORT PER COMPRAR",
@@ -231,7 +231,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOC",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "Tokens destacats"
   },
   "pin": {
     "title": "REVISIÓ DE SEGURETAT",
@@ -488,7 +488,7 @@
     "totalVotes": "VOTOS TOTALS",
     "votesAvailable": "VOTS DISPONIBLES",
     "search": "Cerca",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "Suggeriments - més votades",
     "error": "Vaja, una cosa no es va carregar correctament. Intenta tornar a carregar"
   },
   "scanPayment": {
