@@ -51,6 +51,7 @@
   "allIn": "전액",
   "skip": "건너뛰기",
   "privateKey": "개인키",
+  "results": "Results",
   "balance": {
     "title": "계정",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "최소한 1 TRX에 해당하는 {{token}}을 구매해야 합니다.",
         "message": "현재 {{amount}} 만큼만 구매할 수 있습니다."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "{{token}}을 구매하기 위한 TRX 수량이 충분하지 않습니다",
     "amountToBuy": "구매 수량",
@@ -228,7 +230,8 @@
     "ownerAddress": "소유자 주소",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "블록"
+    "block": "블록",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "보안 검사",
@@ -485,6 +488,7 @@
     "totalVotes": "총 투표",
     "votesAvailable": "투표 가능 수량",
     "search": "검색하기",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "제대로 로드되지 않았습니다. 다시 로드해주세요"
   },
   "scanPayment": {
