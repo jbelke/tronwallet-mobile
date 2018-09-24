@@ -51,6 +51,7 @@
   "allIn": "All In",
   "skip": "Skip",
   "privateKey": "Cheia privată",
+  "results": "Results",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Trebuie să cumperi cel puțin o valoare TRX de {{token}}.",
         "message": "În prezent, achiziționați numai {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Nu aveți suficient TRX pentru a cumpăra atât de mulți {{token}}",
     "amountToBuy": "AMOUNT DE CUMPĂRARE",
@@ -228,7 +230,8 @@
     "ownerAddress": "DREPTUL DE ADMINISTRARE",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOC"
+    "block": "BLOC",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "VERIFICARE DE SECURITATE",
@@ -485,6 +488,7 @@
     "totalVotes": "TOTAL VOTĂRI",
     "votesAvailable": "VOTURI DISPONIBILE",
     "search": "Căutare",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Hopa, ceva nu sa încărcat corect. Încercați să reîncărcați"
   },
   "scanPayment": {
