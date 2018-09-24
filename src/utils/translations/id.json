@@ -51,6 +51,7 @@
   "allIn": "Semua masuk",
   "skip": "Melewatkan",
   "privateKey": "Kunci Pribadi",
+  "results": "Results",
   "balance": {
     "title": "AKUN",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Anda harus membeli setidaknya satu TRX senilai {{token}}.",
         "message": "Saat ini Anda hanya membeli {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Anda tidak memiliki cukup TRX untuk membeli sebanyak itu {{token}}",
     "amountToBuy": "AMOUNT UNTUK MEMBELI",
@@ -228,7 +230,8 @@
     "ownerAddress": "ALAMAT PEMILIK",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOK"
+    "block": "BLOK",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "PEMERIKSAAN KEAMANAN",
@@ -485,6 +488,7 @@
     "totalVotes": "TOTAL SUARA",
     "votesAvailable": "SUDAH TERSEDIA",
     "search": "Pencarian",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Ups, ada yang tidak dimuat dengan benar. Coba muat ulang"
   },
   "scanPayment": {
