@@ -97,28 +97,28 @@
     "button": {
       "create": "СОЗДАТЬ КОШЕЛЕК",
       "restore": "ВОССТАНОВИТЬ КОШЕЛЕК",
-      "import": "IMPORT WALLET"
+      "import": "Импортировать кошелёк"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "Добро пожаловать в TRONWALLET",
+        "body": "Самый безопасный крипто кошелёк для TRON"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "Безопасность",
+        "body": "Анонимность и безопасность ваших транзакций"
       },
       "votes": {
-        "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "title": "Голоса",
+        "body": "Заморозьте монеты и проголосуйте за Супер Представителей"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "title": "Контакты",
+        "body": "Сохранить адреса друзей и контактов"
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "Разделить кошелёк ",
+        "body": "Вы можете использовать более одного кошелёка"
       }
     }
   },
@@ -235,7 +235,7 @@
     "enter": "Введите PIN-код",
     "new": "Введите новый PIN-код",
     "reenter": "Введите PIN-код еще раз",
-    "biometrics": "Biometric Check"
+    "biometrics": "Биометрическая защита"
   },
   "receive": {
     "title": "ПОЛУЧИТЬ",
@@ -277,7 +277,7 @@
         "newSeed": "ПОЛУЧИТЬ НОВЫЙ SEED",
         "later": "Подтвердить позже"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
+      "backupMessage": "Вы всегда можете войти в ваш кошелёк с помощью набора слов, который вы можете получить в разделе «Резервная копия кошелька» в настройках.",
       "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
     },
     "restore": {
