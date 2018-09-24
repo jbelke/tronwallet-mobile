@@ -6,6 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Feather from 'react-native-vector-icons/Feather'
 
 import * as Utils from '../Utils'
+import { Header, HeaderWrapper, SearchPreview } from './elements'
+import NavigationSearchBar from './SearchBar'
 
 class NavigationHeader extends React.Component {
   /*
@@ -19,6 +21,7 @@ class NavigationHeader extends React.Component {
     onBack: PropTypes.func,
     onSearch: PropTypes.func,
     onSearchPressed: PropTypes.func,
+    searchPreview: PropTypes.string,
     noBorder: PropTypes.bool,
     rightButton: PropTypes.element,
     leftButton: PropTypes.element
@@ -49,11 +52,11 @@ class NavigationHeader extends React.Component {
 
   _renderRightElement = (onClose, onSearch, onSearchPressed, rightButton) => {
     let element = null
-    if (onClose && !rightButton) {
+    if (onClose) {
       element = <TouchableOpacity onPress={onClose} testID='HeaderClose'>
         <Feather name='x' color='white' size={28} />
       </TouchableOpacity>
-    } else if (onSearch && !rightButton) {
+    } else if (onSearch) {
       element =
         <TouchableOpacity onPress={() => {
           this.setState({ isSearching: true })
@@ -61,12 +64,12 @@ class NavigationHeader extends React.Component {
         }}>
           <Ionicons name='ios-search' color='white' size={21} />
         </TouchableOpacity>
-    } else {
-      element = rightButton
     }
-    return <Utils.View margin={10} position='absolute' right={10}>
+
+    return <Utils.Row margin={10} position='absolute' right={10}>
       {element}
-    </Utils.View>
+      {rightButton}
+    </Utils.Row>
   }
 
   _renderDefaultMode = () => {
@@ -85,43 +88,30 @@ class NavigationHeader extends React.Component {
 
   _renderSeachMode = () => {
     const { onSearch, onSearchPressed } = this.props
-
     const onClose = () => {
       this.setState({ isSearching: false })
       if (onSearchPressed) onSearchPressed()
     }
-    const searchBar = (
-      <Utils.View justify='center' align='center'>
-        <Utils.FormInput
-          autoCapitalize='none'
-          autoCorrect={false}
-          underlineColorAndroid='transparent'
-          onChangeText={text => onSearch(text)}
-          placeholder='Search'
-          placeholderTextColor='#fff'
-          width={281}
-          height={42}
-          autoFocus
-
-        />
-      </Utils.View>
-    )
-
-    return (
-      <React.Fragment>
-        {this._renderLeftElement(null, searchBar)}
-        {this._renderRightElement(onClose)}
-      </React.Fragment>
-    )
+    return <NavigationSearchBar onSearch={onSearch} onClose={onClose} />
   }
 
   render () {
-    const { noBorder } = this.props
     const { isSearching } = this.state
+
     return (
-      <Utils.Header padding={16} justify='center' noBorder={noBorder}>
-        {isSearching ? this._renderSeachMode() : this._renderDefaultMode()}
-      </Utils.Header>
+      <HeaderWrapper>
+        <Header border={isSearching}>
+          {
+            isSearching
+              ? this._renderSeachMode()
+              : this._renderDefaultMode()}
+        </Header>
+        {
+          isSearching
+            ? <SearchPreview preview={this.props.searchPreview} />
+            : null
+        }
+      </HeaderWrapper>
     )
   }
 }

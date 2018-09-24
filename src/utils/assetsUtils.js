@@ -50,6 +50,6 @@ export const orderAssets = (assets) => {
   return [
     ...orderedFeatured.filter((asset) => asset),
     ...orderedVerified.filter((asset) => asset),
-    ...rest
+    ...rest.sort((a, b) => b.issuedPercentage - a.issuedPercentage)
   ]
 }

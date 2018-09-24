@@ -16,22 +16,6 @@ const tronWalletBorder = css`
   border-radius: 5px;
 `
 
-export const Header = styled.View`
-  height: 64px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: ${props => props.justify};
-  padding: ${Spacing.medium}px;
-  background-color: ${props => props.background};
-  ${props => props.position && css`position: ${props.position}`};
-  ${props => props.paddingTop && css` padding-top: ${props.paddingTop}px`};
-`
-
-Header.defaultProps = {
-  background: Colors.background,
-  justify: 'space-between'
-}
-
 export const Title = styled.Text`
   color: white;
   font-weight: 700;
@@ -377,7 +361,7 @@ export const LeftBadge = styled.View`
   borderTopRightRadius: 8px;
   width: 80px;
   height: 35px;
-  marginVertical: 20px;
+  margin-vertical: 15px;
   paddingRight: 15px;
   marginRight: 20px;
 `

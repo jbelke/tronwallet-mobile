@@ -1,7 +1,7 @@
 // Dependencies
 import React, { Component } from 'react'
 import { forIn, reduce, union, clamp, debounce } from 'lodash'
-import { Linking, FlatList, Alert, Platform } from 'react-native'
+import { Linking, FlatList, Alert, View, Platform, ActivityIndicator, RefreshControl } from 'react-native'
 import { Answers } from 'react-native-fabric'
 
 // Utils
@@ -19,8 +19,7 @@ import FadeIn from '../../components/Animations/FadeIn'
 import GrowIn from '../../components/Animations/GrowIn'
 import ConfirmVotes from '../../components/Vote/ConfirmButton'
 import NavigationHeader from '../../components/Navigation/Header'
-import ClearVotes from '../../components/Vote/ClearVotes'
-import SyncButton from '../../components/SyncButton'
+import ClearButton from '../../components/ClearButton'
 
 // Service
 import WalletClient from '../../services/client'
@@ -30,8 +29,9 @@ import getCandidateStore from '../../store/candidates'
 import { withContext } from '../../store/context'
 import getTransactionStore from '../../store/transactions'
 import { logSentry } from '../../utils/sentryUtils'
+import { Colors } from '../../components/DesignSystem'
 
-const LIST_STEP_SIZE = 20
+const AMOUNT_TO_FETCH = 30
 
 const INITIAL_STATE = {
   // Numbers of Interest
@@ -46,20 +46,19 @@ const INITIAL_STATE = {
   currentFullVotes: [],
   userVotes: {},
   // Items
-  searchInput: '',
   currentVoteItem: {},
   // Loading
   loadingList: true,
   refreshing: false,
-  onSearching: false,
+  loadingMore: false,
+  // Search
+  searchMode: false,
+  searchName: '',
   // Flags
   offset: 0,
   modalVisible: false,
   confirmModalVisible: false,
-  startedVoting: false,
-  // Errors
-  votesError: '',
-  listError: ''
+  startedVoting: false
 }
 
 class VoteScene extends Component {
@@ -75,17 +74,15 @@ class VoteScene extends Component {
     this.resetVoteData = {
       offset: 0,
       amountToVote: 0,
-      refreshing: true,
       currentVoteItem: {},
       startedVoting: false,
-      userVotes: {},
-      searchInput: ''
+      userVotes: {}
     }
   }
 
   async componentDidMount () {
     Answers.logContentView('Tab', 'Votes')
-    this._queryList = debounce(this._queryList, 300)
+    this._onSearching = debounce(this._onSearching, 150)
 
     this._loadCandidates()
     this.didFocusSubscription = this.props.navigation.addListener(
@@ -98,37 +95,19 @@ class VoteScene extends Component {
     this.didFocusSubscription.remove()
   }
 
-  _loadData = async () => {
-    const { navigation } = this.props
+  _getVoteListFromStore = (start = this.state.offset) => {
+    const maxLength = this.candidateStoreRef.objects('Candidate').length
+    const from = start > maxLength ? start - AMOUNT_TO_FETCH : start
+    const to = clamp(start + AMOUNT_TO_FETCH, maxLength)
 
-    this.setState(this.resetVoteData, async () => {
-      await this._refreshCandidates()
-      await this._loadUserData()
-    })
-
-    navigation.setParams({
-      clearVotes: this._clearVotesFromList,
-      disabled: true,
-      votesError: null,
-      listError: null
-    })
-  }
-
-  _getVoteListFromStore = async (store = null) => {
-    let voteStore
-    if (store) voteStore = store
-    else voteStore = await getCandidateStore()
-    return voteStore
+    const updatedCandidate = this.candidateStoreRef
       .objects('Candidate')
       .sorted([['votes', true], ['rank', false]])
-      .slice(
-        this.state.offset,
-        clamp(
-          this.state.offset + LIST_STEP_SIZE,
-          voteStore.objects('Candidate').length
-        )
-      )
+      .slice(from, to)
       .map(item => Object.assign({}, item))
+
+    this.setState({offset: to})
+    return updatedCandidate
   }
 
   _getLastUserVotesFromStore = async () => {
@@ -156,42 +135,51 @@ class VoteScene extends Component {
     return {}
   }
 
+  _loadData = async () => {
+    this.candidateStoreRef = await getCandidateStore()
+    this.setState(this.resetVoteData, async () => {
+      await this._refreshCandidates(false)
+      await this._loadUserData()
+    })
+  }
+
   _loadCandidates = async () => {
     try {
+      this.candidateStoreRef = await getCandidateStore()
       const voteList = await this._getVoteListFromStore()
       this.setState({ voteList })
     } catch (e) {
-      e.name = 'Load Candidates Error'
-      this._throwError(e)
+      logSentry(e, 'Load Candidates Error')
     }
   }
 
-  _refreshCandidates = async () => {
+  _refreshCandidates = async (refreshControl = true) => {
+    if (refreshControl) this.setState({refreshing: true})
     try {
       const { candidates, totalVotes } = await WalletClient.getTotalVotes()
       const store = await getCandidateStore()
-      store.write(() =>
-        candidates.map(item => store.create('Candidate', item, true))
-      )
-      this.setState({ totalVotes, voteList: candidates.slice(0, LIST_STEP_SIZE) })
+
+      store.write(() => candidates.map(item => store.create('Candidate', item, true)))
+      this.setState({ totalVotes, voteList: candidates.slice(0, AMOUNT_TO_FETCH) })
     } catch (e) {
-      e.name = 'Refresh Candidates Error'
-      this._throwError(e)
+      logSentry(e, 'Refresh Candidates Error')
+    } finally {
+      this.setState({refreshing: false})
     }
   }
 
   _loadMoreCandidates = async () => {
-    if (this.state.onSearching) return
+    if (this.state.searchMode) return
+    this.setState({loadingMore: true})
     try {
-      this.setState({ offset: this.state.offset + LIST_STEP_SIZE }, async () => {
-        const voteList = await this._getVoteListFromStore()
-        this.setState({
-          voteList: union(this.state.voteList, voteList)
-        })
+      const voteList = await this._getVoteListFromStore(this.state.offset + AMOUNT_TO_FETCH)
+      this.setState({
+        voteList: union(this.state.voteList, voteList),
+        loadingMore: false
       })
     } catch (e) {
-      e.name = 'Load More Candidates Error'
-      this._throwError(e)
+      logSentry(e, 'Load More Candidates Error')
+      this.setState({loadingMore: false})
     }
   }
 
@@ -212,21 +200,20 @@ class VoteScene extends Component {
           totalUserVotes: currentUserVoteCount,
           totalRemaining: newTotalRemaining,
           currentFullVotes: newFullVoteList,
-          totalFrozen,
-          loadingList: false,
-          refreshing: false
+          totalFrozen
         })
       } else {
         this.setState({
           totalRemaining: totalFrozen,
-          totalFrozen,
-          loadingList: false,
-          refreshing: false
+          totalFrozen
         })
       }
     } catch (e) {
-      e.name = 'Freeze Error'
-      this._throwError(e, 'votesError')
+      logSentry(e, 'Votes - Freeze Error')
+    } finally {
+      this.setState({
+        loadingList: false
+      })
     }
   }
 
@@ -266,7 +253,7 @@ class VoteScene extends Component {
         })
       })
     } catch (error) {
-      this.setState({ error: tl.t('error.gettingTransaction'), loadingList: false })
+      this.setState({ error: tl.t('error.gettingTransaction'), loadingList: false, refreshing: false })
       logSentry(error, 'Vote - open tx')
     }
   }
@@ -306,26 +293,6 @@ class VoteScene extends Component {
       totalUserVotes,
       ...this.resetAddModal
     })
-  }
-
-  _onSearch = async value => {
-    // This is a fix for android flickering
-    this.setState({ searchInput: value, onSearching: true })
-    await this._queryList(value)
-  }
-
-  _queryList = async (value) => {
-    const store = await getCandidateStore()
-    const voteList = store.objects('Candidate').sorted([['rank', false]]).map(item => Object.assign({}, item))
-    if (value) {
-      const regex = new RegExp(value.toLowerCase(), 'i')
-      const votesFilter = voteList.filter(vote => vote.url.toLowerCase().match(regex))
-      this.setState({ voteList: votesFilter })
-    } else {
-      this.setState({offset: 0,
-        onSearching: false,
-        voteList: voteList.slice(0, LIST_STEP_SIZE)})
-    }
   }
 
   _setupVoteModal = item => {
@@ -405,6 +372,39 @@ class VoteScene extends Component {
     })
   }
 
+  _onSearchPressed = () => {
+    const { searchMode } = this.state
+
+    this.setState({ searchMode: !searchMode, searchName: '' })
+    if (searchMode) {
+      const candidates = this.candidateStoreRef.objects('Candidate')
+        .sorted([['votes', true], ['rank', false]])
+        .map(item => Object.assign({}, item))
+
+      this.setState({voteList: candidates.slice(0, AMOUNT_TO_FETCH), offset: 0})
+    } else {
+      this.setState({voteList: this._filteredSuggestions(), offset: 0})
+    }
+  }
+
+  _onSearching = async name => {
+    let searchedList = []
+    if (name) {
+      searchedList = this.candidateStoreRef.objects('Candidate')
+        .filtered('name CONTAINS[c] $0', name)
+        .map(item => Object.assign({}, item))
+    } else {
+      searchedList = this._filteredSuggestions()
+    }
+    this.setState({ searchName: name, voteList: searchedList, loadingList: false })
+  }
+
+  _filteredSuggestions = () => {
+    const candidateTronWallet = this.candidateStoreRef.objects('Candidate').filtered("name = 'TronWalletMe'")[0]
+    const mostVoted = this.state.currentFullVotes.filter(candidate => candidate.name !== 'TronWalletMe')
+    return [candidateTronWallet, ...mostVoted]
+  }
+
   _renderRow = ({ item, index }) => {
     const { currentVotes, userVotes, refreshing, loadingList } = this.state
     return (
@@ -420,67 +420,51 @@ class VoteScene extends Component {
   }
 
   _renderListHedear = () => {
-    const { totalVotes, totalRemaining, searchInput, refreshing, loadingList } = this.state
-    return <React.Fragment>
-      <GrowIn name='vote-header' height={63}>
-        <Header>
-          <Utils.View align='center'>
-            <Utils.Text size='tiny' weight='500' secondary>
-              {tl.t('votes.totalVotes')}
-            </Utils.Text>
-            <Utils.VerticalSpacer />
-            <Utils.Text size='small'>
-              {formatNumber(totalVotes)}
-            </Utils.Text>
-          </Utils.View>
-          <Utils.View align='center'>
-            <Utils.Text size='tiny' weight='500' secondary>
-              {tl.t('votes.votesAvailable')}
-            </Utils.Text>
-            <Utils.VerticalSpacer />
-            <Utils.Text
-              size='small'
-              style={{color: `${totalRemaining < 0 ? '#dc3545' : '#fff'}`}}
-            >
-              {formatNumber(totalRemaining)}
-            </Utils.Text>
-          </Utils.View>
-        </Header>
-      </GrowIn>
-      <Utils.View paddingX={'large'} paddingY={'small'}>
-        <Utils.FormInput
-          autoCapitalize='none'
-          autoCorrect={false}
-          value={searchInput}
-          underlineColorAndroid='transparent'
-          onChangeText={text => this._onSearch(text, 'search')}
-          editable={!refreshing && !loadingList}
-          placeholder={tl.t('votes.search')}
-          placeholderTextColor='#fff'
-          marginBottom={0}
-          marginTop={0}
-        />
-      </Utils.View>
-    </React.Fragment>
+    const { totalVotes, totalRemaining, searchMode } = this.state
+    if (!searchMode) {
+      return <React.Fragment>
+        <GrowIn name='vote-header' height={63}>
+          <Header>
+            <Utils.View align='center'>
+              <Utils.Text size='tiny' weight='500' secondary>
+                {tl.t('votes.totalVotes')}
+              </Utils.Text>
+              <Utils.VerticalSpacer />
+              <Utils.Text size='small'>
+                {formatNumber(totalVotes)}
+              </Utils.Text>
+            </Utils.View>
+            <Utils.View align='center'>
+              <Utils.Text size='tiny' weight='500' secondary>
+                {tl.t('votes.votesAvailable')}
+              </Utils.Text>
+              <Utils.VerticalSpacer />
+              <Utils.Text
+                size='small'
+                style={{color: `${totalRemaining < 0 ? '#dc3545' : '#fff'}`}}
+              >
+                {formatNumber(totalRemaining)}
+              </Utils.Text>
+            </Utils.View>
+          </Header>
+        </GrowIn>
+        <Utils.VerticalSpacer size='large' />
+      </React.Fragment>
+    } else {
+      return null
+    }
   }
+  _renderEmptyList = () => <ActivityIndicator color={Colors.primaryText} />
 
-  _throwError = (e, type) => {
-    const errorType = type || 'listError'
-    this.setState(
-      {
-        [errorType]: tl.t('votes.error'),
-        loadingList: false,
-        refreshing: false
-      },
-      function setErrorParams () {
-        this.props.navigation.setParams({
-          loadData: this._loadData,
-          [errorType]: this.state[errorType]
-        })
-      }
-    )
-    logSentry(e, 'Vote - Throw error')
-  }
+  _renderRigthElement = () => (
+    this.state.currentFullVotes.length
+      ? <ClearButton
+        disabled={this.state.refreshing || this.state.loadingList}
+        onPress={this._clearVotesFromList}
+        style={{marginLeft: 16}}
+      />
+      : <View />
+  )
 
   render () {
     const {
@@ -493,37 +477,41 @@ class VoteScene extends Component {
       voteList,
       currentVoteItem,
       startedVoting,
+      searchMode,
+      searchName,
       totalFrozen } = this.state
-
+    const searchPreview = searchName ? `${tl.t('results')}: ${voteList.length}` : tl.t('votes.searchPreview')
     return (
       <Utils.Container>
         <NavigationHeader
           title={tl.t('votes.title')}
-          leftButton={<SyncButton
-            loading={refreshing || loadingList}
-            onPress={this._loadData}
-          />}
-          rightButton={
-            <ClearVotes
-              label={currentFullVotes.length}
-              disabled={refreshing || loadingList}
-              onPress={this._clearVotesFromList}
-            />}
+          rightButton={this._renderRigthElement()}
+          onSearch={name => this._onSearching(name)}
+          onSearchPressed={() => this._onSearchPressed()}
+          searchPreview={searchPreview}
         />
-        <FadeIn name='candidates'>
-          <FlatList
-            ListHeaderComponent={this._renderListHedear}
-            keyExtractor={item => item.address + item.url}
-            extraData={[totalUserVotes, currentFullVotes]}
-            data={voteList}
-            renderItem={this._renderRow}
-            onEndReachedThreshold={0.5}
-            onEndReached={this._loadMoreCandidates}
-            refreshing={refreshing || loadingList}
-            removeClippedSubviews={Platform.OS === 'android'}
-          />
-        </FadeIn>
-        {(totalUserVotes > 0 && startedVoting) && <ConfirmVotes onPress={this._openConfirmModal} voteCount={currentFullVotes.length} />}
+        <Utils.View flex={1}>
+          <FadeIn name='candidates'>
+            <FlatList
+              ListHeaderComponent={this._renderListHedear}
+              ListEmptyComponent={this._renderEmptyList}
+              refreshControl={<RefreshControl
+                refreshing={refreshing}
+                onRefresh={this._refreshCandidates}
+              />}
+              keyExtractor={item => item.address + item.url}
+              extraData={[totalUserVotes, currentFullVotes]}
+              data={voteList}
+              renderItem={this._renderRow}
+              refreshing={refreshing || loadingList}
+              onEndReached={this._loadMoreCandidates}
+              maxToRenderPerBatch={AMOUNT_TO_FETCH}
+              onEndReachedThreshold={0.5}
+              removeClippedSubviews={Platform.OS === 'android'}
+            />
+          </FadeIn>
+        </Utils.View>
+        {(totalUserVotes > 0 && startedVoting && !searchMode) && <ConfirmVotes onPress={this._openConfirmModal} voteCount={currentFullVotes.length} />}
         {this.state.modalVisible && (
           <AddVotesModal
             acceptCurrentVote={this._acceptCurrentVote}

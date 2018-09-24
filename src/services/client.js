@@ -20,6 +20,11 @@ class ClientWallet {
     return isTestnet ? this.apiTest : this.api
   }
 
+  async getVoteCycle () {
+    const apiUrl = await this.getTronscanUrl()
+    const { data: {nextCycle} } = await axios.get(`${apiUrl}/vote/next-cycle`)
+    return nextCycle
+  }
   async getTotalVotes () {
     const apiUrl = await this.getTronscanUrl()
     const { data } = await axios.get(`${apiUrl}/vote/current-cycle`)

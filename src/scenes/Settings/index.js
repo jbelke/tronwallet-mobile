@@ -241,6 +241,7 @@ class Settings extends Component {
       await AsyncStorage.setItem(USE_BIOMETRY, `${!useBiometry}`)
       this.props.context.setUseBiometry(!useBiometry)
     } catch (error) {
+      logSentry(error, 'Settings - Save Biometry')
       Alert.alert(tl.t('biometry.auth.error'))
     }
   }
@@ -345,6 +346,10 @@ class Settings extends Component {
                   backgroundInactive={Colors.secondaryText}
                   value={this.props.context.useBiometry}
                   onAsyncPress={(callback) => {
+                    if (!this.props.context.useBiometry) {
+                      Biometrics.createKeys(tl.t('biometry.register.title'));
+                    }
+                    
                     this.props.navigation.navigate('Pin', {
                       shouldGoBack: true,
                       testInput: pin => pin === this.props.context.pin,
