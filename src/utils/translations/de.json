@@ -51,6 +51,7 @@
   "allIn": "Alles",
   "skip": "Überspringen",
   "privateKey": "Privater Schlüssel",
+  "results": "Results",
   "balance": {
     "title": "KONTEN",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Sie müssen mindestens einen TRX Wert {{token}} kaufen.",
         "message": "Derzeit kaufen Sie nur {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Sie haben nicht genügend TRX, um diese Menge {{token}} zu kaufen",
     "amountToBuy": "Menge kaufen",
@@ -228,7 +230,8 @@
     "ownerAddress": "INHABER ADRESSE",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOCK"
+    "block": "BLOCK",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "SICHERHEITS-CHECK",
@@ -485,6 +488,7 @@
     "totalVotes": "STIMMEN INSGESAMT",
     "votesAvailable": "STIMMEN ZUR VERFÜGUNG",
     "search": "Suche",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Hoppla, etwas wurde nicht korrekt geladen. Versuchen Sie, erneut zu laden"
   },
   "scanPayment": {
