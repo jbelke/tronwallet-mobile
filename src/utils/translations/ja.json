@@ -51,6 +51,7 @@
   "allIn": "オールイン",
   "skip": "スキップ",
   "privateKey": "秘密鍵",
+  "results": "Results",
   "balance": {
     "title": "アカウント",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "少なくとも1つのTRX価値 {{token}}を購入する必要があり{{token}} 。",
         "message": "現在は {{amount}}しか買っていません。"
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "あなたは多くの {{token}}を買うのに十分なTRXを持っていません",
     "amountToBuy": "購入する金額",
@@ -228,7 +230,8 @@
     "ownerAddress": "OWNER ADDRESS",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "ブロック"
+    "block": "ブロック",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "セキュリティーチェック",
@@ -485,6 +488,7 @@
     "totalVotes": "総投票数",
     "votesAvailable": "投票可能",
     "search": "サーチ",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "おっと、何かが正しく読み込まれませんでした。再読み込みを試みる"
   },
   "scanPayment": {
