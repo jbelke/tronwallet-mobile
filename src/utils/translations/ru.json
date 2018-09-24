@@ -51,6 +51,7 @@
   "allIn": "Все в",
   "skip": "Пропустить",
   "privateKey": "Закрытый ключ",
+  "results": "Results",
   "balance": {
     "title": "УЧЕТНЫЕ ЗАПИСИ",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Вам нужно купить по крайней мере один TRX стоящий {{token}}.",
         "message": "В данный момент вы покупаете только {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Вы не имеете достаточно TRX чтобы купить эти {{token}}",
     "amountToBuy": "СУММА К ПОКУПКЕ",
@@ -228,7 +230,8 @@
     "ownerAddress": "АДРЕС ВЛАДЕЛЬЦА",
     "trxNum": "TRX NUM",
     "num": "КОЛИЧЕСТВО",
-    "block": "БЛОК"
+    "block": "БЛОК",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "ПРОВЕРКА БЕЗОПАСНОСТИ",
@@ -485,6 +488,7 @@
     "totalVotes": "ВСЕГО ГОЛОСОВ",
     "votesAvailable": "ДОСТУПНЫХ ГОЛОСОВ",
     "search": "Поиск",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Ой что-то не правильно загрузитьлось. Попробуйте перезагрузить"
   },
   "scanPayment": {
