@@ -51,6 +51,7 @@
   "allIn": "All In",
   "skip": "Salta",
   "privateKey": "Chiave privata",
+  "results": "Results",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Devi acquistare almeno un TRX del valore di {{token}}.",
         "message": "Attualmente stai acquistando solo {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Non hai abbastanza TRX per comprare così tanti {{token}}",
     "amountToBuy": "IMPORTO DA ACQUISTARE",
@@ -228,7 +230,8 @@
     "ownerAddress": "INDIRIZZO DEL PROPRIETARIO",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOCCO"
+    "block": "BLOCCO",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "CONTROLLO DI SICUREZZA",
@@ -485,6 +488,7 @@
     "totalVotes": "VOTI TOTALI",
     "votesAvailable": "VOTI DISPONIBILI",
     "search": "Cerca",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Spiacenti, qualcosa non è stato caricato correttamente. Prova a ricaricare"
   },
   "scanPayment": {
