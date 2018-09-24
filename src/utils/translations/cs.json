@@ -51,6 +51,7 @@
   "allIn": "Vybrat vše",
   "skip": "Přeskočit",
   "privateKey": "Soukromý klíč",
+  "results": "Results",
   "balance": {
     "title": "ÚČTY",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Musíte si koupit alespoň jeden TRX v hodnotě {{token}}.",
         "message": "Momentálně kupujete pouze {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Nemáte dostatek TRX ke koupi tolika {{token}}",
     "amountToBuy": "KOUPIT MNOŽSTVÍ",
@@ -228,7 +230,8 @@
     "ownerAddress": "ADRESA VLASTNÍKA",
     "trxNum": "POČET TRX",
     "num": "POČET",
-    "block": "BLOK"
+    "block": "BLOK",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "BEZPEČNOSTNÍ KONTROLA",
@@ -485,6 +488,7 @@
     "totalVotes": "POČET HLASŮ",
     "votesAvailable": "VOLNÉ HLASY",
     "search": "Hledat",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Ups, něco se nenačetlo správně. Zkuste znova načíst"
   },
   "scanPayment": {
