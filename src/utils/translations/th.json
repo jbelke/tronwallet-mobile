@@ -51,6 +51,7 @@
   "allIn": "ทั้งหมดเข้า",
   "skip": "กระโดด",
   "privateKey": "คีย์ส่วนตัว",
+  "results": "Results",
   "balance": {
     "title": "บัญชี",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "คุณจำเป็นต้องซื้อ TRX อย่างน้อยหนึ่งค่าเป็น {{token}}",
         "message": "ขณะนี้คุณกำลังซื้อเพียง {{amount}}"
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "คุณไม่มี TRX พอที่จะซื้อได้มากนัก {{token}}",
     "amountToBuy": "AMOUNT TO BUY",
@@ -228,7 +230,8 @@
     "ownerAddress": "ADRESS ภายใน",
     "trxNum": "หมายเลข TRX",
     "num": "NUM",
-    "block": "BLOCK"
+    "block": "BLOCK",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "ด่านตรวจสอบความปลอดภัย",
@@ -485,6 +488,7 @@
     "totalVotes": "TOTAL VOTES",
     "votesAvailable": "จำนวนที่มีอยู่",
     "search": "ค้นหา",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "อ๊ะสิ่งที่ไม่ได้โหลดอย่างถูกต้อง ลองโหลดใหม่"
   },
   "scanPayment": {
