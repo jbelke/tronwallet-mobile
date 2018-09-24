@@ -210,7 +210,7 @@
         "title": "Necesitas comprar al menos un valor TRX de {{token}}.",
         "message": "Actualmente usted está comprando solamente {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Activo(s) no encontrado(s)"
     },
     "warning": "No tienes suficiente TRX para comprar tantos {{token}}",
     "amountToBuy": "CANTIDAD A COMPRAR",
@@ -231,7 +231,7 @@
     "trxNum": "Nº DE TRX",
     "num": "NÚMERO",
     "block": "BLOQUE",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "Tokens destacados"
   },
   "pin": {
     "title": "COMPROBACIÓN DE SEGURIDAD",
@@ -488,7 +488,7 @@
     "totalVotes": "TOTAL DE VOTOS",
     "votesAvailable": "VOTOS DISPONIBLES",
     "search": "Búsqueda",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "Sugerencias: las más votadas",
     "error": "Vaya, algo no carga correctamente. Intenta volver a cargar"
   },
   "scanPayment": {
