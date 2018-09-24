@@ -51,6 +51,7 @@
   "allIn": "All In",
   "skip": "Skip",
   "privateKey": "Khóa cá nhân",
+  "results": "Results",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "You need to buy at least one TRX worth of {{token}}.",
         "message": "Currently you are buying only {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "You don't have enough TRX to buy that many {{token}}",
     "amountToBuy": "AMOUNT TO BUY",
@@ -228,7 +230,8 @@
     "ownerAddress": "OWNER ADDRESS",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOCK"
+    "block": "BLOCK",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "SECURITY CHECK",
@@ -485,6 +488,7 @@
     "totalVotes": "TỔNG SỐ",
     "votesAvailable": "VOTES CÓ S AVN",
     "search": "Tìm kiếm",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Rất tiếc, nội dung nào đó không tải chính xác. Thử tải lại"
   },
   "scanPayment": {
