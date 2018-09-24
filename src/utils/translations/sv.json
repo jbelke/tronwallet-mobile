@@ -51,6 +51,7 @@
   "allIn": "Alt In",
   "skip": "Hoppa Över",
   "privateKey": "Privat nyckel",
+  "results": "Results",
   "balance": {
     "title": "Konton",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Du måste köpa minst en TRX värt {{token}}.",
         "message": "För närvarande köper du endast {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Du har inte tillräckligt TRX att köpa att många {{token}}",
     "amountToBuy": "MÄNGD ATT KÖPA",
@@ -228,7 +230,8 @@
     "ownerAddress": "ÄGARADRESS",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOCKERA"
+    "block": "BLOCKERA",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "SÄKERHETSKONTROLL",
@@ -485,6 +488,7 @@
     "totalVotes": "TOTALA RÖSTAR",
     "votesAvailable": "RÖSTAR TILLGÄNGLIG",
     "search": "Sök",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Oj, något laddades inte korrekt. Försök att ladda om"
   },
   "scanPayment": {
