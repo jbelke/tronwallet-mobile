@@ -51,6 +51,7 @@
   "allIn": "सभी में",
   "skip": "छोड़ें",
   "privateKey": "निजी चाबी",
+  "results": "Results",
   "balance": {
     "title": "हिसाब किताब",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "आपको कम से कम एक टीआरएक्स मूल्य {{token}}खरीदने की जरूरत है।",
         "message": "वर्तमान में आप केवल {{amount}}खरीद रहे हैं।"
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "आपके पास बहुत से {{token}}खरीदने के लिए पर्याप्त TRX नहीं है",
     "amountToBuy": "खरीदने के लिए राशि",
@@ -228,7 +230,8 @@
     "ownerAddress": "स्वामी का पता",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "ब्लॉक"
+    "block": "ब्लॉक",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "सुरक्षा जांच",
@@ -485,6 +488,7 @@
     "totalVotes": "कुल वोट",
     "votesAvailable": "वोट उपलब्ध हैं",
     "search": "खोज",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "ओह, कुछ ठीक से लोड नहीं हुआ था। पुनः लोड करने का प्रयास करें"
   },
   "scanPayment": {
