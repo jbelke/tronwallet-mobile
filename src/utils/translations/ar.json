@@ -51,6 +51,7 @@
   "allIn": "الجميع",
   "skip": "تخطي",
   "privateKey": "مفتاح سري",
+  "results": "Results",
   "balance": {
     "title": "حسابات",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "يجب أن تشتري ما لا تقل قيمته عن TRX واحد من عملة {{token}}.",
         "message": "أنت تشتري حالياً {{amount}} فقط."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "لا يوجد لديك ما يكفي من TRX لشراء هذه الكمية من عملة {{token}}",
     "amountToBuy": "مبلغ الشراء",
@@ -228,7 +230,8 @@
     "ownerAddress": "عنوان المالك",
     "trxNum": "عدد TRX",
     "num": "عدد",
-    "block": "كتلة"
+    "block": "كتلة",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "التحقق الأمني",
@@ -485,6 +488,7 @@
     "totalVotes": "إجمالي الأصوات",
     "votesAvailable": "الأصوات المتاحة",
     "search": "بحث",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "عفواً، هناك شيء لم يتحمل بشكل صحيح. حاول إعادة التحميل"
   },
   "scanPayment": {
