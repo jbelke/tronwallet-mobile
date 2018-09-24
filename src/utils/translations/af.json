@@ -51,6 +51,7 @@
   "allIn": "All In",
   "skip": "Skip",
   "privateKey": "Privaat Sleutel",
+  "results": "Results",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -208,7 +209,8 @@
       "insufficientTrx": {
         "title": "Jy moet ten minste een TRX-waarde van {{token}}.",
         "message": "Tans koop jy slegs {{amount}}."
-      }
+      },
+      "notFound": "Asset(s) not found"
     },
     "warning": "Jy het nie genoeg TRX om soveel {{token}}te koop nie",
     "amountToBuy": "BEDRAG OM TE KOOP",
@@ -228,7 +230,8 @@
     "ownerAddress": "EIENAAR ADRES",
     "trxNum": "TRX NUM",
     "num": "NUM",
-    "block": "BLOCK"
+    "block": "BLOCK",
+    "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "SEKURITEIT CHECK",
@@ -485,6 +488,7 @@
     "totalVotes": "TOTALE STEMME",
     "votesAvailable": "STEMMINGS BESKIKBAAR",
     "search": "Soek",
+    "searchPreview": "Suggestions - Most Voted",
     "error": "Oeps, iets het nie korrek gelaai nie. Probeer herlaai"
   },
   "scanPayment": {
