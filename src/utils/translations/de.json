@@ -51,7 +51,7 @@
   "allIn": "Alles",
   "skip": "Überspringen",
   "privateKey": "Privater Schlüssel",
-  "results": "Results",
+  "results": "Ergebnisse",
   "balance": {
     "title": "KONTEN",
     "error": {
@@ -210,7 +210,7 @@
         "title": "Sie müssen mindestens einen TRX Wert {{token}} kaufen.",
         "message": "Derzeit kaufen Sie nur {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Asset(s) nicht gefunden"
     },
     "warning": "Sie haben nicht genügend TRX, um diese Menge {{token}} zu kaufen",
     "amountToBuy": "Menge kaufen",
@@ -231,7 +231,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "Top Token"
   },
   "pin": {
     "title": "SICHERHEITS-CHECK",
