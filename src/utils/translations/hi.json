@@ -124,6 +124,7 @@
     }
   },
   "addressBook": {
+    "title": "ADDRESS BOOK",
     "shared": {
       "add": "जोड़ें",
       "edit": "संपादित करें",
@@ -131,6 +132,7 @@
       "send": "भेजें"
     },
     "contacts": {
+      "title": "CONTACTS",
       "delete": {
         "title": "संपर्क मिटा दें",
         "message": "क्या आप वास्तव में इस संपर्क को हटाना चाहते हैं?",
