@@ -124,6 +124,7 @@
     }
   },
   "addressBook": {
+    "title": "ADDRESS BOOK",
     "shared": {
       "add": "MENAMBAHKAN",
       "edit": "EDIT",
@@ -131,6 +132,7 @@
       "send": "KIRIM"
     },
     "contacts": {
+      "title": "CONTACTS",
       "delete": {
         "title": "Hapus kontak",
         "message": "Anda benar-benar ingin menghapus kontak ini?",
