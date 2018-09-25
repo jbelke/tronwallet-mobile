@@ -124,6 +124,7 @@
     }
   },
   "addressBook": {
+    "title": "ADDRESS BOOK",
     "shared": {
       "add": "เพิ่ม",
       "edit": "แก้ไข",
@@ -131,6 +132,7 @@
       "send": "ส่ง"
     },
     "contacts": {
+      "title": "CONTACTS",
       "delete": {
         "title": "ลบที่อยู่ติดต่อ",
         "message": "คุณต้องการลบที่อยู่ติดต่อนี้หรือไม่?",
