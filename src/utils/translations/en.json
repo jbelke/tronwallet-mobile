@@ -204,7 +204,7 @@
     "button": {
       "confirm": "CONFIRM",
       "moreInfo": "MORE INFO",
-      "buyNow": "BUY NOW"
+      "buy": "BUY"
     },
     "error": {
       "insufficientBalance": "Not enough funds (TRX) to participate.",

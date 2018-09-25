@@ -1,7 +1,12 @@
-import styled from 'styled-components'
+import React from 'react'
+import styled, { css } from 'styled-components'
 import { View } from '../../components/Utils'
 import { Colors } from '../../components/DesignSystem'
+import LinearGradient from 'react-native-linear-gradient'
 
+const borderRadius = css`
+  border-radius: 6px;
+`
 export const Text = styled.Text`
   color: white;
   font-family: 'Rubik-Regular';
@@ -25,38 +30,33 @@ export const TokenName = TokenPrice.extend`
 `
 
 export const FeaturedTokenName = TokenName.extend`
-  font-size: 18;
-  text-align: center;
+  font-size: 13;
   font-family: 'Rubik-Bold';
 `
 
 export const Card = View.extend`
-  margin-left: 15;
-  margin-right: 20;
-  border-radius: 4;
-  background: rgb(44,45,67);
   min-height: 85;
   overflow: hidden;
 `
 
 export const CardContent = View.extend`
+  flex-direction: row;
   padding: 19px 15px 15px 15px;
 `
 
 export const Featured = View.extend`
-  width: 79;
-  height: 12;
+  height: 14;
   position: absolute;
-  left: 50%;
-  transform: translate(-45px, 0);
+  right: 10;
+  top: 15;
   background: rgb(255,65,101);
-  border-bottom-left-radius: 3;
-  border-bottom-right-radius: 3;
+  border-radius: 3;
 `
 
 export const FeaturedText = Text.extend`
   font-size: 9;
   font-family: 'Rubik-Medium';
+  margin: 2px;
   text-align: center;
 `
 
@@ -115,18 +115,43 @@ export const ButtonText = styled.Text`
   text-align: center;
   letter-spacing: 0.8;
 `
-export const BuyButton = styled.View`
-  background-color: rgb(44,45,67);
+export const BuyButton = styled.TouchableOpacity`
+  background-color: ${Colors.darkThree};
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  align-self: flex-start;
-  padding-vertical: 13px;
+  padding-vertical: 6px;
   padding-horizontal: 30px;
 `
 export const TokensTitle = styled.Text`
   font-family: Rubik-Medium;
   font-size: 15px;
-  margin-left: 20px;
-  color: ${Colors.secondaryText};
+  color: ${Colors.primaryText};
+  margin-left: 15px;
+`
+export const LabelText = styled.Text`
+  font-family: Rubik-Bold;
+  font-size: 18px;
+  color: ${Colors.primaryText};
+`
+export const TokenLabel = (props) =>
+  <LinearGradient
+    start={{ x: 0.4, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    colors={[Colors.primaryGradient[0], Colors.primaryGradient[1]]}
+    style={{width: 60, height: 60, borderRadius: 4, alignItems: 'center', justifyContent: 'center'}}>
+    <View flex={1} align='center' justify='center'>
+      <LabelText font='bold' size='large'>{props.label}</LabelText>
+    </View>
+  </LinearGradient>
+
+export const CarouselCard = styled.View`
+  ${borderRadius}
+  min-height: 280px;
+  elevation: 2;
+  margin-bottom: 20px;
+`
+export const TronIcon = styled.Image`
+  height: 28px;
+  width: 28px;
 `
