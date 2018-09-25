@@ -1,6 +1,6 @@
 {
   "relativeTime": {
-    "future": "in %s",
+    "future": "خلال %s",
     "past": "منذ %s",
     "s": "بضع ثوان",
     "ss": "%d ثانية",
@@ -212,7 +212,7 @@
         "title": "يجب أن تشتري ما لا تقل قيمته عن TRX واحد من عملة {{token}}.",
         "message": "أنت تشتري حالياً {{amount}} فقط."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "لم يتم العثور على أصل (أصول)"
     },
     "warning": "لا يوجد لديك ما يكفي من TRX لشراء هذه الكمية من عملة {{token}}",
     "amountToBuy": "مبلغ الشراء",
@@ -233,14 +233,14 @@
     "trxNum": "عدد TRX",
     "num": "عدد",
     "block": "كتلة",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "عملات مميزة"
   },
   "pin": {
     "title": "التحقق الأمني",
     "enter": "أدخل كلمة السر",
     "new": "إدخال كملة السر الجديدة",
     "reenter": "إعادة إدخال كملة السر",
-    "biometrics": "Biometric Check"
+    "biometrics": "تحقق من الهوية"
   },
   "receive": {
     "title": "تسلم",
@@ -282,8 +282,8 @@
         "newSeed": "الحصول على جذور جديدة",
         "later": "التأكيد لاحقاً"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "يمكنك الوصول لكلماتك عن طريق الذهاب إلى النسخة الاحتياطية في إعدادات التطبيق ",
+      "seedExplanation": "المفتاح الجذري هي عبارة عن كلمات مقروءة تمثل محفظتك. هذه الكلمات والترتيب الموضح نفسه، يمكن استخدامها لإعادة إنشاء محفظتك."
     },
     "restore": {
       "title": "استعادة محفظة",
@@ -407,7 +407,7 @@
     },
     "partners": "الشركاء",
     "askPin": "اسأل دائمًا رقم التعريف الشخصي",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "تنشيط التحقق"
   },
   "submitTransaction": {
     "title": "تفاصيل المعاملة",
@@ -490,7 +490,7 @@
     "totalVotes": "إجمالي الأصوات",
     "votesAvailable": "الأصوات المتاحة",
     "search": "بحث",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "اقتراحات - الأكثر تصويتاً",
     "error": "عفواً، هناك شيء لم يتحمل بشكل صحيح. حاول إعادة التحميل"
   },
   "scanPayment": {
@@ -541,10 +541,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "تحقق من هويتك"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "الدخول مرفوض"
     }
   }
 }
