@@ -124,6 +124,7 @@
     }
   },
   "addressBook": {
+    "title": "ADDRESS BOOK",
     "shared": {
       "add": "追加",
       "edit": "編集",
@@ -131,6 +132,7 @@
       "send": "送信"
     },
     "contacts": {
+      "title": "CONTACTS",
       "delete": {
         "title": "連絡先を削除",
         "message": "この連絡先の削除を確認して下さい。",
