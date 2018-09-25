@@ -124,6 +124,7 @@
     }
   },
   "addressBook": {
+    "title": "ADDRESS BOOK",
     "shared": {
       "add": "추가",
       "edit": "편집",
@@ -131,6 +132,7 @@
       "send": "보내기"
     },
     "contacts": {
+      "title": "CONTACTS",
       "delete": {
         "title": "주소 삭제",
         "message": "이 주소를 정말 삭제하시겠습니까?",
