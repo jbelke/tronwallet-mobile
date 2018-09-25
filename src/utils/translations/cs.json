@@ -124,6 +124,7 @@
     }
   },
   "addressBook": {
+    "title": "ADDRESS BOOK",
     "shared": {
       "add": "PŘIDAT",
       "edit": "EDITOVAT",
@@ -131,6 +132,7 @@
       "send": "POSLAT"
     },
     "contacts": {
+      "title": "CONTACTS",
       "delete": {
         "title": "Smazat kontakt",
         "message": "Chcete skutečně smazat tento kontakt?",
