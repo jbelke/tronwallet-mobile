@@ -51,7 +51,7 @@
   "allIn": "الجميع",
   "skip": "تخطي",
   "privateKey": "مفتاح سري",
-  "results": "Results",
+  "results": "النتائج",
   "balance": {
     "title": "حسابات",
     "error": {
@@ -98,33 +98,33 @@
     "button": {
       "create": "إنشاء محفظة",
       "restore": "استعادة محفظة",
-      "import": "IMPORT WALLET"
+      "import": "استيراد محفظة"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "مرحباً بكم في ترون واليت",
+        "body": "أكثر المحافظ أماناً لعملة ترون"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "الأمان",
+        "body": "الخصوصية والأمان لمعاملاتك"
       },
       "votes": {
-        "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "title": "أصوات",
+        "body": "التجميد والتصويت للممثلين الرئيسيين"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "title": "دفتر العناوين",
+        "body": "احفظ عناوين أصدقائك وجهات اتصالك."
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "حسابات متعددة",
+        "body": "يمكنك إدارة حساباتك المتعددة داخل محفظتك"
       }
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "دفتر العناوين",
     "shared": {
       "add": "إضافة",
       "edit": "تعديل",
@@ -132,7 +132,7 @@
       "send": "إرسال"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "جهات الاتصال",
       "delete": {
         "title": "حذف جهة اتصال",
         "message": "هل ترغب حقاً في حذف جهة الاتصال هذه؟",
