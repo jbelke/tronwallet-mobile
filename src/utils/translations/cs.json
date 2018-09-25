@@ -51,7 +51,7 @@
   "allIn": "Vybrat vše",
   "skip": "Přeskočit",
   "privateKey": "Soukromý klíč",
-  "results": "Results",
+  "results": "Výsledky",
   "balance": {
     "title": "ÚČTY",
     "error": {
@@ -124,7 +124,7 @@
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "ADRESÁŘ",
     "shared": {
       "add": "PŘIDAT",
       "edit": "EDITOVAT",
@@ -132,7 +132,7 @@
       "send": "POSLAT"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "KONTAKTY",
       "delete": {
         "title": "Smazat kontakt",
         "message": "Chcete skutečně smazat tento kontakt?",
@@ -212,7 +212,7 @@
         "title": "Musíte si koupit alespoň jeden TRX v hodnotě {{token}}.",
         "message": "Momentálně kupujete pouze {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Aktiva nenalezena"
     },
     "warning": "Nemáte dostatek TRX ke koupi tolika {{token}}",
     "amountToBuy": "KOUPIT MNOŽSTVÍ",
@@ -233,7 +233,7 @@
     "trxNum": "POČET TRX",
     "num": "POČET",
     "block": "BLOK",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "Doporučené tokeny"
   },
   "pin": {
     "title": "BEZPEČNOSTNÍ KONTROLA",
@@ -490,7 +490,7 @@
     "totalVotes": "POČET HLASŮ",
     "votesAvailable": "VOLNÉ HLASY",
     "search": "Hledat",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "Návrhy - nejčastěji hlasované",
     "error": "Ups, něco se nenačetlo správně. Zkuste znova načíst"
   },
   "scanPayment": {
