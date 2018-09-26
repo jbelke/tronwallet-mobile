@@ -52,6 +52,8 @@
   "skip": "Skip",
   "privateKey": "Ιδιωτικό κλειδί",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
