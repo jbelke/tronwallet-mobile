@@ -52,6 +52,8 @@
   "skip": "กระโดด",
   "privateKey": "คีย์ส่วนตัว",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "บัญชี",
     "error": {
