@@ -52,6 +52,8 @@
   "skip": "Passer",
   "privateKey": "Clé privée",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "COMPTES",
     "error": {
