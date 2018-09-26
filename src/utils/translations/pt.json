@@ -52,6 +52,8 @@
   "skip": "Pular",
   "privateKey": "Chave Privada",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "CONTAS",
     "error": {
