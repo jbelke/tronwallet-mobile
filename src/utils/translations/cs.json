@@ -52,6 +52,8 @@
   "skip": "Přeskočit",
   "privateKey": "Soukromý klíč",
   "results": "Výsledky",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "ÚČTY",
     "error": {
