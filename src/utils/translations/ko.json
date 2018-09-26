@@ -490,7 +490,7 @@
     "totalVotes": "총 투표",
     "votesAvailable": "투표 가능 수량",
     "search": "검색하기",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "제안 - 최다 득표",
     "error": "제대로 로드되지 않았습니다. 다시 로드해주세요"
   },
   "scanPayment": {
