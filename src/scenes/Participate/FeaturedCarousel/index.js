@@ -33,7 +33,8 @@ const getFeaturedImage = name => {
   const defaultImage = require('../../../assets/icon.png')
   const featuredImages = {
     'TWX': require('../../../assets/twx.png'),
-    'CyberTron': require('../../../assets/cybertron.jpg')
+    'CyberTron': require('../../../assets/cybertron.jpg'),
+    'LoveHearts': require('../../../assets/lovehearts.jpeg')
   }
   return featuredImages[name] || defaultImage
 }
