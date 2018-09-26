@@ -52,8 +52,8 @@
   "skip": "تخطي",
   "privateKey": "مفتاح سري",
   "results": "النتائج",
-  "filter": "Filter",
-  "txs": "Transactions",
+  "filter": "تصفية",
+  "txs": "الصفقات",
   "balance": {
     "title": "حسابات",
     "error": {
