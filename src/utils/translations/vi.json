@@ -52,6 +52,8 @@
   "skip": "Skip",
   "privateKey": "Khóa cá nhân",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
