@@ -49,6 +49,8 @@ export const View = styled.View`
   ${props => props.paddingY && css`padding-vertical: ${Spacing[props.paddingY]}`};
   ${props => props.paddingX && css`padding-horizontal: ${Spacing[props.paddingX]}`};
   ${props => props.padding && css`padding: ${props.padding}px`};
+  ${props => props.paddingRight && css`padding-right: ${Spacing[props.paddingRight]}px`};
+  ${props => props.paddingLeft && css`padding-left: ${Spacing[props.paddingLeft]}px`};
   ${props => props.margin && css`margin: ${props.margin}px`};
   ${props => props.marginY && css`margin-vertical: ${props.marginY}px`};
   ${props => props.marginTop && css`margin-top: ${props.marginTop}px`};
@@ -102,6 +104,7 @@ export const Content = styled(View)`
   ${props => props.paddingTop && css` padding-top: ${props.paddingTop}px`};
   ${props => props.paddingBottom && css` padding-bottom: ${props.paddingBottom}px`};
   ${props => props.position && css` position: ${props.position}`};
+  ${props => props.vertical && css` flex-direction: row`}
 `
 
 Content.defaultProps = {
@@ -488,8 +491,8 @@ export const BoldText = styled.Text`
 `
 export const SectionTitle = styled.Text`
   font-family: Rubik-Medium;
-  font-size: 11px;
-  line-height: 11px;
+  font-size: ${props => props.small ? 8 : 11}px;
+  line-height:${props => props.small ? 8 : 11}px; 
   letter-spacing: 0.6px;
   color: ${Colors.titleLabel};
 `

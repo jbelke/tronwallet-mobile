@@ -52,6 +52,7 @@
   "skip": "Skip",
   "privateKey": "Private Key",
   "results" : "Results",
+  "buy": "Buy",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -204,7 +205,7 @@
     "button": {
       "confirm": "CONFIRM",
       "moreInfo": "MORE INFO",
-      "buy": "BUY"
+      "buyNow": "BUY NOW"
     },
     "error": {
       "insufficientBalance": "Not enough funds (TRX) to participate.",

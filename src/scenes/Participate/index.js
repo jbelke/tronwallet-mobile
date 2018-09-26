@@ -243,7 +243,7 @@ class ParticipateHome extends React.Component {
           onPress={() => { this.props.navigation.navigate('Buy', { item: asset }) }}
           elevation={8}
         >
-          <ButtonText>{tl.t('participate.button.buy')}</ButtonText>
+          <ButtonText>{tl.t('buy').toUpperCase()}</ButtonText>
         </BuyButton>
       </View>
     </Card>

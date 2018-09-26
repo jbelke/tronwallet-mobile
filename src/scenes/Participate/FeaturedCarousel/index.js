@@ -16,7 +16,7 @@ import {
   BuyButton,
   ButtonText,
   CarouselCard,
-  LabelText,
+  WhiteLabelText,
   GradientRow
 } from '../Elements'
 import {
@@ -51,11 +51,7 @@ class FeaturedCarousel extends React.Component {
           />
         </View>
         <GradientRow>
-          <View borderRadius={4} background='white' align='center' justify='center' height={60} width={60}>
-            <LabelText style={{color: Colors.buttonGradient[2]}} size='large' font='bold'>
-              {abbr.substr(0, 3).toUpperCase()}
-            </LabelText>
-          </View>
+          <WhiteLabelText label={abbr} />
           <HorizontalSpacer size={14} />
           <View flex={1} justify='space-between'>
             <TokenName>{name}</TokenName>
@@ -80,7 +76,7 @@ class FeaturedCarousel extends React.Component {
             <BuyButton
               onPress={() => { this.props.navigation.navigate('Buy', { item }) }}
               elevation={8}>
-              <ButtonText>{tl.t('participate.button.buy')}</ButtonText>
+              <ButtonText>{tl.t('buy').toUpperCase()}</ButtonText>
             </BuyButton>
           </View>
         </GradientRow>

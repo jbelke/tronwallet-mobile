@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { View } from '../../components/Utils'
-import { Colors } from '../../components/DesignSystem'
+import { Colors, Spacing } from '../../components/DesignSystem'
 import LinearGradient from 'react-native-linear-gradient'
 
 const borderRadius = css`
@@ -64,6 +64,13 @@ export const FeaturedText = Text.extend`
 
 export const VerticalSpacer = styled.View`
   height: ${props => props.size};
+`
+
+export const DividerSpacer = styled.View`
+  height: 1px;
+  background: ${Colors.dusk};
+  ${props => props.size && css`margin-vertical:${Spacing[props.size]}px`}
+  ${props => props.marginX && css`margin-horizontal:${Spacing[props.marginX]}px`}
 `
 
 export const HorizontalSpacer = styled.View`
@@ -136,6 +143,19 @@ export const LabelText = styled.Text`
   font-size: 18px;
   color: ${Colors.primaryText};
 `
+export const CarouselCard = styled.View`
+  ${borderRadius}
+  min-height: 220px;
+  elevation: 2;
+  margin-bottom: 20px;
+`
+export const TronIcon = styled.Image`
+  height: 28px;
+  width: 28px;
+`
+export const PercentageView = View.extend`
+  transform: translateY(-5px);
+`
 export const TokenLabel = (props) =>
   <LinearGradient
     start={{ x: 0.4, y: 0 }}
@@ -147,16 +167,12 @@ export const TokenLabel = (props) =>
     </View>
   </LinearGradient>
 
-export const CarouselCard = styled.View`
-  ${borderRadius}
-  min-height: 220px;
-  elevation: 2;
-  margin-bottom: 20px;
-`
-export const TronIcon = styled.Image`
-  height: 28px;
-  width: 28px;
-`
+export const WhiteLabelText = (props) =>
+  <View borderRadius={4} background='white' align='center' justify='center' height={60} width={60}>
+    <LabelText style={{color: Colors.buttonGradient[2]}} size='large' font='bold'>
+      {props.label.substr(0, 3).toUpperCase()}
+    </LabelText>
+  </View>
 
 export const GradientRow = (props) =>
   <LinearGradient
