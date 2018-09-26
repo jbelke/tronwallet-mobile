@@ -55,7 +55,7 @@ import { Context } from './src/store/context'
 import NodesIp from './src/utils/nodeIp'
 import { getUserSecrets } from './src/utils/secretsUtils'
 import getBalanceStore from './src/store/balance'
-import { USER_PREFERRED_CURRENCY, ALWAYS_ASK_PIN, USE_BIOMETRY } from './src/utils/constants'
+import { USER_PREFERRED_CURRENCY, ALWAYS_ASK_PIN, USE_BIOMETRY, TOKENS_VISIBLE } from './src/utils/constants'
 import { ONE_SIGNAL_KEY } from './config'
 import ConfigJson from './package.json'
 import tl from './src/utils/i18n'
@@ -252,7 +252,8 @@ class App extends Component {
     alwaysAskPin: true,
     useBiometry: false,
     currency: null,
-    secretMode: 'mnemonic'
+    secretMode: 'mnemonic',
+    tokensVisible: true
   }
 
   async componentDidMount () {
@@ -268,6 +269,7 @@ class App extends Component {
     this._setNodes()
     this._loadAskPin()
     this._loadUseBiometry()
+    this._loadTokenVibile()
     const preferedCurrency = await AsyncStorage.getItem(USER_PREFERRED_CURRENCY) || 'TRX'
     this._getPrice(preferedCurrency)
     this.setState({ currency: preferedCurrency })
@@ -422,6 +424,15 @@ class App extends Component {
     }
   }
 
+  _loadTokenVibile = async () => {
+    try {
+      const tokenVibility = await AsyncStorage.getItem(TOKENS_VISIBLE)
+      this.setState({ tokensVisible: tokenVibility === 'true' })
+    } catch (error) {
+      this.setState({ tokensVisible: false })
+    }
+  }
+
   _setNodes = async () => {
     try {
       await NodesIp.initNodes()
@@ -437,6 +448,8 @@ class App extends Component {
   _setAskPin = (alwaysAskPin) => this.setState({ alwaysAskPin })
 
   _setUseBiometry = (useBiometry) => this.setState({ useBiometry })
+
+  _setTokensVisible = (tokensVisible) => this.setState({ tokensVisible })
 
   _setPin = (pin, callback) => {
     this.setState({ pin }, () => {
@@ -487,7 +500,8 @@ class App extends Component {
       hideAccount: this._hideAccount,
       setAskPin: this._setAskPin,
       setUseBiometry: this._setUseBiometry,
-      setSecretMode: this._setSecretMode
+      setSecretMode: this._setSecretMode,
+      setTokensVisible: this._setTokensVisible
     }
 
     return (

@@ -5,6 +5,7 @@ export const ALWAYS_ASK_PIN = '@TronWallet:alwaysAskPin'
 export const USE_BIOMETRY = '@TronWallet:useBiometry'
 export const ENCRYPTED_PIN = '@TronWallet:encryptedPin'
 export const USER_FILTERED_TOKENS = '@TronWallet:userFilteredTokens'
+export const TOKENS_VISIBLE = '@TronWallet:tokensVibility'
 export const ADD = 'ADD'
 export const EDIT = 'EDIT'
 export const FEATURED_TOKENS = ['TWX', 'LoveHearts', 'CyberTron']

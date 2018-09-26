@@ -14,7 +14,7 @@ import guarantee from '../../assets/guarantee.png'
 import NavigationHeader from '../../components/Navigation/Header'
 import { logSentry } from '../../utils/sentryUtils'
 import { VERIFIED_TOKENS, FEATURED_TOKENS, FIXED_TOKENS } from '../../utils/constants'
-
+import { withContext } from '../../store/context'
 import {
   View,
   Container,
@@ -90,7 +90,7 @@ class ParticipateHome extends React.Component {
       this.assetStoreRef = await getAssetsStore()
       const assets = await this._updateAssets(0)
       const verified = this._getVerifiedTokensFromStore()
-      const assetList = [...verified, ...assets]
+      const assetList = this.props.context.tokensVisible ? verified : [...verified, ...assets]
 
       this.setState({ assetList, currentList: assetList })
     } catch (e) {
@@ -103,8 +103,8 @@ class ParticipateHome extends React.Component {
 
   _loadMore = async () => {
     const { start, assetList, searchMode } = this.state
-
-    if (searchMode) return
+    const { tokensVisible } = this.props.context
+    if (searchMode || tokensVisible) return
 
     this.setState({ loading: true })
     const newStart = start + AMOUNT_TO_FETCH
@@ -140,7 +140,7 @@ class ParticipateHome extends React.Component {
       const assets = this.assetStoreRef.objects('Asset').slice(0, AMOUNT_TO_FETCH).map(item => Object.assign({}, item))
       const filteredAssets = this._filterOrderedAssets(assets)
       const verified = this._getVerifiedTokensFromStore()
-      const currentList = [...verified, ...filteredAssets]
+      const currentList = this.props.context.tokensVisible ? verified : [...verified, ...filteredAssets]
       this.setState({ currentList, start: 0 })
     } else {
       this.setState({ currentList: [] })
@@ -148,15 +148,17 @@ class ParticipateHome extends React.Component {
   }
 
   _onSearching = async name => {
+    const { tokensVisible } = this.props.context
     const assetResult = this.assetStoreRef.objects('Asset')
       .filtered('name CONTAINS[c] $0', name)
       .filter(({ issuedPercentage, name, startTime, endTime }) =>
-        issuedPercentage < 100 && startTime < Date.now() && endTime > Date.now())
+        (issuedPercentage < 100 && startTime < Date.now() && endTime > Date.now()) &&
+        (tokensVisible ? FIXED_TOKENS.includes(name) : true))
       .map(item => Object.assign({}, item))
 
     this.setState({searchName: name})
 
-    if (assetResult.length) {
+    if (assetResult.length || tokensVisible) {
       const searchedList = name ? assetResult : []
       this.setState({ currentList: searchedList })
     } else {
@@ -318,4 +320,4 @@ class ParticipateHome extends React.Component {
   }
 }
 
-export default ParticipateHome
+export default withContext(ParticipateHome)

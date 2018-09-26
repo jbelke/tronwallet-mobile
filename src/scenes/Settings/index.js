@@ -34,7 +34,7 @@ import AccountRecover from './RecoverAccount'
 // Utils
 import getBalanceStore from '../../store/balance'
 import { orderAssets } from '../../utils/assetsUtils'
-import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, FIXED_TOKENS, ALWAYS_ASK_PIN, USE_BIOMETRY, ENCRYPTED_PIN } from '../../utils/constants'
+import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, FIXED_TOKENS, ALWAYS_ASK_PIN, USE_BIOMETRY, ENCRYPTED_PIN, TOKENS_VISIBLE } from '../../utils/constants'
 import tl, { LANGUAGES } from '../../utils/i18n'
 import fontelloConfig from '../../assets/icons/config.json'
 import { withContext } from '../../store/context'
@@ -196,6 +196,15 @@ class Settings extends Component {
     )
   }
 
+  _changeTokensVisibility = async (cb) => {
+    try {
+      await AsyncStorage.setItem(TOKENS_VISIBLE, `${!this.props.context.tokensVisible}`)
+      this.props.context.setTokensVisible(!this.props.context.tokensVisible)
+      cb(true)
+    } catch (error) {
+      cb(false)
+    }
+  }
   _openLink = (uri) => this.setState({ modalVisible: true, uri })
 
   _handleLanguageChange = async (index) => {
@@ -280,6 +289,21 @@ class Settings extends Component {
             title: tl.t('settings.accepts.title'),
             icon: 'question-mark,-circle,-sign,-more,-info',
             onPress: () => { this._openLink('https://www.tronwallet.me/partners') }
+          },
+          {
+            title: 'Verified Tokens Only',
+            icon: 'lock,-secure,-safety,-safe,-protect',
+            right: () => {
+              return (
+                <Switch
+                  circleStyle={{ backgroundColor: Colors.orange }}
+                  backgroundActive={Colors.yellow}
+                  backgroundInactive={Colors.secondaryText}
+                  value={this.props.context.tokensVisible}
+                  onAsyncPress={(callback) => { this._changeTokensVisibility(callback) }}
+                />
+              )
+            }
           }
         ]
       },
