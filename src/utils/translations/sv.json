@@ -52,6 +52,8 @@
   "skip": "Hoppa Över",
   "privateKey": "Privat nyckel",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "Konton",
     "error": {
