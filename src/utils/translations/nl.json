@@ -117,16 +117,16 @@
       },
       "addressbook": {
         "title": "ADRESBOEK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "body": "Bewaar de adressen van je vrienden \n en contacten."
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "MEERDERE ACCOUNTS",
+        "body": "U kunt meerdere rekeningen \n beheren in uw portemonnee"
       }
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "ADRESBOEK",
     "shared": {
       "add": "TOEVOEGEN",
       "edit": "BEWERKEN",
@@ -134,7 +134,7 @@
       "send": "VERZENDEN"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "CONTACTEN",
       "delete": {
         "title": "Verwijder Contact",
         "message": "Wilt u deze contact echt verwijderen?",
@@ -214,7 +214,7 @@
         "title": "U moet ten minste één TRX aan waarde van {{token}} kopen.",
         "message": "Momenteel koopt u slechts {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Asset(s) niet gevonden"
     },
     "warning": "Uw TRX saldo is niet toereikend om zoveel {{token}} te kopen",
     "amountToBuy": "AANTAL TE KOPEN",
@@ -235,14 +235,14 @@
     "trxNum": "AANTAL TRX",
     "num": "AANTAL",
     "block": "BLOCK",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "Aanbevolen Tokens"
   },
   "pin": {
     "title": "SECURITY CHECK",
     "enter": "PIN invoeren",
     "new": "Voer nieuwe PIN in",
     "reenter": "Voer de pincode opnieuw in",
-    "biometrics": "Biometric Check"
+    "biometrics": "Biometrische controle"
   },
   "receive": {
     "title": "ONTVANG",
@@ -284,8 +284,8 @@
         "newSeed": "KRIJG NIEUWE HERSTEL CODE",
         "later": "Bevestig later"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "Je hebt altijd toegang tot je woorden via de back-up in de app-instellingen      ",
+      "seedExplanation": "De 12-woorden sleutel is een leesbare representatie van uw portemonnee. Die woorden, kunnen in die exacte volgorde, worden gebruikt om uw portemonnee opnieuw te maken."
     },
     "restore": {
       "title": "HERSTEL PORTEMONNEE",
@@ -409,7 +409,7 @@
     },
     "partners": "PARTNERS",
     "askPin": "Vraag altijd PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activeer biometrie"
   },
   "submitTransaction": {
     "title": "TRANSACTIE DETAILS",
@@ -492,7 +492,7 @@
     "totalVotes": "TOTAAL AANTAL STEMMEN",
     "votesAvailable": "STEMMEN BESCHIKBAAR",
     "search": "Zoeken",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "Suggesties - Meest gestemd",
     "error": "Oeps, iets is niet correct geladen. Probeer opnieuw te laden"
   },
   "scanPayment": {
@@ -543,10 +543,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Controleer uw biometrie"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Toegang geweigerd"
     }
   }
 }
