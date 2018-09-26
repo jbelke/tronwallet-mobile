@@ -13,7 +13,7 @@ import { ONE_TRX } from '../../services/client'
 import guarantee from '../../assets/guarantee.png'
 import NavigationHeader from '../../components/Navigation/Header'
 import { logSentry } from '../../utils/sentryUtils'
-import { VERIFIED_TOKENS, FEATURED_TOKENS } from '../../utils/constants'
+import { VERIFIED_TOKENS, FEATURED_TOKENS, FIXED_TOKENS } from '../../utils/constants'
 
 import {
   View,
@@ -23,7 +23,6 @@ import {
 
 import {
   Card,
-  CardContent,
   TokenPrice,
   Text,
   TokenName,
@@ -72,14 +71,16 @@ class ParticipateHome extends React.Component {
 
     if (filtered.length) {
       this.setState({ featuredTokens: orderAssets(filtered) })
+    } else {
+      return []
     }
   }
 
   _getVerifiedTokensFromStore = () => {
     const verified = this.assetStoreRef.objects('Asset')
-      .map(item => Object.assign({}, item))
-      .filter(item => VERIFIED_TOKENS.includes(item.name))
-    return verified
+    const verifiedAssets = VERIFIED_TOKENS
+      .map(tokenName => verified.find(verified => verified.name === tokenName))
+    return verifiedAssets.length ? verifiedAssets : []
   }
 
   _loadData = async () => {
@@ -88,7 +89,10 @@ class ParticipateHome extends React.Component {
     try {
       this.assetStoreRef = await getAssetsStore()
       const assets = await this._updateAssets(0)
-      this.setState({ assetList: assets, currentList: assets })
+      const verified = this._getVerifiedTokensFromStore()
+      const assetList = [...verified, ...assets]
+
+      this.setState({ assetList, currentList: assetList })
     } catch (e) {
       this.setState({ error: e.message })
       logSentry(e, 'Participate - Load Data')
@@ -120,24 +124,24 @@ class ParticipateHome extends React.Component {
 
   _updateAssets = async (start, end = AMOUNT_TO_FETCH, name) => {
     const assets = await updateAssets(start, end, name)
-    const verified = this._getVerifiedTokensFromStore()
-    return this._filterOrderedAssets([...verified, ...assets])
+    const filteredAssets = this._filterOrderedAssets(assets)
+    return filteredAssets
   }
 
   _filterOrderedAssets = assets => assets
     .filter(({ issuedPercentage, name, startTime, endTime }) =>
-      issuedPercentage < 100 && name !== 'TRX' && startTime < Date.now() &&
-    endTime > Date.now() && !FEATURED_TOKENS.includes(name))
+      issuedPercentage < 100 && startTime < Date.now() &&
+    endTime > Date.now() && !FIXED_TOKENS.includes(name))
 
   _onSearchPressed = () => {
     const { searchMode } = this.state
-    const assets = this.assetStoreRef.objects('Asset').map(item => Object.assign({}, item))
-
     this.setState({ searchMode: !searchMode, searchName: '' })
     if (searchMode) {
-      this.setState({
-        currentList: this._filterOrderedAssets(assets.slice(0, AMOUNT_TO_FETCH)),
-        start: 0})
+      const assets = this.assetStoreRef.objects('Asset').slice(0, AMOUNT_TO_FETCH).map(item => Object.assign({}, item))
+      const filteredAssets = this._filterOrderedAssets(assets)
+      const verified = this._getVerifiedTokensFromStore()
+      const currentList = [...verified, ...filteredAssets]
+      this.setState({ currentList, start: 0 })
     } else {
       this.setState({ currentList: [] })
     }
@@ -146,11 +150,14 @@ class ParticipateHome extends React.Component {
   _onSearching = async name => {
     const assetResult = this.assetStoreRef.objects('Asset')
       .filtered('name CONTAINS[c] $0', name)
+      .filter(({ issuedPercentage, name, startTime, endTime }) =>
+        issuedPercentage < 100 && startTime < Date.now() && endTime > Date.now())
       .map(item => Object.assign({}, item))
 
     this.setState({searchName: name})
+
     if (assetResult.length) {
-      const searchedList = name ? this._filterOrderedAssets(assetResult) : []
+      const searchedList = name ? assetResult : []
       this.setState({ currentList: searchedList })
     } else {
       this._searchFromApi(name)
@@ -202,45 +209,43 @@ class ParticipateHome extends React.Component {
   _renderCardContent = asset => {
     const { name, abbr, price, issuedPercentage, endTime, verified } = asset
     return <Card>
-      <CardContent>
-        <TokenLabel label={abbr.substr(0, 3).toUpperCase()} />
-        <HorizontalSpacer size={24} />
-        <View flex={1} justify='space-between'>
-          {verified ? (
-            <Row align='center'>
-              <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
-              <HorizontalSpacer size={4} />
-              <Image source={guarantee} style={{ height: 14, width: 14 }} />
-            </Row>
-          ) : (
-            <TokenName>{name}</TokenName>
-          )}
-          <View>
-            <ProgressBar
-              progress={Math.round(issuedPercentage) / 100}
-              borderWidth={0}
-              width={null}
-              height={4}
-              color={Colors.weirdGreen}
-              unfilledColor={Colors.dusk}
-            />
-            <VerticalSpacer size={6} />
-            <Row justify='space-between'>
-              <Text>{tl.t('ends')} {moment(endTime).fromNow()}</Text>
-              <Text>{Math.round(issuedPercentage)}%</Text>
-            </Row>
-          </View>
+      <TokenLabel label={abbr.substr(0, 3).toUpperCase()} />
+      <HorizontalSpacer size={24} />
+      <View flex={1} justify='space-between'>
+        {verified ? (
+          <Row align='center'>
+            <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
+            <HorizontalSpacer size={4} />
+            <Image source={guarantee} style={{ height: 14, width: 14 }} />
+          </Row>
+        ) : (
+          <TokenName>{name}</TokenName>
+        )}
+        <View>
+          <ProgressBar
+            progress={Math.round(issuedPercentage) / 100}
+            borderWidth={0}
+            width={null}
+            height={4}
+            color={Colors.weirdGreen}
+            unfilledColor={Colors.dusk}
+          />
+          <VerticalSpacer size={6} />
+          <Row justify='space-between'>
+            <Text>{tl.t('ends')} {moment(endTime).fromNow()}</Text>
+            <Text>{Math.round(issuedPercentage)}%</Text>
+          </Row>
         </View>
-        <View flex={1} align='flex-end' justify='space-between'>
-          <TokenPrice>{price / ONE_TRX} TRX</TokenPrice>
-          <BuyButton
-            onPress={() => { this.props.navigation.navigate('Buy', { item: asset }) }}
-            elevation={8}
-          >
-            <ButtonText>{tl.t('participate.button.buy')}</ButtonText>
-          </BuyButton>
-        </View>
-      </CardContent>
+      </View>
+      <View flex={1} align='flex-end' justify='space-between'>
+        <TokenPrice>{price / ONE_TRX} TRX</TokenPrice>
+        <BuyButton
+          onPress={() => { this.props.navigation.navigate('Buy', { item: asset }) }}
+          elevation={8}
+        >
+          <ButtonText>{tl.t('participate.button.buy')}</ButtonText>
+        </BuyButton>
+      </View>
     </Card>
   }
 

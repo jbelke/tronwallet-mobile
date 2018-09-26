@@ -3,13 +3,8 @@ import { Image, Dimensions } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import ProgressBar from 'react-native-progress/Bar'
 import moment from 'moment'
-import LinearGradient from 'react-native-linear-gradient'
+
 import { Colors } from '../../../components/DesignSystem'
-
-import { ONE_TRX } from '../../../services/client'
-import { withContext } from '../../../store/context'
-import tl from '../../../utils/i18n'
-
 import {
   TokenPrice,
   Featured,
@@ -21,17 +16,26 @@ import {
   BuyButton,
   ButtonText,
   CarouselCard,
-  LabelText
+  LabelText,
+  GradientRow
 } from '../Elements'
-
 import {
   Row,
   View
 } from '../../../components/Utils'
 
+import { ONE_TRX } from '../../../services/client'
+import { withContext } from '../../../store/context'
+import tl from '../../../utils/i18n'
+
+const screenWidth = Dimensions.get('window').width
 const getFeaturedImage = name => {
-  const defaultImage = require('../../../assets/logo-circle.png')
-  return defaultImage
+  const defaultImage = require('../../../assets/icon.png')
+  const featuredImages = {
+    'TWX': require('../../../assets/twx.png'),
+    'CyberTron': require('../../../assets/cybertron.jpg')
+  }
+  return featuredImages[name] || defaultImage
 }
 
 class FeaturedCarousel extends React.Component {
@@ -39,21 +43,16 @@ class FeaturedCarousel extends React.Component {
     const { name, issuedPercentage, endTime, price, abbr } = item
     return (
       <CarouselCard>
-        <Image
-          source={getFeaturedImage(name)}
-          style={{height: 230, width: 230, alignSelf: 'center'}}
-          resizeMode='stretch'
-        />
-        <LinearGradient
-          start={{ x: 0, y: 0.5 }}
-          end={{ x: 1, y: 1 }}
-          colors={[Colors.buttonGradient[2], Colors.buttonGradient[4]]}
-          style={{flex: 1, padding: 10, borderBottomRightRadius: 4, borderBottomLeftRadius: 4, flexDirection: 'row'}}>
+        <View align='center' flex={1} borderRadius={4} borderColor='transparent'>
+          <Image
+            source={getFeaturedImage(name)}
+            style={{height: 230}}
+            resizeMode='contain'
+          />
+        </View>
+        <GradientRow>
           <View borderRadius={4} background='white' align='center' justify='center' height={60} width={60}>
-            <LabelText
-              style={{color: Colors.buttonGradient[2]}}
-              size='large'
-              font='bold'>
+            <LabelText style={{color: Colors.buttonGradient[2]}} size='large' font='bold'>
               {abbr.substr(0, 3).toUpperCase()}
             </LabelText>
           </View>
@@ -84,7 +83,7 @@ class FeaturedCarousel extends React.Component {
               <ButtonText>{tl.t('participate.button.buy')}</ButtonText>
             </BuyButton>
           </View>
-        </LinearGradient>
+        </GradientRow>
         <Featured>
           <FeaturedText align='center'>{tl.t('participate.featured')}</FeaturedText>
         </Featured>
@@ -100,8 +99,8 @@ class FeaturedCarousel extends React.Component {
         layout='default'
         data={tokens}
         renderItem={this._renderItem}
-        sliderWidth={Dimensions.get('window').width}
-        itemWidth={Dimensions.get('window').width * 0.85}
+        sliderWidth={screenWidth}
+        itemWidth={screenWidth * 0.85}
       />
     )
   }

@@ -37,6 +37,8 @@ export const FeaturedTokenName = TokenName.extend`
 export const Card = View.extend`
   min-height: 85;
   overflow: hidden;
+  flex-direction: row;
+  padding: 19px 15px 15px 15px;
 `
 
 export const CardContent = View.extend`
@@ -147,7 +149,7 @@ export const TokenLabel = (props) =>
 
 export const CarouselCard = styled.View`
   ${borderRadius}
-  min-height: 280px;
+  min-height: 220px;
   elevation: 2;
   margin-bottom: 20px;
 `
@@ -155,3 +157,12 @@ export const TronIcon = styled.Image`
   height: 28px;
   width: 28px;
 `
+
+export const GradientRow = (props) =>
+  <LinearGradient
+    start={{ x: 0, y: 0.5 }}
+    end={{ x: 1, y: 1 }}
+    colors={[Colors.buttonGradient[2], Colors.buttonGradient[4]]}
+    style={{flex: 1, padding: 10, borderBottomRightRadius: 4, borderBottomLeftRadius: 4, flexDirection: 'row'}}>
+    {props.children}
+  </LinearGradient>
