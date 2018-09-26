@@ -52,6 +52,8 @@
   "skip": "Пропустить",
   "privateKey": "Закрытый ключ",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "УЧЕТНЫЕ ЗАПИСИ",
     "error": {
