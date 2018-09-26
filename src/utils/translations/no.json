@@ -52,6 +52,8 @@
   "skip": "Skip",
   "privateKey": "Privat nøkkel",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "KONTOER",
     "error": {
