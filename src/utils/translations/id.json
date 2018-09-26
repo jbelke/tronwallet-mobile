@@ -52,6 +52,8 @@
   "skip": "Melewatkan",
   "privateKey": "Kunci Pribadi",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "AKUN",
     "error": {
