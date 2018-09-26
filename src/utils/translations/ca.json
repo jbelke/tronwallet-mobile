@@ -52,6 +52,8 @@
   "skip": "Omet",
   "privateKey": "Clau privada",
   "results": "Resultats",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "COMPTES",
     "error": {
