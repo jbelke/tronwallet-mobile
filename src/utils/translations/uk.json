@@ -52,6 +52,8 @@
   "skip": "Пропустити",
   "privateKey": "Приватний ключ",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "СКИДКИ",
     "error": {
