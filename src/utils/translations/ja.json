@@ -52,6 +52,8 @@
   "skip": "スキップ",
   "privateKey": "秘密鍵",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "アカウント",
     "error": {
