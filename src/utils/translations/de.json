@@ -53,7 +53,7 @@
   "privateKey": "Privater Schlüssel",
   "results": "Ergebnisse",
   "filter": "Filter",
-  "txs": "Transactions",
+  "txs": "Transaktionen",
   "balance": {
     "title": "KONTEN",
     "error": {
