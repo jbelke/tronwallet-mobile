@@ -51,9 +51,9 @@
   "allIn": "Volledig",
   "skip": "Overslaan",
   "privateKey": "Prive sleutel",
-  "results": "Results",
+  "results": "Resultaten",
   "filter": "Filter",
-  "txs": "Transactions",
+  "txs": "Transacties",
   "balance": {
     "title": "REKENINGEN",
     "error": {
@@ -100,23 +100,23 @@
     "button": {
       "create": "MAAK PORTEMONNEE",
       "restore": "HERSTEL PORTEMONNEE",
-      "import": "IMPORT WALLET"
+      "import": "IMPORTEER PORTEMONNEE"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "Welkom bij \nTRONWALLET",
+        "body": "De meest veilige portemonnee voor TRON"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "BEVEILIGING",
+        "body": "Privacy en beveiliging voor \n uw transacties"
       },
       "votes": {
-        "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "title": "STEMMEN",
+        "body": "Vastzetten en stemmen op Super \n vertegenwoordigers"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
+        "title": "ADRESBOEK",
         "body": "Save the addresses of your friends \n and contacts."
       },
       "multipleaccounts": {
