@@ -4,7 +4,7 @@
     "past": "%s 전",
     "s": "몇 초",
     "ss": "%d 초",
-    "m": "1분",
+    "m": "1 분",
     "mm": "%d 분",
     "h": "한 시간",
     "hh": "%d 시간",
@@ -51,7 +51,7 @@
   "allIn": "전액",
   "skip": "건너뛰기",
   "privateKey": "개인키",
-  "results": "Results",
+  "results": "결과",
   "balance": {
     "title": "계정",
     "error": {
@@ -124,7 +124,7 @@
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "주소록",
     "shared": {
       "add": "추가",
       "edit": "편집",
@@ -132,7 +132,7 @@
       "send": "보내기"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "연락처",
       "delete": {
         "title": "주소 삭제",
         "message": "이 주소를 정말 삭제하시겠습니까?",
