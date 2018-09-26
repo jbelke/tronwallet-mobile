@@ -52,6 +52,8 @@
   "skip": "Overslaan",
   "privateKey": "Prive sleutel",
   "results": "Results",
+  "filter": "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "REKENINGEN",
     "error": {
