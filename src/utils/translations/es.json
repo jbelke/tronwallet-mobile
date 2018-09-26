@@ -124,7 +124,7 @@
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "LIBRETA DE DIRECCIONES",
     "shared": {
       "add": "AÑADIR",
       "edit": "EDITAR",
@@ -132,7 +132,7 @@
       "send": "Enviar"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "CONTACTOS",
       "delete": {
         "title": "Borrar contacto",
         "message": "¿Realmente desea eliminar este contacto?",
