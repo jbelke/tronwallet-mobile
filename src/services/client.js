@@ -11,7 +11,6 @@ class ClientWallet {
     this.apiTest = Config.API_URL
     this.notifier = Config.NOTIFIER_API_URL
     this.tronwalletApi = Config.TRONWALLET_API
-    this.tempApi = 'https://wlcyapi.tronscan.org/api'
   }
 
   //* ============TronScan Api============*//
@@ -21,19 +20,18 @@ class ClientWallet {
     return isTestnet ? this.apiTest : this.api
   }
 
+  async getVoteCycle () {
+    const apiUrl = await this.getTronscanUrl()
+    const { data: {nextCycle} } = await axios.get(`${apiUrl}/vote/next-cycle`)
+    return nextCycle
+  }
   async getTotalVotes () {
-    const apiUrl = this.tempApi
-    const { data } = await axios.get(`${apiUrl}/witness`)
-    const totalVotes = data.reduce((prev, curr) => prev + curr.votes, 0)
-    const candidates = data
+    const apiUrl = await this.getTronscanUrl()
+    const { data } = await axios.get(`${apiUrl}/vote/current-cycle`)
+    const totalVotes = data.total_votes
+    const candidates = data.candidates
       .sort((a, b) => a.votes > b.votes ? -1 : a.votes < b.votes ? 1 : 0)
-      .map((candidate, index) => ({
-        ...candidate,
-        change_day: 0,
-        change_cycle: 0,
-        hasPage: false,
-        rank: index + 1
-      }))
+      .map((candidate, index) => ({ ...candidate, rank: index + 1 }))
     return { totalVotes, candidates }
   }
 
@@ -47,7 +45,7 @@ class ClientWallet {
   }
 
   async getBalances (address) {
-    const apiUrl = this.tempApi
+    const apiUrl = await this.getTronscanUrl()
     const { data: { balances } } = await axios.get(
       `${apiUrl}/account/${address}`
     )
@@ -58,14 +56,14 @@ class ClientWallet {
   }
 
   async getFreeze (address) {
-    const apiUrl = this.tempApi
+    const apiUrl = await this.getTronscanUrl()
     const { data: { frozen, bandwidth, balances } } = await axios.get(
       `${apiUrl}/account/${address}`
     )
     return { ...frozen, total: frozen.total / ONE_TRX, bandwidth, balances }
   }
 
-  async getTokenList (start, limit, name = null) {
+  async getTokenList (start, limit, name) {
     const apiUrl = await this.getTronscanUrl()
     const { data: { data } } = await axios.get(
       `${apiUrl}/token?sort=-name&start=${start}&limit=${limit}&name=%25${name}%25&status=ico`
@@ -99,31 +97,20 @@ class ClientWallet {
   }
 
   async fetchTransactionByHash (hash) {
-    const txResponse = await axios.get(`${this.tempApi}/transaction/${hash}`)
-    const { contractData } = txResponse.data
+    const apiUrl = await this.getTronscanUrl()
+
+    const txResponse = await axios.get(`${apiUrl}/transaction/${hash}`)
+
     if (txResponse.data.contractType <= 2) {
+      const tfResponse = await axios.get(`${apiUrl}/transfer/${hash}`)
       return {
-        ...txResponse.data,
+        ...tfResponse.data,
         contractType: 1,
-        ownerAddress: txResponse.data.ownerAddress || contractData.owner_address,
-        transferFromAddress: txResponse.data.transferFromAddress || contractData.owner_address,
-        transferToAddress: txResponse.data.transferToAddress || contractData.to_address,
-        tokenName: txResponse.data.tokenName || contractData.asset_name || 'TRX',
-        amount: txResponse.data.amount || contractData.amount,
+        ownerAddress: txResponse.data.ownerAddress,
         type: 'Transfer'
       }
     }
 
-    if (txResponse.data.contractType === 4) {
-      const votes = contractData.map(contract => ({voteAddress: contract.vote_address, voteCount: contract.vote_count}))
-      return {
-        ...txResponse.data,
-        contractData: {
-          ...contractData,
-          votes
-        }
-      }
-    }
     return {
       ...txResponse.data,
       type: this.getContractType(txResponse.data.contractType)

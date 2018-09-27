@@ -150,8 +150,6 @@ class VoteScene extends Component {
       this.setState({ voteList })
     } catch (e) {
       logSentry(e, 'Load Candidates Error')
-    } finally {
-      this.setState({ voteList: [] })
     }
   }
 
@@ -463,7 +461,6 @@ class VoteScene extends Component {
       ? <ClearButton
         disabled={this.state.refreshing || this.state.loadingList}
         onPress={this._clearVotesFromList}
-        padding={5}
         style={{marginLeft: 16}}
       />
       : <View />

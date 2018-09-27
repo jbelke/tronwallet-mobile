@@ -51,7 +51,7 @@ const createTransaction = (item) => {
     confirmed: true
   }
   if (item.type === 'Transfer') {
-    transaction.id = item.transactionHash || item.hash
+    transaction.id = item.transactionHash
     transaction.contractData = {
       transferFromAddress: item.transferFromAddress,
       transferToAddress: item.transferToAddress,
