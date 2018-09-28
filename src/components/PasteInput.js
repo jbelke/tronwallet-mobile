@@ -4,6 +4,7 @@ import { Colors, FontSize } from './DesignSystem'
 import * as Utils from './Utils'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import PropTypes from 'prop-types'
+import FontelloIcon from './FontelloIcon'
 
 const PasteInput = ({ onChangeText, field, value, qrScan }) => {
   let content = null
@@ -23,8 +24,8 @@ const PasteInput = ({ onChangeText, field, value, qrScan }) => {
         marginTop={15}
       />
       <Utils.PasteButton onPress={paste}>
-        <Ionicons
-          name='md-clipboard'
+        <FontelloIcon
+          name='paste'
           size={FontSize['small']}
           color={Colors.primaryText}
         />

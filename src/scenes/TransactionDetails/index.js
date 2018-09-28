@@ -28,6 +28,7 @@ import { Colors } from '../../components/DesignSystem'
 import { ONE_TRX } from '../../services/client'
 import { rgb } from '../../../node_modules/polished'
 import ActionModal from '../../components/ActionModal'
+import FontelloIcon from '../../components/FontelloIcon'
 
 import { formatFloat } from '../../utils/numberUtils'
 import getAssetsStore from '../../store/assets'
@@ -360,8 +361,16 @@ class TransactionDetails extends React.Component {
         closeModal={this._closeModal}
         animationType='fade'
         actions={[
-          {onPress: this._onAddContactPress, text: tl.t('addressBook.contacts.addToContacts')},
-          {onPress: this._onCopyAddressPress, text: tl.t('copyAddress')}
+          {
+            onPress: this._onAddContactPress,
+            text: tl.t('addressBook.contacts.addToContacts'),
+            icon: <FontelloIcon name='notebook' color='white' size={22} />
+          },
+          {
+            onPress: this._onCopyAddressPress,
+            text: tl.t('copyAddress'),
+            icon: <FontelloIcon name='copy' color='white' size={22} />
+          }
         ]}
       />
     )
@@ -374,7 +383,7 @@ class TransactionDetails extends React.Component {
       <View>
         {this._renderAddressModal()}
         {type.toLowerCase() === 'transfer' &&
-          <TouchableOpacity onPress={() => { this._onAddressPress(transferToAddress) }}>
+          <TouchableOpacity disabled={transferToAddress[0] === '@'} onPress={() => { this._onAddressPress(transferToAddress) }}>
             <Elements.AddressRow>
               <Elements.AddressText>{tl.t('transactionDetails.to')}</Elements.AddressText>
               {this._getIcon('ios-arrow-round-up', 30, confirmed ? rgb(63, 231, 123) : rgb(102, 104, 143))}
@@ -383,7 +392,7 @@ class TransactionDetails extends React.Component {
             <Elements.Divider />
           </TouchableOpacity>
         }
-        <TouchableOpacity onPress={() => { this._onAddressPress(transferFromAddress) }}>
+        <TouchableOpacity disabled={transferFromAddress[0] === '@'} onPress={() => { this._onAddressPress(transferFromAddress) }}>
           <Elements.AddressRow>
             <Elements.AddressText>{tl.t('transactionDetails.from')}</Elements.AddressText>
             {this._getIcon('ios-arrow-round-down', 30, confirmed ? rgb(255, 68, 101) : rgb(102, 104, 143))}

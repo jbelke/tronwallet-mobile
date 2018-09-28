@@ -5,6 +5,7 @@ import ButtonIconGradient from '../../components/ButtonIconGradient'
 
 import * as Utils from '../../components/Utils'
 import tl from '../../utils/i18n'
+import FontelloIcon from '../../components/FontelloIcon'
 
 const ICON_SIZE = 22
 
@@ -27,29 +28,20 @@ const BalanceNavigation = ({ navigation }) => {
         <ButtonIconGradient
           text={tl.t('send.title').toUpperCase()}
           full
-          icon={<Image
-            source={require('../../assets/icon-send.png')}
-            style={styles.icon}
-          />}
+          icon={<FontelloIcon name='send' color='white' size={ICON_SIZE} />}
           onPress={() => navigateNext('SendScene')}
         />
         <ButtonIconGradient
           text={tl.t('receive.title').toUpperCase()}
           full
-          icon={<Image
-            source={require('../../assets/icon-qrcode.png')}
-            style={styles.icon}
-          />}
+          icon={<FontelloIcon name='qr-code' color='white' size={ICON_SIZE} />}
           onPress={() => navigateNext('PaymentsScene')}
         />
         <ButtonIconGradient
           text={tl.t('freeze.title').toUpperCase()}
           multiColumnButton={{x: 2, y: 3}}
           full
-          icon={<Image
-            source={require('../../assets/icon-freeze.png')}
-            style={styles.icon}
-          />}
+          icon={<FontelloIcon name='freeze' color='white' size={ICON_SIZE} />}
           onPress={() => navigateNext('FreezeScene')}
         />
       </Utils.Row>

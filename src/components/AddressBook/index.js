@@ -9,6 +9,7 @@ import getContactStore from '../../store/contacts'
 import { withContext } from '../../store/context'
 import tl from '../../utils/i18n'
 import { EmptyWrapper, EmptyText } from './elements'
+import FontelloIcon from '../FontelloIcon'
 
 class AddressBook extends Component {
   state = {
@@ -61,8 +62,12 @@ class AddressBook extends Component {
 
   _onSendPress = () => {
     const { currentItem } = this.state
-
     this._navigate('SendScene', { address: currentItem.address })
+  }
+
+  _onTransactionsPress = () => {
+    const { currentItem } = this.state
+    this._navigate('TransactionListScene', { contact: currentItem })
   }
 
   _onDeletePress = () => {
@@ -126,9 +131,33 @@ class AddressBook extends Component {
     )
   }
 
+  _listActions = () => [
+    {
+      onPress: this._onSendPress,
+      text: tl.t('addressBook.shared.send'),
+      icon: <FontelloIcon name='send' color='white' size={22} />
+    },
+    {
+      onPress: this._onTransactionsPress,
+      text: tl.t('txs').toUpperCase(),
+      icon: <FontelloIcon name='transfer' color='white' size={22} />
+    },
+    {
+      onPress: this._onEditPress,
+      text: tl.t('addressBook.shared.edit'),
+      icon: <FontelloIcon name='edit' color='white' size={22} />
+    },
+    this.props.isUserAccount ? null
+      : {
+        onPress: this._onDeletePress,
+        text: tl.t('addressBook.shared.delete'),
+        icon: <FontelloIcon name='delete' color='white' size={22} />
+      }
+  ].filter(action => action)
+
   render () {
     const { modalVisible, refreshing } = this.state
-    const { items, children, isUserAccount } = this.props
+    const { items, children } = this.props
 
     return (
       <Container style={{position: 'relative'}}>
@@ -136,11 +165,7 @@ class AddressBook extends Component {
           visible={modalVisible}
           closeModal={this._closeModal}
           animationType='fade'
-          actions={[
-            {onPress: this._onEditPress, text: tl.t('addressBook.shared.edit')},
-            isUserAccount ? null : {onPress: this._onDeletePress, text: tl.t('addressBook.shared.delete')},
-            {onPress: this._onSendPress, text: tl.t('addressBook.shared.send')}
-          ]}
+          actions={this._listActions()}
         />
         <FlatList
           keyExtractor={item => item.address}
