@@ -86,6 +86,7 @@ class ParticipateHome extends React.Component {
 
   _softLoadData = async () => {
     try {
+      const assets = await this._updateAssets(0)
       const verified = this._getVerifiedTokensFromStore()
       const assetList = this.props.context.tokensVisible ? verified : [...verified, ...assets]
 

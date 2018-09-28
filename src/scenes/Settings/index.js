@@ -200,9 +200,11 @@ class Settings extends Component {
     try {
       await AsyncStorage.setItem(TOKENS_VISIBLE, `${!this.props.context.tokensVisible}`)
       this.props.context.setTokensVisible(!this.props.context.tokensVisible)
+      /* eslint-disable*/
       cb(true)
     } catch (error) {
       cb(false)
+      /* eslint-disable */
     }
   }
   _openLink = (uri) => this.setState({ modalVisible: true, uri })
