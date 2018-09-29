@@ -7,7 +7,7 @@ export const ContactsModalWrapper = styled.TouchableHighlight`
   background-color: rgba(0,0,0,0.5);
 `
 export const ContactsModalCard = styled.View`
-  top: 200px;
+  top: 150px;
   border-radius: 5px;
   background-color: ${Colors.dusk};
   padding-horizontal: 15px;
@@ -15,6 +15,12 @@ export const ContactsModalCard = styled.View`
 export const Divider = styled.View`
   height: 1px;
   background-color: ${Colors.background};
+`
+
+export const ActionRow = styled.View`
+  flex-direction: row;
+  padding-horizontal: 10px;
+  padding-vertical: 40px;
 `
 const Text = css`
   font-size: 12px;

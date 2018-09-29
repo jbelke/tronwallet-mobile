@@ -53,6 +53,9 @@
   "privateKey": "Private Key",
   "results" : "Results",
   "buy": "Buy",
+  "filter" : "Filter",
+  "txs": "Transactions",
+
   "balance": {
     "title": "ACCOUNTS",
     "error": {

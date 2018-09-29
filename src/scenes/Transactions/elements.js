@@ -23,7 +23,7 @@ export const HSpacer = styled.View`
   width: 10px;
 `
 export const Background = styled.View`
-  background-color: ${Colors.background}
+  background-color: ${Colors.background};
   flex: 1;
 `
 
@@ -97,6 +97,7 @@ export const EmptyScreenContainer = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  padding-top: 50px;
 `
 export const EmptyScreenText = styled.Text`
   font-family: Rubik-Medium;
@@ -104,4 +105,34 @@ export const EmptyScreenText = styled.Text`
   line-height: 16px;
   letter-spacing: 0;
   color: white;
+`
+
+/* Filter */
+export const FilterWrapper = styled.View`
+  height: 60px;
+  margin-bottom: 20px;
+  margin-horizontal: 20px;
+  background-color: ${Colors.darkThree};
+  border-radius: 5px;
+  flex-direction: row;
+  padding-horizontal: 20px;
+  padding-vertical: 20px;
+  justify-content: space-between;
+  shadow-offset: 0 5px;
+  shadow-radius: 10px;
+  shadow-color: #000;
+`
+export const FilterText = styled.Text`
+  font-family: Rubik-${props => props.regular ? 'Regular' : 'Medium'};
+  font-size: 14px;
+  line-height: 16px;
+  color: ${props => props.dark ? Colors.secondaryText : Colors.greyBlue};
+  margin-horizontal: ${props => props.marginX ? props.marginX : 0}px;
+`
+export const InnerRow = styled.View`
+  align-items:center;
+  flex-direction: row;
+  margin:0px;
+  padding:0px;
+  max-width:60%;
 `
