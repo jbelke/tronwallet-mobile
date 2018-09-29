@@ -52,8 +52,8 @@
   "skip": "Saltar",
   "privateKey": "Clave privada",
   "results": "Resultados",
-  "filter": "Filter",
-  "txs": "Transactions",
+  "filter": "Filtro",
+  "txs": "Transacciones",
   "balance": {
     "title": "CUENTAS",
     "error": {
