@@ -75,7 +75,7 @@ class FeaturedCarousel extends React.Component {
           <View flex={1} align='flex-end' justify='space-between'>
             <TokenPrice>{price / ONE_TRX} TRX</TokenPrice>
             <BuyButton
-              onPress={() => { this.props.navigation.navigate('Buy', { item }) }}
+              onPress={() => { this.props.navigation.navigate('TokenInfo', { item }) }}
               elevation={8}>
               <ButtonText>{tl.t('buy').toUpperCase()}</ButtonText>
             </BuyButton>

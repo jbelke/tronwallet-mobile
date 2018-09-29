@@ -23,6 +23,7 @@ class TokenInfo extends PureComponent {
   })
 
   render () {
+    const { item } = this.props.navigation.state.params
     const {
       name,
       price,
@@ -38,7 +39,7 @@ class TokenInfo extends PureComponent {
       num,
       abbr,
       block
-    } = this.props.navigation.state.params.item
+    } = item
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
         <ScrollView>
@@ -71,7 +72,7 @@ class TokenInfo extends PureComponent {
               <Utils.View height={8} />
               <ButtonGradient
                 text={tl.t('participate.button.buyNow').toUpperCase()}
-                onPress={() => {}}
+                onPress={() => this.props.navigation.navigate('Buy', {item})}
                 size='medium'
                 full
               />

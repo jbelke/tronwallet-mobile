@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import {
   ScrollView,
   SafeAreaView,
-  TouchableOpacity,
   ActivityIndicator,
   Alert
 } from 'react-native'
@@ -24,8 +23,6 @@ import {
   VerticalSpacer,
   AmountText,
   MarginFixer,
-  MoreInfoButton,
-  ButtonText,
   TrxValueText
 } from '../Elements'
 
@@ -237,7 +234,7 @@ class BuyScene extends Component {
 
   render () {
     const { item } = this.props.navigation.state.params
-    const { name, price, description } = item
+    const { name, price } = item
     const { totalRemaining, amountToBuy, notEnoughTrxBalance } = this.state
     const amountToPay = (price / ONE_TRX) * amountToBuy
     const tokenPrice = price / ONE_TRX
@@ -294,20 +291,6 @@ class BuyScene extends Component {
           <VerticalSpacer size={1} />
           <BuyContainer>
             {this._renderConfirmButtom()}
-            <VerticalSpacer size={23} />
-            {!!description.length && (
-              <React.Fragment>
-                <BuyText>{tl.t('participate.tokenDescription')}</BuyText>
-                <VerticalSpacer size={17} />
-                <BuyText>{description}</BuyText>
-                <VerticalSpacer size={17} />
-              </React.Fragment>
-            )}
-            <TouchableOpacity onPress={() => { this.props.navigation.navigate('TokenInfo', { item }) }}>
-              <MoreInfoButton>
-                <ButtonText>{tl.t('participate.button.moreInfo')}</ButtonText>
-              </MoreInfoButton>
-            </TouchableOpacity>
           </BuyContainer>
         </ScrollView>
       </SafeAreaView>
