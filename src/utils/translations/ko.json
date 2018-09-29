@@ -52,8 +52,8 @@
   "skip": "건너뛰기",
   "privateKey": "개인키",
   "results": "결과",
-  "filter": "Filter",
-  "txs": "Transactions",
+  "filter": "필터",
+  "txs": "트랜잭션",
   "balance": {
     "title": "계정",
     "error": {
