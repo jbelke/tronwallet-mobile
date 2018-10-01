@@ -58,15 +58,17 @@ class NavigationHeader extends React.Component {
       </TouchableOpacity>
     } else if (onSearch) {
       element =
-        <TouchableOpacity onPress={() => {
-          this.setState({ isSearching: true })
-          if (onSearchPressed) onSearchPressed()
-        }}>
+        <TouchableOpacity
+          style={{padding: 6}}
+          onPress={() => {
+            this.setState({ isSearching: true })
+            if (onSearchPressed) onSearchPressed()
+          }}>
           <Ionicons name='ios-search' color='white' size={21} />
         </TouchableOpacity>
     }
 
-    return <Utils.Row margin={10} position='absolute' right={10}>
+    return <Utils.Row align='center' margin={10} position='absolute' right={10}>
       {element}
       {rightButton}
     </Utils.Row>

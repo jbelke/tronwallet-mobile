@@ -25,6 +25,7 @@ class TransactionsScene extends Component {
   state = {
     refreshing: true,
     transactions: [],
+    currentAlias: '',
     contact: {
       address: '',
       alias: '',
@@ -81,7 +82,10 @@ class TransactionsScene extends Component {
     this.setState({ refreshing: true })
     try {
       this.contactsStoreRef = await getContactsStore()
+      const currentAlias = this._getAlias(this.props.context.publicKey)
       const contact = this.props.navigation.getParam('contact', null)
+
+      this.setState({currentAlias})
       if (contact) await this._setFilteredContact(contact)
       else await this._updateData()
     } catch (error) {
@@ -141,6 +145,7 @@ class TransactionsScene extends Component {
   _navigateToDetails = (item) => {
     this.props.navigation.navigate('TransactionDetails', { item })
   }
+
   _renderFilter = () => {
     if (this.state.contact.address) {
       return <FilterWrapper>
@@ -168,7 +173,7 @@ class TransactionsScene extends Component {
     }
   }
   render () {
-    const { refreshing } = this.state
+    const { refreshing, currentAlias } = this.state
     const { publicKey } = this.props.context
     const transactions = this._getTransactionByAddress()
 
@@ -186,7 +191,7 @@ class TransactionsScene extends Component {
           ListEmptyComponent={<Empty loading={refreshing} />}
           ListHeaderComponent={this._renderFilter}
           keyExtractor={item => item.id}
-          renderItem={({ item }) => <Transaction item={item} onPress={() => this._navigateToDetails(item)} publicKey={publicKey} />}
+          renderItem={({ item }) => <Transaction item={item} currentAlias={currentAlias} onPress={() => this._navigateToDetails(item)} publicKey={publicKey} />}
           initialNumToRender={10}
           onEndReachedThreshold={0.75}
           removeClippedSubviews={Platform.OS === 'android'}

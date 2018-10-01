@@ -9,7 +9,7 @@ const ClearButton = ({onPress, padding, size, style}) => (
   </TouchableOpacity>
 )
 ClearButton.defaultProps = {
-  padding: 0,
+  padding: 6,
   size: 18
 }
 ClearButton.propType = {

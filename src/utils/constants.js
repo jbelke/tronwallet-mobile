@@ -9,5 +9,5 @@ export const TOKENS_VISIBLE = '@TronWallet:tokensVibility'
 export const ADD = 'ADD'
 export const EDIT = 'EDIT'
 export const FEATURED_TOKENS = ['TWX', 'LoveHearts', 'CyberTron']
-export const VERIFIED_TOKENS = ['IGG', 'Alivio', 'ReynaToken', 'BeatzCoin']
+export const VERIFIED_TOKENS = ['IGG', 'Alivio', 'ReynaToken', 'BeatzCoin', 'TronWatchMarket']
 export const FIXED_TOKENS = ['TRX', ...FEATURED_TOKENS, ...VERIFIED_TOKENS]

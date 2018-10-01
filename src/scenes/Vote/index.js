@@ -461,7 +461,7 @@ class VoteScene extends Component {
       ? <ClearButton
         disabled={this.state.refreshing || this.state.loadingList}
         onPress={this._clearVotesFromList}
-        style={{marginLeft: 16}}
+        style={{marginLeft: 4}}
       />
       : <View />
   )

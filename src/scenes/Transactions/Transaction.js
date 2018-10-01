@@ -6,7 +6,7 @@ import { configureTransaction } from './Utils'
 import { getTranslatedType } from '../../utils/transactionUtils'
 import * as Elements from './elements'
 
-const Transaction = ({ item, onPress, publicKey }) => {
+const Transaction = ({ item, onPress, publicKey, currentAlias }) => {
   /* Renders the top row with the badge and the amount information pertaining
   to the specific transaction. */
   const _renderTopInfoRow = ({amount, icon, badgeColor}) => (
@@ -61,7 +61,8 @@ const Transaction = ({ item, onPress, publicKey }) => {
   const config = configureTransaction(item, {
     topRow: _renderTopInfoRow,
     addressRow: _renderAddress,
-    publicKey
+    publicKey,
+    currentAlias
   })
 
   return (

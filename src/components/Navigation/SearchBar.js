@@ -1,7 +1,6 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
-import Feather from 'react-native-vector-icons/Feather'
 
 import * as Utils from '../Utils'
 import { Colors } from '../DesignSystem'
@@ -12,8 +11,8 @@ const NavigationSearchBar = ({ onSearch, onClose }) => (
   <SearchBarWrapper>
     <FontelloIcon
       name='magnifier,-search,-discover,-zoom,-lens'
-      size={16}
       color={Colors.greyBlue}
+      size={16}
     />
     <Utils.HorizontalSpacer />
     <SearchBar
@@ -26,7 +25,11 @@ const NavigationSearchBar = ({ onSearch, onClose }) => (
       autoFocus
     />
     <TouchableOpacity onPress={onClose}>
-      <Feather name='x' color='white' size={22} />
+      <FontelloIcon
+        size={13}
+        name='close'
+        color={Colors.primaryText}
+      />
     </TouchableOpacity>
   </SearchBarWrapper>
 )
