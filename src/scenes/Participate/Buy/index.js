@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 
 import {
-  ScrollView,
-  SafeAreaView,
-  ActivityIndicator,
-  Alert
+  Alert,
+  ActivityIndicator
 } from 'react-native'
 
 import { withContext } from '../../../store/context'
@@ -34,6 +32,7 @@ import Client, { ONE_TRX } from '../../../services/client'
 import { signTransaction } from '../../../utils/transactionUtils'
 import { logSentry, DataError } from '../../../utils/sentryUtils'
 import { replaceRoute } from '../../../utils/navigationUtils'
+import KeyboardScreen from '../../../components/KeyboardScreen'
 
 const buyOptions = {
   1: 1,
@@ -149,26 +148,15 @@ class BuyScene extends Component {
     })
   }
 
-  _renderConfirmButtom = () => {
-    const { loading, amountToBuy } = this.state
-
-    if (loading) {
-      return <ActivityIndicator color={'#ffffff'} />
-    }
-
-    return (
-      <ButtonGradient disabled={amountToBuy === 0} onPress={() => this._submit()} text={tl.t('participate.button.confirm')} />
-    )
-  }
-
   _renderPadkeys = () => Object.keys(buyOptions).map((buyKey, index) => {
+    const { loading } = this.state
     const { item } = this.props.navigation.state.params
     const totalPossible = this.state.trxBalance * ONE_TRX / item.price
     const totalRemainingToBuy = this.state.totalRemaining * ONE_TRX / item.price
     const isDisabled = buyOptions[buyKey] > totalRemainingToBuy
 
     if (totalPossible < 10000 && buyOptions[buyKey] >= 10000) return
-    return <Utils.NumKeyWrapper disabled={isDisabled} key={buyKey} flexBasis={25}>
+    return <Utils.NumKeyWrapper disabled={isDisabled || loading} key={buyKey} flexBasis={25}>
       <Utils.NumKey
         disabled={isDisabled}
         onPress={() => this._incrementVoteCount(buyOptions[buyKey])}>
@@ -182,8 +170,8 @@ class BuyScene extends Component {
     const { trxBalance, amountToBuy } = this.state
     const amountToPay = amountToBuy * (item.price / ONE_TRX)
 
+    this.setState({ loading: true })
     try {
-      this.setState({ loading: true })
       if (trxBalance < amountToPay) throw new DataError('INSUFFICIENT_BALANCE')
       if (amountToPay < 1) throw new DataError('INSUFFICIENT_TRX')
 
@@ -235,65 +223,71 @@ class BuyScene extends Component {
   render () {
     const { item } = this.props.navigation.state.params
     const { name, price } = item
-    const { totalRemaining, amountToBuy, notEnoughTrxBalance } = this.state
+    const { totalRemaining, amountToBuy, notEnoughTrxBalance, loading } = this.state
     const amountToPay = (price / ONE_TRX) * amountToBuy
     const tokenPrice = price / ONE_TRX
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
-        <ScrollView style={{ paddingBottom: 10 }}>
-          <BuyContainer>
-            <WhiteBuyText>{tl.t('participate.amountToBuy')}</WhiteBuyText>
-            <VerticalSpacer size={4} />
-            <AmountText>
-              {formatNumber(amountToBuy)}
-            </AmountText>
-            <TrxValueText>({formatNumber(amountToPay, true)} TRX)</TrxValueText>
-            {notEnoughTrxBalance && (
-              <React.Fragment>
-                <VerticalSpacer size={4} />
-                <WhiteBuyText>
-                  {tl.t('participate.warning', { token: name })}
-                </WhiteBuyText>
-                <VerticalSpacer size={4} />
-              </React.Fragment>
-            )}
-            <Utils.Row>
-              <BuyText>{tl.t('balance.title')}:</BuyText>
-              <WhiteBuyText> {formatNumber(totalRemaining)} TRX</WhiteBuyText>
-            </Utils.Row>
-            <VerticalSpacer size={7} />
-            <Utils.Row>
-              <BuyText>{tl.t('participate.pricePerToken')}:</BuyText>
-              <WhiteBuyText> {tokenPrice} TRX</WhiteBuyText>
-            </Utils.Row>
-            <VerticalSpacer size={13} />
-          </BuyContainer>
-          <MarginFixer>
-            <Utils.Row wrap='wrap'>
-              {this._renderPadkeys()}
-            </Utils.Row>
-          </MarginFixer>
-          <VerticalSpacer size={14} />
-          <MarginFixer>
-            <Utils.Row>
-              <OptionBuy
-                title={tl.t('clear')}
-                disabled={amountToBuy === 0}
-                onPress={this._clearVoteCount}
-              />
-              <OptionBuy
-                title={tl.t('allIn')}
-                disabled={totalRemaining <= 0 || totalRemaining < tokenPrice}
-                onPress={this._allinVoteCount}
-              />
-            </Utils.Row>
-          </MarginFixer>
-          <VerticalSpacer size={1} />
-          <BuyContainer>
-            {this._renderConfirmButtom()}
-          </BuyContainer>
-        </ScrollView>
-      </SafeAreaView>
+      <KeyboardScreen>
+        <BuyContainer>
+          <Utils.Row justify='space-around'>
+            <Utils.View align='center' justify='center'>
+              <BuyText>{tl.t('participate.balance')}</BuyText>
+              <VerticalSpacer size={8} />
+              <BuyText white>{formatNumber(totalRemaining)}</BuyText>
+            </Utils.View>
+            <Utils.View align='center' justify='center'>
+              <BuyText>{tl.t('participate.pricePerToken')}</BuyText>
+              <VerticalSpacer size={8} />
+              <BuyText white> {tokenPrice} TRX</BuyText>
+            </Utils.View>
+          </Utils.Row>
+          <VerticalSpacer size={24} />
+          <BuyText white>{tl.t('participate.enterAmountToBuy')}</BuyText>
+          <AmountText>
+            {formatNumber(amountToBuy)}
+          </AmountText>
+          <TrxValueText>({formatNumber(amountToPay, true)} TRX)</TrxValueText>
+          {notEnoughTrxBalance && (
+            <React.Fragment>
+              <VerticalSpacer size={4} />
+              <WhiteBuyText>
+                {tl.t('participate.warning', { token: name })}
+              </WhiteBuyText>
+              <VerticalSpacer size={4} />
+            </React.Fragment>
+          )}
+          <VerticalSpacer size={13} />
+        </BuyContainer>
+        <MarginFixer>
+          <Utils.Row wrap='wrap'>
+            {this._renderPadkeys()}
+          </Utils.Row>
+        </MarginFixer>
+        <VerticalSpacer size={14} />
+        <MarginFixer>
+          <Utils.Row>
+            <OptionBuy
+              title={tl.t('clear')}
+              disabled={amountToBuy === 0 || loading}
+              onPress={this._clearVoteCount}
+            />
+            <OptionBuy
+              title={tl.t('allIn')}
+              disabled={totalRemaining <= 0 || totalRemaining < tokenPrice || loading}
+              onPress={this._allinVoteCount}
+            />
+          </Utils.Row>
+        </MarginFixer>
+        <BuyContainer>
+          {loading
+            ? <ActivityIndicator size='small' color={Colors.primaryText} />
+            : <ButtonGradient
+              disabled={amountToBuy === 0 || loading}
+              onPress={() => this._submit()}
+              text={tl.t('participate.button.confirm')}
+            />}
+        </BuyContainer>
+      </KeyboardScreen>
     )
   }
 }

@@ -61,7 +61,7 @@ class ParticipateHome extends React.Component {
     this._onSearching = debounce(this._onSearching, 250)
     await this._getFeaturedTokensFromStore()
     this._loadData()
-    this._navListener = this.props.navigation.addListener('didFocus', this._softLoadData)
+    this._navListener = this.props.navigation.addListener('didFocus', this._loadData)
   }
 
   _getFeaturedTokensFromStore = async () => {
@@ -84,17 +84,6 @@ class ParticipateHome extends React.Component {
     return verifiedAssets.length ? verifiedAssets : []
   }
 
-  _softLoadData = async () => {
-    try {
-      const assets = await this._updateAssets(0)
-      const verified = this._getVerifiedTokensFromStore()
-      const assetList = this.props.context.tokensVisible ? verified : [...verified, ...assets]
-
-      this.setState({ assetList, currentList: assetList })
-    } catch (error) {
-
-    }
-  }
   _loadData = async () => {
     this.setState({ loading: true })
 

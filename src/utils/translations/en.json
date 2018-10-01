@@ -55,7 +55,6 @@
   "buy": "Buy",
   "filter" : "Filter",
   "txs": "Transactions",
-
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -219,6 +218,7 @@
       "notFound" : "Asset(s) not found"
     },
     "warning": "You don't have enough TRX to buy that many {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "AMOUNT TO BUY",
     "pricePerToken": "PRICE PER TOKEN",
     "tokenDescription": "TOKEN DESCRIPTION",
@@ -237,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview" : "Featured Tokens"
   },
   "pin": {

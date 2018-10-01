@@ -87,11 +87,11 @@ export const MarginFixer = styled.View`
 `
 
 export const BuyText = styled.Text`
-  text-align: left;
+  text-align: center;
   font-size: 11;
-  font-family: 'Rubik-Medium';
-  letter-spacing: 0.6;
-  color: rgb(116, 118, 162);
+  font-family: Rubik-Medium;
+  letter-spacing: 0.7;
+  color: ${props => props.white ? Colors.primaryText : Colors.secondaryText};
 `
 
 export const WhiteBuyText = BuyText.extend`
