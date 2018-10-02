@@ -198,8 +198,8 @@ class Settings extends Component {
 
   _changeTokensVisibility = async (cb) => {
     try {
-      await AsyncStorage.setItem(TOKENS_VISIBLE, `${!this.props.context.tokensVisible}`)
-      this.props.context.setTokensVisible(!this.props.context.tokensVisible)
+      await AsyncStorage.setItem(TOKENS_VISIBLE, `${!this.props.context.verifiedTokensOnly}`)
+      this.props.context.setVerifiedTokensOnly(!this.props.context.verifiedTokensOnly)
       /* eslint-disable*/
       cb(true)
     } catch (error) {
@@ -301,7 +301,7 @@ class Settings extends Component {
                   circleStyle={{ backgroundColor: Colors.orange }}
                   backgroundActive={Colors.yellow}
                   backgroundInactive={Colors.secondaryText}
-                  value={this.props.context.tokensVisible}
+                  value={this.props.context.verifiedTokensOnly}
                   onAsyncPress={(callback) => { this._changeTokensVisibility(callback) }}
                 />
               )

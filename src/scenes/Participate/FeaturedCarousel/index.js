@@ -29,26 +29,24 @@ import { withContext } from '../../../store/context'
 import tl from '../../../utils/i18n'
 
 const screenWidth = Dimensions.get('window').width
-const getFeaturedImage = name => {
-  const defaultImage = require('../../../assets/icon.png')
-  const featuredImages = {
-    'TWX': require('../../../assets/twx.png'),
-    'CyberTron': require('../../../assets/cybertron.jpg'),
-    'LoveHearts': require('../../../assets/lovehearts.jpeg')
-  }
-  return featuredImages[name] || defaultImage
-}
 
 class FeaturedCarousel extends React.Component {
+  _getFeaturedImage = uri => {
+    const defaultImage = require('../../../assets/icon.png')
+    // console.warn('>>>', uri)
+    return uri ? { uri } : defaultImage
+  }
+
   _renderItem = ({ item, index }) => {
-    const { name, issuedPercentage, endTime, price, abbr } = item
+    const { name, issuedPercentage, endTime, price, abbr, coverImage } = item
     return (
       <CarouselCard>
         <View align='center' flex={1} borderRadius={4} borderColor='transparent'>
           <Image
-            source={getFeaturedImage(name)}
-            style={{height: 230}}
-            resizeMode='contain'
+            source={this._getFeaturedImage(coverImage)}
+            style={{height: 200, width: 350}}
+            width='auto'
+            resizeMode='stretch'
           />
         </View>
         <GradientRow>

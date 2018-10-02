@@ -13,7 +13,6 @@ import { ONE_TRX } from '../../services/client'
 import guarantee from '../../assets/guarantee.png'
 import NavigationHeader from '../../components/Navigation/Header'
 import { logSentry } from '../../utils/sentryUtils'
-import { VERIFIED_TOKENS, FEATURED_TOKENS, FIXED_TOKENS } from '../../utils/constants'
 import { withContext } from '../../store/context'
 import {
   View,
@@ -37,6 +36,7 @@ import {
 } from './Elements'
 
 import FeaturedCarousel from './FeaturedCarousel'
+import {getFixedTokens} from '../../services/contentful'
 
 const AMOUNT_TO_FETCH = 30
 
@@ -49,72 +49,99 @@ class ParticipateHome extends React.Component {
     assetList: [],
     currentList: [],
     featuredTokens: [],
+    fixedTokens: ['TRX'],
+    verifiedTokens: [],
     start: 0,
     loading: false,
     searchMode: false,
     searchName: ''
-
   }
 
   async componentDidMount () {
     Answers.logContentView('Tab', 'Participate')
     this._onSearching = debounce(this._onSearching, 250)
-    await this._getFeaturedTokensFromStore()
-    this._loadData()
-    this._navListener = this.props.navigation.addListener('didFocus', this._loadData)
+    this._loadContentful = debounce(this._loadContentful, 1000)
+    this._loadContentful()
+    this._navListener = this.props.navigation.addListener('didFocus', this._loadContentful)
   }
 
-  _getFeaturedTokensFromStore = async () => {
-    const store = await getAssetsStore()
-    const filtered = store.objects('Asset')
-      .map(item => Object.assign({}, item))
-      .filter(item => FEATURED_TOKENS.includes(item.name))
+  _setFeaturedTokensFromStore = async featuredTokens => {
+    const filteredStore = this.assetStoreRef.objects('Asset')
+    const featuredFromStore = featuredTokens
+      .map(feat => {
+        const tk = filteredStore.find(verified => verified.name === feat.name)
+        if (tk) return {...tk, coverImage: feat.image, featured: true, verified: true}
+      })
 
-    if (filtered.length) {
-      this.setState({ featuredTokens: orderAssets(filtered) })
-    } else {
-      return []
-    }
+    this.setState({ featuredTokens: featuredFromStore })
   }
 
-  _getVerifiedTokensFromStore = () => {
+  _getVerifiedTokensFromStore = verifiedTokens => {
     const verified = this.assetStoreRef.objects('Asset')
-    const verifiedAssets = VERIFIED_TOKENS
-      .map(tokenName => verified.find(verified => verified.name === tokenName))
+    const verifiedAssets = verifiedTokens
+      .map(tokenName => {
+        const ve = verified.find(verified => verified.name === tokenName)
+        return {...ve, verified: true}
+      })
     return verifiedAssets.length ? verifiedAssets : []
   }
 
-  _loadData = async () => {
-    this.setState({ loading: true })
-
+  _loadContentful = async () => {
+    this.setState({loading: true, start: 0})
     try {
       this.assetStoreRef = await getAssetsStore()
-      const assets = await this._updateAssets(0)
-      const verified = this._getVerifiedTokensFromStore()
-      const assetList = this.props.context.tokensVisible ? verified : [...verified, ...assets]
+      const { featuredTokens, verifiedTokens } = this.props.context.tokens
+      this._setFeaturedTokensFromStore(featuredTokens)
+      const verifiedList = this._getVerifiedTokensFromStore(verifiedTokens)
+      // if (!this.props.context.verifiedTokensOnly) {
+      //   const unVerifiedList = await this._updateAssets(0)
+      //   const filteredUnVerified = this._filterOrderedAssets(unVerifiedList)
 
-      this.setState({ assetList, currentList: assetList })
-    } catch (e) {
-      this.setState({ error: e.message })
-      logSentry(e, 'Participate - Load Data')
+      //   const completeList = [...verifiedList, ...filteredUnVerified]
+      //   this.setState({
+      //     fixedTokens,
+      //     currentList: completeList,
+      //     asset: unVerifiedList,
+      //     verifiedTokens: verified
+      //   })
+      // } else {
+
+      this.setState({
+        currentList: verifiedList,
+        asset: verifiedList,
+        verifiedTokens: verifiedTokens
+      })
+      // }
+      // const unVerifiedList = await this._updateAssets(0)
+      // const filteredUnVerified = this._filterOrderedAssets(unVerifiedList)
+
+      // const currentList = verifiedTokensOnly ? verifiedList : [...verifiedList, ...filteredUnVerified]
+    } catch (error) {
+      // console.warn('error', error.message)
+      // TO DO - make a error handler
     } finally {
-      this.setState({ loading: false })
+      this.setState({loading: false})
     }
   }
 
   _loadMore = async () => {
-    const { start, assetList, searchMode } = this.state
-    const { tokensVisible } = this.props.context
-    if (searchMode || tokensVisible) return
+    const { start, assetList, searchMode, loading } = this.state
+    const { verifiedTokensOnly } = this.props.context
+    const { verifiedTokens } = this.props.context.tokens
+
+    if (loading || searchMode || verifiedTokensOnly) return
 
     this.setState({ loading: true })
-    const newStart = start + AMOUNT_TO_FETCH
 
     try {
-      const assets = await this._updateAssets(newStart)
-      const updatedAssets = union(assetList, assets)
+      const assets = await this._updateAssets(start, start + AMOUNT_TO_FETCH)
+      const updatedAssets = this._filterOrderedAssets(union(assetList, assets))
+      const newStart = start + AMOUNT_TO_FETCH
 
-      this.setState({ start: newStart, assetList: updatedAssets, currentList: updatedAssets })
+      const verifiedList = this._getVerifiedTokensFromStore(verifiedTokens)
+      const newList = [...verifiedList, ...updatedAssets]
+
+      this.setState({ start: newStart, assetList: updatedAssets, currentList: newList })
     } catch (error) {
       this.setState({ error: error.message })
       logSentry(error, 'Participate - Load more candidates')
@@ -132,34 +159,34 @@ class ParticipateHome extends React.Component {
   _filterOrderedAssets = assets => assets
     .filter(({ issuedPercentage, name, startTime, endTime }) =>
       issuedPercentage < 100 && startTime < Date.now() &&
-    endTime > Date.now() && !FIXED_TOKENS.includes(name))
+    endTime > Date.now() && !this.props.context.tokens.fixedTokens.includes(name))
+    .sort((a, b) => b.issuedPercentage - a.issuedPercentage)
 
   _onSearchPressed = () => {
-    const { searchMode } = this.state
+    const { searchMode, verifiedTokens } = this.state
     this.setState({ searchMode: !searchMode, searchName: '' })
+
     if (searchMode) {
-      const assets = this.assetStoreRef.objects('Asset').slice(0, AMOUNT_TO_FETCH).map(item => Object.assign({}, item))
-      const filteredAssets = this._filterOrderedAssets(assets)
-      const verified = this._getVerifiedTokensFromStore()
-      const currentList = this.props.context.tokensVisible ? verified : [...verified, ...filteredAssets]
-      this.setState({ currentList, start: 0 })
+      const verified = this._getVerifiedTokensFromStore(verifiedTokens)
+      this.setState({ currentList: verified, start: 0 })
     } else {
       this.setState({ currentList: [] })
     }
   }
 
   _onSearching = async name => {
-    const { tokensVisible } = this.props.context
+    const { verifiedTokensOnly } = this.props.context
+    const { fixedTokens } = this.props.context.tokens
     const assetResult = this.assetStoreRef.objects('Asset')
       .filtered('name CONTAINS[c] $0', name)
       .filter(({ issuedPercentage, name, startTime, endTime }) =>
         (issuedPercentage < 100 && startTime < Date.now() && endTime > Date.now()) &&
-        (tokensVisible ? FIXED_TOKENS.includes(name) : true))
+        (verifiedTokensOnly ? fixedTokens.includes(name) : true))
       .map(item => Object.assign({}, item))
 
     this.setState({searchName: name})
 
-    if (assetResult.length || tokensVisible) {
+    if (assetResult.length || verifiedTokensOnly) {
       const searchedList = name ? assetResult : []
       this.setState({ currentList: searchedList })
     } else {
@@ -181,6 +208,9 @@ class ParticipateHome extends React.Component {
 
   _renderFeaturedTokens = () => {
     const { searchMode, featuredTokens, searching, searchName } = this.state
+    console.warn('FeaturedTokens', featuredTokens)
+
+    return null
     const featTokens = featuredTokens.map(token =>
       <React.Fragment key={token.name}>{this._renderCardContent(token)}</React.Fragment>)
 
@@ -291,7 +321,7 @@ class ParticipateHome extends React.Component {
     />
 
   render () {
-    const { currentList, searchName } = this.state
+    const { currentList, searchName, featuredTokens } = this.state
     const orderedBalances = orderAssets(currentList)
     const searchPreview = searchName ? `${tl.t('results')} : ${orderedBalances.length}` : tl.t('participate.searchPreview')
     return (
@@ -307,7 +337,8 @@ class ParticipateHome extends React.Component {
           ListFooterComponent={this._renderLoading}
           ListEmptyComponent={this._renderEmptyAssets}
           ItemSeparatorComponent={this._renderSeparator}
-          data={orderedBalances}
+          data={currentList}
+          extraData={[featuredTokens]}
           renderItem={({ item }) => this._renderCardContent(item)}
           keyExtractor={asset => asset.name}
           scrollEnabled

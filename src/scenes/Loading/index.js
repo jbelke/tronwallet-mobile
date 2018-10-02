@@ -6,17 +6,15 @@ import { StackActions, NavigationActions } from 'react-navigation'
 import * as Utils from '../../components/Utils'
 import { Colors } from '../../components/DesignSystem'
 
-import { updateAssets } from '../../utils/assetsUtils'
 import { getUserSecrets } from '../../utils/secretsUtils'
 import SecretStore from '../../store/secrets'
 import { withContext } from '../../store/context'
-import { USER_STATUS, USER_FILTERED_TOKENS, FIXED_TOKENS } from '../../utils/constants'
+import { USER_STATUS, USER_FILTERED_TOKENS } from '../../utils/constants'
 import LottieView from 'lottie-react-native'
 
 class LoadingScene extends Component {
   componentDidMount () {
     SplashScreen.hide()
-    FIXED_TOKENS.forEach(token => updateAssets(0, 2, token))
     this._setFilteredTokens()
     this._askPin()
   }

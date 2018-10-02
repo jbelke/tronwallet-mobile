@@ -60,8 +60,10 @@ import { ONE_SIGNAL_KEY } from './config'
 import ConfigJson from './package.json'
 import tl from './src/utils/i18n'
 import fontelloConfig from './src/assets/icons/config.json'
+import { updateAssets } from './src/utils/assetsUtils'
 
 import './ReactotronConfig'
+import { getFixedTokens } from './src/services/contentful'
 
 if (!__DEV__) {
   Sentry.config('https://8ffba48a3f30473883ba930c49ab233d@sentry.io/1236809', {
@@ -206,7 +208,7 @@ const AppTabs = createBottomTabNavigator({
     },
     showLabel: false
   },
-  initialRouteName: 'Balance'
+  initialRouteName: 'Participate'
 })
 
 const RootNavigator = createStackNavigator({
@@ -253,7 +255,12 @@ class App extends Component {
     useBiometry: false,
     currency: null,
     secretMode: 'mnemonic',
-    tokensVisible: true
+    verifiedTokensOnly: true,
+    tokens: {
+      featuredTokens: [],
+      fixedTokens: [],
+      verifiedTokens: []
+    }
   }
 
   async componentDidMount () {
@@ -269,7 +276,8 @@ class App extends Component {
     this._setNodes()
     this._loadAskPin()
     this._loadUseBiometry()
-    this._loadTokenVibile()
+    this._loadVerifiedTokenFlag()
+    this._loadFixedTokens()
     const preferedCurrency = await AsyncStorage.getItem(USER_PREFERRED_CURRENCY) || 'TRX'
     this._getPrice(preferedCurrency)
     this.setState({ currency: preferedCurrency })
@@ -424,12 +432,23 @@ class App extends Component {
     }
   }
 
-  _loadTokenVibile = async () => {
+  _loadVerifiedTokenFlag = async () => {
     try {
       const tokenVibility = await AsyncStorage.getItem(TOKENS_VISIBLE)
-      this.setState({ tokensVisible: tokenVibility === 'true' })
+      const verifiedTokensOnly = tokenVibility === null ? true : tokenVibility === 'true'
+      this.setState({verifiedTokensOnly})
     } catch (error) {
-      this.setState({ tokensVisible: false })
+      this.setState({ verifiedTokensOnly: false })
+    }
+  }
+
+  _loadFixedTokens = async () => {
+    try {
+      const {fixedTokens, verified, featured} = await getFixedTokens()
+      this.setState({tokens: {fixedTokens, verifiedTokens: verified, featuredTokens: featured}})
+      fixedTokens.forEach(token => { updateAssets(0, 2, token) })
+    } catch (error) {
+      logSentry(error, 'App - Load Fixed Tokens')
     }
   }
 
@@ -449,7 +468,7 @@ class App extends Component {
 
   _setUseBiometry = (useBiometry) => this.setState({ useBiometry })
 
-  _setTokensVisible = (tokensVisible) => this.setState({ tokensVisible })
+  _setVerifiedTokensOnly = (verifiedTokensOnly) => this.setState({ verifiedTokensOnly })
 
   _setPin = (pin, callback) => {
     this.setState({ pin }, () => {
@@ -501,7 +520,7 @@ class App extends Component {
       setAskPin: this._setAskPin,
       setUseBiometry: this._setUseBiometry,
       setSecretMode: this._setSecretMode,
-      setTokensVisible: this._setTokensVisible
+      setVerifiedTokensOnly: this._setVerifiedTokensOnly
     }
 
     return (
