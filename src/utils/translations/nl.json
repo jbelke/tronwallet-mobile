@@ -367,7 +367,7 @@
     },
     "reset": {
       "title": "Reset portemonnee",
-      "warning": "Waarschuwing: Deze active wist alle opgeslagen data inclusief je 12 geheime woorden. Als je je geheim niet hebt opgeslagen, doe dit nu voordat je doorgaat.",
+      "warning": "Waarschuwing: deze actie wist alle opgeslagen gegevens, inclusief uw 12 geheime woorden. Als u uw geheim niet hebt opgeslagen, moet u dit doen voordat u doorgaat.",
       "button": "OK, begrijp ik het"
     },
     "pin": {
