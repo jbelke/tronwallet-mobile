@@ -51,9 +51,9 @@
   "allIn": "Все в",
   "skip": "Пропустити",
   "privateKey": "Приватний ключ",
-  "results": "Results",
+  "results": "Результати",
   "filter": "Filter",
-  "txs": "Transactions",
+  "txs": "Транзакції",
   "balance": {
     "title": "СКИДКИ",
     "error": {
@@ -100,7 +100,7 @@
     "button": {
       "create": "CREATE WALLET",
       "restore": "ВІДПРАВИТИ ВАЛЕТ",
-      "import": "IMPORT WALLET"
+      "import": "ІМПОРТУВАТИ ГАМАНЕЦЬ"
     },
     "swiper": {
       "welcome": {
