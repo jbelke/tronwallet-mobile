@@ -52,7 +52,7 @@
   "skip": "Пропустити",
   "privateKey": "Приватний ключ",
   "results": "Результати",
-  "filter": "Filter",
+  "filter": "Фільтрувати",
   "txs": "Транзакції",
   "balance": {
     "title": "СКИДКИ",
@@ -104,29 +104,29 @@
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "Ласкаво просимо в \nTRONWALLET",
+        "body": "Найбільш надійний гаманець для TRON"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "БЕЗПЕКА",
+        "body": "Конфіденційність та безпека для \n ваших транзакцій"
       },
       "votes": {
-        "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "title": "ГОЛОСИ",
+        "body": "Заморожування та голосування за супер \n представників"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "title": "АДРЕСНА КНИГА",
+        "body": "Збережіть адреси та контакти друзів."
       },
       "multipleaccounts": {
         "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "body": "Ви можете керувати декількома обліковими записами \n у вашому гаманці"
       }
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "АДРЕСНА КНИГА",
     "shared": {
       "add": "ДОДАТИ",
       "edit": "РЕДАГУВАТИ",
@@ -134,7 +134,7 @@
       "send": "НАДІСЛАТИ"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "КОНТАКТИ",
       "delete": {
         "title": "Видалити контакт",
         "message": "Ви дійсно хочете видалити цей контакт?",
@@ -214,7 +214,7 @@
         "title": "Вам потрібно купити принаймні один TRX вартості {{token}}.",
         "message": "Наразі ви купуєте лише {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Активи не знайдені"
     },
     "warning": "Вам не вистачає TRX, щоб придбати багато {{token}}",
     "amountToBuy": "КУПИТИ КУПИТИ",
@@ -235,14 +235,14 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "БЛОК",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "Рекомендовані токени"
   },
   "pin": {
     "title": "ПЕРЕВІРКА БЕЗПЕКИ",
     "enter": "Введіть PIN-код",
     "new": "Введіть новий PIN-код",
     "reenter": "Повторно введіть PIN-код",
-    "biometrics": "Biometric Check"
+    "biometrics": "Біометрична перевірка"
   },
   "receive": {
     "title": "ОТРИМАЙТЕ",
@@ -284,8 +284,8 @@
         "newSeed": "ОЧИСТИТЬ НОВИЙ СЕМЕН",
         "later": "Підтвердьте пізніше"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "Ви завжди можете отримати доступ до ваших слів, перейшовши до резервної копії в налаштуваннях програми      ",
+      "seedExplanation": "Початковий ключ - людино орієнтоване представлення вашого гаманця. Ці слова в точно такому порядку можуть бути використані для повторного створення вашого гаманця."
     },
     "restore": {
       "title": "ВІДПРАВИТИ ВАЛЕТ",
@@ -409,7 +409,7 @@
     },
     "partners": "ПАРТНЕРИ",
     "askPin": "Завжди запитуйте PIN-код",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Активувати біометрію"
   },
   "submitTransaction": {
     "title": "ДОКУМЕНТИ РЕАЛІЗАЦІЇ",
@@ -422,7 +422,7 @@
       "submit": "ПІДПИСАТИ ОПЕРАЦІЮ"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "Не вдалося завантажити дані транзакції"
     },
     "disconnectedMessage": "Здається, що ви відключені. Підключіться до Інтернету, перш ніж продовжувати транзакцію.",
     "dic": {
@@ -492,7 +492,7 @@
     "totalVotes": "ВСІ ГОЛОСИ",
     "votesAvailable": "Голосованість доступна",
     "search": "Пошук",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "Пропозиції - Найбільш вибрані",
     "error": "На жаль, щось завантажено неправильно. Спробуйте перезавантажити"
   },
   "scanPayment": {
@@ -538,15 +538,15 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "Оновлення інформації токену. Будь ласка, зачекайте кілька секунд.",
+    "notAvailable": "Інформація про токен недоступна"
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Перевірте свою біометрию"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Доступ заборонено"
     }
   }
 }
