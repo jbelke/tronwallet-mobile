@@ -2,7 +2,6 @@ import { AsyncStorage } from 'react-native'
 
 import getBalanceStore from '../store/balance'
 import getTransactionStore from '../store/transactions'
-import getAssetsStore from '../store/assets'
 import getCandidatesStore from '../store/candidates'
 import { USER_STATUS, USER_FILTERED_TOKENS, VERIFIED_TOKENS } from './constants'
 
@@ -34,17 +33,9 @@ export const buildFeaturedFilterString = (comparison = '==', logic = 'OR') =>
 
 // This is used for testnet mainly
 export const resetListsData = async () => {
-  const [assetsStore, candidatesStore] = await Promise.all([
-    getAssetsStore(),
-    getCandidatesStore()
-  ])
-  const assetsList = assetsStore.objects('Asset').filtered(buildFeaturedFilterString('!=', 'AND'))
+  const candidatesStore = await getCandidatesStore()
   const candidateList = candidatesStore.objects('Candidate')
-
-  await Promise.all([
-    assetsStore.write(() => assetsStore.delete(assetsList)),
-    candidatesStore.write(() => candidatesStore.delete(candidateList))
-  ])
+  await candidatesStore.write(() => candidatesStore.delete(candidateList))
 }
 
 export const hardResetWalletData = async (pin) => (
