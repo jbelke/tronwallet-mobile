@@ -15,10 +15,11 @@ import * as Utils from '../../components/Utils'
 import tl from '../../utils/i18n'
 import { formatNumber } from '../../utils/numberUtils'
 import { orderBalances } from '../../utils/balanceUtils'
-import { getCustomName, updateAssets } from '../../utils/assetsUtils'
-import getAssetsStore from '../../store/assets'
+import { getCustomName } from '../../utils/assetsUtils'
 import { USER_FILTERED_TOKENS } from '../../utils/constants'
 import { logSentry } from '../../utils/sentryUtils'
+import { withContext } from '../../store/context'
+import { queryToken } from '../../services/contentful'
 
 class WalletBalances extends Component {
   state = {
@@ -38,16 +39,14 @@ class WalletBalances extends Component {
   }
 
   _navigateToToken = async ({ name: tokenName }) => {
+    this.setState({modalTokenVisible: true, errorToken: null})
     try {
-      const assetStore = await getAssetsStore()
-      const assetData = assetStore
-        .objects('Asset')
-        .filtered('name = $0', tokenName)[0]
-
-      if (assetData) {
-        this.props.navigation.navigate('TokenDetailScene', { item: assetData })
+      const { results } = await queryToken(false, tokenName)
+      if (results.length) {
+        this.setState({modalTokenVisible: false},
+          () => this.props.navigation.navigate('TokenDetailScene', { item: results[0].fields }))
       } else {
-        this.setState({modalTokenVisible: true, errorToken: null}, () => this._fetchAndNavigate(tokenName))
+        this.setState({errorToken: tl.t('balanceToken.notAvailable')})
       }
     } catch (error) {
       logSentry(error, 'Navigate to Token Info')
@@ -55,32 +54,17 @@ class WalletBalances extends Component {
     }
   }
 
-  _fetchAndNavigate = async (tokenName) => {
-    try {
-      let newAssetData = await updateAssets(0, 2, tokenName)
-      newAssetData = newAssetData.find(asset => asset.name === tokenName)
-      if (newAssetData && this.state.modalTokenVisible) {
-        this.setState({modalTokenVisible: false, errorToken: null})
-        this.props.navigation.navigate('TokenDetailScene', { item: newAssetData })
-      } else {
-        this.setState({errorToken: tl.t('balanceToken.notAvailable')})
-      }
-    } catch (error) {
-      logSentry(error, 'Error fetching Token Data')
-      this.setState({errorToken: tl.t('balanceToken.notAvailable')})
-    }
-  }
-
   _getOrderedBalances = () => {
     const { currentUserTokens } = this.state
     const { balances } = this.props
+    const { fixedTokens } = this.props.context
     if (currentUserTokens) {
       const parsedTokens = JSON.parse(currentUserTokens)
       const filteredBalances = balances.filter(asset => parsedTokens.findIndex(name => name === asset.name) === -1)
-      return orderBalances(filteredBalances)
+      return orderBalances(filteredBalances, fixedTokens)
     }
     if (balances.length) {
-      return orderBalances(balances)
+      return orderBalances(balances, fixedTokens)
     }
     return []
   }
@@ -177,4 +161,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default withNavigation(WalletBalances)
+export default withContext(withNavigation(WalletBalances))

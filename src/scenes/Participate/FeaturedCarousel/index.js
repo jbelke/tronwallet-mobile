@@ -33,19 +33,17 @@ const screenWidth = Dimensions.get('window').width
 class FeaturedCarousel extends React.Component {
   _getFeaturedImage = uri => {
     const defaultImage = require('../../../assets/icon.png')
-    // console.warn('>>>', uri)
     return uri ? { uri } : defaultImage
   }
 
   _renderItem = ({ item, index }) => {
-    const { name, issuedPercentage, endTime, price, abbr, coverImage } = item
+    const { name, issuedPercentage, endTime, price, abbr, image } = item
     return (
       <CarouselCard>
         <View align='center' flex={1} borderRadius={4} borderColor='transparent'>
           <Image
-            source={this._getFeaturedImage(coverImage)}
-            style={{height: 200, width: 350}}
-            width='auto'
+            source={this._getFeaturedImage(image)}
+            style={{height: 200, width: screenWidth * 0.9}}
             resizeMode='stretch'
           />
         </View>

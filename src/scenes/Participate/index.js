@@ -1,14 +1,15 @@
 import React from 'react'
 import { Answers } from 'react-native-fabric'
-import {Image, FlatList, ActivityIndicator, Platform} from 'react-native'
+import {Image, FlatList, ActivityIndicator, Platform, RefreshControl} from 'react-native'
 import ProgressBar from 'react-native-progress/Bar'
 import moment from 'moment'
-import { debounce, union } from 'lodash'
+import debounce from 'lodash/debounce'
+import union from 'lodash/union'
+import clamp from 'lodash/clamp'
 
 import tl from '../../utils/i18n'
-import getAssetsStore from '../../store/assets'
 import { Colors } from '../../components/DesignSystem'
-import { orderAssets, updateAssets, getCustomName } from '../../utils/assetsUtils'
+import { getCustomName } from '../../utils/assetsUtils'
 import { ONE_TRX } from '../../services/client'
 import guarantee from '../../assets/guarantee.png'
 import NavigationHeader from '../../components/Navigation/Header'
@@ -36,9 +37,8 @@ import {
 } from './Elements'
 
 import FeaturedCarousel from './FeaturedCarousel'
-import {getFixedTokens} from '../../services/contentful'
-
-const AMOUNT_TO_FETCH = 30
+import { BATCH_NUMBER, getTokens, queryToken } from '../../services/contentful'
+import LoadingScene from '../../components/LoadingScene'
 
 class ParticipateHome extends React.Component {
   static navigationOptions = () => {
@@ -49,145 +49,89 @@ class ParticipateHome extends React.Component {
     assetList: [],
     currentList: [],
     featuredTokens: [],
-    fixedTokens: ['TRX'],
-    verifiedTokens: [],
     start: 0,
-    loading: false,
+    loading: true,
+    refreshing: false,
+    loadingMore: false,
     searchMode: false,
-    searchName: ''
+    searchName: '',
+    totalTokens: 0,
+    error: null
   }
 
   async componentDidMount () {
     Answers.logContentView('Tab', 'Participate')
     this._onSearching = debounce(this._onSearching, 250)
-    this._loadContentful = debounce(this._loadContentful, 1000)
-    this._loadContentful()
-    this._navListener = this.props.navigation.addListener('didFocus', this._loadContentful)
+    this._loadData()
+    this._navListener = this.props.navigation.addListener('didFocus', this._loadData)
   }
 
-  _setFeaturedTokensFromStore = async featuredTokens => {
-    const filteredStore = this.assetStoreRef.objects('Asset')
-    const featuredFromStore = featuredTokens
-      .map(feat => {
-        const tk = filteredStore.find(verified => verified.name === feat.name)
-        if (tk) return {...tk, coverImage: feat.image, featured: true, verified: true}
-      })
-
-    this.setState({ featuredTokens: featuredFromStore })
-  }
-
-  _getVerifiedTokensFromStore = verifiedTokens => {
-    const verified = this.assetStoreRef.objects('Asset')
-    const verifiedAssets = verifiedTokens
-      .map(tokenName => {
-        const ve = verified.find(verified => verified.name === tokenName)
-        return {...ve, verified: true}
-      })
-    return verifiedAssets.length ? verifiedAssets : []
-  }
-
-  _loadContentful = async () => {
-    this.setState({loading: true, start: 0})
-    try {
-      this.assetStoreRef = await getAssetsStore()
-      const { featuredTokens, verifiedTokens } = this.props.context.tokens
-      this._setFeaturedTokensFromStore(featuredTokens)
-      const verifiedList = this._getVerifiedTokensFromStore(verifiedTokens)
-      // if (!this.props.context.verifiedTokensOnly) {
-      //   const unVerifiedList = await this._updateAssets(0)
-      //   const filteredUnVerified = this._filterOrderedAssets(unVerifiedList)
-
-      //   const completeList = [...verifiedList, ...filteredUnVerified]
-      //   this.setState({
-      //     fixedTokens,
-      //     currentList: completeList,
-      //     asset: unVerifiedList,
-      //     verifiedTokens: verified
-      //   })
-      // } else {
-
-      this.setState({
-        currentList: verifiedList,
-        asset: verifiedList,
-        verifiedTokens: verifiedTokens
-      })
-      // }
-      // const unVerifiedList = await this._updateAssets(0)
-      // const filteredUnVerified = this._filterOrderedAssets(unVerifiedList)
-
-      // const currentList = verifiedTokensOnly ? verifiedList : [...verifiedList, ...filteredUnVerified]
-    } catch (error) {
-      // console.warn('error', error.message)
-      // TO DO - make a error handler
-    } finally {
-      this.setState({loading: false})
-    }
-  }
-
-  _loadMore = async () => {
-    const { start, assetList, searchMode, loading } = this.state
+  _loadData = async () => {
+    this.setState({ start: 0 })
     const { verifiedTokensOnly } = this.props.context
-    const { verifiedTokens } = this.props.context.tokens
-
-    if (loading || searchMode || verifiedTokensOnly) return
-
-    this.setState({ loading: true })
-
     try {
-      const assets = await this._updateAssets(start, start + AMOUNT_TO_FETCH)
-      const updatedAssets = this._filterOrderedAssets(union(assetList, assets))
-      const newStart = start + AMOUNT_TO_FETCH
-
-      const verifiedList = this._getVerifiedTokensFromStore(verifiedTokens)
-      const newList = [...verifiedList, ...updatedAssets]
-
-      this.setState({ start: newStart, assetList: updatedAssets, currentList: newList })
+      const {assets, featured, totalTokens} = await getTokens(verifiedTokensOnly)
+      this.setState({totalTokens, assetList: assets, featuredTokens: featured, currentList: assets})
     } catch (error) {
+      logSentry(error, 'Initial load participate')
       this.setState({ error: error.message })
-      logSentry(error, 'Participate - Load more candidates')
     } finally {
       this.setState({ loading: false })
     }
   }
 
-  _updateAssets = async (start, end = AMOUNT_TO_FETCH, name) => {
-    const assets = await updateAssets(start, end, name)
-    const filteredAssets = this._filterOrderedAssets(assets)
-    return filteredAssets
+  _loadMore = async () => {
+    const { start, assetList, searchMode, loading, totalTokens } = this.state
+    const { verifiedTokensOnly } = this.props.context
+    const newStart = clamp(start + BATCH_NUMBER, totalTokens)
+
+    if (loading || searchMode || newStart === totalTokens) return
+
+    this.setState({ loadingMore: true })
+    try {
+      const {assets} = await getTokens(verifiedTokensOnly, newStart)
+      const updatedAssets = union(assetList, assets)
+
+      this.setState({ start: newStart, assetList: updatedAssets, currentList: updatedAssets })
+    } catch (error) {
+      this.setState({ error: error.message })
+      logSentry(error, 'Participate - Load more candidates')
+    } finally {
+      this.setState({ loadingMore: false })
+    }
+  }
+
+  _refreshData = async () => {
+    this.setState({refreshing: true, error: null})
+    await this._loadData()
+    this.setState({refreshing: false, error: null})
   }
 
   _filterOrderedAssets = assets => assets
     .filter(({ issuedPercentage, name, startTime, endTime }) =>
       issuedPercentage < 100 && startTime < Date.now() &&
-    endTime > Date.now() && !this.props.context.tokens.fixedTokens.includes(name))
-    .sort((a, b) => b.issuedPercentage - a.issuedPercentage)
+    endTime > Date.now())
 
   _onSearchPressed = () => {
-    const { searchMode, verifiedTokens } = this.state
+    const { searchMode, assetList } = this.state
     this.setState({ searchMode: !searchMode, searchName: '' })
 
     if (searchMode) {
-      const verified = this._getVerifiedTokensFromStore(verifiedTokens)
-      this.setState({ currentList: verified, start: 0 })
+      this.setState({ currentList: assetList }) // TODO <- verify this start : 0
     } else {
       this.setState({ currentList: [] })
     }
   }
 
   _onSearching = async name => {
-    const { verifiedTokensOnly } = this.props.context
-    const { fixedTokens } = this.props.context.tokens
-    const assetResult = this.assetStoreRef.objects('Asset')
-      .filtered('name CONTAINS[c] $0', name)
-      .filter(({ issuedPercentage, name, startTime, endTime }) =>
-        (issuedPercentage < 100 && startTime < Date.now() && endTime > Date.now()) &&
-        (verifiedTokensOnly ? fixedTokens.includes(name) : true))
-      .map(item => Object.assign({}, item))
+    const { assetList, featuredTokens } = this.state
+
+    const regx = new RegExp(name.toUpperCase(), 'i')
+    const resultList = [...featuredTokens, ...assetList].filter(ast => regx.test(ast.name.toUpperCase()))
 
     this.setState({searchName: name})
-
-    if (assetResult.length || verifiedTokensOnly) {
-      const searchedList = name ? assetResult : []
+    if (resultList.length) {
+      const searchedList = name ? resultList : []
       this.setState({ currentList: searchedList })
     } else {
       this._searchFromApi(name)
@@ -195,10 +139,11 @@ class ParticipateHome extends React.Component {
   }
 
   _searchFromApi = async name => {
+    const { verifiedTokensOnly } = this.props.context
     this.setState({searching: true})
     try {
-      const assetFromApi = await updateAssets(0, 2, name)
-      this.setState({ currentList: assetFromApi })
+      const { results } = await queryToken(verifiedTokensOnly, name)
+      this.setState({ currentList: results })
     } catch (error) {
       logSentry(error, 'Search Participate Error')
     } finally {
@@ -208,9 +153,6 @@ class ParticipateHome extends React.Component {
 
   _renderFeaturedTokens = () => {
     const { searchMode, featuredTokens, searching, searchName } = this.state
-    console.warn('FeaturedTokens', featuredTokens)
-
-    return null
     const featTokens = featuredTokens.map(token =>
       <React.Fragment key={token.name}>{this._renderCardContent(token)}</React.Fragment>)
 
@@ -240,12 +182,12 @@ class ParticipateHome extends React.Component {
   }
 
   _renderCardContent = asset => {
-    const { name, abbr, price, issuedPercentage, endTime, verified } = asset
+    const { name, abbr, price, issuedPercentage, endTime, isVerified } = asset
     return <Card>
       <TokenLabel label={abbr.substr(0, 3).toUpperCase()} />
       <HorizontalSpacer size={24} />
       <View flex={1} justify='space-between'>
-        {verified ? (
+        {isVerified ? (
           <Row align='center'>
             <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
             <HorizontalSpacer size={4} />
@@ -283,8 +225,8 @@ class ParticipateHome extends React.Component {
   }
 
   _renderLoading = () => {
-    const { loading } = this.state
-    if (loading) {
+    const { loadingMore } = this.state
+    if (loadingMore) {
       return (
         <React.Fragment>
           <ActivityIndicator size='small' color={Colors.primaryText} />
@@ -296,8 +238,11 @@ class ParticipateHome extends React.Component {
   }
 
   _renderEmptyAssets = () => {
-    const { loading, searchMode, searching, searchName, currentList } = this.state
-    if (searchMode && !loading && !!searchName & !searching && !currentList.length) {
+    const { loading, searchMode, searching, searchName, currentList, error } = this.state
+
+    if (loading) return <LoadingScene />
+
+    if ((searchMode && !loading && !!searchName & !searching && !currentList.length) || error) {
       return (
         <View flex={1} align='center' justify='center' padding={20}>
           <Image
@@ -321,9 +266,8 @@ class ParticipateHome extends React.Component {
     />
 
   render () {
-    const { currentList, searchName, featuredTokens } = this.state
-    const orderedBalances = orderAssets(currentList)
-    const searchPreview = searchName ? `${tl.t('results')} : ${orderedBalances.length}` : tl.t('participate.searchPreview')
+    const { refreshing, currentList, searchName, featuredTokens } = this.state
+    const searchPreview = searchName ? `${tl.t('results')} : ${currentList.length}` : tl.t('participate.searchPreview')
     return (
       <Container>
         <NavigationHeader
@@ -337,13 +281,17 @@ class ParticipateHome extends React.Component {
           ListFooterComponent={this._renderLoading}
           ListEmptyComponent={this._renderEmptyAssets}
           ItemSeparatorComponent={this._renderSeparator}
+          refreshControl={<RefreshControl
+            refreshing={refreshing}
+            onRefresh={this._refreshData}
+          />}
           data={currentList}
           extraData={[featuredTokens]}
           renderItem={({ item }) => this._renderCardContent(item)}
           keyExtractor={asset => asset.name}
           scrollEnabled
           removeClippedSubviews={Platform.OS === 'android'}
-          maxToRenderPerBatch={AMOUNT_TO_FETCH}
+          maxToRenderPerBatch={BATCH_NUMBER}
           onEndReached={this._loadMore}
           onEndReachedThreshold={0.5}
         />

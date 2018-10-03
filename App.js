@@ -60,10 +60,9 @@ import { ONE_SIGNAL_KEY } from './config'
 import ConfigJson from './package.json'
 import tl from './src/utils/i18n'
 import fontelloConfig from './src/assets/icons/config.json'
-import { updateAssets } from './src/utils/assetsUtils'
+import { getFixedTokens } from './src/services/contentful'
 
 import './ReactotronConfig'
-import { getFixedTokens } from './src/services/contentful'
 
 if (!__DEV__) {
   Sentry.config('https://8ffba48a3f30473883ba930c49ab233d@sentry.io/1236809', {
@@ -256,11 +255,7 @@ class App extends Component {
     currency: null,
     secretMode: 'mnemonic',
     verifiedTokensOnly: true,
-    tokens: {
-      featuredTokens: [],
-      fixedTokens: [],
-      verifiedTokens: []
-    }
+    fixedTokens: []
   }
 
   async componentDidMount () {
@@ -444,10 +439,10 @@ class App extends Component {
 
   _loadFixedTokens = async () => {
     try {
-      const {fixedTokens, verified, featured} = await getFixedTokens()
-      this.setState({tokens: {fixedTokens, verifiedTokens: verified, featuredTokens: featured}})
-      fixedTokens.forEach(token => { updateAssets(0, 2, token) })
+      const fixedTokens = await getFixedTokens()
+      this.setState({fixedTokens})
     } catch (error) {
+      this.setState({fixedTokens: ['TRX', 'TWX']})
       logSentry(error, 'App - Load Fixed Tokens')
     }
   }

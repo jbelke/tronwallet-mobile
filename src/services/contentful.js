@@ -1,26 +1,63 @@
-const { createClient } = require('contentful/dist/contentful.browser.min.js')
+import { createClient } from 'contentful/dist/contentful.browser.min.js'
+import { CONTENTFUL_TOKEN, CONTENTFUL_SPACE } from '../../config.js'
 
-const contentfulClient = createClient({
-  accessToken: '1fc14b33307ef4cdcb67042053430313b293e13816b28ca488802478df7e1e0f',
-  space: 'u26tmkqoc2fn'
-})
+const contentfulClient = createClient({accessToken: CONTENTFUL_TOKEN, space: CONTENTFUL_SPACE})
 
-export const getFixedTokens = async () => {
-  const { items: featuredTokens } = await contentfulClient.getEntries({
-    content_type: 'asset',
-    order: '-fields.isFeatured,fields.position',
-    select: 'fields.name,fields.isFeatured,fields.position,fields.featuredCover'
-  })
+const defaultQuery = {
+  content_type: 'asset',
+  order: '-fields.isFeatured,-fields.isVerified,fields.position,-fields.issuedPercentage',
+  'fields.issuedPercentage[lt]': 100,
+  'fields.startTime[lt]': Date.now(),
+  'fields.endTime[gte]': Date.now()
+}
+
+export const BATCH_NUMBER = 30
+
+export const getTokens = async (verifiedOnly = false, start = 0) => {
+  const queryEntry = {
+    ...defaultQuery,
+    skip: start,
+    limit: BATCH_NUMBER
+  }
+
+  if (verifiedOnly) queryEntry['fields.isVerified'] = true
+
+  const { total, items: featuredTokens } = await contentfulClient.getEntries(queryEntry)
   const featured = []
-  const featuredRef = []
-  const verified = []
-  featuredTokens.map(({fields}) => {
-    if (fields.isFeatured) {
-      featuredRef.push(fields.name)
-      featured.push({name: fields.name, image: `https:${fields.featuredCover.fields.file.url}`})
+  const assets = []
+
+  featuredTokens.map(({fields: token}) => {
+    if (token.isFeatured) {
+      const image = token.featuredCover ? `https:${token.featuredCover.fields.file.url}` : null
+      featured.push({...token, image})
     } else {
-      verified.push(fields.name)
+      assets.push(token)
     }
   })
-  return {fixedTokens: [...featuredRef, ...verified], featured, verified}
+  return {featured, assets, totalTokens: total}
+}
+
+export const queryToken = async (verifiedOnly = false, name) => {
+  const queryEntry = {
+    ...defaultQuery,
+    'fields.name[match]': name
+  }
+  if (verifiedOnly) queryEntry['fields.isVerified'] = true
+
+  const { total, items: results } = await contentfulClient.getEntries(queryEntry)
+
+  return { total, results }
+}
+
+export const getFixedTokens = async () => {
+  const queryEntry = {
+    content_type: 'asset',
+    order: '-fields.isFeatured,fields.position',
+    select: 'fields.name',
+    'fields.isVerified': true
+  }
+
+  const { items: featuredTokens } = await contentfulClient.getEntries(queryEntry)
+  const fixedNames = featuredTokens.map(({fields: token}) => token.name)
+  return ['TRX', ...fixedNames]
 }

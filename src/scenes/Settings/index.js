@@ -33,8 +33,7 @@ import { SectionTitle, MultiSelectColors, MultiSelectStyles } from './elements'
 import AccountRecover from './RecoverAccount'
 // Utils
 import getBalanceStore from '../../store/balance'
-import { orderAssets } from '../../utils/assetsUtils'
-import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, FIXED_TOKENS, ALWAYS_ASK_PIN, USE_BIOMETRY, ENCRYPTED_PIN, TOKENS_VISIBLE } from '../../utils/constants'
+import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, ALWAYS_ASK_PIN, USE_BIOMETRY, ENCRYPTED_PIN, TOKENS_VISIBLE } from '../../utils/constants'
 import tl, { LANGUAGES } from '../../utils/i18n'
 import fontelloConfig from '../../assets/icons/config.json'
 import { withContext } from '../../store/context'
@@ -104,17 +103,18 @@ class Settings extends Component {
 
   _getSelectedTokens = async () => {
     try {
+      const { fixedTokens } = this.props.context
       const store = await getBalanceStore()
       const tokens = store.objects('Balance')
         .filtered('TRUEPREDICATE DISTINCT(name)')
-        .filter(({ name }) => FIXED_TOKENS.findIndex(token => token === name) === -1)
+        .filter(({ name }) => fixedTokens.findIndex(token => token === name) === -1)
         .map(({ name }) => ({ id: name, name }))
 
       const filteredTokens = await AsyncStorage.getItem(USER_FILTERED_TOKENS)
       const selectedTokens = filteredTokens ? JSON.parse(filteredTokens) : []
 
       this.setState({
-        userTokens: orderAssets(tokens),
+        userTokens: tokens,
         userSelectedTokens: selectedTokens,
         currentSelectedTokens: selectedTokens
       })
