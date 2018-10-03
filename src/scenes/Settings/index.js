@@ -103,11 +103,10 @@ class Settings extends Component {
 
   _getSelectedTokens = async () => {
     try {
-      const { fixedTokens } = this.props.context
       const store = await getBalanceStore()
       const tokens = store.objects('Balance')
         .filtered('TRUEPREDICATE DISTINCT(name)')
-        .filter(({ name }) => fixedTokens.findIndex(token => token === name) === -1)
+        .filter(({ name }) => name !== 'TRX')
         .map(({ name }) => ({ id: name, name }))
 
       const filteredTokens = await AsyncStorage.getItem(USER_FILTERED_TOKENS)

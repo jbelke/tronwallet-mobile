@@ -207,7 +207,7 @@ const AppTabs = createBottomTabNavigator({
     },
     showLabel: false
   },
-  initialRouteName: 'Participate'
+  initialRouteName: 'Balance'
 })
 
 const RootNavigator = createStackNavigator({
