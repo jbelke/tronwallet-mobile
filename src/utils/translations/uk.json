@@ -211,12 +211,12 @@
     "error": {
       "insufficientBalance": "Не вистачає коштів (TRX) для участі.",
       "insufficientTrx": {
-        "title": "Вам потрібно купити принаймні один TRX вартості {{token}}.",
+        "title": "Вам потрібно купити принаймні один TRX за ціною {{token}}.",
         "message": "Наразі ви купуєте лише {{amount}}."
       },
       "notFound": "Активи не знайдені"
     },
-    "warning": "Вам не вистачає TRX, щоб придбати багато {{token}}",
+    "warning": "Вам не вистачає TRX, щоб придбати так багато {{token}}",
     "amountToBuy": "КУПИТИ КУПИТИ",
     "pricePerToken": "ЦІНА НА ОДИН",
     "tokenDescription": "TOKEN DESCRIPTION",
