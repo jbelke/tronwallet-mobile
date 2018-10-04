@@ -13,14 +13,7 @@ import { ONE_TRX } from '../../../services/client'
 import tl from '../../../utils/i18n'
 
 class TokenInfo extends PureComponent {
-  static navigationOptions = ({ navigation }) => ({
-    header: (
-      <NavigationHeader
-        title={tl.t('participate.tokenInfo')}
-        onBack={() => navigation.goBack()}
-      />
-    )
-  })
+  static navigationOptions = () => ({header: null})
 
   render () {
     const { item } = this.props.navigation.state.params
@@ -39,6 +32,10 @@ class TokenInfo extends PureComponent {
     } = item
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
+        <NavigationHeader
+          title={tl.t('participate.tokenInfo')}
+          onBack={() => this.props.navigation.goBack()}
+        />
         <ScrollView>
           <Utils.Content paddingVertical='small' vertical>
             <Utils.View align='center'>

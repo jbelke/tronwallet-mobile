@@ -27,31 +27,53 @@ import {
 import { ONE_TRX } from '../../../services/client'
 import { withContext } from '../../../store/context'
 import tl from '../../../utils/i18n'
+import FontelloIcon from '../../../components/FontelloIcon'
+import { getCustomName } from '../../../utils/assetsUtils'
 
 const screenWidth = Dimensions.get('window').width
 
 class FeaturedCarousel extends React.Component {
   _getFeaturedImage = uri => {
-    const defaultImage = require('../../../assets/icon.png')
-    return uri ? { uri } : defaultImage
+    // const defaultImage = require('../../../assets/icon.png')
+    // return uri ? { uri } : defaultImage
+
+    return uri
+      ? <Image
+        source={{uri}}
+        style={{height: 200, width: screenWidth * 0.9}}
+        resizeMode='stretch'
+      />
+      : <Image
+        source={require('../../../assets/icon.png')}
+        style={{height: 200, width: screenWidth * 0.9}}
+        resizeMode='contain'
+      />
   }
 
   _renderItem = ({ item, index }) => {
-    const { name, issuedPercentage, endTime, price, abbr, image } = item
+    const { name, issuedPercentage, endTime, price, abbr, image, isVerified, isFeatured } = item
     return (
       <CarouselCard>
         <View align='center' flex={1} borderRadius={4} borderColor='transparent'>
-          <Image
-            source={this._getFeaturedImage(image)}
-            style={{height: 200, width: screenWidth * 0.9}}
-            resizeMode='stretch'
-          />
+          {this._getFeaturedImage(image)}
         </View>
         <GradientRow>
           <WhiteLabelText label={abbr} />
           <HorizontalSpacer size={14} />
           <View flex={1} justify='space-between'>
-            <TokenName>{name}</TokenName>
+            {isVerified ? (
+              <Row align='center'>
+                <TokenName>{getCustomName(name)}</TokenName>
+                <HorizontalSpacer size={4} />
+                <FontelloIcon
+                  name='guarantee'
+                  style={{ height: 14, width: 14 }}
+                  color='white'
+                />
+              </Row>
+            ) : (
+              <TokenName>{name}</TokenName>
+            )}
             <View>
               <ProgressBar
                 progress={Math.round(issuedPercentage) / 100}
@@ -77,9 +99,9 @@ class FeaturedCarousel extends React.Component {
             </BuyButton>
           </View>
         </GradientRow>
-        <Featured>
+        {isFeatured && <Featured>
           <FeaturedText align='center'>{tl.t('participate.featured')}</FeaturedText>
-        </Featured>
+        </Featured>}
       </CarouselCard>
     )
   }
@@ -95,8 +117,6 @@ class FeaturedCarousel extends React.Component {
         sliderWidth={screenWidth}
         itemWidth={screenWidth * 0.85}
         lockScrollWhileSnapping
-        autoplay
-        autoplayInterval={8000}
       />
     )
   }

@@ -25,16 +25,19 @@ export const getTokens = async (verifiedOnly = false, start = 0) => {
   const { total, items: featuredTokens } = await contentfulClient.getEntries(queryEntry)
   const featured = []
   const assets = []
+  const allAssets = []
 
   featuredTokens.map(({fields: token}) => {
     if (token.isFeatured) {
       const image = token.featuredCover ? `https:${token.featuredCover.fields.file.url}` : null
       featured.push({...token, image})
+      allAssets.push({...token, image})
     } else {
+      allAssets.push(token)
       assets.push(token)
     }
   })
-  return {featured, assets, totalTokens: total}
+  return {featured, assets, allAssets, totalTokens: total}
 }
 
 export const queryToken = async (verifiedOnly = false, name = '', params = defaultParams) => {

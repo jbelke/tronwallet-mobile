@@ -6,12 +6,12 @@ import moment from 'moment'
 import debounce from 'lodash/debounce'
 import union from 'lodash/union'
 import clamp from 'lodash/clamp'
+import sampleSize from 'lodash/sampleSize'
 
 import tl from '../../utils/i18n'
 import { Colors } from '../../components/DesignSystem'
 import { getCustomName } from '../../utils/assetsUtils'
 import { ONE_TRX } from '../../services/client'
-import guarantee from '../../assets/guarantee.png'
 import NavigationHeader from '../../components/Navigation/Header'
 import { logSentry } from '../../utils/sentryUtils'
 import { withContext } from '../../store/context'
@@ -34,9 +34,10 @@ import {
   TokenLabel
 } from './Elements'
 
-import FeaturedCarousel from './FeaturedCarousel'
+import TokenCarousel from './TokenCarousel'
 import { BATCH_NUMBER, getTokens, queryToken } from '../../services/contentful'
 import LoadingScene from '../../components/LoadingScene'
+import FontelloIcon from '../../components/FontelloIcon'
 
 class ParticipateHome extends React.Component {
   static navigationOptions = () => {
@@ -60,7 +61,6 @@ class ParticipateHome extends React.Component {
   async componentDidMount () {
     Answers.logContentView('Tab', 'Participate')
     this._onSearching = debounce(this._onSearching, 250)
-    this._loadData()
     this._navListener = this.props.navigation.addListener('didFocus', this._loadData)
   }
 
@@ -68,8 +68,9 @@ class ParticipateHome extends React.Component {
     this.setState({ start: 0 })
     const { verifiedTokensOnly } = this.props.context
     try {
-      const {assets, featured, totalTokens} = await getTokens(verifiedTokensOnly)
-      this.setState({totalTokens, assetList: assets, featuredTokens: featured, currentList: assets})
+      const {assets, featured, totalTokens, allAssets} = await getTokens(verifiedTokensOnly)
+      const randomSample = sampleSize(allAssets, 4)
+      this.setState({totalTokens, assetList: allAssets, featuredTokens: randomSample, currentList: allAssets})
     } catch (error) {
       logSentry(error, 'Initial load participate')
       this.setState({ error: error.message })
@@ -168,13 +169,13 @@ class ParticipateHome extends React.Component {
 
     return (
       <View>
-        <FeaturedCarousel navigation={this.props.navigation} tokens={featuredTokens} />
+        <TokenCarousel navigation={this.props.navigation} tokens={featuredTokens} />
       </View>
     )
   }
 
   _renderCardContent = asset => {
-    const { name, abbr, price, issuedPercentage, endTime, isVerified } = asset
+    const { name, abbr, price, issuedPercentage, endTime, isVerified, isFeatured } = asset
     return <Card>
       <TokenLabel label={abbr.substr(0, 3).toUpperCase()} />
       <HorizontalSpacer size={24} />
@@ -183,7 +184,20 @@ class ParticipateHome extends React.Component {
           <Row align='center'>
             <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
             <HorizontalSpacer size={4} />
-            <Image source={guarantee} style={{ height: 14, width: 14 }} />
+            {isFeatured &&
+            <React.Fragment>
+              <FontelloIcon
+                name='guarantee'
+                style={{ height: 14, width: 14 }}
+                color={Colors.primaryGradient[0]}
+              />
+              <HorizontalSpacer size={2} />
+            </React.Fragment>}
+            <FontelloIcon
+              name='guarantee'
+              style={{ height: 14, width: 14 }}
+              color='#3face7'
+            />
           </Row>
         ) : (
           <TokenName>{name}</TokenName>
@@ -250,7 +264,7 @@ class ParticipateHome extends React.Component {
   }
   _renderSeparator = () =>
     <View
-      height={0.7}
+      height={0.5}
       marginLeft={80}
       marginTop={10}
       width='100%'
