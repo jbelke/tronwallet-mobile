@@ -26,7 +26,6 @@ import { isNameValid, isAliasUnique } from '../../utils/validations'
 import { formatAlias } from '../../utils/contactUtils'
 import { USER_PREFERRED_CURRENCY } from '../../utils/constants'
 import { createNewAccount } from '../../utils/secretsUtils'
-import { updateAssets } from '../../utils/assetsUtils'
 import withContext from '../../utils/hocs/withContext'
 import { logSentry } from '../../utils/sentryUtils'
 
@@ -59,9 +58,6 @@ class BalanceScene extends Component {
     this.appStateListener = Platform.OS === 'android'
       ? DeviceEventEmitter.addListener('ActivityStateChange', (e) => this._handleAppStateChange(e.event))
       : AppState.addEventListener('change', this._handleAppStateChange)
-
-    // Update assets when you enter the wallet
-    updateAssets()
   }
 
   componentWillUnmount () {

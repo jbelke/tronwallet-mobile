@@ -21,6 +21,7 @@ import buildTransactionDetails, { translateError } from './detailMap'
 import getTransactionStore from '../../store/transactions'
 import { withContext } from '../../store/context'
 import { logSentry } from '../../utils/sentryUtils'
+import { updateAssets } from '../../utils/assetsUtils'
 
 const ANSWERS_TRANSACTIONS = ['Transfer', 'Vote', 'Participate', 'Freeze']
 const NOTIFICATION_TRANSACTIONS = ['Transfer', 'Transfer Asset']
@@ -122,6 +123,7 @@ class TransactionDetail extends Component {
       store.write(() => { store.create('Transaction', transaction, true) })
       const { code } = await Client.broadcastTransaction(signedTransaction)
       if (code === 'SUCCESS') {
+        // Tempora
         if (ANSWERS_TRANSACTIONS.includes(transaction.type)) {
           Answers.logCustom('Transaction Operation', { type: transaction.type })
         }
@@ -140,6 +142,8 @@ class TransactionDetail extends Component {
           }
         }
         await this.props.context.loadUserData()
+        // TODO - Remove to use come from transactions
+        if (transaction.type === 'Participate') updateAssets(0, 2, transaction.contractData.tokenName)
       }
       this.setState({ submitError: null, loadingSubmit: false, submitted: true }, this._navigateNext)
     } catch (error) {
