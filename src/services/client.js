@@ -35,34 +35,6 @@ class ClientWallet {
     return { totalVotes, candidates }
   }
 
-  async getTransactionDetails (tx) {
-    const apiUrl = await this.getTronscanUrl()
-    const { data: { transaction } } = await axios.post(
-      `${apiUrl}/transaction?dry-run`,
-      { transaction: tx }
-    )
-    return transaction
-  }
-
-  async getBalances (address) {
-    const apiUrl = await this.getTronscanUrl()
-    const { data: { balances } } = await axios.get(
-      `${apiUrl}/account/${address}`
-    )
-    if (balances && balances.length > 1) {
-      return balances.sort((a, b) => Number(b.balance) - Number(a.balance))
-    }
-    return balances
-  }
-
-  async getFreeze (address) {
-    const apiUrl = await this.getTronscanUrl()
-    const { data: { frozen, bandwidth, balances } } = await axios.get(
-      `${apiUrl}/account/${address}`
-    )
-    return { ...frozen, total: frozen.total / ONE_TRX, bandwidth, balances }
-  }
-
   async getTokenList (start, limit, name) {
     const apiUrl = await this.getTronscanUrl()
     const { data: { data } } = await axios.get(
@@ -119,6 +91,25 @@ class ClientWallet {
 
   //* ============TronWalletServerless Api============*//
 
+  async getBalances (address) {
+    const apiUrl = this.tronwalletApi
+    const { data: { balances } } = await axios.get(
+      `${apiUrl}/account/${address}`
+    )
+    if (balances && balances.length > 1) {
+      return balances.sort((a, b) => Number(b.balance) - Number(a.balance))
+    }
+    return balances
+  }
+
+  async getFreeze (address) {
+    const apiUrl = this.tronwalletApi
+    const { data: { frozen, bandwidth, balances } } = await axios.get(
+      `${apiUrl}/account/${address}`
+    )
+    return { ...frozen, total: frozen.total / ONE_TRX, bandwidth, balances }
+  }
+
   async giftUser (address, deviceId) {
     const body = { address, deviceId, authid: AUTH_ID }
     const { data: { result } } = await axios.post(`${this.tronwalletApi}/gift`, body)
@@ -130,6 +121,12 @@ class ClientWallet {
     const { data } = await axios.get(
       `${this.tronwalletApi}/vote/list?node=${nodeIp}`
     )
+    return data
+  }
+
+  async getTransactionDetails (tx) {
+    const apiUrl = this.tronwalletApi
+    const { data } = await axios.post(`${apiUrl}/transaction/detail`, { transaction: tx })
     return data
   }
 
