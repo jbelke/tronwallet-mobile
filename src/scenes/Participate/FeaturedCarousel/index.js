@@ -94,6 +94,9 @@ class FeaturedCarousel extends React.Component {
         renderItem={this._renderItem}
         sliderWidth={screenWidth}
         itemWidth={screenWidth * 0.85}
+        lockScrollWhileSnapping
+        autoplay
+        autoplayInterval={8000}
       />
     )
   }

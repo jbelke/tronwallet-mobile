@@ -35,10 +35,7 @@ class TokenInfo extends PureComponent {
       description,
       transaction,
       ownerAddress,
-      trxNum,
-      num,
-      abbr,
-      block
+      abbr
     } = item
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
@@ -94,17 +91,11 @@ class TokenInfo extends PureComponent {
           />
           <DividerSpacer size='medium' marginX='large' />
           <RegularInfoRow pairs={[
-            { key: tl.t('participate.transaction'), value: transaction }]}
-          />
-          <DividerSpacer size='medium' marginX='large' />
-          <RegularInfoRow pairs={[
             { key: tl.t('participate.ownerAddress'), value: ownerAddress }]}
           />
           <DividerSpacer size='medium' marginX='large' />
-          <BoldInfoRow pairs={[
-            { key: tl.t('participate.trxNum'), value: trxNum },
-            { key: tl.t('participate.num'), value: num },
-            { key: tl.t('participate.block'), value: block }]}
+          <RegularInfoRow pairs={[
+            { key: tl.t('participate.transaction'), value: transaction }]}
           />
         </ScrollView>
       </SafeAreaView>

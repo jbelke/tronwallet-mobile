@@ -413,7 +413,8 @@
     },
     "partners": "PARTNERS",
     "askPin" :"Always ask PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly" : "Verified tokens only"
   },
   "submitTransaction": {
     "title": "TRANSACTION DETAILS",

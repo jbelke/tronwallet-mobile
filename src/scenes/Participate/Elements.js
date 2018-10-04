@@ -170,7 +170,7 @@ export const TokenLabel = (props) =>
 export const WhiteLabelText = (props) =>
   <View borderRadius={4} background='white' align='center' justify='center' height={60} width={60}>
     <LabelText style={{color: Colors.buttonGradient[2]}} size='large' font='bold'>
-      {props.label.substr(0, 3).toUpperCase()}
+      {props.label.substr(0, 4).toUpperCase()}
     </LabelText>
   </View>
 

@@ -19,7 +19,7 @@ import { getCustomName } from '../../utils/assetsUtils'
 import { USER_FILTERED_TOKENS } from '../../utils/constants'
 import { logSentry } from '../../utils/sentryUtils'
 import { withContext } from '../../store/context'
-import { queryToken } from '../../services/contentful'
+import { queryToken, tokenInfoQuery } from '../../services/contentful'
 
 class WalletBalances extends Component {
   state = {
@@ -41,7 +41,7 @@ class WalletBalances extends Component {
   _navigateToToken = async ({ name: tokenName }) => {
     this.setState({modalTokenVisible: true, errorToken: null})
     try {
-      const { results } = await queryToken(false, tokenName)
+      const { results } = await queryToken(false, tokenName, tokenInfoQuery)
       if (results.length) {
         this.setState({modalTokenVisible: false},
           () => this.props.navigation.navigate('TokenDetailScene', { item: results[0].fields }))

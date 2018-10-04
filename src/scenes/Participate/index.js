@@ -31,9 +31,7 @@ import {
   HorizontalSpacer,
   BuyButton,
   ButtonText,
-  TokensTitle,
-  TokenLabel,
-  TronIcon
+  TokenLabel
 } from './Elements'
 
 import FeaturedCarousel from './FeaturedCarousel'
@@ -117,7 +115,7 @@ class ParticipateHome extends React.Component {
     this.setState({ searchMode: !searchMode, searchName: '' })
 
     if (searchMode) {
-      this.setState({ currentList: assetList }) // TODO <- verify this start : 0
+      this.setState({ currentList: assetList })
     } else {
       this.setState({ currentList: [] })
     }
@@ -126,8 +124,8 @@ class ParticipateHome extends React.Component {
   _onSearching = async name => {
     const { assetList, featuredTokens } = this.state
 
-    const regx = new RegExp(name.toUpperCase(), 'i')
-    const resultList = [...featuredTokens, ...assetList].filter(ast => regx.test(ast.name.toUpperCase()))
+    const regex = new RegExp(name.toUpperCase(), 'i')
+    const resultList = [...featuredTokens, ...assetList].filter(ast => regex.test(ast.name.toUpperCase()))
 
     this.setState({searchName: name})
     if (resultList.length) {
@@ -170,12 +168,6 @@ class ParticipateHome extends React.Component {
 
     return (
       <View>
-        <Row align='center'>
-          <HorizontalSpacer size={20} />
-          <TronIcon source={require('../../assets/tron-logo-small.png')} />
-          <TokensTitle>{tl.t('participate.tokens')}</TokensTitle>
-        </Row>
-        <VerticalSpacer size={20} />
         <FeaturedCarousel navigation={this.props.navigation} tokens={featuredTokens} />
       </View>
     )

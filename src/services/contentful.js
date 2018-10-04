@@ -3,6 +3,8 @@ import { CONTENTFUL_TOKEN, CONTENTFUL_SPACE } from '../../config.js'
 
 const contentfulClient = createClient({accessToken: CONTENTFUL_TOKEN, space: CONTENTFUL_SPACE})
 
+export const BATCH_NUMBER = 30
+
 const defaultQuery = {
   content_type: 'asset',
   order: '-fields.isFeatured,-fields.isVerified,fields.position,-fields.issuedPercentage',
@@ -10,8 +12,10 @@ const defaultQuery = {
   'fields.startTime[lt]': Date.now(),
   'fields.endTime[gte]': Date.now()
 }
-
-export const BATCH_NUMBER = 30
+export const tokenInfoQuery = {
+  content_type: 'asset',
+  order: '-fields.isFeatured,-fields.isVerified,fields.position,-fields.issuedPercentage'
+}
 
 export const getTokens = async (verifiedOnly = false, start = 0) => {
   const queryEntry = {
@@ -37,9 +41,9 @@ export const getTokens = async (verifiedOnly = false, start = 0) => {
   return {featured, assets, totalTokens: total}
 }
 
-export const queryToken = async (verifiedOnly = false, name) => {
+export const queryToken = async (verifiedOnly = false, name = '', query = defaultQuery) => {
   const queryEntry = {
-    ...defaultQuery,
+    ...query,
     'fields.name[match]': name
   }
   if (verifiedOnly) queryEntry['fields.isVerified'] = true

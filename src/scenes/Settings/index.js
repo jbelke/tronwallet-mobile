@@ -195,15 +195,12 @@ class Settings extends Component {
     )
   }
 
-  _changeTokensVisibility = async (cb) => {
+  _changeTokensVisibility = async currentValue => {
     try {
       await AsyncStorage.setItem(TOKENS_VISIBLE, `${!this.props.context.verifiedTokensOnly}`)
       this.props.context.setVerifiedTokensOnly(!this.props.context.verifiedTokensOnly)
-      /* eslint-disable*/
-      cb(true)
     } catch (error) {
-      cb(false)
-      /* eslint-disable */
+      this.props.context.setVerifiedTokensOnly(currentValue)
     }
   }
   _openLink = (uri) => this.setState({ modalVisible: true, uri })
@@ -292,8 +289,8 @@ class Settings extends Component {
             onPress: () => { this._openLink('https://www.tronwallet.me/partners') }
           },
           {
-            title: 'Verified Tokens Only',
-            icon: 'lock,-secure,-safety,-safe,-protect',
+            title: tl.t('settings.verifiedTokensOnly'),
+            icon: 'guarantee',
             right: () => {
               return (
                 <Switch
@@ -301,7 +298,7 @@ class Settings extends Component {
                   backgroundActive={Colors.yellow}
                   backgroundInactive={Colors.secondaryText}
                   value={this.props.context.verifiedTokensOnly}
-                  onAsyncPress={(callback) => { this._changeTokensVisibility(callback) }}
+                  onSyncPress={this._changeTokensVisibility}
                 />
               )
             }
