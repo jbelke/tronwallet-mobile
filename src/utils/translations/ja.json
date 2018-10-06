@@ -51,9 +51,9 @@
   "allIn": "オールイン",
   "skip": "スキップ",
   "privateKey": "秘密鍵",
-  "results": "Results",
-  "filter": "Filter",
-  "txs": "Transactions",
+  "results": "結果",
+  "filter": "フィルター",
+  "txs": "トランザクション",
   "balance": {
     "title": "アカウント",
     "error": {
@@ -100,16 +100,16 @@
     "button": {
       "create": "財布 作成",
       "restore": "財布 復元",
-      "import": "IMPORT WALLET"
+      "import": "インポートウォレット"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "TRONWALLETへようこそ",
+        "body": "TRONの最も安全な財布"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "セキュリティ",
+        "body": "お取引のプライバシーとセキュリティ"
       },
       "votes": {
         "title": "VOTES",
