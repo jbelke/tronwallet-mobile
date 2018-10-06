@@ -4,22 +4,22 @@
     "past": "%s 前",
     "s": "数秒",
     "ss": "%d 秒",
-    "m": "分",
+    "m": "一分",
     "mm": "%d 分",
-    "h": "1 時間",
+    "h": "一時間",
     "hh": "%d 時間",
-    "d": "1 日",
+    "d": "一日",
     "dd": "%d 日",
     "M": "1 ヶ月",
     "MM": "%d ヶ月",
-    "y": "1 年",
+    "y": "一年",
     "yy": "%d 年"
   },
   "success": "成功",
   "warning": "警告",
   "cancel": "キャンセル",
   "address": "住所",
-  "ok": "Ok",
+  "ok": "OK",
   "actionModalTitle": "いかかですか",
   "account": "アカウント",
   "restore": "リストア",
@@ -409,7 +409,7 @@
     },
     "partners": "パートナー",
     "askPin": "常にPINを尋ねる",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "バイオメトリ 起動"
   },
   "submitTransaction": {
     "title": "取引の詳細",
@@ -422,7 +422,7 @@
       "submit": "送信依頼"
     },
     "error": {
-      "noData": "Couldn't load transaction data"
+      "noData": "トランザクション データを読み込むことができませんでした。"
     },
     "disconnectedMessage": "あなたは切断されているようです。取引を進める前に、インターネットに再接続してください。",
     "dic": {
@@ -492,7 +492,7 @@
     "totalVotes": "総投票数",
     "votesAvailable": "投票可能",
     "search": "サーチ",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "提案 - 最も投票された",
     "error": "おっと、何かが正しく読み込まれませんでした。再読み込みを試みる"
   },
   "scanPayment": {
@@ -538,15 +538,15 @@
     }
   },
   "balanceToken": {
-    "updating": "Updating token information. Please wait a few seconds.",
-    "notAvailable": "Token information not available"
+    "updating": "トークン情報を更新しています。数秒お待ちください。",
+    "notAvailable": "トークン情報がありません。"
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "あなたのバイオメトリをチェックして下さい。"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "アクセスが拒否されました"
     }
   }
 }
