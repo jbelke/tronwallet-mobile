@@ -113,20 +113,20 @@
       },
       "votes": {
         "title": "投票",
-        "body": "Freezing and vote for Super \n Representatives"
+        "body": "トークンを凍結した後、スーパー 代表を選び投票して下さい"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "title": "アドレス帳",
+        "body": "友人のアドレス \n と連絡先を保存します。"
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "複数のアカウント",
+        "body": "財布中の複数アカウントを管理する事ができます。"
       }
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "アドレス帳",
     "shared": {
       "add": "追加",
       "edit": "編集",
@@ -134,7 +134,7 @@
       "send": "送信"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "連絡先",
       "delete": {
         "title": "連絡先を削除",
         "message": "この連絡先の削除を確認して下さい。",
