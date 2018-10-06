@@ -214,7 +214,7 @@
         "title": "少なくとも1つのTRX価値 {{token}}を購入する必要があり{{token}} 。",
         "message": "現在は {{amount}}しか買っていません。"
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "アセット(資産)が見つかりません"
     },
     "warning": "あなたは多くの {{token}}を買うのに十分なTRXを持っていません",
     "amountToBuy": "購入する金額",
@@ -235,14 +235,14 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "ブロック",
-    "searchPreview": "Featured Tokens"
+    "searchPreview": "注目のトークン"
   },
   "pin": {
     "title": "セキュリティーチェック",
     "enter": "PINを入力",
     "new": "新しいPINを入力してください",
     "reenter": "PINの再入力",
-    "biometrics": "Biometric Check"
+    "biometrics": "生体認証チェック"
   },
   "receive": {
     "title": "受信",
@@ -284,8 +284,8 @@
         "newSeed": "新しい種を得る",
         "later": "後で確認する"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "アプリ内の設定、そしてバックアップをアクセスすることによってあなたの認証言葉をいつでもアクセスできます。      ",
+      "seedExplanation": "シード キーは、人間が読めるように形式されたあなたのウォレットです。そこに示した言葉は正確な順序であなたの財布を再作成するために使用することができます。"
     },
     "restore": {
       "title": "RESTORE WALLET",
