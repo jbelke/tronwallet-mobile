@@ -318,8 +318,7 @@ class App extends Component {
         })
     }
     this.setState({ accounts, userSecrets }, async () => {
-      await this._updateBalances(accounts)
-      await this._updateAllFreeze(accounts)
+      await Promise.all(accounts.map(async acc => { await this._updateAccount(acc.address) }))
       if (!this.state.publicKey) {
         const { address } = accounts[0]
         this.setState({ publicKey: address })
@@ -327,20 +326,25 @@ class App extends Component {
     })
   }
 
-  _updateBalance = async address => {
-    const addressBalances = await Client.getBalances(address)
-    const balances = { ...this.state.balances, [address]: addressBalances }
-    let { accounts } = this.state
+  _updateAccount = async address => {
+    let { accounts, freeze } = this.state
+    const { balanceTotal, freezeData, balancesData } = await Client.getAccountData(address)
+    const balances = { ...this.state.balances, [address]: balancesData }
+
     accounts = accounts.map(account => {
       if (account.address === address) {
-        account.balance = addressBalances.find(item => item.name === 'TRX').balance
+        account.balance = balanceTotal
+        account.tronPower = freezeData.total
+        account.bandwidth = freezeData.bandwidth.netRemaining
       }
       return account
     })
-    this.setState({ accounts, balances })
+    freeze[address] = freezeData
+
+    this.setState({ accounts, balances, freeze })
     getBalanceStore().then(store => {
       store.write(() => {
-        addressBalances.map(item =>
+        balancesData.map(item =>
           store.create('Balance', {
             ...item,
             account: address,
@@ -352,30 +356,7 @@ class App extends Component {
 
   _updateBalances = async accounts => {
     for (let i = 0; i < accounts.length; i++) {
-      this._updateBalance(accounts[i].address)
-    }
-  }
-
-  _updatePower = async address => {
-    const data = await Client.getFreeze(address)
-    let { freeze, accounts } = this.state
-    freeze[address] = data
-    accounts = accounts.map(account => {
-      if (account.address === address) {
-        account.tronPower = data.total
-        account.bandwidth = data.bandwidth.netRemaining
-      }
-      return account
-    })
-    this.setState({
-      accounts,
-      freeze
-    })
-  }
-
-  _updateAllFreeze = async accounts => {
-    for (let i = 0; i < accounts.length; i++) {
-      this._updatePower(accounts[i].address)
+      this._updateAccount(accounts[i].address)
     }
   }
 

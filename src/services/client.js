@@ -91,6 +91,14 @@ class ClientWallet {
 
   //* ============TronWalletServerless Api============*//
 
+  async getAccountData (address) {
+    const apiUrl = this.tronwalletApi
+    const { data: { balance, balances, frozen, bandwidth } } = await axios.get(`${apiUrl}/account/${address}`)
+
+    const balancesData = balances.sort((a, b) => Number(b.balance) - Number(a.balance))
+    const freezeData = { ...frozen, total: frozen.total / ONE_TRX, bandwidth }
+    return { balancesData, freezeData, balanceTotal: balance / ONE_TRX }
+  }
   async getBalances (address) {
     const apiUrl = this.tronwalletApi
     const { data: { balances } } = await axios.get(
