@@ -82,7 +82,7 @@ class TransactionDetail extends Component {
 
   _getTransactionObject = () => {
     const { transactionData } = this.state
-    const { hash, amount, contractType, time, ownerAddress, toAddress, assetName } = transactionData
+    const { hash, amount, contractType, ownerAddress, toAddress, assetName } = transactionData
     const type = Client.getContractType(contractType)
     const transaction = {
       id: hash,
@@ -93,7 +93,7 @@ class TransactionDetail extends Component {
         tokenName: type === 'Transfer' ? 'TRX' : assetName
       },
       ownerAddress: ownerAddress,
-      timestamp: time,
+      timestamp: new Date().getTime(),
       confirmed: false
     }
 
