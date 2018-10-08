@@ -52,7 +52,7 @@ const INITIAL_STATE = {
   refreshing: false,
   loadingMore: false,
   // Search
-  searchMode: false,
+  isSearching: false,
   searchName: '',
   // Flags
   offset: 0,
@@ -169,7 +169,7 @@ class VoteScene extends Component {
   }
 
   _loadMoreCandidates = async () => {
-    if (this.state.searchMode) return
+    if (this.state.isSearching) return
     this.setState({loadingMore: true})
     try {
       const voteList = await this._getVoteListFromStore(this.state.offset + AMOUNT_TO_FETCH)
@@ -373,10 +373,10 @@ class VoteScene extends Component {
   }
 
   _onSearchPressed = () => {
-    const { searchMode } = this.state
+    const { isSearching } = this.state
 
-    this.setState({ searchMode: !searchMode, searchName: '' })
-    if (searchMode) {
+    this.setState({ isSearching: !isSearching, searchName: '' })
+    if (isSearching) {
       const candidates = this.candidateStoreRef.objects('Candidate')
         .sorted([['votes', true], ['rank', false]])
         .map(item => Object.assign({}, item))
@@ -420,8 +420,8 @@ class VoteScene extends Component {
   }
 
   _renderListHedear = () => {
-    const { totalVotes, totalRemaining, searchMode } = this.state
-    if (!searchMode) {
+    const { totalVotes, totalRemaining, isSearching } = this.state
+    if (!isSearching) {
       return <React.Fragment>
         <GrowIn name='vote-header' height={63}>
           <Header>
@@ -477,7 +477,7 @@ class VoteScene extends Component {
       voteList,
       currentVoteItem,
       startedVoting,
-      searchMode,
+      isSearching,
       searchName,
       totalFrozen } = this.state
     const searchPreview = searchName ? `${tl.t('results')}: ${voteList.length}` : tl.t('votes.searchPreview')
@@ -486,6 +486,7 @@ class VoteScene extends Component {
         <NavigationHeader
           title={tl.t('votes.title')}
           rightButton={this._renderRigthElement()}
+          isSearching={isSearching}
           onSearch={name => this._onSearching(name)}
           onSearchPressed={() => this._onSearchPressed()}
           searchPreview={searchPreview}
@@ -511,7 +512,7 @@ class VoteScene extends Component {
             />
           </FadeIn>
         </Utils.View>
-        {(totalUserVotes > 0 && startedVoting && !searchMode) && <ConfirmVotes onPress={this._openConfirmModal} voteCount={currentFullVotes.length} />}
+        {(totalUserVotes > 0 && startedVoting && !isSearching) && <ConfirmVotes onPress={this._openConfirmModal} voteCount={currentFullVotes.length} />}
         {this.state.modalVisible && (
           <AddVotesModal
             acceptCurrentVote={this._acceptCurrentVote}
