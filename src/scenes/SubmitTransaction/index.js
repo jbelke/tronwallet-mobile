@@ -142,7 +142,7 @@ class TransactionDetail extends Component {
           }
         }
         await this.props.context.loadUserData()
-        // TODO - Remove to use come from transactions
+        // TODO - Remove this piece of code when transactions come with Participate Price
         if (transaction.type === 'Participate') updateAssets(0, 2, transaction.contractData.tokenName)
       }
       this.setState({ submitError: null, loadingSubmit: false, submitted: true }, this._navigateNext)
