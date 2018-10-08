@@ -486,7 +486,6 @@ class VoteScene extends Component {
       <Utils.Container>
         <NavigationHeader
           title={tl.t('votes.title')}
-          rightButton={this._renderRigthElement()}
           isSearching={isSearching}
           onSearch={name => this._onSearching(name)}
           onSearchPressed={() => this._onSearchPressed()}
