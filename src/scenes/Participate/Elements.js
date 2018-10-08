@@ -4,9 +4,6 @@ import { View } from '../../components/Utils'
 import { Colors, Spacing } from '../../components/DesignSystem'
 import LinearGradient from 'react-native-linear-gradient'
 
-const borderRadius = css`
-  border-radius: 6px;
-`
 export const Text = styled.Text`
   color: white;
   font-family: 'Rubik-Regular';
@@ -48,9 +45,7 @@ export const CardContent = View.extend`
 
 export const Featured = View.extend`
   height: 14;
-  position: absolute;
-  right: 10;
-  top: 15;
+  padding-horizontal: 4px;
   background: rgb(255,65,101);
   border-radius: 3;
 `
@@ -131,6 +126,7 @@ export const BuyButton = styled.TouchableOpacity`
   align-items: center;
   padding-vertical: 6px;
   padding-horizontal: 30px;
+  elevation: ${props => props.elevation || 2};
 `
 export const TokensTitle = styled.Text`
   font-family: Rubik-Medium;
@@ -142,12 +138,6 @@ export const LabelText = styled.Text`
   font-family: Rubik-Bold;
   font-size: 18px;
   color: ${Colors.primaryText};
-`
-export const CarouselCard = styled.View`
-  ${borderRadius}
-  min-height: 220px;
-  elevation: 2;
-  margin-bottom: 20px;
 `
 export const TronIcon = styled.Image`
   height: 28px;
@@ -174,11 +164,11 @@ export const WhiteLabelText = (props) =>
     </LabelText>
   </View>
 
-export const GradientRow = (props) =>
+export const GradientCard = (props) =>
   <LinearGradient
     start={{ x: 0, y: 0.5 }}
     end={{ x: 1, y: 1 }}
-    colors={[Colors.buttonGradient[2], Colors.buttonGradient[4]]}
-    style={{flex: 1, padding: 10, borderBottomRightRadius: 4, borderBottomLeftRadius: 4, flexDirection: 'row'}}>
+    colors={[Colors.primaryGradient[0], Colors.primaryGradient[1]]}
+    style={{flex: 1, padding: 10, flexDirection: 'row', borderRadius: 5, marginHorizontal: 15, marginVertical: 10}}>
     {props.children}
   </LinearGradient>

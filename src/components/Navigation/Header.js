@@ -61,7 +61,6 @@ class NavigationHeader extends React.Component {
         <TouchableOpacity
           style={{padding: 6}}
           onPress={() => {
-            this.setState({ isSearching: true })
             if (onSearchPressed) onSearchPressed()
           }}>
           <Ionicons name='ios-search' color='white' size={21} />
@@ -91,14 +90,13 @@ class NavigationHeader extends React.Component {
   _renderSeachMode = () => {
     const { onSearch, onSearchPressed } = this.props
     const onClose = () => {
-      this.setState({ isSearching: false })
       if (onSearchPressed) onSearchPressed()
     }
     return <NavigationSearchBar onSearch={onSearch} onClose={onClose} />
   }
 
   render () {
-    const { isSearching } = this.state
+    const { isSearching } = this.props
 
     return (
       <HeaderWrapper>
