@@ -9,11 +9,13 @@ import FontelloIcon from '../FontelloIcon'
 
 const NavigationSearchBar = ({ onSearch, onClose }) => (
   <SearchBarWrapper>
-    <FontelloIcon
-      name='magnifier,-search,-discover,-zoom,-lens'
-      color={Colors.greyBlue}
-      size={16}
-    />
+    <Utils.View paddingBottom={3}>
+      <FontelloIcon
+        name='magnifier,-search,-discover,-zoom,-lens'
+        color={Colors.greyBlue}
+        size={16}
+      />
+    </Utils.View>
     <Utils.HorizontalSpacer />
     <SearchBar
       autoCapitalize='none'
@@ -24,7 +26,9 @@ const NavigationSearchBar = ({ onSearch, onClose }) => (
       height={42}
       autoFocus
     />
-    <TouchableOpacity onPress={onClose}>
+    <TouchableOpacity
+      style={{padding: 10}}
+      onPress={onClose}>
       <FontelloIcon
         size={13}
         name='close'
