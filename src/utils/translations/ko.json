@@ -52,6 +52,7 @@
   "skip": "건너뛰기",
   "privateKey": "개인키",
   "results": "결과",
+  "buy": "Buy",
   "filter": "필터",
   "txs": "트랜잭션",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "자산을 찾을 수 없습니다"
     },
     "warning": "{{token}}을 구매하기 위한 TRX 수량이 충분하지 않습니다",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "구매 수량",
     "pricePerToken": "토큰 당 가격",
     "tokenDescription": "토큰 설명",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "블록",
+    "balance": "BALANCE",
     "searchPreview": "추천토큰"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "제휴업체",
     "askPin": "항상 PIN 물어보기",
-    "askBiometry": "생체인식 활성화"
+    "askBiometry": "생체인식 활성화",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "트랜잭션 상세보기",
@@ -493,7 +497,8 @@
     "votesAvailable": "투표 가능 수량",
     "search": "검색하기",
     "searchPreview": "제안 - 최다 득표",
-    "error": "제대로 로드되지 않았습니다. 다시 로드해주세요"
+    "error": "제대로 로드되지 않았습니다. 다시 로드해주세요",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "스캔",
