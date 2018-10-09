@@ -52,6 +52,7 @@
   "skip": "Пропустить",
   "privateKey": "Закрытый ключ",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "Вы не имеете достаточно TRX чтобы купить эти {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "СУММА К ПОКУПКЕ",
     "pricePerToken": "ЦЕНА ЗА ТОКЕН",
     "tokenDescription": "ОПИСАНИЕ ТОКЕНОВ",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "КОЛИЧЕСТВО",
     "block": "БЛОК",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "ПАРТНЕРЫ",
     "askPin": "Всегда спрашивайте PIN-код",
-    "askBiometry": "Включить биометрию"
+    "askBiometry": "Включить биометрию",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "ДЕТАЛИ ТРАНЗАКЦИИ",
@@ -493,7 +497,8 @@
     "votesAvailable": "ДОСТУПНЫХ ГОЛОСОВ",
     "search": "Поиск",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "Ой что-то не правильно загрузитьлось. Попробуйте перезагрузить"
+    "error": "Ой что-то не правильно загрузитьлось. Попробуйте перезагрузить",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "СКАНИРОВАТЬ",
