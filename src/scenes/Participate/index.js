@@ -177,7 +177,7 @@ class ParticipateHome extends React.Component {
   _renderFeaturedCardContent = asset => {
     const { name, abbr, issuedPercentage, endTime } = asset
     return <GradientCard>
-      <WhiteLabelText label={abbr.substr(0, 3).toUpperCase()} />
+      <WhiteLabelText label={abbr.substr(0, 4).toUpperCase()} />
       <HorizontalSpacer size={18} />
       <View flex={1} justify='space-between'>
         <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
@@ -213,7 +213,7 @@ class ParticipateHome extends React.Component {
   _renderCardContent = asset => {
     const { name, abbr, price, issuedPercentage, endTime, isVerified } = asset
     return <Card>
-      <TokenLabel label={abbr.substr(0, 3).toUpperCase()} />
+      <TokenLabel label={abbr.substr(0, 4).toUpperCase()} />
       <HorizontalSpacer size={24} />
       <View flex={1} justify='space-between'>
         {isVerified ? (

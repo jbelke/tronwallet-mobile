@@ -11,12 +11,14 @@ import ButtonGradient from '../../../components/ButtonGradient'
 import * as Utils from '../../../components/Utils'
 import { ONE_TRX } from '../../../services/client'
 import tl from '../../../utils/i18n'
+import { replaceRoute } from '../../../utils/navigationUtils'
 
 class TokenInfo extends PureComponent {
   static navigationOptions = () => ({header: null})
 
   render () {
-    const { item } = this.props.navigation.state.params
+    const item = this.props.navigation.getParam('item', {})
+    const fromBalance = this.props.navigation.getParam('fromBalance', false)
     const {
       name,
       price,
@@ -66,7 +68,11 @@ class TokenInfo extends PureComponent {
               <Utils.View height={8} />
               <ButtonGradient
                 text={tl.t('participate.button.buyNow').toUpperCase()}
-                onPress={() => this.props.navigation.navigate('Buy', {item})}
+                onPress={() => {
+                  fromBalance
+                    ? replaceRoute(this.props.navigation, 'Buy', {item})
+                    : this.props.navigation.navigate('Buy', {item})
+                }}
                 size='medium'
                 full
               />
