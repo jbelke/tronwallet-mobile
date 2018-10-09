@@ -52,6 +52,7 @@
   "skip": "Omet",
   "privateKey": "Clau privada",
   "results": "Resultats",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) no trobat"
     },
     "warning": "No teniu prou TRX per comprar molts {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "IMPORT PER COMPRAR",
     "pricePerToken": "PREU PER TOKEN",
     "tokenDescription": "DESCRIPCIÓ DE TOKEN",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOC",
+    "balance": "BALANCE",
     "searchPreview": "Tokens destacats"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "SOCIS",
     "askPin": "Sempre pregunteu al PIN",
-    "askBiometry": "Activa la biometria"
+    "askBiometry": "Activa la biometria",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "DADES DE LA TRANSACCION",
@@ -493,7 +497,8 @@
     "votesAvailable": "VOTS DISPONIBLES",
     "search": "Cerca",
     "searchPreview": "Suggeriments - més votades",
-    "error": "Vaja, una cosa no es va carregar correctament. Intenta tornar a carregar"
+    "error": "Vaja, una cosa no es va carregar correctament. Intenta tornar a carregar",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCAN",
