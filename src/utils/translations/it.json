@@ -52,6 +52,7 @@
   "skip": "Salta",
   "privateKey": "Chiave privata",
   "results": "Risultati",
+  "buy": "Buy",
   "filter": "Filtro",
   "txs": "Transizioni",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) non trovato"
     },
     "warning": "Non hai abbastanza TRX per comprare così tanti {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "IMPORTO DA ACQUISTARE",
     "pricePerToken": "PREZZO PER TOKEN",
     "tokenDescription": "DESCRIZIONE TOKEN",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCCO",
+    "balance": "BALANCE",
     "searchPreview": "Token in evidenza"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "PARTNER",
     "askPin": "Chiedi sempre il PIN",
-    "askBiometry": "Attiva la biometria"
+    "askBiometry": "Attiva la biometria",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "DETTAGLI DI TRANSAZIONE",
@@ -493,7 +497,8 @@
     "votesAvailable": "VOTI DISPONIBILI",
     "search": "Cerca",
     "searchPreview": "Suggerimenti - I più votati",
-    "error": "Spiacenti, qualcosa non è stato caricato correttamente. Prova a ricaricare"
+    "error": "Spiacenti, qualcosa non è stato caricato correttamente. Prova a ricaricare",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCANSIONE",
