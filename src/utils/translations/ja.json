@@ -52,6 +52,7 @@
   "skip": "スキップ",
   "privateKey": "秘密鍵",
   "results": "結果",
+  "buy": "Buy",
   "filter": "フィルター",
   "txs": "トランザクション",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "アセット(資産)が見つかりません"
     },
     "warning": "あなたは多くの {{token}}を買うのに十分なTRXを持っていません",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "購入する金額",
     "pricePerToken": "TOKEN当たりの価格",
     "tokenDescription": "TOKEN DESCRIPTION",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "ブロック",
+    "balance": "BALANCE",
     "searchPreview": "注目のトークン"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "パートナー",
     "askPin": "常にPINを尋ねる",
-    "askBiometry": "バイオメトリ 起動"
+    "askBiometry": "バイオメトリ 起動",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "取引の詳細",
@@ -493,7 +497,8 @@
     "votesAvailable": "投票可能",
     "search": "サーチ",
     "searchPreview": "提案 - 最も投票された",
-    "error": "おっと、何かが正しく読み込まれませんでした。再読み込みを試みる"
+    "error": "おっと、何かが正しく読み込まれませんでした。再読み込みを試みる",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "スキャン",
