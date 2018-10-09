@@ -52,6 +52,7 @@
   "skip": "Skip",
   "privateKey": "Privaat Sleutel",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "Jy het nie genoeg TRX om soveel {{token}}te koop nie",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "BEDRAG OM TE KOOP",
     "pricePerToken": "PRYS PER TOKEN",
     "tokenDescription": "TOKEN BESKRYWING",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "PARTNERS",
     "askPin": "Vra altyd PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "TRANSAKSIE DETAILS",
@@ -493,7 +497,8 @@
     "votesAvailable": "STEMMINGS BESKIKBAAR",
     "search": "Soek",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "Oeps, iets het nie korrek gelaai nie. Probeer herlaai"
+    "error": "Oeps, iets het nie korrek gelaai nie. Probeer herlaai",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCAN",
