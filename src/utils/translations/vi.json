@@ -52,6 +52,7 @@
   "skip": "Skip",
   "privateKey": "Khóa cá nhân",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "You don't have enough TRX to buy that many {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "AMOUNT TO BUY",
     "pricePerToken": "PRICE PER TOKEN",
     "tokenDescription": "TOKEN DESCRIPTION",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "ĐỐI TÁC",
     "askPin": "Luôn hỏi mã PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "CHI TIẾT GIAO DỊCH",
@@ -493,7 +497,8 @@
     "votesAvailable": "VOTES CÓ S AVN",
     "search": "Tìm kiếm",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "Rất tiếc, nội dung nào đó không tải chính xác. Thử tải lại"
+    "error": "Rất tiếc, nội dung nào đó không tải chính xác. Thử tải lại",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "QUÉT",
