@@ -52,6 +52,7 @@
   "skip": "Skip",
   "privateKey": "Cheia privată",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "Nu aveți suficient TRX pentru a cumpăra atât de mulți {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "AMOUNT DE CUMPĂRARE",
     "pricePerToken": "PRET PER PERIOADĂ",
     "tokenDescription": "TOKEN DESCRIERE",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOC",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "PARTENERI",
     "askPin": "Întrebați întotdeauna codul PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "DETALII TRANZACȚIONALE",
@@ -493,7 +497,8 @@
     "votesAvailable": "VOTURI DISPONIBILE",
     "search": "Căutare",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "Hopa, ceva nu sa încărcat corect. Încercați să reîncărcați"
+    "error": "Hopa, ceva nu sa încărcat corect. Încercați să reîncărcați",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCAN",
