@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Dimensions, Clipboard } from 'react-native'
 import Toast from 'react-native-easy-toast'
-import Feather from 'react-native-vector-icons/Feather'
 import { Answers } from 'react-native-fabric'
 
 // Design
@@ -16,6 +15,7 @@ import * as Utils from '../../components/Utils'
 import tl from '../../utils/i18n'
 import { withContext } from '../../store/context'
 import { logSentry } from '../../utils/sentryUtils'
+import FontelloIcon from '../../components/FontelloIcon'
 
 class ReceiveScreen extends PureComponent {
   static navigationOptions = {
@@ -59,8 +59,8 @@ class ReceiveScreen extends PureComponent {
           <Utils.VerticalSpacer size='medium' />
           <Utils.Row align='center' style={{minWidth: width * 0.6}}>
             <ActionButton onPress={this._copy}>
-              <Feather
-                name='clipboard'
+              <FontelloIcon
+                name='copy'
                 size={FontSize['small']}
                 color={Colors.primaryText}
               />

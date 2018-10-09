@@ -33,8 +33,7 @@ import { SectionTitle, MultiSelectColors, MultiSelectStyles } from './elements'
 import AccountRecover from './RecoverAccount'
 // Utils
 import getBalanceStore from '../../store/balance'
-import { orderAssets } from '../../utils/assetsUtils'
-import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, FIXED_TOKENS, ALWAYS_ASK_PIN, USE_BIOMETRY, ENCRYPTED_PIN } from '../../utils/constants'
+import { USER_PREFERRED_LANGUAGE, USER_FILTERED_TOKENS, ALWAYS_ASK_PIN, USE_BIOMETRY, ENCRYPTED_PIN, TOKENS_VISIBLE } from '../../utils/constants'
 import tl, { LANGUAGES } from '../../utils/i18n'
 import fontelloConfig from '../../assets/icons/config.json'
 import { withContext } from '../../store/context'
@@ -107,14 +106,14 @@ class Settings extends Component {
       const store = await getBalanceStore()
       const tokens = store.objects('Balance')
         .filtered('TRUEPREDICATE DISTINCT(name)')
-        .filter(({ name }) => FIXED_TOKENS.findIndex(token => token === name) === -1)
+        .filter(({ name }) => name !== 'TRX')
         .map(({ name }) => ({ id: name, name }))
 
       const filteredTokens = await AsyncStorage.getItem(USER_FILTERED_TOKENS)
       const selectedTokens = filteredTokens ? JSON.parse(filteredTokens) : []
 
       this.setState({
-        userTokens: orderAssets(tokens),
+        userTokens: tokens,
         userSelectedTokens: selectedTokens,
         currentSelectedTokens: selectedTokens
       })
@@ -196,6 +195,14 @@ class Settings extends Component {
     )
   }
 
+  _changeTokensVisibility = async currentValue => {
+    try {
+      await AsyncStorage.setItem(TOKENS_VISIBLE, `${!this.props.context.verifiedTokensOnly}`)
+      this.props.context.setVerifiedTokensOnly(!this.props.context.verifiedTokensOnly)
+    } catch (error) {
+      this.props.context.setVerifiedTokensOnly(currentValue)
+    }
+  }
   _openLink = (uri) => this.setState({ modalVisible: true, uri })
 
   _handleLanguageChange = async (index) => {
@@ -280,6 +287,21 @@ class Settings extends Component {
             title: tl.t('settings.accepts.title'),
             icon: 'question-mark,-circle,-sign,-more,-info',
             onPress: () => { this._openLink('https://www.tronwallet.me/partners') }
+          },
+          {
+            title: tl.t('settings.verifiedTokensOnly'),
+            icon: 'guarantee',
+            right: () => {
+              return (
+                <Switch
+                  circleStyle={{ backgroundColor: Colors.orange }}
+                  backgroundActive={Colors.yellow}
+                  backgroundInactive={Colors.secondaryText}
+                  value={this.props.context.verifiedTokensOnly}
+                  onSyncPress={this._changeTokensVisibility}
+                />
+              )
+            }
           }
         ]
       },

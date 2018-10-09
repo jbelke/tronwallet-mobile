@@ -94,6 +94,7 @@ class SendScene extends Component {
 
     const balances = await this._getBalancesFromStore()
     const publicKey = this.props.context.publicKey
+    const { fixedTokens } = this.props.context
     let orderedBalances = []
     let balance = 0
 
@@ -101,7 +102,7 @@ class SendScene extends Component {
       balance = balances.find(asset => asset.name === 'TRX').balance
       const userTokens = await AsyncStorage.getItem(USER_FILTERED_TOKENS)
       const filteredBalances = balances.filter(asset => JSON.parse(userTokens).findIndex(name => name === asset.name) === -1)
-      orderedBalances = orderBalances(filteredBalances)
+      orderedBalances = orderBalances(filteredBalances, fixedTokens)
     }
 
     this.setState({

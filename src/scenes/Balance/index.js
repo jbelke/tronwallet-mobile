@@ -24,9 +24,8 @@ import AccountsCarousel from './AccountsCarousel'
 import tl from '../../utils/i18n'
 import { isNameValid, isAliasUnique } from '../../utils/validations'
 import { formatAlias } from '../../utils/contactUtils'
-import { USER_PREFERRED_CURRENCY, VERIFIED_TOKENS } from '../../utils/constants'
+import { USER_PREFERRED_CURRENCY } from '../../utils/constants'
 import { createNewAccount } from '../../utils/secretsUtils'
-import { updateAssets } from '../../utils/assetsUtils'
 import withContext from '../../utils/hocs/withContext'
 import { logSentry } from '../../utils/sentryUtils'
 
@@ -59,9 +58,6 @@ class BalanceScene extends Component {
     this.appStateListener = Platform.OS === 'android'
       ? DeviceEventEmitter.addListener('ActivityStateChange', (e) => this._handleAppStateChange(e.event))
       : AppState.addEventListener('change', this._handleAppStateChange)
-
-    // Update assets when you enter the wallet
-    updateAssets()
   }
 
   componentWillUnmount () {
@@ -163,10 +159,10 @@ class BalanceScene extends Component {
   }
 
   _getBalancesToDisplay = () => {
-    const { balances, publicKey } = this.props.context
+    const { balances, publicKey, fixedTokens } = this.props.context
 
     if (balances[publicKey]) {
-      const featuredBalances = VERIFIED_TOKENS.map(token => { return { name: token, balance: 0 } })
+      const featuredBalances = fixedTokens.map(token => { return { name: token, balance: 0 } })
       return unionBy(balances[publicKey], featuredBalances, 'name')
     }
 

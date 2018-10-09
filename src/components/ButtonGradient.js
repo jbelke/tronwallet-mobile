@@ -52,7 +52,7 @@ const ButtonGradient = ({
             opacity: disabled ? 0.4 : 1,
             width: width || '100%',
             height: ButtonSize[size],
-            paddingHorizontal: size === 'small' ? 8 : 16,
+            paddingHorizontal: Spacing[size],
             justifyContent: 'center',
             borderBottomRightRadius: rightRadius,
             borderTopRightRadius: rightRadius,

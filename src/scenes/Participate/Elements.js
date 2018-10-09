@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import React from 'react'
+import styled, { css } from 'styled-components'
 import { View } from '../../components/Utils'
-import { Colors } from '../../components/DesignSystem'
+import { Colors, Spacing } from '../../components/DesignSystem'
+import LinearGradient from 'react-native-linear-gradient'
 
 export const Text = styled.Text`
   color: white;
@@ -25,43 +27,45 @@ export const TokenName = TokenPrice.extend`
 `
 
 export const FeaturedTokenName = TokenName.extend`
-  font-size: 18;
-  text-align: center;
+  font-size: 13;
   font-family: 'Rubik-Bold';
 `
 
 export const Card = View.extend`
-  margin-left: 15;
-  margin-right: 20;
-  border-radius: 4;
-  background: rgb(44,45,67);
   min-height: 85;
   overflow: hidden;
+  flex-direction: row;
+  padding: 19px 15px 15px 15px;
 `
 
 export const CardContent = View.extend`
+  flex-direction: row;
   padding: 19px 15px 15px 15px;
 `
 
 export const Featured = View.extend`
-  width: 79;
-  height: 12;
-  position: absolute;
-  left: 50%;
-  transform: translate(-45px, 0);
+  height: 14;
+  padding-horizontal: 4px;
   background: rgb(255,65,101);
-  border-bottom-left-radius: 3;
-  border-bottom-right-radius: 3;
+  border-radius: 3;
 `
 
 export const FeaturedText = Text.extend`
   font-size: 9;
   font-family: 'Rubik-Medium';
+  margin: 2px;
   text-align: center;
 `
 
 export const VerticalSpacer = styled.View`
   height: ${props => props.size};
+`
+
+export const DividerSpacer = styled.View`
+  height: 1px;
+  background: ${Colors.dusk};
+  ${props => props.size && css`margin-vertical:${Spacing[props.size]}px`}
+  ${props => props.marginX && css`margin-horizontal:${Spacing[props.marginX]}px`}
 `
 
 export const HorizontalSpacer = styled.View`
@@ -78,11 +82,11 @@ export const MarginFixer = styled.View`
 `
 
 export const BuyText = styled.Text`
-  text-align: left;
+  text-align: center;
   font-size: 11;
-  font-family: 'Rubik-Medium';
-  letter-spacing: 0.6;
-  color: rgb(116, 118, 162);
+  font-family: Rubik-Medium;
+  letter-spacing: 0.7;
+  color: ${props => props.white ? Colors.primaryText : Colors.secondaryText};
 `
 
 export const WhiteBuyText = BuyText.extend`
@@ -115,18 +119,56 @@ export const ButtonText = styled.Text`
   text-align: center;
   letter-spacing: 0.8;
 `
-export const BuyButton = styled.View`
-  background-color: rgb(44,45,67);
+export const BuyButton = styled.TouchableOpacity`
+  background-color: ${Colors.darkThree};
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  align-self: flex-start;
-  padding-vertical: 13px;
+  padding-vertical: 6px;
   padding-horizontal: 30px;
+  elevation: ${props => props.elevation || 2};
 `
 export const TokensTitle = styled.Text`
   font-family: Rubik-Medium;
   font-size: 15px;
-  margin-left: 20px;
-  color: ${Colors.secondaryText};
+  color: ${Colors.primaryText};
+  margin-left: 15px;
 `
+export const LabelText = styled.Text`
+  font-family: Rubik-Bold;
+  font-size: 18px;
+  color: ${Colors.primaryText};
+`
+export const TronIcon = styled.Image`
+  height: 28px;
+  width: 28px;
+`
+export const PercentageView = View.extend`
+  transform: translateY(-5px);
+`
+export const TokenLabel = (props) =>
+  <LinearGradient
+    start={{ x: 0.4, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    colors={[Colors.primaryGradient[0], Colors.primaryGradient[1]]}
+    style={{width: 60, height: 60, borderRadius: 4, alignItems: 'center', justifyContent: 'center'}}>
+    <View flex={1} align='center' justify='center'>
+      <LabelText font='bold' size='large'>{props.label}</LabelText>
+    </View>
+  </LinearGradient>
+
+export const WhiteLabelText = (props) =>
+  <View borderRadius={4} background='white' align='center' justify='center' height={60} width={60}>
+    <LabelText style={{color: Colors.buttonGradient[2]}} size='large' font='bold'>
+      {props.label.substr(0, 4).toUpperCase()}
+    </LabelText>
+  </View>
+
+export const GradientCard = (props) =>
+  <LinearGradient
+    start={{ x: 0, y: 0.5 }}
+    end={{ x: 1, y: 1 }}
+    colors={[Colors.primaryGradient[0], Colors.primaryGradient[1]]}
+    style={{flex: 1, padding: 10, flexDirection: 'row', borderRadius: 5, marginHorizontal: 15, marginVertical: 10}}>
+    {props.children}
+  </LinearGradient>

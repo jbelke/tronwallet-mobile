@@ -55,11 +55,12 @@ import { Context } from './src/store/context'
 import NodesIp from './src/utils/nodeIp'
 import { getUserSecrets } from './src/utils/secretsUtils'
 import getBalanceStore from './src/store/balance'
-import { USER_PREFERRED_CURRENCY, ALWAYS_ASK_PIN, USE_BIOMETRY } from './src/utils/constants'
+import { USER_PREFERRED_CURRENCY, ALWAYS_ASK_PIN, USE_BIOMETRY, TOKENS_VISIBLE } from './src/utils/constants'
 import { ONE_SIGNAL_KEY } from './config'
 import ConfigJson from './package.json'
-
+import tl from './src/utils/i18n'
 import fontelloConfig from './src/assets/icons/config.json'
+import { getFixedTokens } from './src/services/contentful'
 
 import './ReactotronConfig'
 
@@ -131,7 +132,7 @@ const AddressBookStack = createStackNavigator({
   AddContact: AddContactScene
 }, {
   navigationOptions: {
-    header: <NavigationHeader title='ADDRESS BOOK' />
+    header: <NavigationHeader title={tl.t('addressBook.title')} />
   }
 })
 
@@ -252,7 +253,9 @@ class App extends Component {
     alwaysAskPin: true,
     useBiometry: false,
     currency: null,
-    secretMode: 'mnemonic'
+    secretMode: 'mnemonic',
+    verifiedTokensOnly: true,
+    fixedTokens: []
   }
 
   async componentDidMount () {
@@ -268,6 +271,8 @@ class App extends Component {
     this._setNodes()
     this._loadAskPin()
     this._loadUseBiometry()
+    this._loadVerifiedTokenFlag()
+    this._loadFixedTokens()
     const preferedCurrency = await AsyncStorage.getItem(USER_PREFERRED_CURRENCY) || 'TRX'
     this._getPrice(preferedCurrency)
     this.setState({ currency: preferedCurrency })
@@ -313,8 +318,7 @@ class App extends Component {
         })
     }
     this.setState({ accounts, userSecrets }, async () => {
-      await this._updateBalances(accounts)
-      await this._updateAllFreeze(accounts)
+      await Promise.all(accounts.map(async acc => { await this._updateAccount(acc.address) }))
       if (!this.state.publicKey) {
         const { address } = accounts[0]
         this.setState({ publicKey: address })
@@ -322,20 +326,25 @@ class App extends Component {
     })
   }
 
-  _updateBalance = async address => {
-    const addressBalances = await Client.getBalances(address)
-    const balances = { ...this.state.balances, [address]: addressBalances }
-    let { accounts } = this.state
+  _updateAccount = async address => {
+    let { accounts, freeze } = this.state
+    const { balanceTotal, freezeData, balancesData } = await Client.getAccountData(address)
+    const balances = { ...this.state.balances, [address]: balancesData }
+
     accounts = accounts.map(account => {
       if (account.address === address) {
-        account.balance = addressBalances.find(item => item.name === 'TRX').balance
+        account.balance = balanceTotal
+        account.tronPower = freezeData.total
+        account.bandwidth = freezeData.bandwidth.netRemaining
       }
       return account
     })
-    this.setState({ accounts, balances })
+    freeze[address] = freezeData
+
+    this.setState({ accounts, balances, freeze })
     getBalanceStore().then(store => {
       store.write(() => {
-        addressBalances.map(item =>
+        balancesData.map(item =>
           store.create('Balance', {
             ...item,
             account: address,
@@ -347,30 +356,7 @@ class App extends Component {
 
   _updateBalances = async accounts => {
     for (let i = 0; i < accounts.length; i++) {
-      this._updateBalance(accounts[i].address)
-    }
-  }
-
-  _updatePower = async address => {
-    const data = await Client.getFreeze(address)
-    let { freeze, accounts } = this.state
-    freeze[address] = data
-    accounts = accounts.map(account => {
-      if (account.address === address) {
-        account.tronPower = data.total
-        account.bandwidth = data.bandwidth.netRemaining
-      }
-      return account
-    })
-    this.setState({
-      accounts,
-      freeze
-    })
-  }
-
-  _updateAllFreeze = async accounts => {
-    for (let i = 0; i < accounts.length; i++) {
-      this._updatePower(accounts[i].address)
+      this._updateAccount(accounts[i].address)
     }
   }
 
@@ -422,6 +408,25 @@ class App extends Component {
     }
   }
 
+  _loadVerifiedTokenFlag = async () => {
+    try {
+      const tokenVibility = await AsyncStorage.getItem(TOKENS_VISIBLE)
+      const verifiedTokensOnly = tokenVibility === null ? true : tokenVibility === 'true'
+      this.setState({verifiedTokensOnly})
+    } catch (error) {
+      this.setState({ verifiedTokensOnly: false })
+    }
+  }
+   _loadFixedTokens = async () => {
+     try {
+       const fixedTokens = await getFixedTokens()
+       this.setState({fixedTokens})
+     } catch (error) {
+       this.setState({fixedTokens: ['TRX', 'TWX']})
+       logSentry(error, 'App - Load Fixed Tokens')
+     }
+   }
+
   _setNodes = async () => {
     try {
       await NodesIp.initNodes()
@@ -437,6 +442,8 @@ class App extends Component {
   _setAskPin = (alwaysAskPin) => this.setState({ alwaysAskPin })
 
   _setUseBiometry = (useBiometry) => this.setState({ useBiometry })
+
+  _setVerifiedTokensOnly = (verifiedTokensOnly) => this.setState({ verifiedTokensOnly })
 
   _setPin = (pin, callback) => {
     this.setState({ pin }, () => {
@@ -487,7 +494,8 @@ class App extends Component {
       hideAccount: this._hideAccount,
       setAskPin: this._setAskPin,
       setUseBiometry: this._setUseBiometry,
-      setSecretMode: this._setSecretMode
+      setSecretMode: this._setSecretMode,
+      setVerifiedTokensOnly: this._setVerifiedTokensOnly
     }
 
     return (

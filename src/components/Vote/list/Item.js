@@ -19,7 +19,7 @@ const VoteItem = ({ item, index, disabled, voteCount, openModal }) => {
             />
             <Utils.Column>
               <Utils.Text size='smaller' secondary>
-                {formatUrl(item.url)}
+                {item.name ? item.name : formatUrl(item.url)}
               </Utils.Text>
               <Utils.Text lineHeight={20} size='xsmall'>
                 {formatNumber(item.votes)}

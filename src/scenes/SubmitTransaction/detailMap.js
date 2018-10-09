@@ -1,8 +1,8 @@
 import React from 'react'
 
 import tl from '../../utils/i18n'
-import { DetailRow } from './elements'
-import { ONE_TRX } from '../../services/client'
+import { DetailRow, DataRow } from './elements'
+import Client, { ONE_TRX } from '../../services/client'
 
 const getDic = (field) => {
   switch (field) {
@@ -70,11 +70,20 @@ const toReadableField = (field) => {
 
 export const translateError = (errorMessage) => getErrorDic(errorMessage)
 
+const IGNORE_FIELDS = ['hash', 'time']
+
 export default (contracts, tokenAmount) => {
+  contracts = {
+    ...contracts,
+    contractTypeId: contracts.contractType,
+    contractType: Client.getContractType(contracts.contractType)
+  }
   const contractsRows = []
-  for (const ctr in contracts[0]) {
+  for (const ctr in contracts) {
+    if (IGNORE_FIELDS.includes(ctr)) continue
+
     if (ctr === 'contractTypeId') {
-      if (Number(contracts[0][ctr]) === 1) {
+      if (Number(contracts[ctr]) === 1) {
         contractsRows.push(<DetailRow
           key={'TOKEN'}
           title={toReadableField('TOKEN')}
@@ -90,14 +99,14 @@ export default (contracts, tokenAmount) => {
         <DetailRow
           key={ctr}
           title={toReadableField(ctr)}
-          text={contracts[0][ctr]}
+          text={contracts[ctr]}
           address
         />
       )
     } else if (ctr === 'amount' || ctr === 'frozenBalance') {
-      const contractId = Number(contracts[0]['contractTypeId'])
+      const contractId = Number(contracts['contractTypeId'])
       const amountDivider = contractId === 1 || contractId === 11 ? ONE_TRX : 1
-      const textToDisplay = contractId === 9 ? tokenAmount : contracts[0][ctr] / amountDivider
+      const textToDisplay = contractId === 9 ? tokenAmount : contracts[ctr] / amountDivider
       contractsRows.push(
         <DetailRow
           key={ctr}
@@ -105,17 +114,22 @@ export default (contracts, tokenAmount) => {
           text={textToDisplay}
         />
       )
-    } else if (ctr === 'votes') {
-      const totalVotes = contracts[0][ctr].length
+    } else if (ctr === 'votesList') {
+      const totalVotes = contracts[ctr].length
       contractsRows.push(
         <DetailRow key={ctr} title={toReadableField(tl.t('submitTransaction.totalVotes'))} text={totalVotes} />
       )
+    } else if (ctr === 'data') {
+      contractsRows.push(<DataRow
+        key='DATA'
+        data={contracts[ctr]}
+      />)
     } else {
       contractsRows.push(
         <DetailRow
           key={ctr}
           title={toReadableField(ctr)}
-          text={toReadableField(contracts[0][ctr])}
+          text={toReadableField(contracts[ctr])}
         />
       )
     }

@@ -23,8 +23,8 @@ export const Header = styled.View`
   ${props => props.border && css`border-bottom-color: black`};
 `
 export const SearchBarWrapper = styled.View`
-    align-items:center;
     flex:1;
+    align-items: center;
     flex-direction: row;
     padding: 5px;
 `

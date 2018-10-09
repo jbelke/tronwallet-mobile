@@ -8,6 +8,8 @@ import tl from '../../utils/i18n'
 import { logSentry } from '../../utils/sentryUtils'
 
 export default class Contacts extends Component {
+  static navigationOptions = () => ({ title: tl.t('addressBook.contacts.title') })
+
   state = {
     contacts: null,
     refreshing: false

@@ -1,11 +1,9 @@
-import { FIXED_TOKENS } from './constants'
-
-export const orderBalances = balances => {
+export const orderBalances = (balances, fixedTokens) => {
   let orderedBalances = []
   let rest = []
 
   balances.forEach(balance => {
-    const verifiedIndex = FIXED_TOKENS.findIndex(token => token === balance.name)
+    const verifiedIndex = fixedTokens.findIndex(token => token === balance.name)
     if (verifiedIndex > -1) {
       balance.verified = true
       orderedBalances[verifiedIndex] = balance

@@ -58,18 +58,20 @@ class NavigationHeader extends React.Component {
       </TouchableOpacity>
     } else if (onSearch) {
       element =
-        <TouchableOpacity onPress={() => {
-          this.setState({ isSearching: true })
-          if (onSearchPressed) onSearchPressed()
-        }}>
+        <TouchableOpacity
+          style={{padding: 10}}
+          onPress={() => {
+            if (onSearchPressed) onSearchPressed()
+          }}>
           <Ionicons name='ios-search' color='white' size={21} />
         </TouchableOpacity>
+    } else {
+      element = rightButton
     }
 
-    return <Utils.Row margin={10} position='absolute' right={10}>
+    return <Utils.View margin={10} position='absolute' right={10}>
       {element}
-      {rightButton}
-    </Utils.Row>
+    </Utils.View>
   }
 
   _renderDefaultMode = () => {
@@ -89,14 +91,13 @@ class NavigationHeader extends React.Component {
   _renderSeachMode = () => {
     const { onSearch, onSearchPressed } = this.props
     const onClose = () => {
-      this.setState({ isSearching: false })
       if (onSearchPressed) onSearchPressed()
     }
     return <NavigationSearchBar onSearch={onSearch} onClose={onClose} />
   }
 
   render () {
-    const { isSearching } = this.state
+    const { isSearching } = this.props
 
     return (
       <HeaderWrapper>

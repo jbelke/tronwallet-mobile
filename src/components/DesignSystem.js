@@ -27,6 +27,7 @@ export const Colors = {
   lightBackground: '#212132',
   lighterBackground: '#2d2e46',
   lightestBackground: '#3f415d',
+  weirdGreen: '#3fe77b',
   lightPurple: '#696A9C',
   primaryText: '#FFFFFF',
   secondaryText: '#66688F',
@@ -62,7 +63,7 @@ export const ScreenSize = {
   height
 }
 
-const getAdjustedFontSize = size =>
+export const getAdjustedFontSize = size =>
   parseInt(size) * width * (1.8 - 0.002 * width) / 400
 
 export const FontSize = {

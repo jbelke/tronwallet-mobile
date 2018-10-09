@@ -99,7 +99,7 @@
   "firstTime": {
     "button": {
       "create": "CRIAR CARTEIRA",
-      "restore": "RESTAURAR CARTEIRA",
+      "restore": "RESTAURAR A CARTEIRA",
       "import": "IMPORT WALLET"
     },
     "swiper": {
@@ -231,17 +231,17 @@
     "endTime": "FIM DO TEMPO",
     "description": "DESCRIÇÃO",
     "transaction": "TRANSAÇÃO",
-    "ownerAddress": "ENDEREÇO ​​DO PROPRIETÁRIO",
-    "trxNum": "TRX NUM",
-    "num": "NUM",
-    "block": "QUADRA",
+    "ownerAddress": "ENDEREÇO DO PROPRIETÁRIO",
+    "trxNum": "NUMERO TRX",
+    "num": "NUMERO",
+    "block": "BLOCO",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
     "title": "VERIFICAÇÃO DE SEGURANÇA",
     "enter": "Entrar no pino",
     "new": "Digite o novo PIN",
-    "reenter": "Digite novamente o PIN",
+    "reenter": "Confirme o PIN",
     "biometrics": "Biometric Check"
   },
   "receive": {
@@ -408,7 +408,7 @@
       "noAccounts": "Nenhuma conta para restaurar"
     },
     "partners": "PARCEIROS",
-    "askPin": "Sempre perguntar PIN",
+    "askPin": "Sempre pedir o PIN",
     "askBiometry": "Activate Biometry"
   },
   "submitTransaction": {

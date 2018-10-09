@@ -52,6 +52,9 @@
   "skip": "Skip",
   "privateKey": "Private Key",
   "results" : "Results",
+  "buy": "Buy",
+  "filter" : "Filter",
+  "txs": "Transactions",
   "balance": {
     "title": "ACCOUNTS",
     "error": {
@@ -124,6 +127,7 @@
     }
   },
   "addressBook": {
+    "title": "ADDRESS BOOK",
     "shared": {
       "add": "ADD",
       "edit": "EDIT",
@@ -131,6 +135,7 @@
       "send": "SEND"
     },
     "contacts": {
+      "title":"CONTACTS",
       "delete": {
         "title": "Delete Contact",
         "message": "Do you really want to delete this contact?",
@@ -213,6 +218,7 @@
       "notFound" : "Asset(s) not found"
     },
     "warning": "You don't have enough TRX to buy that many {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "AMOUNT TO BUY",
     "pricePerToken": "PRICE PER TOKEN",
     "tokenDescription": "TOKEN DESCRIPTION",
@@ -231,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview" : "Featured Tokens"
   },
   "pin": {
@@ -406,7 +413,8 @@
     },
     "partners": "PARTNERS",
     "askPin" :"Always ask PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly" : "Verified tokens only"
   },
   "submitTransaction": {
     "title": "TRANSACTION DETAILS",
@@ -490,7 +498,8 @@
     "votesAvailable": "VOTES AVAILABLE",
     "search": "Search",
     "searchPreview" : "Suggestions - Most Voted",
-    "error": "Oops, something didn't load correctly. Try to reload"
+    "error": "Oops, something didn't load correctly. Try to reload",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCAN",

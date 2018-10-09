@@ -18,7 +18,7 @@ const participateAmount = ({amount, tokenName}, tokenPrice) => `${(amount) / (to
 
 /* Configures the object used to hidrate the render components with the proper
 texts and icons. */
-export const configureTransaction = (item, { topRow, addressRow, publicKey }) => {
+export const configureTransaction = (item, { topRow, addressRow, publicKey, currentAlias }) => {
   const { contractData, tokenPrice } = item
   const config = {}
   switch (item.type) {
@@ -28,7 +28,8 @@ export const configureTransaction = (item, { topRow, addressRow, publicKey }) =>
         amount: transferAmount(contractData),
         icon: {
           Type: Feather,
-          name: publicKey === contractData.transferToAddress ? 'arrow-down-left' : 'arrow-up-right',
+          name: contractData.transferFromAddress === publicKey ||
+          contractData.transferFromAddress === currentAlias ? 'arrow-up-right' : 'arrow-down-left',
           size: 20
         },
         badgeColor: '#4a69e2'

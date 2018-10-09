@@ -1,106 +1,96 @@
 import React from 'react'
 import { Answers } from 'react-native-fabric'
-import {TouchableOpacity, Image, FlatList, ActivityIndicator, Platform} from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
+import {Image, FlatList, ActivityIndicator, Platform, RefreshControl} from 'react-native'
 import ProgressBar from 'react-native-progress/Bar'
 import moment from 'moment'
-import { debounce, union } from 'lodash'
+import debounce from 'lodash/debounce'
+import union from 'lodash/union'
+import clamp from 'lodash/clamp'
 
-import tl from '../../utils/i18n'
-import getAssetsStore from '../../store/assets'
-import { Colors } from '../../components/DesignSystem'
-import { orderAssets, updateAssets, getCustomName } from '../../utils/assetsUtils'
-import { ONE_TRX } from '../../services/client'
-import guarantee from '../../assets/guarantee.png'
+// Design
 import NavigationHeader from '../../components/Navigation/Header'
-import { logSentry } from '../../utils/sentryUtils'
-import { VERIFIED_TOKENS } from '../../utils/constants'
-
 import {
   View,
   Container,
   Row
 } from '../../components/Utils'
-
 import {
   Card,
-  CardContent,
   TokenPrice,
-  Featured,
   Text,
   TokenName,
   VerticalSpacer,
-  FeaturedText,
   FeaturedTokenName,
-  FeaturedTokenPrice,
   HorizontalSpacer,
   BuyButton,
   ButtonText,
-  TokensTitle
+  GradientCard,
+  TokenLabel,
+  WhiteLabelText,
+  Featured,
+  FeaturedText
 } from './Elements'
-import { rgb } from '../../../node_modules/polished'
+import LoadingScene from '../../components/LoadingScene'
+import FontelloIcon from '../../components/FontelloIcon'
+import { Colors } from '../../components/DesignSystem'
 
-const AMOUNT_TO_FETCH = 30
+// Utils
+import { getCustomName } from '../../utils/assetsUtils'
+import { logSentry } from '../../utils/sentryUtils'
+import { withContext } from '../../store/context'
+import { ONE_TRX } from '../../services/client'
+import tl from '../../utils/i18n'
+
+// Service
+import { BATCH_NUMBER, getTokens, queryToken } from '../../services/contentful'
 
 class ParticipateHome extends React.Component {
-  static navigationOptions = () => {
-    return { header: null }
-  }
+  static navigationOptions = () => ({ header: null })
 
   state = {
     assetList: [],
     currentList: [],
     featuredTokens: [],
     start: 0,
-    loading: false,
-    searchMode: false,
-    searchName: ''
-
+    loading: true,
+    refreshing: false,
+    loadingMore: false,
+    searchName: '',
+    totalTokens: 0,
+    error: null,
+    isSearching: false
   }
 
   async componentDidMount () {
     Answers.logContentView('Tab', 'Participate')
     this._onSearching = debounce(this._onSearching, 250)
-    await this._getFeaturedTokensFromStore()
-    this._loadData()
-  }
-
-  _getFeaturedTokensFromStore = async () => {
-    const store = await getAssetsStore()
-    const filtered = store.objects('Asset')
-      .map(item => Object.assign({}, item))
-      .filter(item => VERIFIED_TOKENS.includes(item.name))
-
-    if (filtered.length) {
-      this.setState({ featuredTokens: orderAssets(filtered) })
-    }
+    this._navListener = this.props.navigation.addListener('didFocus', this._loadData)
   }
 
   _loadData = async () => {
-    this.setState({ loading: true })
-
+    this.setState({ start: 0, isSearching: false })
+    const { verifiedTokensOnly } = this.props.context
     try {
-      this.assetStoreRef = await getAssetsStore()
-      const assets = await this._updateAssets(0)
-      this.setState({ assetList: assets, currentList: assets })
-    } catch (e) {
-      this.setState({ error: e.message })
-      logSentry(e, 'Participate - Load Data')
+      const {assets, featured, totalTokens} = await getTokens(verifiedTokensOnly)
+      this.setState({totalTokens, assetList: assets, featuredTokens: featured, currentList: assets})
+    } catch (error) {
+      logSentry(error, 'Initial load participate')
+      this.setState({ error: error.message })
     } finally {
       this.setState({ loading: false })
     }
   }
 
   _loadMore = async () => {
-    const { start, assetList, searchMode } = this.state
+    const { start, assetList, isSearching, loading, totalTokens } = this.state
+    const { verifiedTokensOnly } = this.props.context
+    const newStart = clamp(start + BATCH_NUMBER, totalTokens)
 
-    if (searchMode) return
+    if (loading || isSearching || newStart === totalTokens) return
 
-    this.setState({ loading: true })
-    const newStart = start + AMOUNT_TO_FETCH
-
+    this.setState({ loadingMore: true })
     try {
-      const assets = await this._updateAssets(newStart)
+      const {assets} = await getTokens(verifiedTokensOnly, newStart)
       const updatedAssets = union(assetList, assets)
 
       this.setState({ start: newStart, assetList: updatedAssets, currentList: updatedAssets })
@@ -108,42 +98,41 @@ class ParticipateHome extends React.Component {
       this.setState({ error: error.message })
       logSentry(error, 'Participate - Load more candidates')
     } finally {
-      this.setState({ loading: false })
+      this.setState({ loadingMore: false })
     }
   }
 
-  _updateAssets = async (start, end = AMOUNT_TO_FETCH, name) => {
-    const assets = await updateAssets(start, end, name)
-    return this._filterOrderedAssets(assets)
+  _refreshData = async () => {
+    this.setState({refreshing: true, error: null})
+    await this._loadData()
+    this.setState({refreshing: false, error: null})
   }
 
   _filterOrderedAssets = assets => assets
     .filter(({ issuedPercentage, name, startTime, endTime }) =>
-      issuedPercentage < 100 && name !== 'TRX' && startTime < Date.now() &&
-    endTime > Date.now() && !VERIFIED_TOKENS.includes(name))
+      issuedPercentage < 100 && startTime < Date.now() &&
+    endTime > Date.now())
 
   _onSearchPressed = () => {
-    const { searchMode } = this.state
-    const assets = this.assetStoreRef.objects('Asset').map(item => Object.assign({}, item))
+    const { isSearching, assetList } = this.state
+    this.setState({ isSearching: !isSearching, searchName: '' })
 
-    this.setState({ searchMode: !searchMode, searchName: '' })
-    if (searchMode) {
-      this.setState({
-        currentList: this._filterOrderedAssets(assets.slice(0, AMOUNT_TO_FETCH)),
-        start: 0})
+    if (isSearching) {
+      this.setState({ currentList: assetList })
     } else {
       this.setState({ currentList: [] })
     }
   }
 
   _onSearching = async name => {
-    const assetResult = this.assetStoreRef.objects('Asset')
-      .filtered('name CONTAINS[c] $0', name)
-      .map(item => Object.assign({}, item))
+    const { assetList, featuredTokens } = this.state
+
+    const regex = new RegExp(name.toUpperCase(), 'i')
+    const resultList = [...featuredTokens, ...assetList].filter(ast => regex.test(ast.name.toUpperCase()))
 
     this.setState({searchName: name})
-    if (assetResult.length) {
-      const searchedList = name ? this._filterOrderedAssets(assetResult) : []
+    if (resultList.length) {
+      const searchedList = name ? resultList : []
       this.setState({ currentList: searchedList })
     } else {
       this._searchFromApi(name)
@@ -151,10 +140,11 @@ class ParticipateHome extends React.Component {
   }
 
   _searchFromApi = async name => {
+    const { verifiedTokensOnly } = this.props.context
     this.setState({searching: true})
     try {
-      const assetFromApi = await updateAssets(0, 2, name)
-      this.setState({ currentList: assetFromApi })
+      const { results } = await queryToken(verifiedTokensOnly, name)
+      this.setState({ currentList: results })
     } catch (error) {
       logSentry(error, 'Search Participate Error')
     } finally {
@@ -163,11 +153,13 @@ class ParticipateHome extends React.Component {
   }
 
   _renderFeaturedTokens = () => {
-    const { searchMode, featuredTokens, searching, searchName } = this.state
+    const { isSearching, featuredTokens, searching, searchName } = this.state
     const featTokens = featuredTokens.map(token =>
-      <React.Fragment key={token.name}>{this._renderCard(token)}</React.Fragment>)
+      <React.Fragment key={token.name}>
+        {isSearching ? this._renderCardContent(token) : this._renderFeaturedCardContent(token)}
+      </React.Fragment>)
 
-    if (searchMode) {
+    if (isSearching) {
       return <View>
         {
           searching &&
@@ -177,95 +169,96 @@ class ParticipateHome extends React.Component {
         }
         {!searchName && featTokens}
       </View>
+    } else {
+      return <View>{featTokens}</View>
     }
-
-    return (
-      <View>
-        <TokensTitle>
-          {tl.t('participate.tokens')}
-        </TokensTitle>
-        <VerticalSpacer size={20} />
-        {featTokens}
-      </View>
-    )
   }
 
-  _renderCardContent = ({ name, price, issuedPercentage, endTime, featured, verified }) => (
-    <React.Fragment>
-      {featured && (
+  _renderFeaturedCardContent = asset => {
+    const { name, abbr, issuedPercentage, endTime } = asset
+    return <GradientCard>
+      <WhiteLabelText label={abbr.substr(0, 3).toUpperCase()} />
+      <HorizontalSpacer size={18} />
+      <View flex={1} justify='space-between'>
+        <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
+        <VerticalSpacer size={36} />
+        <View>
+          <ProgressBar
+            progress={Math.round(issuedPercentage) / 100}
+            borderWidth={0}
+            width={null}
+            height={4}
+            color={Colors.weirdGreen}
+            unfilledColor={Colors.dusk}
+          />
+          <VerticalSpacer size={6} />
+          <Row justify='space-between'>
+            <Text>{tl.t('ends')} {moment(endTime).fromNow()}</Text>
+            <Text>{Math.round(issuedPercentage)}%</Text>
+          </Row>
+        </View>
+      </View>
+      <View flex={1} align='flex-end' justify='space-between'>
         <Featured>
           <FeaturedText align='center'>{tl.t('participate.featured')}</FeaturedText>
         </Featured>
-      )}
-      <CardContent>
-        <Row justify='space-between' align='center'>
-          {verified ? (
-            <Row align='center'>
-              <HorizontalSpacer size={8} />
-              <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
-              <HorizontalSpacer size={4} />
-              <Image source={guarantee} style={{ height: 14, width: 14 }} />
-            </Row>
-          ) : (
-            <TokenName>{name}</TokenName>
-          )}
-          {featured ? <FeaturedTokenPrice>{price / ONE_TRX} TRX</FeaturedTokenPrice> : <TokenPrice>{price / ONE_TRX} TRX</TokenPrice>}
-        </Row>
-        <VerticalSpacer size={featured ? 12 : 20} />
-        <Row>
-          <View flex={1} justify='center'>
-            <ProgressBar
-              progress={Math.round(issuedPercentage) / 100}
-              borderWidth={0}
-              width={null} height={4}
-              color={rgb(6, 231, 123)}
-              unfilledColor={rgb(25, 26, 42)}
+        <BuyButton
+          onPress={() => { this.props.navigation.navigate('TokenInfo', { item: asset }) }}
+          elevation={4}>
+          <ButtonText>{tl.t('buy').toUpperCase()}</ButtonText>
+        </BuyButton>
+      </View>
+    </GradientCard>
+  }
+  _renderCardContent = asset => {
+    const { name, abbr, price, issuedPercentage, endTime, isVerified } = asset
+    return <Card>
+      <TokenLabel label={abbr.substr(0, 3).toUpperCase()} />
+      <HorizontalSpacer size={24} />
+      <View flex={1} justify='space-between'>
+        {isVerified ? (
+          <Row align='center'>
+            <FeaturedTokenName>{getCustomName(name)}</FeaturedTokenName>
+            <HorizontalSpacer size={4} />
+            <FontelloIcon
+              name='guarantee'
+              style={{ height: 14, width: 14 }}
+              color='#3face7'
             />
-            <VerticalSpacer size={6} />
-            <Row justify='space-between'>
-              <Text>{tl.t('ends')} {moment(endTime).fromNow()}</Text>
-              <Text>{Math.round(issuedPercentage)}%</Text>
-            </Row>
-          </View>
-          <HorizontalSpacer size={20} />
-          {featured && (
-            <BuyButton elevation={8}>
-              <ButtonText>{tl.t('participate.button.buyNow')}</ButtonText>
-            </BuyButton>
-          )}
-        </Row>
-      </CardContent>
-    </React.Fragment>
-  )
-
-  _renderCard = (asset) => {
-    return (
-      <React.Fragment>
-        <TouchableOpacity onPress={() => { this.props.navigation.navigate('Buy', { item: asset }) }}>
-          <Card>
-            {asset.featured ? (
-              <LinearGradient
-                start={{ x: 0, y: 1 }}
-                end={{ x: 1, y: 0 }}
-                colors={[rgb(255, 68, 101), rgb(246, 202, 29)]}
-                style={{ flex: 1 }}
-              >
-                {this._renderCardContent(asset)}
-              </LinearGradient>
-            ) : (
-              this._renderCardContent(asset)
-            )}
-          </Card>
-          <VerticalSpacer size={15} />
-        </TouchableOpacity>
-      </React.Fragment>
-    )
+          </Row>
+        ) : (
+          <TokenName>{name}</TokenName>
+        )}
+        <View>
+          <ProgressBar
+            progress={Math.round(issuedPercentage) / 100}
+            borderWidth={0}
+            width={null}
+            height={4}
+            color={Colors.weirdGreen}
+            unfilledColor={Colors.dusk}
+          />
+          <VerticalSpacer size={6} />
+          <Row justify='space-between'>
+            <Text>{tl.t('ends')} {moment(endTime).fromNow()}</Text>
+            <Text>{Math.round(issuedPercentage)}%</Text>
+          </Row>
+        </View>
+      </View>
+      <View flex={1} align='flex-end' justify='space-between'>
+        <TokenPrice>{price / ONE_TRX} TRX</TokenPrice>
+        <BuyButton
+          onPress={() => { this.props.navigation.navigate('TokenInfo', { item: asset }) }}
+          elevation={4}>
+          <ButtonText>{tl.t('buy').toUpperCase()}</ButtonText>
+        </BuyButton>
+      </View>
+    </Card>
   }
 
   _renderLoading = () => {
-    const { loading } = this.state
-
-    if (loading) {
+    const { loadingMore } = this.state
+    if (loadingMore) {
       return (
         <React.Fragment>
           <ActivityIndicator size='small' color={Colors.primaryText} />
@@ -277,8 +270,11 @@ class ParticipateHome extends React.Component {
   }
 
   _renderEmptyAssets = () => {
-    const { loading, searchMode, searching, searchName, currentList } = this.state
-    if (searchMode && !loading && !!searchName & !searching && !currentList.length) {
+    const { loading, isSearching, searching, searchName, currentList, error } = this.state
+
+    if (loading) return <LoadingScene />
+
+    if ((isSearching && !loading && !!searchName & !searching && !currentList.length) || error) {
       return (
         <View flex={1} align='center' justify='center' padding={20}>
           <Image
@@ -292,15 +288,23 @@ class ParticipateHome extends React.Component {
     }
     return null
   }
+  _renderSeparator = () =>
+    <View
+      height={0.5}
+      marginLeft={80}
+      marginTop={10}
+      width='100%'
+      background={Colors.greyBlue}
+    />
 
   render () {
-    const { currentList, searchName } = this.state
-    const orderedBalances = orderAssets(currentList)
-    const searchPreview = searchName ? `${tl.t('results')} : ${orderedBalances.length}` : tl.t('participate.searchPreview')
+    const { refreshing, currentList, searchName, featuredTokens, isSearching } = this.state
+    const searchPreview = searchName ? `${tl.t('results')} : ${currentList.length}` : tl.t('participate.searchPreview')
     return (
       <Container>
         <NavigationHeader
           title={tl.t('participate.title')}
+          isSearching={isSearching}
           onSearch={name => this._onSearching(name)}
           onSearchPressed={() => this._onSearchPressed()}
           searchPreview={searchPreview}
@@ -309,12 +313,18 @@ class ParticipateHome extends React.Component {
           ListHeaderComponent={this._renderFeaturedTokens}
           ListFooterComponent={this._renderLoading}
           ListEmptyComponent={this._renderEmptyAssets}
-          data={orderedBalances}
-          renderItem={({ item }) => this._renderCard(item)}
+          ItemSeparatorComponent={this._renderSeparator}
+          refreshControl={<RefreshControl
+            refreshing={refreshing}
+            onRefresh={this._refreshData}
+          />}
+          data={currentList}
+          extraData={[featuredTokens]}
+          renderItem={({ item }) => this._renderCardContent(item)}
           keyExtractor={asset => asset.name}
           scrollEnabled
           removeClippedSubviews={Platform.OS === 'android'}
-          maxToRenderPerBatch={AMOUNT_TO_FETCH}
+          maxToRenderPerBatch={BATCH_NUMBER}
           onEndReached={this._loadMore}
           onEndReachedThreshold={0.5}
         />
@@ -323,4 +333,4 @@ class ParticipateHome extends React.Component {
   }
 }
 
-export default ParticipateHome
+export default withContext(ParticipateHome)

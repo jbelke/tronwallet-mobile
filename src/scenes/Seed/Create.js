@@ -1,7 +1,6 @@
 import React from 'react'
 import { ActivityIndicator, Alert, TouchableOpacity, Clipboard, Image } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
-import { createIconSetFromFontello } from 'react-native-vector-icons'
 import RNTron from 'react-native-tron'
 import Toast from 'react-native-easy-toast'
 
@@ -15,9 +14,8 @@ import { createUserKeyPair } from '../../utils/secretsUtils'
 import { withContext } from '../../store/context'
 import { logSentry } from '../../utils/sentryUtils'
 import tl from '../../utils/i18n'
-import fontelloConfig from '../../assets/icons/config.json'
+import FontelloIcon from '../../components/FontelloIcon'
 
-const Icon = createIconSetFromFontello(fontelloConfig, 'tronwallet')
 const resetAction = StackActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({ routeName: 'App' })],
@@ -97,8 +95,8 @@ class Create extends React.Component {
             <TouchableOpacity
               onPress={this._onCopySeed}
               style={{alignItems: 'flex-end'}}>
-              <Icon
-                name={'file-copy-to-clipboard,-clip-board,-document,-file,-copy,-sign'}
+              <FontelloIcon
+                name='copy'
                 size={18}
                 color={Colors.greyBlue}
               />

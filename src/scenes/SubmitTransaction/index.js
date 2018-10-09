@@ -10,7 +10,7 @@ import { Colors } from '../../components/DesignSystem'
 import ButtonGradient from '../../components/ButtonGradient'
 import LoadingScene from '../../components/LoadingScene'
 import NavigationHeader from '../../components/Navigation/Header'
-import { DetailRow, DataRow } from './elements'
+import { DetailRow } from './elements'
 
 // Service
 import Client from '../../services/client'
@@ -21,6 +21,7 @@ import buildTransactionDetails, { translateError } from './detailMap'
 import getTransactionStore from '../../store/transactions'
 import { withContext } from '../../store/context'
 import { logSentry } from '../../utils/sentryUtils'
+import { updateAssets } from '../../utils/assetsUtils'
 
 const ANSWERS_TRANSACTIONS = ['Transfer', 'Vote', 'Participate', 'Freeze']
 const NOTIFICATION_TRANSACTIONS = ['Transfer', 'Transfer Asset']
@@ -80,33 +81,31 @@ class TransactionDetail extends Component {
   }
 
   _getTransactionObject = () => {
-    const {
-      transactionData: { hash, contracts }
-    } = this.state
-
-    const type = Client.getContractType(contracts[0].contractTypeId)
+    const { transactionData } = this.state
+    const { hash, amount, contractType, ownerAddress, toAddress, assetName } = transactionData
+    const type = Client.getContractType(contractType)
     const transaction = {
       id: hash,
       type,
       contractData: {
-        transferFromAddress: contracts[0].from || contracts[0].ownerAddress,
-        transferToAddress: contracts[0].to,
-        tokenName: type === 'Transfer' ? 'TRX' : contracts[0].token
+        transferFromAddress: ownerAddress,
+        transferToAddress: toAddress,
+        tokenName: type === 'Transfer' ? 'TRX' : assetName
       },
-      ownerAddress: contracts[0].from || contracts[0].ownerAddress,
-      timestamp: Date.now(),
+      ownerAddress: ownerAddress,
+      timestamp: new Date().getTime(),
       confirmed: false
     }
 
     switch (type) {
       case 'Freeze':
-        transaction.contractData.frozenBalance = contracts[0].frozenBalance
+        transaction.contractData.frozenBalance = transactionData.frozenBalance
         break
       case 'Vote':
-        transaction.contractData.votes = contracts[0].votes
+        transaction.contractData.votes = transactionData.votesList
         break
       default:
-        transaction.contractData.amount = contracts[0].amount
+        transaction.contractData.amount = amount
         break
     }
     return transaction
@@ -142,6 +141,8 @@ class TransactionDetail extends Component {
           }
         }
         await this.props.context.loadUserData()
+        // TODO - Remove this piece of code when transactions come with Participate Price
+        if (transaction.type === 'Participate') updateAssets(0, 2, transaction.contractData.tokenName)
       }
       this.setState({ submitError: null, loadingSubmit: false, submitted: true }, this._navigateNext)
     } catch (error) {
@@ -187,8 +188,7 @@ class TransactionDetail extends Component {
       </Utils.View>
     }
 
-    const { contracts, data } = transactionData
-    const contractsElements = buildTransactionDetails(contracts, tokenAmount)
+    const contractsElements = buildTransactionDetails(transactionData, tokenAmount)
 
     contractsElements.push(
       <DetailRow
@@ -197,19 +197,12 @@ class TransactionDetail extends Component {
         text={nowDate}
       />
     )
-    if (data) {
-      contractsElements.push(
-        <DataRow
-          key='DATA'
-          data={data}
-        />
-      )
-    }
+
     return <Utils.View paddingX={'medium'} paddingY={'small'}>{contractsElements}</Utils.View>
   }
 
   _renderSubmitButton = () => {
-    const { loadingSubmit, submitted } = this.state
+    const { loadingSubmit, submitted, submitError } = this.state
 
     return (
       <Utils.View marginTop={5} paddingX={'medium'}>
@@ -223,7 +216,7 @@ class TransactionDetail extends Component {
               testInput: pin => pin === this.props.context.pin,
               onSuccess: this._submitTransaction
             })}
-            disabled={submitted}
+            disabled={submitted || submitError}
             font='bold'
           />
         )}
