@@ -52,6 +52,7 @@
   "skip": "Přeskočit",
   "privateKey": "Soukromý klíč",
   "results": "Výsledky",
+  "buy": "Buy",
   "filter": "Filtr",
   "txs": "Transakce",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Aktiva nenalezena"
     },
     "warning": "Nemáte dostatek TRX ke koupi tolika {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "KOUPIT MNOŽSTVÍ",
     "pricePerToken": "CENA ZA TOKEN",
     "tokenDescription": "POPIS TOKENU",
@@ -235,6 +237,7 @@
     "trxNum": "POČET TRX",
     "num": "POČET",
     "block": "BLOK",
+    "balance": "BALANCE",
     "searchPreview": "Doporučené tokeny"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "PARTNEŘI",
     "askPin": "Vždy se zeptat na PIN kód",
-    "askBiometry": "Aktivovat biometrii"
+    "askBiometry": "Aktivovat biometrii",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "DETAILY TRANSAKCE",
@@ -493,7 +497,8 @@
     "votesAvailable": "VOLNÉ HLASY",
     "search": "Hledat",
     "searchPreview": "Návrhy - nejčastěji hlasované",
-    "error": "Ups, něco se nenačetlo správně. Zkuste znova načíst"
+    "error": "Ups, něco se nenačetlo správně. Zkuste znova načíst",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SKENOVAT",

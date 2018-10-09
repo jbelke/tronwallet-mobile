@@ -52,6 +52,7 @@
   "skip": "Skip",
   "privateKey": "מפתח פרטי",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "You don't have enough TRX to buy that many {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "AMOUNT TO BUY",
     "pricePerToken": "PRICE PER TOKEN",
     "tokenDescription": "TOKEN DESCRIPTION",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "PARTNERS",
     "askPin": "תמיד שאל את ה- PIN",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "TRANSACTION DETAILS",
@@ -493,7 +497,8 @@
     "votesAvailable": "הקולות זמינים",
     "search": "לחפש",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "אופס, משהו לא נטען כהלכה. נסה לטעון מחדש"
+    "error": "אופס, משהו לא נטען כהלכה. נסה לטעון מחדש",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "לִסְרוֹק",

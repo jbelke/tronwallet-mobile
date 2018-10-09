@@ -52,6 +52,7 @@
   "skip": "Saltar",
   "privateKey": "Clave privada",
   "results": "Resultados",
+  "buy": "Buy",
   "filter": "Filtro",
   "txs": "Transacciones",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Activo(s) no encontrado(s)"
     },
     "warning": "No tienes suficiente TRX para comprar tantos {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "CANTIDAD A COMPRAR",
     "pricePerToken": "PRECIO POR FICHA",
     "tokenDescription": "FICHA DESCRIPCIÓN",
@@ -235,6 +237,7 @@
     "trxNum": "Nº DE TRX",
     "num": "NÚMERO",
     "block": "BLOQUE",
+    "balance": "BALANCE",
     "searchPreview": "Tokens destacados"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "SOCIOS",
     "askPin": "Siempre pregunte PIN",
-    "askBiometry": "Activar la verificación biométrica"
+    "askBiometry": "Activar la verificación biométrica",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "DETALLES DE LA TRANSACCIÓN",
@@ -493,7 +497,8 @@
     "votesAvailable": "VOTOS DISPONIBLES",
     "search": "Búsqueda",
     "searchPreview": "Sugerencias: las más votadas",
-    "error": "Vaya, algo no carga correctamente. Intenta volver a cargar"
+    "error": "Vaya, algo no carga correctamente. Intenta volver a cargar",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "ESCANEAR",

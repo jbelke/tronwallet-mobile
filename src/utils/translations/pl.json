@@ -52,6 +52,7 @@
   "skip": "Pomiń",
   "privateKey": "Prywatny klucz",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "Nie masz wystarczającej ilości TRX, aby kupić tyle {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "KWOTA KUPIENIA",
     "pricePerToken": "CENA ZA ŻYCIE",
     "tokenDescription": "OPIS TOKEN",
@@ -235,6 +237,7 @@
     "trxNum": "NUM TRX",
     "num": "NUM",
     "block": "BLOK",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "WZMACNIACZ",
     "askPin": "Zawsze pytaj PIN",
-    "askBiometry": "Aktywuj biometrię"
+    "askBiometry": "Aktywuj biometrię",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "SZCZEGÓŁY TRANSAKCJI",
@@ -493,7 +497,8 @@
     "votesAvailable": "DOSTĘPNE GŁOSY",
     "search": "Szukaj",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "Ups, coś nie załadowało się poprawnie. Spróbuj przeładować"
+    "error": "Ups, coś nie załadowało się poprawnie. Spróbuj przeładować",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SKANDOWAĆ",

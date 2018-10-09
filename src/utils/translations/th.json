@@ -52,6 +52,7 @@
   "skip": "กระโดด",
   "privateKey": "คีย์ส่วนตัว",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "คุณไม่มี TRX พอที่จะซื้อได้มากนัก {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "AMOUNT TO BUY",
     "pricePerToken": "PRICE PER TOKEN",
     "tokenDescription": "คำอธิบายของ TOKEN",
@@ -235,6 +237,7 @@
     "trxNum": "หมายเลข TRX",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "พาร์ทเนอร์",
     "askPin": "ถาม PIN ทุกครั้ง",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "รายละเอียดการทำธุรกรรม",
@@ -493,7 +497,8 @@
     "votesAvailable": "จำนวนที่มีอยู่",
     "search": "ค้นหา",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "อ๊ะสิ่งที่ไม่ได้โหลดอย่างถูกต้อง ลองโหลดใหม่"
+    "error": "อ๊ะสิ่งที่ไม่ได้โหลดอย่างถูกต้อง ลองโหลดใหม่",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCAN",

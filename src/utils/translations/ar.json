@@ -52,6 +52,7 @@
   "skip": "تخطي",
   "privateKey": "مفتاح سري",
   "results": "النتائج",
+  "buy": "Buy",
   "filter": "تصفية",
   "txs": "الصفقات",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "لم يتم العثور على أصل (أصول)"
     },
     "warning": "لا يوجد لديك ما يكفي من TRX لشراء هذه الكمية من عملة {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "مبلغ الشراء",
     "pricePerToken": "السعر للعملة الواحدة",
     "tokenDescription": "شرح العملة",
@@ -235,6 +237,7 @@
     "trxNum": "عدد TRX",
     "num": "عدد",
     "block": "كتلة",
+    "balance": "BALANCE",
     "searchPreview": "عملات مميزة"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "الشركاء",
     "askPin": "اسأل دائمًا رقم التعريف الشخصي",
-    "askBiometry": "تنشيط التحقق"
+    "askBiometry": "تنشيط التحقق",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "تفاصيل المعاملة",
@@ -493,7 +497,8 @@
     "votesAvailable": "الأصوات المتاحة",
     "search": "بحث",
     "searchPreview": "اقتراحات - الأكثر تصويتاً",
-    "error": "عفواً، هناك شيء لم يتحمل بشكل صحيح. حاول إعادة التحميل"
+    "error": "عفواً، هناك شيء لم يتحمل بشكل صحيح. حاول إعادة التحميل",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "مسح ضوئي",

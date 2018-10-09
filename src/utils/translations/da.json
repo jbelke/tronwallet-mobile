@@ -52,6 +52,7 @@
   "skip": "Skip",
   "privateKey": "Privat nøgle",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "You don't have enough TRX to buy that many {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "AMOUNT TO BUY",
     "pricePerToken": "PRICE PER TOKEN",
     "tokenDescription": "TOKEN DESCRIPTION",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "PARTNERS",
     "askPin": "Spørg altid PIN-kode",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "TRANSACTION DETAILS",
@@ -493,7 +497,8 @@
     "votesAvailable": "AFSTEMNINGER TILGÆNGELIG",
     "search": "Søg",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "Ups, noget blev ikke indlæst korrekt. Prøv at genindlæse"
+    "error": "Ups, noget blev ikke indlæst korrekt. Prøv at genindlæse",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCAN",

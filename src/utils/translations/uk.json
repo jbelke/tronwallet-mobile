@@ -52,6 +52,7 @@
   "skip": "Пропустити",
   "privateKey": "Приватний ключ",
   "results": "Результати",
+  "buy": "Buy",
   "filter": "Фільтр",
   "txs": "Транзакції",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Активи не знайдені"
     },
     "warning": "Вам не вистачає TRX, щоб придбати так багато {{token}}",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "СУМА ДО КУПІВЛІ",
     "pricePerToken": "ЦІНА ЗА ТОКЕН",
     "tokenDescription": "ОПИС ТОКЕНУ",
@@ -235,6 +237,7 @@
     "trxNum": "КІЛЬКІСТЬ TRX",
     "num": "КІЛЬКІСТЬ",
     "block": "БЛОК",
+    "balance": "BALANCE",
     "searchPreview": "Рекомендовані токени"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "ПАРТНЕРИ",
     "askPin": "Завжди запитувати PIN-код",
-    "askBiometry": "Активувати біометрію"
+    "askBiometry": "Активувати біометрію",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "ДЕТАЛІ ТРАНЗАКЦІЇ",
@@ -493,7 +497,8 @@
     "votesAvailable": "Голосованість доступна",
     "search": "Пошук",
     "searchPreview": "Пропозиції - Найбільш вибрані",
-    "error": "На жаль, щось завантажено неправильно. Спробуйте перезавантажити"
+    "error": "На жаль, щось завантажено неправильно. Спробуйте перезавантажити",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "СКАНУВАННЯ",

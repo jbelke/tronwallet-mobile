@@ -52,6 +52,7 @@
   "skip": "Überspringen",
   "privateKey": "Privater Schlüssel",
   "results": "Ergebnisse",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transaktionen",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) nicht gefunden"
     },
     "warning": "Sie haben nicht genügend TRX, um diese Menge {{token}} zu kaufen",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "Menge kaufen",
     "pricePerToken": "PREIS PRO TOKEN",
     "tokenDescription": "TOKEN BESCHREIBUNG",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOCK",
+    "balance": "BALANCE",
     "searchPreview": "Top Token"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "PARTNER",
     "askPin": "Immer nach der PIN fragen",
-    "askBiometry": "Aktivieren Sie Ihren Fingerabdruck"
+    "askBiometry": "Aktivieren Sie Ihren Fingerabdruck",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "DETAILS DER TRANSAKTION",
@@ -493,7 +497,8 @@
     "votesAvailable": "STIMMEN ZUR VERFÜGUNG",
     "search": "Suche",
     "searchPreview": "Vorschläge - Meist gewählt",
-    "error": "Hoppla, etwas wurde nicht korrekt geladen. Versuchen Sie, erneut zu laden"
+    "error": "Hoppla, etwas wurde nicht korrekt geladen. Versuchen Sie, erneut zu laden",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "SCAN",

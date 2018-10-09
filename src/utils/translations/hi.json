@@ -52,6 +52,7 @@
   "skip": "छोड़ें",
   "privateKey": "निजी चाबी",
   "results": "Results",
+  "buy": "Buy",
   "filter": "Filter",
   "txs": "Transactions",
   "balance": {
@@ -217,6 +218,7 @@
       "notFound": "Asset(s) not found"
     },
     "warning": "आपके पास बहुत से {{token}}खरीदने के लिए पर्याप्त TRX नहीं है",
+    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
     "amountToBuy": "खरीदने के लिए राशि",
     "pricePerToken": "टोकन प्रति टोकन",
     "tokenDescription": "टोकन विवरण",
@@ -235,6 +237,7 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "ब्लॉक",
+    "balance": "BALANCE",
     "searchPreview": "Featured Tokens"
   },
   "pin": {
@@ -409,7 +412,8 @@
     },
     "partners": "भागीदार",
     "askPin": "हमेशा पिन पूछें",
-    "askBiometry": "Activate Biometry"
+    "askBiometry": "Activate Biometry",
+    "verifiedTokensOnly": "Verified tokens only"
   },
   "submitTransaction": {
     "title": "लेनदेन का विवरण",
@@ -493,7 +497,8 @@
     "votesAvailable": "वोट उपलब्ध हैं",
     "search": "खोज",
     "searchPreview": "Suggestions - Most Voted",
-    "error": "ओह, कुछ ठीक से लोड नहीं हुआ था। पुनः लोड करने का प्रयास करें"
+    "error": "ओह, कुछ ठीक से लोड नहीं हुआ था। पुनः लोड करने का प्रयास करें",
+    "notFound": "Super Representative not found"
   },
   "scanPayment": {
     "scan": "स्कैन",
