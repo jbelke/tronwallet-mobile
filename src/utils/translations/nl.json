@@ -52,7 +52,7 @@
   "skip": "Overslaan",
   "privateKey": "Prive sleutel",
   "results": "Resultaten",
-  "buy": "Buy",
+  "buy": "Koop",
   "filter": "Filter",
   "txs": "Transacties",
   "balance": {
@@ -218,7 +218,7 @@
       "notFound": "Asset(s) niet gevonden"
     },
     "warning": "Uw TRX saldo is niet toereikend om zoveel {{token}} te kopen",
-    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
+    "enterAmountToBuy": "VOER HET AANTAL IN DAT U WILT KOPEN",
     "amountToBuy": "AANTAL TE KOPEN",
     "pricePerToken": "PRIJS PER TOKEN",
     "tokenDescription": "TOKEN BESCHRIJVING",
@@ -237,7 +237,7 @@
     "trxNum": "AANTAL TRX",
     "num": "AANTAL",
     "block": "BLOCK",
-    "balance": "BALANCE",
+    "balance": "Balans",
     "searchPreview": "Aanbevolen Tokens"
   },
   "pin": {
@@ -413,7 +413,7 @@
     "partners": "PARTNERS",
     "askPin": "Vraag altijd PIN",
     "askBiometry": "Activeer biometrie",
-    "verifiedTokensOnly": "Verified tokens only"
+    "verifiedTokensOnly": "Alleen geverifieerde tokens"
   },
   "submitTransaction": {
     "title": "TRANSACTIE DETAILS",
@@ -498,7 +498,7 @@
     "search": "Zoeken",
     "searchPreview": "Suggesties - Meest gestemd",
     "error": "Oeps, iets is niet correct geladen. Probeer opnieuw te laden",
-    "notFound": "Super Representative not found"
+    "notFound": "Super Vertegenwoordiger niet gevonden"
   },
   "scanPayment": {
     "scan": "SCAN",
