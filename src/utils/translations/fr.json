@@ -114,20 +114,20 @@
       },
       "votes": {
         "title": "VOTES",
-        "body": "Freezing and vote for Super \n Representatives"
+        "body": "Gel et vote pour les Super\nReprésentants"
       },
       "addressbook": {
         "title": "CARNET D'ADRESSES",
-        "body": "Save the addresses of your friends \n and contacts."
+        "body": "Enregistrer les adresses de vos amis\net contacts."
       },
       "multipleaccounts": {
         "title": "COMPTES MULTIPLES",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "body": "Vous pouvez gérer plusieurs comptes\ndans votre portefeuille"
       }
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "CARNET D'ADRESSES",
     "shared": {
       "add": "Ajouter",
       "edit": "Editer",
@@ -215,10 +215,10 @@
         "title": "Vous devez acheter au moins l'équivalent d'un TRX de {{token}}.",
         "message": "Actuellement, vous achetez seulement {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Actif(s) non trouvé(s)"
     },
     "warning": "Vous n’avez pas assez TRX pour acheter cette quantité de {{token}}",
-    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
+    "enterAmountToBuy": "SAISIR LE MONTANT A ACHETER",
     "amountToBuy": "MONTANT A ACHETER",
     "pricePerToken": "PRIX PAR JETON",
     "tokenDescription": "DESCRIPTION DU JETON",
@@ -237,8 +237,8 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "BLOC",
-    "balance": "BALANCE",
-    "searchPreview": "Featured Tokens"
+    "balance": "SOLDE",
+    "searchPreview": "Jetons recommandés"
   },
   "pin": {
     "title": "VÉRIFICATION DE LA SÉCURITÉ",
@@ -413,7 +413,7 @@
     "partners": "PARTENAIRES",
     "askPin": "Toujours demander un code PIN",
     "askBiometry": "Activer la vérification biométrique",
-    "verifiedTokensOnly": "Verified tokens only"
+    "verifiedTokensOnly": "Jetons vérifiés uniquement"
   },
   "submitTransaction": {
     "title": "DÉTAILS DE LA TRANSACTION",
@@ -496,9 +496,9 @@
     "totalVotes": "TOTAL DES VOTES",
     "votesAvailable": "VOTES DISPONIBLES",
     "search": "Recherche",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "Suggestions - Les plus votés",
     "error": "Oups, quelque chose n'a pas chargé correctement. Essayez de recharger",
-    "notFound": "Super Representative not found"
+    "notFound": "Super Représentant non trouvé"
   },
   "scanPayment": {
     "scan": "SCAN",
