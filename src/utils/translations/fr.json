@@ -51,9 +51,9 @@
   "allIn": "Tout compris",
   "skip": "Passer",
   "privateKey": "Clé privée",
-  "results": "Results",
-  "buy": "Buy",
-  "filter": "Filter",
+  "results": "Résultats",
+  "buy": "Acheter",
+  "filter": "Filtre",
   "txs": "Transactions",
   "balance": {
     "title": "COMPTES",
@@ -101,27 +101,27 @@
     "button": {
       "create": "Créer un portefeuille",
       "restore": "Restaurer votre porte feuille",
-      "import": "IMPORT WALLET"
+      "import": "Importer un portefeuille"
     },
     "swiper": {
       "welcome": {
-        "title": "Welcome to \nTRONWALLET",
-        "body": "The most secure wallet for TRON"
+        "title": "Bienvenue à \nTRONWALLET",
+        "body": "Le portefeuille le plus sécurisé pour TRON"
       },
       "security": {
-        "title": "SECURITY",
-        "body": "Privacy and security for \n your transactions"
+        "title": "SÉCURITÉ",
+        "body": "Confidentialité et sécurité pour\n vos transactions"
       },
       "votes": {
         "title": "VOTES",
         "body": "Freezing and vote for Super \n Representatives"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
+        "title": "CARNET D'ADRESSES",
         "body": "Save the addresses of your friends \n and contacts."
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
+        "title": "COMPTES MULTIPLES",
         "body": "You can manage multiple accounts \n in your wallet"
       }
     }
