@@ -64,3 +64,12 @@ export const getFixedTokens = async () => {
   const fixedNames = featuredTokens.map(({fields: token}) => token.name)
   return ['TRX', ...fixedNames]
 }
+
+export const getSystemStatus = async () => {
+  const { items } = await contentfulClient.getEntries({
+    content_type: 'systemStatus',
+    select: 'fields.showStatus,fields.statusMessage,fields.statusColor,fields.messageColor'
+  })
+  const { fields: { showStatus, statusMessage, statusColor, messageColor } } = items[0]
+  return { showStatus, statusMessage, statusColor, messageColor }
+}

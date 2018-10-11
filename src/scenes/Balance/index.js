@@ -134,6 +134,7 @@ class BalanceScene extends Component {
       const currency = preferedCurrency || 'TRX'
       accounts.map(account => getFreeze(account.address))
       this.props.context.setCurrency(currency)
+      this.props.context.updateSystemStatus()
     } catch (e) {
       this.setState({ error: e.message })
       logSentry(e, 'Balance - LoadAccounts')
