@@ -77,11 +77,11 @@ class TransactionDetail extends Component {
     const { navigation } = this.props
     const transaction = this._getTransactionObject()
     const stackToReset = this._getStackToReset(transaction.type)
-    navigation.navigate('TransactionSuccess', { stackToReset })
+    navigation.navigate('TransactionSuccess', { stackToReset, transaction })
   }
 
   _getTransactionObject = () => {
-    const { transactionData } = this.state
+    const { transactionData, tokenAmount } = this.state
     const { hash, amount, contractType, ownerAddress, toAddress, assetName } = transactionData
     const type = Client.getContractType(contractType)
     const transaction = {
@@ -103,6 +103,13 @@ class TransactionDetail extends Component {
         break
       case 'Vote':
         transaction.contractData.votes = transactionData.votesList
+        break
+      case 'Participate':
+        transaction.tokenPrice = amount / tokenAmount
+        transaction.contractData.amount = amount
+        break
+      case 'Unfreeze':
+        transaction.contractData.frozenBalance = tokenAmount
         break
       default:
         transaction.contractData.amount = amount

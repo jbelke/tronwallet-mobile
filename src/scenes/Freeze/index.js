@@ -14,7 +14,7 @@ import { Colors } from '../../components/DesignSystem'
 import KeyboardScreen from '../../components/KeyboardScreen'
 import NavigationHeader from '../../components/Navigation/Header'
 
-import Client from '../../services/client'
+import Client, { ONE_TRX } from '../../services/client'
 import { signTransaction } from '../../utils/transactionUtils'
 import getTransactionStore from '../../store/transactions'
 import { withContext } from '../../store/context'
@@ -163,14 +163,16 @@ class FreezeScene extends Component {
 
   _openTransactionDetails = async (transactionUnsigned) => {
     try {
-      const { accounts, publicKey } = this.props.context
+      const { accounts, publicKey, freeze } = this.props.context
+      const totalFrozen = Math.floor(freeze[publicKey].total) * ONE_TRX
       const transactionSigned = await signTransaction(
         accounts.find(item => item.address === publicKey).privateKey,
         transactionUnsigned
       )
       this.setState({ loadingSign: false }, () => {
         replaceRoute(this.props.navigation, 'SubmitTransaction', {
-          tx: transactionSigned
+          tx: transactionSigned,
+          tokenAmount: totalFrozen
         })
       })
     } catch (e) {

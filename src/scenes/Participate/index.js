@@ -272,8 +272,6 @@ class ParticipateHome extends React.Component {
   _renderEmptyAssets = () => {
     const { loading, isSearching, searching, searchName, currentList, error } = this.state
 
-    if (loading) return <LoadingScene />
-
     if ((isSearching && !loading && !!searchName & !searching && !currentList.length) || error) {
       return (
         <View flex={1} align='center' justify='center' padding={20}>
@@ -298,7 +296,7 @@ class ParticipateHome extends React.Component {
     />
 
   render () {
-    const { refreshing, currentList, searchName, featuredTokens, isSearching } = this.state
+    const { refreshing, currentList, searchName, featuredTokens, isSearching, loading } = this.state
     const searchPreview = searchName ? `${tl.t('results')} : ${currentList.length}` : tl.t('participate.searchPreview')
     return (
       <Container>
@@ -309,25 +307,27 @@ class ParticipateHome extends React.Component {
           onSearchPressed={() => this._onSearchPressed()}
           searchPreview={searchPreview}
         />
-        <FlatList
-          ListHeaderComponent={this._renderFeaturedTokens}
-          ListFooterComponent={this._renderLoading}
-          ListEmptyComponent={this._renderEmptyAssets}
-          ItemSeparatorComponent={this._renderSeparator}
-          refreshControl={<RefreshControl
-            refreshing={refreshing}
-            onRefresh={this._refreshData}
+        {loading
+          ? <LoadingScene />
+          : <FlatList
+            ListHeaderComponent={this._renderFeaturedTokens}
+            ListFooterComponent={this._renderLoading}
+            ListEmptyComponent={this._renderEmptyAssets}
+            ItemSeparatorComponent={this._renderSeparator}
+            refreshControl={<RefreshControl
+              refreshing={refreshing}
+              onRefresh={this._refreshData}
+            />}
+            data={currentList}
+            extraData={[featuredTokens]}
+            renderItem={({ item }) => this._renderCardContent(item)}
+            keyExtractor={asset => asset.name}
+            scrollEnabled
+            removeClippedSubviews={Platform.OS === 'android'}
+            maxToRenderPerBatch={BATCH_NUMBER}
+            onEndReached={this._loadMore}
+            onEndReachedThreshold={0.5}
           />}
-          data={currentList}
-          extraData={[featuredTokens]}
-          renderItem={({ item }) => this._renderCardContent(item)}
-          keyExtractor={asset => asset.name}
-          scrollEnabled
-          removeClippedSubviews={Platform.OS === 'android'}
-          maxToRenderPerBatch={BATCH_NUMBER}
-          onEndReached={this._loadMore}
-          onEndReachedThreshold={0.5}
-        />
       </Container>
     )
   }

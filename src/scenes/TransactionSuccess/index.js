@@ -24,6 +24,7 @@ class TransactionsSuccess extends PureComponent {
     // Reset navigation as transaction submition is the last step of a user interaction
     const { navigation } = this.props
     const stackToReset = navigation.getParam('stackToReset', null)
+    const lastTransaction = navigation.getParam('transaction', {})
     const resetAction = StackActions.reset({
       index: 0,
       actions: [
@@ -31,7 +32,7 @@ class TransactionsSuccess extends PureComponent {
       ],
       key: stackToReset
     })
-    const navigateToHome = NavigationActions.navigate({ routeName: 'Transactions' })
+    const navigateToHome = NavigationActions.navigate({ routeName: 'TransactionDetails', params: { item: lastTransaction } })
     if (stackToReset) navigation.dispatch(resetAction)
     navigation.dispatch(navigateToHome)
   }

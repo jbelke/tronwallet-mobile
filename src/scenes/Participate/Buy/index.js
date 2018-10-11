@@ -209,6 +209,7 @@ class BuyScene extends Component {
         transactionUnsigned
       )
       this.setState({ loading: false }, () => {
+        this.props.navigation.goBack()
         replaceRoute(this.props.navigation, 'SubmitTransaction', {
           tx: transactionSigned,
           tokenAmount: this.state.amountToBuy

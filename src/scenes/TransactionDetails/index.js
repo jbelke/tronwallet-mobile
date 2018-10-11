@@ -84,7 +84,11 @@ class TransactionDetails extends React.Component {
 
   async componentDidMount () {
     const { item } = this.props.navigation.state.params
-    this.setState({ item })
+    this.setState({ item }, this._checkTransaction)
+  }
+
+  componentWillMount () {
+    clearTimeout(this.checkTransactionTimeout)
   }
 
   _closeModal = () => {
@@ -222,7 +226,7 @@ class TransactionDetails extends React.Component {
     if (lowerType === 'participate') {
       return this._getIcon('ios-arrow-round-up', size, rgb(63, 231, 123))
     }
-    if (lowerType === 'vote' || lowerType === 'transaction') {
+    if (lowerType === 'transaction') {
       return this._getIcon('ios-arrow-round-down', size, rgb(255, 68, 101))
     }
     return null
@@ -518,6 +522,16 @@ class TransactionDetails extends React.Component {
     }
   }
 
+  _checkTransaction = async () => {
+    const { item, refreshing } = this.state
+    if (!item.confirmed && !refreshing) {
+      this.checkTransactionTimeout = setTimeout(async () => {
+        await this._onRefresh()
+        this._checkTransaction()
+      }, 2500)
+    }
+  }
+
   _onRefresh = async () => {
     const { item } = this.state
     this.setState({ refreshing: true })
@@ -525,7 +539,8 @@ class TransactionDetails extends React.Component {
       await updateTransactionByHash(item.id)
       const transaction = await this._getTransactionByHash(item.id)
       if (transaction.type === 'Participate') {
-        const tokenPrice = getTokenPriceFromStore(transaction.contractData.tokenName, getAssetsStore())
+        const assetStore = await getAssetsStore()
+        const tokenPrice = getTokenPriceFromStore(transaction.contractData.tokenName, assetStore)
         transaction.tokenPrice = tokenPrice
       }
       this.setState({ item: transaction, refreshing: false })

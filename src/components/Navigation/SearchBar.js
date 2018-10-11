@@ -1,11 +1,11 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 
 import * as Utils from '../Utils'
 import { Colors } from '../DesignSystem'
 import { SearchBarWrapper, SearchBar } from './elements'
 import FontelloIcon from '../FontelloIcon'
+import FontelloButton from '../FontelloButton'
 
 const NavigationSearchBar = ({ onSearch, onClose }) => (
   <SearchBarWrapper>
@@ -26,15 +26,13 @@ const NavigationSearchBar = ({ onSearch, onClose }) => (
       height={42}
       autoFocus
     />
-    <TouchableOpacity
-      style={{padding: 10}}
-      onPress={onClose}>
-      <FontelloIcon
-        size={13}
-        name='close'
-        color={Colors.primaryText}
-      />
-    </TouchableOpacity>
+    <FontelloButton
+      padding={10}
+      onPress={onClose}
+      size={13}
+      name='close'
+      color={Colors.primaryText}
+    />
   </SearchBarWrapper>
 )
 NavigationSearchBar.defaultProps = {

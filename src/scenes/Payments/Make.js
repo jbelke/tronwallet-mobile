@@ -31,30 +31,32 @@ class MakePayment extends PureComponent {
 
     state = {
       loading: false,
-      balances: this.props.context.balances[this.props.context.publicKey]
+      balances: this.props.context.balances[this.props.context.publicKey],
+      transactionData: {}
     }
 
     _getTransactionObject = (transactionData) => {
-      const { hash, contracts } = transactionData
-      const type = WalletClient.getContractType(contracts[0].contractTypeId)
+      const { hash, amount, contractType, ownerAddress, toAddress, assetName } = transactionData
+      const type = WalletClient.getContractType(contractType)
       const transaction = {
         id: hash,
         type,
         contractData: {
-          transferFromAddress: contracts[0].from || contracts[0].ownerAddress,
-          transferToAddress: contracts[0].to,
-          tokenName: type === 'Transfer' ? 'TRX' : contracts[0].token,
-          amount: contracts[0].amount
+          transferFromAddress: ownerAddress,
+          transferToAddress: toAddress,
+          tokenName: type === 'Transfer' ? 'TRX' : assetName,
+          amount
         },
-        ownerAddress: contracts[0].from || contracts[0].ownerAddress,
-        timestamp: Date.now(),
+        ownerAddress: ownerAddress,
+        timestamp: new Date().getTime(),
         confirmed: false
       }
       return transaction
     }
 
-    _navigateNext = () => {
-      replaceRoute(this.props.navigation, 'TransactionSuccess', {stackToReset: 'BalanceScene'})
+    _navigateNext = (transactionData) => {
+      const lastTransaction = this._getTransactionObject(transactionData)
+      replaceRoute(this.props.navigation, 'TransactionSuccess', {stackToReset: 'BalanceScene', transaction: lastTransaction})
     }
 
     _checkToken = token => !!this.state.balances.find(b => b.name === token)
@@ -91,7 +93,7 @@ class MakePayment extends PureComponent {
     _buildTransaction = async ({to, amount, token, from, data}) => {
       try {
         // Build Transaction
-        const transactionUnsigned = await WalletClient.getTransferTransaction({from, to, amount, token})
+        const transactionUnsigned = await WalletClient.getTransferTransaction({from, to, amount, token, data})
         // Sign Transaction
         const { accounts, publicKey } = this.props.context
         const transactionSigned = await signTransaction(
@@ -135,7 +137,7 @@ class MakePayment extends PureComponent {
           }
           await this.props.context.loadUserData()
         }
-        this.setState({ loading: false }, this._navigateNext)
+        this.setState({ loading: false }, this._navigateNext(transactionData))
       } catch (error) {
         // This needs to be adapted better from serverless api
         const errorMessage = error.response && error.response.data ? translateError(error.response.data.error)

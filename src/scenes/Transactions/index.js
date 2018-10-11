@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, AsyncStorage, Platform, TouchableOpacity, Image } from 'react-native'
+import { FlatList, AsyncStorage, Platform, Image } from 'react-native'
 import { Answers } from 'react-native-fabric'
 
 import tl from '../../utils/i18n'
@@ -17,7 +17,7 @@ import getContactsStore from '../../store/contacts'
 import { logSentry } from '../../utils/sentryUtils'
 import { Colors } from '../../components/DesignSystem'
 import Empty from './Empty'
-import FontelloIcon from '../../components/FontelloIcon'
+import FontelloButton from '../../components/FontelloButton'
 
 class TransactionsScene extends Component {
   static navigationOptions = () => ({header: null})
@@ -159,13 +159,12 @@ class TransactionsScene extends Component {
           <FilterText numberOfLines={1}>{this.state.contact.alias}</FilterText>
         </InnerRow>
         <InnerRow>
-          <TouchableOpacity onPress={this._removeFilteredContact}>
-            <FontelloIcon
-              name='close'
-              color='white'
-              size={16}
-            />
-          </TouchableOpacity>
+          <FontelloButton
+            onPress={this._removeFilteredContact}
+            name='close'
+            color='white'
+            size={16}
+          />
         </InnerRow>
       </FilterWrapper>
     } else {

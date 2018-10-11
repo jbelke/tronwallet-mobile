@@ -14,7 +14,7 @@ import { createUserKeyPair } from '../../utils/secretsUtils'
 import { withContext } from '../../store/context'
 import { logSentry } from '../../utils/sentryUtils'
 import tl from '../../utils/i18n'
-import FontelloIcon from '../../components/FontelloIcon'
+import FontelloButton from '../../components/FontelloButton'
 
 const resetAction = StackActions.reset({
   index: 0,
@@ -92,15 +92,13 @@ class Create extends React.Component {
         />
         <Content flex={1} paddingSize='medium'>
           <MainCard>
-            <TouchableOpacity
+            <FontelloButton
               onPress={this._onCopySeed}
-              style={{alignItems: 'flex-end'}}>
-              <FontelloIcon
-                name='copy'
-                size={18}
-                color={Colors.greyBlue}
-              />
-            </TouchableOpacity>
+              style={{alignItems: 'flex-end'}}
+              name='copy'
+              size={18}
+              color={Colors.greyBlue}
+            />
             <View height={32} />
             {
               seed
