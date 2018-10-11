@@ -117,17 +117,17 @@
         "body": "Congelamento e voto para Super Representantes"
       },
       "addressbook": {
-        "title": "ADDRESS BOOK",
-        "body": "Save the addresses of your friends \n and contacts."
+        "title": "LIVRO DE ENDEREÇOS",
+        "body": "Grave os endereços dos seus amigos e contactos."
       },
       "multipleaccounts": {
-        "title": "MULTIPLE ACCOUNTS",
-        "body": "You can manage multiple accounts \n in your wallet"
+        "title": "MULTIPLAS CONTAS",
+        "body": "Pode gerir multiplas contas na sua carteira"
       }
     }
   },
   "addressBook": {
-    "title": "ADDRESS BOOK",
+    "title": "LIVRO DE ENDEREÇOS",
     "shared": {
       "add": "ADICIONAR",
       "edit": "EDITAR",
@@ -135,7 +135,7 @@
       "send": "ENVIAR"
     },
     "contacts": {
-      "title": "CONTACTS",
+      "title": "CONTACTOS",
       "delete": {
         "title": "Excluir contato",
         "message": "Você realmente deseja excluir este contato?",
@@ -215,10 +215,10 @@
         "title": "Você precisa comprar pelo menos um TRX no valor de {{token}}.",
         "message": "Atualmente você está comprando apenas {{amount}}."
       },
-      "notFound": "Asset(s) not found"
+      "notFound": "Ativo(s) não encontrado(s)"
     },
     "warning": "Você não tem TRX suficiente para comprar tantos {{token}}",
-    "enterAmountToBuy": "ENTER THE AMOUNT TO BUY",
+    "enterAmountToBuy": "INTRODUZA O MONTANTE A COMPRAR",
     "amountToBuy": "QUANTIDADE DE COMPRAR",
     "pricePerToken": "PREÇO POR TOKEN",
     "tokenDescription": "DESCRIÇÃO DO TOKEN",
@@ -237,15 +237,15 @@
     "trxNum": "TRX NUM",
     "num": "NUM",
     "block": "QUADRA",
-    "balance": "BALANCE",
-    "searchPreview": "Featured Tokens"
+    "balance": "SALDO",
+    "searchPreview": "Tokens em destaque"
   },
   "pin": {
     "title": "VERIFICAÇÃO DE SEGURANÇA",
     "enter": "Entrar no pino",
     "new": "Digite o novo PIN",
     "reenter": "Digite novamente o PIN",
-    "biometrics": "Biometric Check"
+    "biometrics": "Verificação Biométrica"
   },
   "receive": {
     "title": "RECEBER",
@@ -287,8 +287,8 @@
         "newSeed": "OBTENHA NOVA SEMENTE",
         "later": "Confirmar mais tarde"
       },
-      "backupMessage": "You can always access your words by accessing the backup on the app settings      ",
-      "seedExplanation": "The seed key is a human-readable representation of your wallet. Those words, in that exact order, can be used to re-create your wallet."
+      "backupMessage": "Poderá sempre aceder as suas palavras indo ao backup das configurações da aplicação      ",
+      "seedExplanation": "A semente é uma representação legível da sua carteira. Estas palavras, na mesma ordem, podem ser utilizadas para recriar a sua carteira."
     },
     "restore": {
       "title": "RESTAURAR CARTEIRA",
