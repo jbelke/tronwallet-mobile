@@ -3,7 +3,7 @@ import { logSentry } from '../utils/sentryUtils'
 
 class NodeIp {
   constructor () {
-    this.nodeIp = '54.236.37.243:50051'
+    this.nodeIp = '35.231.121.122:50051'
     this.nodeSolidityIp = '54.236.37.243:50052'
     this.nodeIpTestnet = '18.216.36.219:50051'
     this.nodeSolidityIpTestnet = '18.204.117.182:50051 '

@@ -3,13 +3,10 @@ import {
   RefreshControl,
   ScrollView,
   AsyncStorage,
-  TouchableOpacity,
-  AppState,
-  DeviceEventEmitter,
-  Platform
+  TouchableOpacity
 } from 'react-native'
 import { Answers } from 'react-native-fabric'
-import { unionBy } from 'lodash'
+import unionBy from 'lodash/unionBy'
 import Feather from 'react-native-vector-icons/Feather'
 
 import FormModal from '../../components/FormModal'
@@ -28,6 +25,7 @@ import { USER_PREFERRED_CURRENCY } from '../../utils/constants'
 import { createNewAccount } from '../../utils/secretsUtils'
 import withContext from '../../utils/hocs/withContext'
 import { logSentry } from '../../utils/sentryUtils'
+import onBackgroundHandler from '../../utils/onBackgroundHandler'
 
 class BalanceScene extends Component {
   static navigationOptions = {
@@ -46,18 +44,8 @@ class BalanceScene extends Component {
 
   componentDidMount () {
     Answers.logContentView('Tab', 'Balance')
-    try {
-      this._loadData()
-    } catch (e) {
-      this.setState({ error: tl.t('balance.error.loadingData') })
-      logSentry(e, 'Balance - LoadData')
-    }
-
     this._navListener = this.props.navigation.addListener('didFocus', this._loadData)
-
-    this.appStateListener = Platform.OS === 'android'
-      ? DeviceEventEmitter.addListener('ActivityStateChange', (e) => this._handleAppStateChange(e.event))
-      : AppState.addEventListener('change', this._handleAppStateChange)
+    this.appStateListener = onBackgroundHandler(this._onAppStateChange)
   }
 
   componentWillUnmount () {
@@ -111,32 +99,36 @@ class BalanceScene extends Component {
 
   _onRefresh = async () => {
     this.setState({ refreshing: true })
-    await this.props.context.loadUserData()
     await this._loadData()
     this.setState({ refreshing: false })
   }
 
-  _handleAppStateChange = nextAppState => {
+  _onAppStateChange = nextAppState => {
     const { alwaysAskPin } = this.props.context
-    if (nextAppState.match(/background/) && alwaysAskPin) {
+    if (nextAppState.match(/background/)) {
+      // Closing all modals
       this.setState({ accountModalVisible: false })
-      this.props.navigation.navigate('Pin', {
-        testInput: pin => pin === this.props.context.pin,
-        onSuccess: () => {}
-      })
+      if (this.carousel.innerComponent.ActionSheet) this.carousel.innerComponent.ActionSheet.hide()
+
+      if (alwaysAskPin) {
+        this.props.navigation.navigate('Pin', {
+          testInput: pin => pin === this.props.context.pin,
+          onSuccess: () => {}
+        })
+      }
     }
   }
 
   _loadData = async () => {
     try {
-      const { getFreeze, accounts } = this.props.context
       const preferedCurrency = await AsyncStorage.getItem(USER_PREFERRED_CURRENCY)
       const currency = preferedCurrency || 'TRX'
-      accounts.map(account => getFreeze(account.address))
       this.props.context.setCurrency(currency)
+      this.props.context.loadUserData()
+      this.props.context.updateSystemStatus()
     } catch (e) {
-      this.setState({ error: e.message })
-      logSentry(e, 'Balance - LoadAccounts')
+      this.setState({ error: tl.t('balance.error.loadingData') })
+      logSentry(e, 'Balance - LoadData')
     }
   }
 

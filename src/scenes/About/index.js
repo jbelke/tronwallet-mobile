@@ -4,7 +4,8 @@ import {
   WebView,
   TouchableWithoutFeedback,
   View,
-  SafeAreaView
+  SafeAreaView,
+  ScrollView
 } from 'react-native'
 
 import NavigationHeader from '../../components/Navigation/Header'
@@ -43,46 +44,48 @@ class About extends PureComponent {
 
     return (
       <Container>
-        <Content justify='space-between' flex={1}>
-          <View>
-            <Description>{tl.t('settings.about.description')}</Description>
-            <VerticalSpacer size='large' />
-            <TutorialWrapper>
-              <TouchableWithoutFeedback onPress={() => this._openLink('https://blog.getty.io/how-to-tronwallet-tutorial-2228a6218646')}>
-                <TutorialText>{tl.t('settings.about.tutorial')}</TutorialText>
-              </TouchableWithoutFeedback>
-            </TutorialWrapper>
-            <Modal
-              animationType='slide'
-              transparent={false}
-              visible={modalVisible}
-              onRequestClose={() => this.setState({ modalVisible: false })}
-            >
-              <SafeAreaView style={{flex: 1, backgroundColor: Colors.background}}>
-                <NavigationHeader title='' onBack={() => { this.props.navigation.goBack() }} />
-                <WebView
-                  source={{ uri: partnerUri }}
-                  renderLoading={() => <Loading />}
-                  startInLoadingState
-                />
-              </SafeAreaView>
-            </Modal>
-          </View>
-          <View>
-            <SectionTitle>{tl.t('settings.partners')}</SectionTitle>
-            <Row justify='center'>
-              <TouchableWithoutFeedback onPress={() => this._openLink('https://www.hummingpay.com/')}>
-                <PayPartner source={require('../../assets/paysponsor.png')} />
-              </TouchableWithoutFeedback>
-              <HorizontalSpacer size='large' />
-              <HorizontalSpacer size='large' />
-              <TouchableWithoutFeedback onPress={() => this._openLink('https://getty.io/')}>
-                <Getty source={require('../../assets/gettysponsor.png')} />
-              </TouchableWithoutFeedback>
-            </Row>
-            <VersionText>{`v${ConfigJson.version}`}</VersionText>
-          </View>
-        </Content>
+        <ScrollView>
+          <Content justify='space-between' flex={1}>
+            <View>
+              <Description>{tl.t('settings.about.description')}</Description>
+              <VerticalSpacer size='large' />
+              <TutorialWrapper>
+                <TouchableWithoutFeedback onPress={() => this._openLink('https://blog.getty.io/how-to-tronwallet-tutorial-2228a6218646')}>
+                  <TutorialText>{tl.t('settings.about.tutorial')}</TutorialText>
+                </TouchableWithoutFeedback>
+              </TutorialWrapper>
+              <Modal
+                animationType='slide'
+                transparent={false}
+                visible={modalVisible}
+                onRequestClose={() => this.setState({ modalVisible: false })}
+              >
+                <SafeAreaView style={{flex: 1, backgroundColor: Colors.background}}>
+                  <NavigationHeader title='' onBack={() => { this.props.navigation.goBack() }} />
+                  <WebView
+                    source={{ uri: partnerUri }}
+                    renderLoading={() => <Loading />}
+                    startInLoadingState
+                  />
+                </SafeAreaView>
+              </Modal>
+            </View>
+            <View>
+              <SectionTitle>{tl.t('settings.partners')}</SectionTitle>
+              <Row justify='center'>
+                <TouchableWithoutFeedback onPress={() => this._openLink('https://www.hummingpay.com/')}>
+                  <PayPartner source={require('../../assets/paysponsor.png')} />
+                </TouchableWithoutFeedback>
+                <HorizontalSpacer size='large' />
+                <HorizontalSpacer size='large' />
+                <TouchableWithoutFeedback onPress={() => this._openLink('https://getty.io/')}>
+                  <Getty source={require('../../assets/gettysponsor.png')} />
+                </TouchableWithoutFeedback>
+              </Row>
+              <VersionText>{`v${ConfigJson.version}`}</VersionText>
+            </View>
+          </Content>
+        </ScrollView>
       </Container>
     )
   }

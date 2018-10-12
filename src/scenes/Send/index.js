@@ -36,6 +36,7 @@ import { logSentry } from '../../utils/sentryUtils'
 import { ButtonWrapper } from './elements'
 import { replaceRoute } from '../../utils/navigationUtils'
 import { orderBalances } from '../../utils/balanceUtils'
+import onBackgroundHandler from '../../utils/onBackgroundHandler'
 
 class SendScene extends Component {
   static navigationOptions = () => {
@@ -68,6 +69,8 @@ class SendScene extends Component {
       'didFocus',
       this._loadData
     )
+
+    this.appStateListener = onBackgroundHandler(this._onAppStateChange)
   }
 
   componentDidUpdate () {
@@ -81,12 +84,20 @@ class SendScene extends Component {
 
   componentWillUnmount () {
     this._navListener.remove()
+    this.appStateListener.remove()
   }
 
   _getBalancesFromStore = async () => {
     const store = await getBalanceStore()
     // console.log('filter', `account = "${this.props.context.publicKey}"`)
     return store.objects('Balance').filtered(`account = "${this.props.context.publicKey}"`).map(item => Object.assign({}, item))
+  }
+
+  _onAppStateChange = nextAppState => {
+    if (nextAppState.match(/background/)) {
+      this.setState({QRModalVisible: false})
+      if (this.ActionSheet) this.ActionSheet.hide()
+    }
   }
 
   _loadData = async () => {
@@ -280,7 +291,7 @@ class SendScene extends Component {
   }
 
   _handleTokenChange = (index, formattedToken) => {
-    if (index !== 0) {
+    if (index > 0) {
       this.setState({
         token: this.state.balances[index - 1].name,
         formattedToken

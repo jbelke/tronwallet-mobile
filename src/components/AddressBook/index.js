@@ -10,6 +10,7 @@ import { withContext } from '../../store/context'
 import tl from '../../utils/i18n'
 import { EmptyWrapper, EmptyText } from './elements'
 import FontelloIcon from '../FontelloIcon'
+import onBackgroundHandler from '../../utils/onBackgroundHandler'
 
 class AddressBook extends Component {
   state = {
@@ -18,6 +19,19 @@ class AddressBook extends Component {
     refreshing: false
   }
 
+  componentDidMount () {
+    this.appStateListener = onBackgroundHandler(this._handleAppStateChange)
+  }
+
+  componentWillUnmount () {
+    this.appStateListener.remove()
+  }
+
+  _handleAppStateChange = (nextAppState) => {
+    if (nextAppState.match(/background/)) {
+      this.setState({ modalVisible: false })
+    }
+  }
   _onRefresh = () => {
     const { reloadData } = this.props
 

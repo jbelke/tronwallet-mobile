@@ -60,8 +60,8 @@ import { ONE_SIGNAL_KEY } from './config'
 import ConfigJson from './package.json'
 import tl from './src/utils/i18n'
 import fontelloConfig from './src/assets/icons/config.json'
-import { getFixedTokens } from './src/services/contentful'
-
+import { getFixedTokens, getSystemStatus } from './src/services/contentful'
+import StatusMessage from './src/components/StatusMessage'
 import './ReactotronConfig'
 
 if (!__DEV__) {
@@ -255,7 +255,8 @@ class App extends Component {
     currency: null,
     secretMode: 'mnemonic',
     verifiedTokensOnly: true,
-    fixedTokens: []
+    fixedTokens: [],
+    systemStatus: { showStatus: false, statusMessage: '', statusColor: '', messageColor: '' }
   }
 
   async componentDidMount () {
@@ -268,6 +269,7 @@ class App extends Component {
       OneSignal.configure()
     }, 1000)
 
+    this._updateSystemStatus()
     this._setNodes()
     this._loadAskPin()
     this._loadUseBiometry()
@@ -435,6 +437,16 @@ class App extends Component {
     }
   }
 
+  _updateSystemStatus = async () => {
+    try {
+      const systemStatus = await getSystemStatus()
+      this.setState({systemStatus})
+    } catch (error) {
+      this.setState({systemStatus: { showStatus: false, statusMessage: '', statusColor: '', messageColor: '' }})
+      logSentry(error, 'App - can\'t get system status')
+    }
+  }
+
   _setSecretMode = mode => this.setState({ secretMode: mode })
 
   _setPublicKey = publicKey => this.setState({ publicKey })
@@ -495,13 +507,16 @@ class App extends Component {
       setAskPin: this._setAskPin,
       setUseBiometry: this._setUseBiometry,
       setSecretMode: this._setSecretMode,
-      setVerifiedTokensOnly: this._setVerifiedTokensOnly
+      setVerifiedTokensOnly: this._setVerifiedTokensOnly,
+      updateSystemStatus: this._updateSystemStatus
     }
 
     return (
       <SafeAreaView style={{ backgroundColor: Colors.background, flex: 1 }} >
         <Context.Provider value={contextProps}>
           <StatusBar barStyle='light-content' />
+          {this.state.systemStatus.showStatus &&
+          <StatusMessage systemStatus={this.state.systemStatus} />}
           <RootNavigator uriPrefix={prefix} />
         </Context.Provider>
       </SafeAreaView>

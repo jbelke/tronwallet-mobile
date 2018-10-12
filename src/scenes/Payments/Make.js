@@ -56,6 +56,7 @@ class MakePayment extends PureComponent {
 
     _navigateNext = (transactionData) => {
       const lastTransaction = this._getTransactionObject(transactionData)
+      this.props.navigation.goBack()
       replaceRoute(this.props.navigation, 'TransactionSuccess', {stackToReset: 'BalanceScene', transaction: lastTransaction})
     }
 

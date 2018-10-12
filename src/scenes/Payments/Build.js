@@ -11,11 +11,13 @@ import Input from '../../components/Input'
 import ButtonGradient from '../../components/ButtonGradient'
 import RequestModal from './RequestModal'
 import { SelecterWrapper, SelecterOption } from './elements'
+
 // Utils
 import tl from '../../utils/i18n'
 import { withContext } from '../../store/context'
 import { formatNumber } from '../../utils/numberUtils'
 import { logSentry } from '../../utils/sentryUtils'
+import onBackgroundHandler from '../../utils/onBackgroundHandler'
 
 const CURRENCY_OPTIONS = ['USD', 'EUR', 'TRX']
 
@@ -37,6 +39,17 @@ class RequestPayment extends Component {
 
   componentDidMount () {
     this._loadData()
+    this.appStateListener = onBackgroundHandler(this._handleAppStateChange)
+  }
+
+  componentWillUnmount () {
+    this.appStateListener.remove()
+  }
+
+  _handleAppStateChange = (nextAppState) => {
+    if (nextAppState.match(/background/)) {
+      this.setState({ modalQRVisible: false })
+    }
   }
 
   _loadData = async () => {
