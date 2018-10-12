@@ -404,6 +404,9 @@
     "accepts": {
       "title": "Ki fogadja el a TRX-t?"
     },
+    "helpCenter": {
+      "title": "Help Center"
+    },
     "accounts": {
       "title": "Fiókok",
       "search": "Keresési fiókok",
