@@ -412,8 +412,8 @@
     },
     "partners": "PARCEIROS",
     "askPin": "Sempre perguntar PIN",
-    "askBiometry": "Activate Biometry",
-    "verifiedTokensOnly": "Verified tokens only"
+    "askBiometry": "Ativar Biometria",
+    "verifiedTokensOnly": "Apenas tokens verificados"
   },
   "submitTransaction": {
     "title": "DETALHES DA TRANSAÇÃO",
@@ -496,9 +496,9 @@
     "totalVotes": "VOTOS TOTAIS",
     "votesAvailable": "VOTOS DISPONÍVEIS",
     "search": "Pesquisa",
-    "searchPreview": "Suggestions - Most Voted",
+    "searchPreview": "Sugestões - Mais Votadas",
     "error": "Ups! Algo não foi carregado corretamente. Tente recarregar",
-    "notFound": "Super Representative not found"
+    "notFound": "Super Representante não encontrado"
   },
   "scanPayment": {
     "scan": "SCAN",
@@ -548,10 +548,10 @@
   },
   "biometry": {
     "register": {
-      "title": "Check your biometry"
+      "title": "Verifique a sua biometria"
     },
     "auth": {
-      "error": "Access denied"
+      "error": "Acesso negado"
     }
   }
 }
