@@ -404,6 +404,9 @@
     "accepts": {
       "title": "¿Quién acepta TRX?"
     },
+    "helpCenter": {
+      "title": "Help Center"
+    },
     "accounts": {
       "title": "Cuentas",
       "search": "Buscar cuentas",
