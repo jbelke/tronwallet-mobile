@@ -404,6 +404,9 @@
     "accepts": {
       "title": "Siapa yang menerima TRX?"
     },
+    "helpCenter": {
+      "title": "Help Center"
+    },
     "accounts": {
       "title": "Akun",
       "search": "Cari akun",
