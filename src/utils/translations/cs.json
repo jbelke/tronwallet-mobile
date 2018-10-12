@@ -404,6 +404,9 @@
     "accepts": {
       "title": "Kdo přijímá TRX?"
     },
+    "helpCenter": {
+      "title": "Help Center"
+    },
     "accounts": {
       "title": "Účty",
       "search": "Vyhledat účty",
