@@ -404,6 +404,9 @@
     "accepts": {
       "title": "टीआरएक्स कौन स्वीकार करता है?"
     },
+    "helpCenter": {
+      "title": "Help Center"
+    },
     "accounts": {
       "title": "हिसाब किताब",
       "search": "खाते खोजें",
