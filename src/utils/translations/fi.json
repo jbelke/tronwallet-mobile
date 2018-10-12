@@ -404,6 +404,9 @@
     "accepts": {
       "title": "Kuka hyväksyy TRX: n?"
     },
+    "helpCenter": {
+      "title": "Help Center"
+    },
     "accounts": {
       "title": "tilit",
       "search": "Etsi tilit",
